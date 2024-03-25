@@ -1,0 +1,40 @@
+@import "/src/assets/styles/themes";
+
+dialog {
+    margin: 5rem auto 0;
+    width: 75%;
+    border: 1px;
+    border-radius: 0.5rem;
+    padding: 0;
+
+    .heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 2rem;
+        background-color: var(--dialog-title-bg-color);
+        color: var(--dialog-title-fg-color);
+
+        .title {
+            padding: 0.75rem 1rem;
+        }
+
+        .heading-button {
+            margin-right: 0.75rem;
+            border: 0;
+            background-color: transparent;
+            color: var(--dialog-title-fg-color);
+            font-size: 1.5rem;
+            width: 1.5rem;
+        }
+    }
+
+    .body {
+        padding: 0 1rem;
+    }
+}
+
+::backdrop {
+    background-color: var(--dialog-backdrop-color);
+    opacity: 0.75;
+}

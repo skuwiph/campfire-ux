@@ -1,0 +1,450 @@
+<a name="top"></a>
+<h1>Component Showcase</h1>
+<h2>Contents</h2>
+<ul class="link">
+    <li><a href="#text"><i class="fa-solid fa-arrow-up-right-from-square"></i>Text</a></li>
+    <li><a href="#alerts"><i class="fa-solid fa-arrow-up-right-from-square"></i>Alerts</a></li>
+    <li><a href="#card"><i class="fa-solid fa-arrow-up-right-from-square"></i>Applicant Card</a></li>
+    <li><a href="#buttons"><i class="fa-solid fa-arrow-up-right-from-square"></i>Buttons</a></li>
+    <li><a href="#menu"><i class="fa-solid fa-arrow-up-right-from-square"></i>Menu</a></li>
+    <li><a href="#dialog"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dialogs</a></li>
+    <li><a href="#wait"><i class="fa-solid fa-arrow-up-right-from-square"></i>Loader Display</a></li>
+    <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
+    <li><a href="#profile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Image</a></li>
+    <li><a href="#typeahead"><i class="fa-solid fa-arrow-up-right-from-square"></i>Typeahead</a></li>
+    <li><a href="#tables"><i class="fa-solid fa-arrow-up-right-from-square"></i>Tables</a></li>
+        <ul>
+            <li><a href="#tables-standard"><i class="fa-solid fa-arrow-up-right-from-square"></i>Standard</a></li>
+            <li><a href="#tables-paginate"><i class="fa-solid fa-arrow-up-right-from-square"></i>Paginated</a></li>
+            <li><a href="#tables-sort"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sortable</a></li>
+        </ul>
+</ul>
+
+<h2>Text<a name="text"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <h1>Title</h1>
+        <h2>Main Heading</h2>
+        <h3>Subheading</h3>
+        <h4>Lowest Heading</h4>
+        <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod sit fugiat aliqua nostrud sunt
+            consectetur cillum et labore magna occaecat esse. Aliqua voluptate id exercitation commodo proident proident nulla
+            quis cupidatat duis ullamco commodo. Nisi labore dolor ex veniam labore irure elit irure do cupidatat incididunt
+            dolor esse. Ea officia cillum sunt ut duis reprehenderit voluptate amet.</p>
+        <p>Italicised - <i>Occaecat minim eu id quis pariatur elit ea consectetur duis reprehenderit</i>.</p>
+        <p>Bold - <b>Occaecat minim eu id quis pariatur elit ea consectetur duis reprehenderit</b>.</p>
+        <p>Unordered List:</p>
+        <ul>
+            <li>Unordered List Item #1</li>
+            <li>Unordered List Item #2</li>
+            <li>Unordered List Item #3</li>
+            <li>Unordered List Item #4</li>
+        </ul>
+        <p>Ordered List:</p>
+        <ol>
+            <li>Ordered List Item #1</li>
+            <li>Ordered List Item #2</li>
+            <li>Ordered List Item #3</li>
+            <li>Ordered List Item #4</li>
+        </ol>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Alerts<a name="alerts"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <app-cf-alert></app-cf-alert>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Applicant Card<a name="card"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <app-cf-applicant-card [applicant]="displayApplicantCard!"></app-cf-applicant-card>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Buttons<a name="buttons"></a></h2>
+<div class="flex-container">
+    <div class="right">
+        <h4>Notes</h4>
+        <p>Embed buttons in a containing div with 'cal' for center-, or 'ral' for right-alignment</p>
+        <code>
+                &lt;div class="button-bar ral"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="'Default'" (click)="onClick($event)"&gt;OK&lt;/app-cf-button&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="'Cancel'" (click)="onClick($event)"&gt;Cancel&lt;/app-cf-button&gt;<br>
+                &lt;/div&gt;<br>
+            </code>
+    </div>
+</div>
+<div class="flex-container">
+    <div class="left">
+        <div class="button-bar">
+            <app-cf-button [type]="'Primary'" (click)="primaryClicked()">Primary</app-cf-button>
+            <app-cf-button [type]="'Secondary'">Secondary</app-cf-button>
+            <app-cf-button [type]="'Tertiary'">Tertiary</app-cf-button>
+        </div>
+        <div class="button-bar ral">
+            <app-cf-button [type]="'Primary'">Primary</app-cf-button>
+            <app-cf-button [type]="'Secondary'">Secondary</app-cf-button>
+        </div>
+        <div class="button-bar">
+            <app-cf-button [type]="'Default'">Default</app-cf-button>
+            <app-cf-button [type]="'Cancel'">Cancel</app-cf-button>
+        </div>
+        <div class="button-bar cal">
+            <app-cf-button [type]="'Danger'" [enabled]="false">Danger</app-cf-button>
+        </div>
+    </div>
+
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Menu<a name="menu"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <app-cf-menu></app-cf-menu>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<div class="flex-container">
+    <div class="left">
+        <app-cf-dialog #dialogDemo title="Modal Dialog Title">
+            <div body>
+                <p>Content passed in from the parent component.</p>
+            </div>
+
+            <div footer>
+                <div class="button-bar ral">
+                    <app-cf-button [type]="'Default'" (click)="dialogDefault()">Save</app-cf-button>
+                    <app-cf-button [type]="'Cancel'" (click)="dialogCancel()">Cancel</app-cf-button>
+                </div>
+            </div>
+        </app-cf-dialog>
+
+        <div class="button-bar">
+            <app-cf-button [type]="'Default'" (click)="showDialog($event)">Show Modal</app-cf-button>
+            <p class="active-msg" *ngIf="dialogActiveCount > 0">Dialog Save Pressed {{this.dialogActiveCount}} time(s)
+            </p>
+        </div>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Dialogs<a name="dialog"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <h4>Notes</h4>
+        <p>Html:</p>
+        <code>
+        &lt;app-cf-dialog #dialogDemo title="Modal Dialog Title"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Content passed in from the parent component.&lt;/p&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div footer&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="button-bar ral"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="'Default'" (click)="dialogDefault()"&gt;Save&lt;/app-cf-button&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="'Cancel'" (click)="dialogCancel()"&gt;Cancel&lt;/app-cf-button&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+        &lt;/app-cf-dialog&gt;<br>
+        <br>
+        &lt;app-cf-button [type]="'Default'" (click)="showDialog($event)"&gt;<br>
+        </code>
+        <p>Code:</p>
+        <code>
+            @ViewChild('dialogDemo', void {{ '{' }} static: false void {{ '}' }}) dialog!: CfDialogComponent;<br>
+            <br>
+
+            showDialog(event: Event): void {{ '{' }}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.openDialog();<br>
+            {{ '}' }}<br>
+            <br>
+            dialogDefault(): void {{ '{' }}<br>
+            // Do something<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.closeDialog();<br>
+            {{ '}' }}<br>
+            <br>
+            dialogCancel(): void {{ '{' }}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Cancelled Dialog`);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.closeDialog();<br>
+            {{ '}' }}<br>
+        </code>
+        <br>
+    </div>
+</div>
+
+<h2>Loader Display<a name="wait"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <app-cf-loader>
+            <p>Large Loader... Please Wait...</p>
+        </app-cf-loader>
+        <app-cf-loader></app-cf-loader>
+        <app-cf-loader [size]="'sm'">
+            <p class="smaller">Small</p>
+        </app-cf-loader>
+        <app-cf-loader [size]="'sm'"></app-cf-loader>
+    </div>
+    <div class="right">
+        <h4>Notes</h4>
+        <p>Pass text as inner content, or nothing</p>
+        <code>
+            &lt;app-cf-loader&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Text&lt;/p&gt;<br>
+            &lt;/app-cf-loader&gt;<br>
+            <br>
+            &lt;app-cf-loader [size]="'sm'"&gt;&lt;/app-cf-loader&gt;<br>
+        </code>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Status Display<a name="status"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <table class="status-table">
+            <tr>
+                <td><app-cf-status-display [status]="'AcceptedOnProgramme'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ORCAReject'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantApplied'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantAppliedPFT'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeCNX'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeEXP'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeFAI'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeREJ'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeTER'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeUNS'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantPlaced'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlace'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceGP'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceMM'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'PendingAcceptanceAsReturner'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'PostInterview'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'PreInterview'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'RejectedByInterviewer'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'RejectedByOffice'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'Returner'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ReturnToORCA'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'TransferredToORCA'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlace'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceCE'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceGP'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceMM'"></app-cf-status-display></td>
+            </tr>
+        </table>
+    </div>
+    <div class="right">
+        <h4>Notes</h4>
+        <p>Status will expand to fill containing element.</p>
+        <code>
+                &lt;app-cf-status-display [status]="status"&gt;<br>
+                &lt;/app-cf-status-display&gt;<br>
+            </code>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Profile Image Display<a name="profile"></a></h2>
+<div class="flex-container">
+    <div class="left comfort">
+        <app-cf-profile [urlOrInitials]="'aj'"></app-cf-profile>
+        <br>
+        <app-cf-profile [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'"></app-cf-profile>
+        <br>
+        <app-cf-profile [width]="100" [height]="100"
+            [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'" [roundImage]="false"></app-cf-profile>
+    </div>
+    <div class="right">
+        <h4>Notes</h4>
+        <p>If the <code>urlOrInitials</code> parameter starts with 'http', assume an image.</p>
+        <code>
+            &lt;app-cf-profile [urlOrInitials]="url"&gt;&lt;/app-cf-profile&gt;<br>
+            &lt;app-cf-profile [urlOrInitials]="url" [roundImage]="false" [width]="100" [height]="100"&gt;&lt;/app-cf-profile&gt;<br>
+        </code>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+
+<h2>Typeahead<a name="typeahead"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <h4>Notes</h4>
+        <p>Html:</p>
+        <code>
+        &lt;app-cf-typeahead<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextDefault]="'Default text'"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextActive]="'Enter search terms'"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[isSearching]="isTypeaheadSearching"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[hasResults]="typeaheadHasResults"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;(lookup)="doTypeaheadLookup($event)"&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div results&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngIf="typeaheadHasResults; else noData"&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-table [data]="typeaheadSearchTable" [sortable]="true"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(onSelect)="selectedStandardRow($event)"&gt;&lt;/app-cf-table&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template #noData&gt;No data returned&lt;/ng-template&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+        &lt;/app-cf-typeahead&gt;<br>
+        </code>
+        <p>Code:</p>
+        <code>
+        doTypeaheadLookup(value: string): void {{ '{' }}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = false;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = true;<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;// do search<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = true;<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = false;<br>
+        {{ '}' }}<br>
+        </code><br>
+    </div>
+</div>
+<div class="flex-container">
+    <div class="left">
+        <br>
+        <app-cf-typeahead #typeahead
+            [placeholderTextDefault]="'Default text'" 
+            [placeholderTextActive]="'Enter search terms'"
+            [isSearching]="isTypeaheadSearching"
+            [hasResults]="typeaheadHasResults"
+            (lookup)="doTypeaheadLookup($event)">
+            <div results>
+                <div *ngIf="typeaheadHasResults; else noData">
+                    <app-cf-table *ngIf="typeaheadSearchTable" [data]="typeaheadSearchTable" [sortable]="true"
+                        (onSelect)="typeaheadSelected($event)"></app-cf-table>
+                </div>
+                <ng-template #noData>No data returned</ng-template>
+            </div>  
+        </app-cf-typeahead>
+        <br>
+        <div *ngIf="typeaheadRecordSelected">
+            <app-cf-applicant-card *ngIf="selectedApplicant" [applicant]="selectedApplicant" (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
+        </div>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Tables<a name="tables"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <h4>Notes</h4>
+        <p>Html:</p>
+        <code>
+            &lt;app-cf-table [data]="standardTable"
+                (onSelect)="selectedStandardRow($event)"&gt;&lt;/app-cf-table&gt;
+        </code>
+        <p>Code:</p>
+        <code>
+            &nbsp;&nbsp;&nbsp;&nbsp;var columns: CfTableColumn[] = [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Album", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_album"),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Year", CfTableColumnAlignment.Center, CfTableColumnType.Number),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Position", CfTableColumnAlignment.Right, CfTableColumnType.String),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;var data = [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} pk: "01", cols: ["The Beatles", "Please Please Me", "1963", "#1" ]{{ '}' }},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.standardTable = new CfTableData(columns, data, new CfTablePaginationOptions(10, data.length));
+        </code>
+        <p>Event:</p>
+        <code>
+            &nbsp;&nbsp;&nbsp;&nbsp;selectedStandardRow(event: CfTableSelectedRow): void {{ '{' }}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(`Row was selected with PK: ${{ '{' }}event.pk{{ '}' }}`);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{{ '}' }}<br>
+        </code>
+        <p>Extra parameters:</p>
+        <code>&nbsp;&nbsp;&nbsp;&nbsp;[showHeaders]="true|false"</code><br>
+        <code>&nbsp;&nbsp;&nbsp;&nbsp;[sortable]="true|false"</code><br>
+        <br>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+<div class="flex-container">
+    <div class="left">
+        <h2>Standard<a name="tables-standard"></a></h2>
+        <app-cf-table *ngIf="standardTable" [data]="standardTable"
+            (onSelect)="selectedStandardRow($event)"></app-cf-table>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<div class="flex-container">
+    <div class="left">
+        <h2>Standard Pagination, No Sort<a name="tables-paginate"></a></h2>
+        <app-cf-table *ngIf="paginationTable" [showHeaders]="true" [data]="paginationTable"
+            (onSelect)="selectedStandardRow($event)"></app-cf-table>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<div class="flex-container">
+    <div class="left">
+        <h2>Sortable<a name="tables-sort"></a></h2>
+        <app-cf-table *ngIf="sortTable" [data]="sortTable" [sortable]="true"
+            (onSelect)="selectedStandardRow($event)"></app-cf-table>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+

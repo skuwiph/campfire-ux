@@ -1,0 +1,61 @@
+@import "/src/assets/styles/themes";
+
+.statusBox {
+    display: block;
+    font-weight: 500;
+    color: var(--status-fg-color);
+    text-align: center;
+    // width: 100%;
+}
+
+.preinterview {
+    background-color: var(--status-preint);
+}
+
+.postinterview {
+    background-color: var(--status-postint);
+}
+
+.returner {
+    background-color: var(--status-returner);
+}
+
+.pendingAcceptance {
+    background-color: var(--status-pendingaccept);
+}
+
+.rejected {
+    background-color: var(--status-rejected);
+}
+
+.orcaReject {
+    background-color: var(--status-orcareject);
+}
+
+.orcaResubmit {
+    background-color: var(--status-returnToOrca);
+}
+
+.orcaTransfer {
+    background-color: var(--status-transferred);
+}
+
+.accepted {
+    background-color: var(--status-accepted);
+}
+
+.applied {
+    background-color: var(--status-applied);
+}
+
+.rtp {
+    background-color: var(--status-rtp);
+}
+
+.placed {
+    background-color: var(--status-placed);
+}
+
+.oop {
+    background-color: var(--status-oop);
+}

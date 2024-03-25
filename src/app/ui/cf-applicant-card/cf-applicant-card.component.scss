@@ -1,0 +1,59 @@
+@import "/src/assets/styles/themes";
+
+.applicant-card {
+    cursor: pointer;
+    position: relative;
+    border: 1px solid var(--applicant-card-border-color);
+    background-color: var(--applicant-card-bg-color);
+    border-radius: 0.2rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    max-height: calc(200px + 4rem); // image + status + margin t+b
+    max-width: calc(200px + 1rem + 2px);
+    .image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 200px;
+    }
+    .details {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .row {
+            width: calc(204px - 0.45rem);
+            overflow: hidden;
+            display:flex;
+            flex-direction: row;
+            .id {
+                text-align: right;
+                display: block;
+                width: 100%;
+                font-size: 0.8rem;
+                opacity: 0.6;
+                color: white;
+            }
+            .name {
+                display: block;
+                margin-top: 165px;
+                color: white;
+                font-weight: 500;
+                filter: drop-shadow(1px 1px 2px var(--applicant-card-hover-shadow-color));
+            }
+        }
+    }
+    &:hover {
+        filter: drop-shadow(1px 1px 2px var(--applicant-card-hover-shadow-color));
+    }
+}
+
+:host::ng-deep .statusBox {
+    min-height: 2rem;
+    padding-top: 0.4rem;
+    min-width: 200px;
+}

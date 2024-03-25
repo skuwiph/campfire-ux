@@ -1,0 +1,8 @@
+<span class="image">
+    <img *ngIf="url; else no_image" loading="lazy" [class.round-image]="roundImage" [src]="url | cloudimageCrop:width:height">
+    <ng-template #no_image>
+        <span [class.round-image]="roundImage" class="initials">
+            <p>{{initials}}</p>
+        </span>
+    </ng-template>
+</span>

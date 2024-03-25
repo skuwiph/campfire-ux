@@ -1,0 +1,77 @@
+@import "/src/assets/styles/themes";
+
+.btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.btn:focus {
+    filter: drop-shadow(2px 2px 2px var(--ui-button-focus-shadow-color));
+    outline: none;
+}
+
+.uib {
+    background-color: transparent;
+    border: none;
+    color: var(--ui-button-small-color);
+    
+    i {
+        padding: 0.5rem;
+    }
+    
+    :hover {
+        cursor: pointer;
+        background-color: var(--ui-button-small-hover-color);
+    }
+
+}
+
+.button-bar {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    &.ral {
+        justify-content: flex-end;
+    }
+    &.cal {
+        justify-content: center;
+    }
+}
+
+:disabled, .disabled {
+    opacity: 0.5;
+    color: var(--ui-button-disabled-color);
+}
+
+.primary {
+    background-color: var(--ui-primary-action-bg-color);
+    color: var(--ui-primary-action-fg-color);
+}
+
+.secondary {
+    background-color: var(--ui-secondary-action-bg-color);
+    color: var(--ui-secondary-action-fg-color);
+}
+
+.tertiary {
+    background-color: var(--ui-tertiary-action-bg-color);
+    color: var(--ui-tertiary-action-fg-color);
+}
+
+.default {
+    background-color: var(--ui-default-action-bg-color);
+    color: var(--ui-default-action-fg-color);
+}
+
+.danger {
+    background-color: var(--ui-danger-action-bg-color);
+    color: var(--ui-danger-action-fg-color);
+}
+
+.cancel {
+    background-color: var(--ui-cancel-action-bg-color);
+    color: var(--ui-danger-action-fg-color);
+}

@@ -1,0 +1,28 @@
+@import "/src/assets/styles/themes";
+
+.alert {
+    padding: 0.5rem 1rem;
+    margin: 1rem 0.25rem;
+    border-radius: 0.25rem;
+
+    &.error {
+        background-color: #ea6e6b;
+        color: white;
+    }
+
+    &.warning {
+        background-color: #ea9a53;
+        color: black;
+    }
+
+    &.info {
+        background-color: #A7AED2;
+        color: black;
+    }
+
+    h2 {
+        color: inherit;
+        margin: 0;
+        font-size: 1.2rem;
+    }
+}

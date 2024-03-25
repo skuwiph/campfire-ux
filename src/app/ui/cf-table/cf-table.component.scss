@@ -1,0 +1,79 @@
+@import "/src/assets/styles/themes";
+
+table {
+    border: 1px solid var(--table-border-color);
+    width: 100%;
+    line-height: 1.6rem;
+    margin-bottom: 1rem;
+ 
+    thead {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        th {
+            vertical-align: middle !important;
+            padding: 0.25rem;
+            font-size: 1.15rem;
+            background-color: var(--table-heading-default-bg-color);
+            color: var(--table-heading-default-fg-color);
+            &.sortable {
+                cursor: pointer;
+                &.uns::after,
+                &.asc::after,
+                &.des::after {
+                    font-family: FontAwesome;
+                    opacity: 0.5;
+                    margin-left: 0.5rem;
+                }
+                &.uns::after {
+                    content: '\f0dc';
+                }
+                &.asc::after {
+                    content: '\f0de';
+                }
+                &.des::after {
+                    content: '\f0dd';
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            &:hover {
+                background-color: var(--table-row-hover-bg-color);
+                color: var(--table-row-hover-fg-color);
+                cursor: pointer;
+            }
+            
+            td {
+                padding: 0.25rem;
+            }
+        }
+    }
+
+    .lal {
+        text-align: left;
+    }
+
+    .ral {
+        text-align: right;
+    }
+
+    .cal {
+        text-align: center;
+    }
+}
+
+.table-paginate {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+
+    .page {
+        padding: 0.5rem;
+        color: var(--table-paginate-info-color);
+    }
+}

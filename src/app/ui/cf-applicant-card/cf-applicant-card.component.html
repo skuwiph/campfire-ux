@@ -1,0 +1,15 @@
+<div class="applicant-card" (click)="onClick($event)">
+    <div class="image">
+        <app-cf-profile [urlOrInitials]="urlOrInitials" [roundImage]="false" [width]="200" [height]="200"></app-cf-profile>
+        <app-cf-status-display [status]="applicant.status"></app-cf-status-display>
+    </div>
+    <div class="details">
+        <div class="row">
+            <span class="id">{{applicant.applicationId}}</span>
+        </div>
+        <div class="row">
+            <span class="name">{{applicant.firstName}} {{applicant.lastName}}</span>
+        </div>
+
+    </div>
+</div>

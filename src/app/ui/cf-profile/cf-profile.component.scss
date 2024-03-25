@@ -1,0 +1,24 @@
+@import "/src/assets/styles/themes";
+
+.image {
+    // height: 60px;
+    // width: 60px;
+    display: flex;
+    .round-image {
+        border-radius: 50%;
+    }
+    .initials {
+        display: inline-block;
+        opacity: 0.5;
+        height: 60px;
+        width: 60px;
+        color: var(--profile-image-fg-color);
+        background-color: var(--profile-image-bg-color);
+        p {
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            padding-top: 0.15rem;
+        }
+    }
+}

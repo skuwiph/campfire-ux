@@ -1,0 +1,21 @@
+<div class="overlay" *ngIf="isActive" (click)="overlayClicked()"></div>
+<div class="typeahead">
+    <form class="typeahead-search" 
+        [class.active]="isActive" 
+        [formGroup]="formGroup" 
+        (ngSubmit)="submit()"
+        (click)="onClicked($event)">
+        <input class="search-field" #searchInput 
+            placeholder="{{placeholderText}}"
+            [attr.data-is-active]="isActive ? 'Y' : ''" 
+            (focus)="onGotFocus($event)"
+            (blur)="onLostFocus($event)"
+            formControlName="search" required>        
+        <i *ngIf="isSearching" class="fa fa-hourglass search-icon"></i>
+        <i *ngIf="!isSearching" class="fas fa-search search-icon"></i>
+    </form>
+    <div class="search-box" *ngIf="isActive">
+        <ng-content></ng-content>
+        <ng-content select="results"></ng-content>        
+    </div>
+</div>
