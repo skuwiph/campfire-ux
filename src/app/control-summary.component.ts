@@ -9,7 +9,7 @@ import { ICfApplicantCardInfo } from './ui/cf-applicant-card/cf-applicant-card.c
   templateUrl: './control-summary.component.html',
   // styleUrls: ['./app.component.scss']
   styles: [`
-  ul.link { list-style-type: none; width: 10rem; margin-left: 2rem;}
+  ul.link { list-style-type: none; margin-left: 2rem;}
   ul.link li { display:flex; flex-direction:row; justify-content: flex-start;}
   ul.link li i { width: 1.75rem; }
   .comfort { padding: 0.5rem; }
