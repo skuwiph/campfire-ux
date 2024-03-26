@@ -111,30 +111,6 @@
 </div>
 <p><a href="#top">UP</a></p>
 
-<div class="flex-container">
-    <div class="left">
-        <app-cf-dialog #dialogDemo title="Modal Dialog Title">
-            <div body>
-                <p>Content passed in from the parent component.</p>
-            </div>
-
-            <div footer>
-                <div class="button-bar ral">
-                    <app-cf-button [type]="'Default'" (click)="dialogDefault()">Save</app-cf-button>
-                    <app-cf-button [type]="'Cancel'" (click)="dialogCancel()">Cancel</app-cf-button>
-                </div>
-            </div>
-        </app-cf-dialog>
-
-        <div class="button-bar">
-            <app-cf-button [type]="'Default'" (click)="showDialog($event)">Show Modal</app-cf-button>
-            <p class="active-msg" *ngIf="dialogActiveCount > 0">Dialog Save Pressed {{this.dialogActiveCount}} time(s)
-            </p>
-        </div>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
 <h2>Dialogs<a name="dialog"></a></h2>
 <div class="flex-container">
     <div class="left">
@@ -177,6 +153,29 @@
         <br>
     </div>
 </div>
+<div class="flex-container">
+    <div class="left">
+        <app-cf-dialog #dialogDemo title="Modal Dialog Title">
+            <div body>
+                <p>Content passed in from the parent component.</p>
+            </div>
+
+            <div footer>
+                <div class="button-bar ral">
+                    <app-cf-button [type]="'Default'" (click)="dialogDefault()">Save</app-cf-button>
+                    <app-cf-button [type]="'Cancel'" (click)="dialogCancel()">Cancel</app-cf-button>
+                </div>
+            </div>
+        </app-cf-dialog>
+
+        <div class="button-bar">
+            <app-cf-button [type]="'Default'" (click)="showDialog($event)">Show Modal</app-cf-button>
+            <p class="active-msg" *ngIf="dialogActiveCount > 0">Dialog Save Pressed {{this.dialogActiveCount}} time(s)
+            </p>
+        </div>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
 
 <h2>Loader Display<a name="wait"></a></h2>
 <div class="flex-container">
