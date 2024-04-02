@@ -7,6 +7,7 @@
     <li><a href="#card"><i class="fa-solid fa-arrow-up-right-from-square"></i>Applicant Card</a></li>
     <li><a href="#buttons"><i class="fa-solid fa-arrow-up-right-from-square"></i>Buttons</a></li>
     <li><a href="#menu"><i class="fa-solid fa-arrow-up-right-from-square"></i>Menu</a></li>
+    <li><a href="#mention"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mention TextArea</a></li>
     <li><a href="#dialog"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dialogs</a></li>
     <li><a href="#wait"><i class="fa-solid fa-arrow-up-right-from-square"></i>Loader Display</a></li>
     <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
@@ -108,6 +109,18 @@
 <div class="flex-container">
     <div class="left">
         <app-cf-menu></app-cf-menu>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Mention TextArea<a name="mention"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <div class="comfort">
+            <app-cf-mention-text></app-cf-mention-text>
+            <!--(inputTextChange)="textChanged($event)"-->
+
+        </div>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
@@ -320,7 +333,6 @@
 </div>
 <p><a href="#top">UP</a></p>
 
-
 <h2>Typeahead<a name="typeahead"></a></h2>
 <div class="flex-container">
     <div class="left">
@@ -449,9 +461,8 @@
 
 <h2>CSS Theme Declarations<a name="theme"></a></h2>
 <div class="flex-container">
-    <div class="left">
-        <code>
-        [data-theme="light"] {{ '{' }<br>
+    <div class="left mono">
+        [data-theme="light"] {{ '{' }}<br>
         &nbsp;&nbsp;&nbsp;&nbsp;--page-background-color: #FFF7E3;<br>
         &nbsp;&nbsp;&nbsp;&nbsp;--page-foreground-color: #121212;<br>
         &nbsp;&nbsp;&nbsp;&nbsp;--heading-main-color: #275E70;<br>
@@ -529,8 +540,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;--status-oop: #E85658;<br>
         &nbsp;&nbsp;&nbsp;&nbsp;--status-rejected: #E85658;<br>
         &nbsp;&nbsp;&nbsp;&nbsp;--status-transferred: #E8BC2A;<br>
-        {{ '}' }<br>
-        </code>
+        {{ '}' }}<br>
     </div>
 </div>
 <p><a href="#top">UP</a></p>

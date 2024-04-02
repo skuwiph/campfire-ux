@@ -12,6 +12,7 @@ import { ICfApplicantCardInfo } from './ui/cf-applicant-card/cf-applicant-card.c
   ul.link { list-style-type: none; margin-left: 2rem;}
   ul.link li { display:flex; flex-direction:row; justify-content: flex-start;}
   ul.link li i { width: 1.75rem; }
+  .mono { font-family: monospace }
   .comfort { padding: 0.5rem; }
   .active-msg { margin-top: 0.4rem; }
   :host::ng-deep .col_artist { width: 10rem; }
@@ -980,6 +981,11 @@ export class ControlSummaryComponent implements OnInit {
         window.alert(`Selected Card id #${applicationId}`);
     }
 
+    testText = 'Lorem ipsum';
+    textChanged(event: string): void {
+        console.log(`Changed:`, event)
+        this.testText = event;
+    }
     standardTable?: CfTableData;
     paginationTable?: CfTableData;
     sortTable?: CfTableData;
