@@ -265,6 +265,8 @@
         <app-cf-dialog #dialogDemo title="Modal Dialog Title">
             <div body>
                 <p>Content passed in from the parent component.</p>
+                <app-cf-table *ngIf="paginationTable" [showHeaders]="true" [data]="paginationTable"
+                    (onSelect)="selectedStandardRow($event)"></app-cf-table>
             </div>
 
             <div footer>
