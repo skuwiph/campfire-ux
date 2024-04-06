@@ -1,9 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CfTableColumn, CfTableColumnAlignment, CfTableColumnType, CfTableData, CfTablePaginationOptions, CfTableRow, CfTableSelectedRow } from './ui/cf-table/cf-table.component';
 import { CfDialogComponent } from './ui/cf-dialog/cf-dialog.component';
 import { CfButtonType } from './ui/cf-button/cf-button.component';
+import { CfAlertType } from './ui/cf-alert/cf-alert.component';
 import { CfTypeaheadComponent } from './ui/cf-typeahead/cf-typeahead.component';
 import { ICfApplicantCardInfo } from './ui/cf-applicant-card/cf-applicant-card.component';
+import { Observable, of } from 'rxjs';
+import { CFMention } from './ui/cf-mention-text/cf-mention-text.component';
 
 @Component({
   templateUrl: './control-summary.component.html',
@@ -27,6 +30,7 @@ import { ICfApplicantCardInfo } from './ui/cf-applicant-card/cf-applicant-card.c
 export class ControlSummaryComponent implements OnInit {
     title = 'component-showcase';
     Button = CfButtonType;
+    Alert = CfAlertType;
 
     @ViewChild('dialogDemo', { static: false }) dialog!: CfDialogComponent;
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;
@@ -41,6 +45,20 @@ export class ControlSummaryComponent implements OnInit {
             lastName: 'Geofferson',
             status: 'ParticipantPlaced'
         };
+
+        this.observableData$ = of(
+            new CFMention( "alanger",  "Allen Langer" ),
+            new CFMention( "bbieniek",  "Baltazar Bieniek" ),
+            new CFMention( "cfletcher", "Charlotte Fletcher" ),
+            new CFMention( "dwierzbicki", "Dawid Wierzbicki" ),
+            new CFMention( "iseckington", "Ian Seckington" ),
+            new CFMention( "jcook",  "Jason Cook" ),
+            new CFMention( "jgilbert", "Jason Gilbert" ),
+            new CFMention( "kmcsweeney", "Kerry McSweeney" ),
+            new CFMention( "mtolfrey",  "Michael Tolfrey" ),
+            new CFMention( "nsaleem",  "Nabeela Saleem" ),
+            new CFMention( "rhowell",  "Richard Howell" ),
+        );
     }
 
     prepareStandardTable(): void {
@@ -957,10 +975,10 @@ export class ControlSummaryComponent implements OnInit {
         if (applicant) {
             this.selectedCardCount = !this.selectedCardCount;
             const url = (this.selectedCardCount)
-                ? 'https://campamericalive.s3.amazonaws.com/resources/2022/815074/I/815074-75d4cb74-23d9-4974-988f-35d60a3f2c8c'
-                : 'https://campamericalive.s3.amazonaws.com/resources/2023/893825/I/893825-80249724-8bea-43f0-b84c-745434346baf';
+                ? 'https://campamericalive.s3.amazonaws.com/resources/2023/893825/I/893825-80249724-8bea-43f0-b84c-745434346baf'
+                : 'https://campamericalive.s3.amazonaws.com/resources/2022/815074/I/815074-75d4cb74-23d9-4974-988f-35d60a3f2c8c';
 
-            console.log(`URL: ${url}`);
+//            console.log(`URL: ${url}`);
             this.selectedApplicant = undefined;
 
             setTimeout(()=>{
@@ -981,7 +999,24 @@ export class ControlSummaryComponent implements OnInit {
         window.alert(`Selected Card id #${applicationId}`);
     }
 
-    testText = 'Lorem ipsum';
+    observableData$ = new Observable<CFMention>();
+    testText = '';
+    setMentionText(): void {
+        const t = 'Hello, this is some default text, written by <span spellcheck="false" class="mention">@Ian Seckington</span> for the attention of <span spellcheck="false" class="mention">@Michael Tolfrey</span>.<br>';
+        const parts = t.split('<');
+
+        parts.forEach( p => {
+            if(p.startsWith('span spellcheck="false" class="mention">@')) {
+                if(p.length > 22) {
+                    const to = p.substring(22);
+                    console.log(`Got fullname: ${to}`);
+                }
+            }
+        });
+
+        this.testText = t;
+    }
+
     textChanged(event: string): void {
         console.log(`Changed:`, event)
         this.testText = event;

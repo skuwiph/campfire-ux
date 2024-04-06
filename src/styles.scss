@@ -81,4 +81,14 @@ ul, ol {
 code {
     font-family: monospace;
     font-size: 0.8rem;
+    overflow-x: scroll;
+    margin-top: 0;
+    padding: 0.5rem 1rem;
+    display: block;
+    background-color: #121212;
+    color: lime;
+    &.inline{
+        display: inline;
+        padding: 0 0.1rem;
+    }
 }

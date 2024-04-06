@@ -20,6 +20,11 @@
             <li><a href="#tables-sort"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sortable</a></li>
         </ul>
     <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
+    <li><i class="fa-solid fa-arrow-up-right-from-square"></i>Layouts</li>
+        <ul>
+            <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky Footer</a></li>
+        </ul>
+
 </ul>
 
 <h2>Text<a name="text"></a></h2>
@@ -55,13 +60,69 @@
 
 <h2>Alerts<a name="alerts"></a></h2>
 <div class="flex-container">
+    <div class="right">
+        <h4>Notes</h4>
+        <code>
+            &lt;app-cf-alert [type]="Alert.Information" [heading]="'Text'"&gt;&lt;/app-cf-alert&gt;
+        </code>
+        <p>Remember to import the enum into the component.ts:</p>
+        <code>
+            Alert = CfAlertType;<br>
+        </code>
+        <br>
+    </div>
+</div>
+
+<div class="flex-container">
     <div class="left">
-        <app-cf-alert></app-cf-alert>
+        <h4>Information</h4>
+        <app-cf-alert [type]="Alert.Information">
+            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+        </app-cf-alert>
+        <h4>Warning</h4>
+        <app-cf-alert [type]="Alert.Warning">
+            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+        </app-cf-alert>
+        <h4>Error</h4>
+        <app-cf-alert [type]="Alert.Error">
+            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+        </app-cf-alert>
+        <h4>With Heading</h4>
+        <app-cf-alert [type]="Alert.Information" [heading]="'Information:'">
+            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+        </app-cf-alert>
+        <h4>Warning</h4>
+        <app-cf-alert [type]="Alert.Warning" [heading]="'Warning!'">
+            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+        </app-cf-alert>
+        <h4>Error</h4>
+        <app-cf-alert [type]="Alert.Error" [heading]="'Error!'">
+            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+        </app-cf-alert>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
 
 <h2>Applicant Card<a name="card"></a></h2>
+<div class="flex-container">
+    <div class="right">
+        <h4>Notes</h4>
+        <code>
+            &lt;app-cf-applicant-card [applicant]="displayApplicantCard!"&gt;&lt;/app-cf-applicant-card&gt;
+        </code>
+        <p>In code:</p>
+        <code>
+        this.displayApplicantCard = {{ '{' }}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;applicationId: 1234567,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;profileUrl: 'https://campamericatest.s3.amazonaws.com/resources/2023/url',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;firstName: 'Meghan',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;lastName: 'Geofferson',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;status: 'ParticipantPlaced'<br>
+        {{ '}' }};<br>
+        </code>
+        <br>
+    </div>
+</div>
 <div class="flex-container">
     <div class="left">
         <app-cf-applicant-card [applicant]="displayApplicantCard!"></app-cf-applicant-card>
@@ -75,30 +136,35 @@
         <h4>Notes</h4>
         <p>Embed buttons in a containing div with 'cal' for center-, or 'ral' for right-alignment</p>
         <code>
-                &lt;div class="button-bar ral"&gt;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="'Default'" (click)="onClick($event)"&gt;OK&lt;/app-cf-button&gt;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="'Cancel'" (click)="onClick($event)"&gt;Cancel&lt;/app-cf-button&gt;<br>
-                &lt;/div&gt;<br>
-            </code>
+            &lt;div class="button-bar ral"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Default" (click)="onClick($event)"&gt;OK&lt;/app-cf-button&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Cancel" (click)="onClick($event)"&gt;Cancel&lt;/app-cf-button&gt;<br>
+            &lt;/div&gt;<br>
+        </code>
+        <p>Remember to import the enum into the component.ts:</p>
+        <code>
+            Button = CfButtonType;<br>
+        </code>
+        <br>
     </div>
 </div>
 <div class="flex-container">
     <div class="left">
         <div class="button-bar">
-            <app-cf-button [type]="'Primary'" (click)="primaryClicked()">Primary</app-cf-button>
-            <app-cf-button [type]="'Secondary'">Secondary</app-cf-button>
-            <app-cf-button [type]="'Tertiary'">Tertiary</app-cf-button>
+            <app-cf-button [type]="Button.Primary" (click)="primaryClicked()">Primary</app-cf-button>
+            <app-cf-button [type]="Button.Secondary">Secondary</app-cf-button>
+            <app-cf-button [type]="Button.Tertiary">Tertiary</app-cf-button>
         </div>
         <div class="button-bar ral">
-            <app-cf-button [type]="'Primary'">Primary</app-cf-button>
-            <app-cf-button [type]="'Secondary'">Secondary</app-cf-button>
+            <app-cf-button [type]="Button.Primary">Primary</app-cf-button>
+            <app-cf-button [type]="Button.Secondary">Secondary</app-cf-button>
         </div>
         <div class="button-bar">
-            <app-cf-button [type]="'Default'">Default</app-cf-button>
-            <app-cf-button [type]="'Cancel'">Cancel</app-cf-button>
+            <app-cf-button [type]="Button.Default">Default</app-cf-button>
+            <app-cf-button [type]="Button.Cancel">Cancel</app-cf-button>
         </div>
         <div class="button-bar cal">
-            <app-cf-button [type]="'Danger'" [enabled]="false">Danger</app-cf-button>
+            <app-cf-button [type]="Button.Danger" [enabled]="false">Danger (Disabled)</app-cf-button>
         </div>
     </div>
 
@@ -115,39 +181,42 @@
 
 <h2>Mention TextArea<a name="mention"></a></h2>
 <div class="flex-container">
+    <div class="right">
+        <h4>Notes</h4>
+        <code>
+            &lt;app-cf-mention-text [searchData]="observableData$" [text]="testText"&gt;<br>
+            &lt;/app-cf-mention-text&gt;<br>
+        </code>
+        <p>In code:</p>
+        <code>
+            this.observableData$ = of(<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "alanger", "Allen Langer" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "bbieniek", "Baltazar Bieniek" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "cfletcher", "Charlotte Fletcher" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "dwierzbicki", "Dawid Wierzbicki" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "iseckington", "Ian Seckington" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jcook", "Jason Cook" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jgilbert", "Jason Gilbert" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "kmcsweeney", "Kerry McSweeney" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "mtolfrey", "Michael Tolfrey" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "nsaleem", "Nabeela Saleem" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "rhowell", "Richard Howell" ),<br>
+            );<br>
+        </code>
+        <br>
+    </div>
+</div>
+<div class="flex-container">
     <div class="left">
-        <div class="comfort">
-            <app-cf-mention-text></app-cf-mention-text>
+        <h4>Enter text</h4>
+            <app-cf-mention-text [searchData]="observableData$" [text]="testText"></app-cf-mention-text>
             <!--(inputTextChange)="textChanged($event)"-->
-
-        </div>
+        <app-cf-button [type]="Button.Primary" (click)="setMentionText()">Set Default Text</app-cf-button>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
 
 <h2>Dialogs<a name="dialog"></a></h2> 
-<div class="flex-container">
-    <div class="left">
-        <app-cf-dialog #dialogDemo title="Modal Dialog Title">
-            <div body>
-                <p>Content passed in from the parent component.</p>
-            </div>
-
-            <div footer>
-                <div class="button-bar ral">
-                    <app-cf-button [type]="'Default'" (click)="dialogDefault()">Save</app-cf-button>
-                    <app-cf-button [type]="'Cancel'" (click)="dialogCancel()">Cancel</app-cf-button>
-                </div>
-            </div>
-        </app-cf-dialog>
-
-        <div class="button-bar">
-            <app-cf-button [type]="'Default'" (click)="showDialog($event)">Show Modal</app-cf-button>
-            <p class="active-msg" *ngIf="dialogActiveCount > 0">Dialog Save Pressed {{this.dialogActiveCount}} time(s)
-            </p>
-        </div>
-    </div>
-</div>
 <div class="flex-container">
     <div class="left">
         <h4>Notes</h4>
@@ -189,9 +258,45 @@
         <br>
     </div>
 </div>
+<div class="flex-container">
+    <div class="left">
+        <app-cf-dialog #dialogDemo title="Modal Dialog Title">
+            <div body>
+                <p>Content passed in from the parent component.</p>
+            </div>
+
+            <div footer>
+                <div class="button-bar ral">
+                    <app-cf-button [type]="Button.Default" (click)="dialogDefault()">Save</app-cf-button>
+                    <app-cf-button [type]="Button.Cancel" (click)="dialogCancel()">Cancel</app-cf-button>
+                </div>
+            </div>
+        </app-cf-dialog>
+
+        <div class="button-bar">
+            <app-cf-button [type]="Button.Default" (click)="showDialog($event)">Show Modal</app-cf-button>
+            <p class="active-msg" *ngIf="dialogActiveCount > 0">Dialog Save Pressed {{this.dialogActiveCount}} time(s)
+            </p>
+        </div>
+    </div>
+</div>
 <p><a href="#top">UP</a></p>
 
 <h2>Loader Display<a name="wait"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <h4>Notes</h4>
+        <p>Html:</p>
+        <code>
+            &lt;app-cf-loader&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Text&lt;/p&gt;<br>
+            &lt;/app-cf-loader&gt;<br>
+            <br>
+            &lt;app-cf-loader [size]="'sm'"&gt;&lt;/app-cf-loader&gt;<br>
+        </code>
+        <p>Pass text as inner content, or nothing</p>
+    </div>
+</div>
 <div class="flex-container">
     <div class="left">
         <app-cf-loader>
@@ -203,21 +308,21 @@
         </app-cf-loader>
         <app-cf-loader [size]="'sm'"></app-cf-loader>
     </div>
-    <div class="right">
-        <h4>Notes</h4>
-        <p>Pass text as inner content, or nothing</p>
-        <code>
-            &lt;app-cf-loader&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Text&lt;/p&gt;<br>
-            &lt;/app-cf-loader&gt;<br>
-            <br>
-            &lt;app-cf-loader [size]="'sm'"&gt;&lt;/app-cf-loader&gt;<br>
-        </code>
-    </div>
 </div>
 <p><a href="#top">UP</a></p>
 
 <h2>Status Display<a name="status"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <h4>Notes</h4>
+        <p>Html:</p>
+        <code>
+            &lt;app-cf-status-display [status]="status"&gt;<br>
+            &lt;/app-cf-status-display&gt;<br>
+        </code>
+        <p>Status will expand to fill containing element.</p>
+    </div>
+</div>
 <div class="flex-container">
     <div class="left">
         <table class="status-table">
@@ -301,18 +406,22 @@
             </tr>
         </table>
     </div>
-    <div class="right">
-        <h4>Notes</h4>
-        <p>Status will expand to fill containing element.</p>
-        <code>
-                &lt;app-cf-status-display [status]="status"&gt;<br>
-                &lt;/app-cf-status-display&gt;<br>
-            </code>
-    </div>
 </div>
 <p><a href="#top">UP</a></p>
 
 <h2>Profile Image Display<a name="profile"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <h4>Notes</h4>
+        <p>Html:</p>
+        <code>
+            &lt;app-cf-profile [urlOrInitials]="url"&gt;&lt;/app-cf-profile&gt;<br>
+            &lt;app-cf-profile [urlOrInitials]="url" [roundImage]="false" [width]="100" [height]="100"&gt;&lt;/app-cf-profile&gt;<br>
+        </code>
+        <p>If the <code class="inline">urlOrInitials</code> parameter starts with 'http', assume an image.</p>
+    </div>
+</div>
+
 <div class="flex-container">
     <div class="left comfort">
         <app-cf-profile [urlOrInitials]="'aj'"></app-cf-profile>
@@ -321,15 +430,7 @@
         <br>
         <app-cf-profile [width]="100" [height]="100"
             [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'" [roundImage]="false"></app-cf-profile>
-    </div>
-    <div class="right">
-        <h4>Notes</h4>
-        <p>If the <code>urlOrInitials</code> parameter starts with 'http', assume an image.</p>
-        <code>
-            &lt;app-cf-profile [urlOrInitials]="url"&gt;&lt;/app-cf-profile&gt;<br>
-            &lt;app-cf-profile [urlOrInitials]="url" [roundImage]="false" [width]="100" [height]="100"&gt;&lt;/app-cf-profile&gt;<br>
-        </code>
-    </div>
+    </div>       
 </div>
 <p><a href="#top">UP</a></p>
 
@@ -405,29 +506,29 @@
         </code>
         <p>Code:</p>
         <code>
-            &nbsp;&nbsp;&nbsp;&nbsp;var columns: CfTableColumn[] = [<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Album", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_album"),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Year", CfTableColumnAlignment.Center, CfTableColumnType.Number),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Position", CfTableColumnAlignment.Right, CfTableColumnType.String),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+            var columns: CfTableColumn[] = [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Album", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_album"),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Year", CfTableColumnAlignment.Center, CfTableColumnType.Number),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Position", CfTableColumnAlignment.Right, CfTableColumnType.String),<br>
+            ];<br>
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;var data = [<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} pk: "01", cols: ["The Beatles", "Please Please Me", "1963", "#1" ]{{ '}' }},<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+            var data = [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} pk: "01", cols: ["The Beatles", "Please Please Me", "1963", "#1" ]{{ '}' }},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+            ];<br>
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;this.standardTable = new CfTableData(columns, data, new CfTablePaginationOptions(10, data.length));
+            this.standardTable = new CfTableData(columns, data, new CfTablePaginationOptions(10, data.length));
         </code>
         <p>Event:</p>
         <code>
-            &nbsp;&nbsp;&nbsp;&nbsp;selectedStandardRow(event: CfTableSelectedRow): void {{ '{' }}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(`Row was selected with PK: ${{ '{' }}event.pk{{ '}' }}`);<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{{ '}' }}<br>
+            selectedStandardRow(event: CfTableSelectedRow): void {{ '{' }}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Row was selected with PK: ${{ '{' }}event.pk{{ '}' }}`);<br>
+            {{ '}' }}<br>
         </code>
         <p>Extra parameters:</p>
-        <code>&nbsp;&nbsp;&nbsp;&nbsp;[showHeaders]="true|false"</code><br>
-        <code>&nbsp;&nbsp;&nbsp;&nbsp;[sortable]="true|false"</code><br>
+        <code>[showHeaders]="true|false"</code><br>
+        <code>[sortable]="true|false"</code><br>
         <br>
     </div>
 </div>
@@ -461,86 +562,102 @@
 
 <h2>CSS Theme Declarations<a name="theme"></a></h2>
 <div class="flex-container">
-    <div class="left mono">
-        [data-theme="light"] {{ '{' }}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--page-background-color: #FFF7E3;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--page-foreground-color: #121212;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--heading-main-color: #275E70;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--heading-sub-color: #275E70;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--panel-background-color-primary: #FFF1E3;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--panel-border-color: #A7AED2;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-small-color: black;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-small-hover-color: #A7AED2;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-disabled-color: #A7AED2;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-focus-shadow-color: #565656;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-primary-action-bg-color: #44788A;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-primary-action-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-secondary-action-bg-color: #6996a4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-secondary-action-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-tertiary-action-bg-color: #eac853;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-tertiary-action-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-default-action-bg-color: #ea9a53;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-default-action-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-danger-action-bg-color: #ea6e6b;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-danger-action-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-cancel-action-bg-color: #565656;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--ui-cancel-action-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--main-nav-bg-color: #537d88;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--applicant-card-bg-color: #FFF1E3;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--applicant-card-border-color: #A7AED2;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--applicant-card-hover-shadow-color: #565656;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-bg-color: white; //#87a4ac;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-fg-color: black;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-width: 400px;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-results-bg-color: white; //#87a4ac;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-results-fg-color: black;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-results-border-color: #44788A;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--table-border-color: #6996a4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--table-heading-default-bg-color: #6996a4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--table-heading-default-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--table-row-hover-bg-color: #6996a4;;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--table-row-hover-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--table-paginate-info-color: #6996a4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--dialog-backdrop-color: #000033;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--dialog-title-bg-color: #6996a4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--dialog-title-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--menu-bg-color: #44788A;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--menu-fg-color: #fff;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--menu-bg-hover-color: #A7AED2;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--menu-hamburger-color: #fff;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--menu-dropdown-arrow-color: #fff;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--menu-drop-shadow: rgba(0, 0, 0, .45);<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--menu-transition-delay: 0.25s;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--profile-image-bg-color: #537d88;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--profile-image-fg-color: #FFF1E3;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-fg-color: white;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-preint: #00AFAA;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-postint: #007DA4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-pendingaccept: #007DA4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-orcareject: #007DA4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-returner: #007DA4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-returnToOrca: #007DA4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-accepted: #007DA4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-applied: #E8BB2A;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-rtp: #EA9A53;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-placed: #33AB5A;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-oop: #E85658;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-rejected: #E85658;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;--status-transferred: #E8BC2A;<br>
-        {{ '}' }}<br>
+    <div class="left">
+        <code>
+            [data-theme="light"] {{ '{' }}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--page-background-color: #FFF7E3;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--page-foreground-color: #121212;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--heading-main-color: #275E70;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--heading-sub-color: #275E70;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--panel-background-color-primary: #FFF1E3;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--panel-border-color: #A7AED2;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-small-color: black;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-small-hover-color: #A7AED2;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-disabled-color: #A7AED2;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-focus-shadow-color: #565656;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-primary-action-bg-color: #44788A;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-primary-action-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-secondary-action-bg-color: #6996a4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-secondary-action-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-tertiary-action-bg-color: #eac853;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-tertiary-action-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-default-action-bg-color: #ea9a53;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-default-action-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-danger-action-bg-color: #ea6e6b;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-danger-action-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-cancel-action-bg-color: #565656;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--ui-cancel-action-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--main-nav-bg-color: #537d88;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--applicant-card-bg-color: #FFF1E3;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--applicant-card-border-color: #A7AED2;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--applicant-card-hover-shadow-color: #565656;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-bg-color: white; //#87a4ac;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-fg-color: black;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-width: 400px;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-results-bg-color: white; //#87a4ac;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-results-fg-color: black;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-results-border-color: #44788A;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--table-border-color: #6996a4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--table-heading-default-bg-color: #6996a4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--table-heading-default-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--table-row-hover-bg-color: #6996a4;;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--table-row-hover-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--table-paginate-info-color: #6996a4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--dialog-backdrop-color: #000033;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--dialog-title-bg-color: #6996a4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--dialog-title-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--menu-bg-color: #44788A;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--menu-fg-color: #fff;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--menu-bg-hover-color: #A7AED2;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--menu-hamburger-color: #fff;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--menu-dropdown-arrow-color: #fff;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--menu-drop-shadow: rgba(0, 0, 0, .45);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--menu-transition-delay: 0.25s;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--profile-image-bg-color: #537d88;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--profile-image-fg-color: #FFF1E3;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-fg-color: white;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-preint: #00AFAA;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-postint: #007DA4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-pendingaccept: #007DA4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-orcareject: #007DA4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-returner: #007DA4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-returnToOrca: #007DA4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-accepted: #007DA4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-applied: #E8BB2A;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-rtp: #EA9A53;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-placed: #33AB5A;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-oop: #E85658;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-rejected: #E85658;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--status-transferred: #E8BC2A;<br>
+            {{ '}' }}<br>
+        </code>
+        <p>In <code class="inline">index.html</code>:</p>
+        <code>
+            &lt;body data-theme="light"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-root&gt;&lt;/app-root&gt;<br>
+            &lt;body&gt;<br>
+        </code>
+        <p>In theme switching code:</p>
+        <code>
+        document.body.setAttribute(<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;'data-theme',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.isLightTheme ? 'light' : 'dark'<br>
+        );
+        </code>
+        <br>
     </div>
 </div>
 <p><a href="#top">UP</a></p>

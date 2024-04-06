@@ -1,7 +1,4 @@
 <div class="text">
-    <!--<textarea #mentiontext (keydown)="onKeyDown($event)" (keyup)="onKeyUp($event)"></textarea>
-    contenteditable="true" 
-    -->
     <div #mentiontext class="area" 
         [(ngModel)]="model" contenteditable
         tabindex="0"
@@ -11,17 +8,11 @@
         (keyup)="onKeyUp($event)">
     </div>
     <div *ngIf="atResults" class="at-list">
-        <div class="result" *ngFor="let m of ($atList | async); let i = index" [class.selected]="i==atSelectedItem" (click)="selectEntry(i)">
-            <div class="tag" [innerHTML]="m.name"></div>
-            <div class="wrapper">
-                <div class="name" [innerHTML]="m.fullName | boldText:attingText"></div>
-            </div>
+        <div class="result" *ngFor="let m of atList; let i = index" [class.selected]="i==atSelectedItem" (click)="selectEntry(i)">
+            <div class="name" [innerHTML]="m.fullName | boldText:attingText"></div>
         </div>
     </div>
     <br>
-    <p [textContent]="model"></p>
-    <p>{{attingText}}</p>
-    <code>
-        {{dom}}
-    </code>
+    <p [textContent]="text"></p>
+    <p>@Typing: {{attingText}}</p>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cf-alert',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./cf-alert.component.scss']
 })
 export class CfAlertComponent {
+    @Input() type = CfAlertType.Information;
+    @Input() heading = '';
+}
 
+export enum CfAlertType {
+    Information = 'info',
+    Warning = 'warning',
+    Error = 'error',
 }

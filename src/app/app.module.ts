@@ -7,11 +7,13 @@ import { ControlSummaryComponent } from './control-summary.component';
 import { UiModule } from './ui/ui.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CfUiService } from './ui/cf-ui.service';
+import { StickyLayoutComponent } from './sticky-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ControlSummaryComponent,
+    StickyLayoutComponent,
   ],
   imports: [
     BrowserModule,

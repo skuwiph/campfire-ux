@@ -1,34 +1,30 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, SecurityContext, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnInit, SecurityContext, SimpleChanges, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable, of } from 'rxjs';
+import { Observable, filter, of } from 'rxjs';
 
 @Component({
   selector: 'app-cf-mention-text',
   templateUrl: './cf-mention-text.component.html',
   styleUrls: ['./cf-mention-text.component.scss']
 })
-export class CfMentionTextComponent implements OnInit {
-    model = '';
-    dom = '';
+export class CfMentionTextComponent implements OnInit, OnChanges {
+    @Input() text = '';
+    @Input() searchData?: Observable<CFMention>;
     @ViewChild('mentiontext') textarea!: ElementRef;
+    model = '';
 
     constructor(
         private cdr: ChangeDetectorRef,
         private sanitiser: DomSanitizer ){}
 
     ngOnInit(): void {
-        this.temp = [
-            { name: "alanger", fullName: "Allen Langer" },
-            { name: "bbieniek", fullName: "Baltazar Bieniek" },
-            { name: "cfletcher", fullName: "Charlotte Fletcher"},
-            { name: "dwierzbicki", fullName: "Dawid Wierzbicki" },
-            { name: "iseckington", fullName: "Ian Seckington" },
-            { name: "jcook", fullName: "Jason Cook" },
-            { name: "kmcsweeney", fullName: "Kerry McSweeney" },
-            { name: "mtolfrey", fullName: "Michael Tolfrey" },
-            { name: "nsaleem", fullName: "Nabeela Saleem" },
-            { name: "rhowell", fullName: "Richard Howell" },
-        ];
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if(changes['text']) {
+            //console.log(`Set text!`);
+            this.model = changes['text'].currentValue;
+        }
     }
 
     onFocus(event: FocusEvent): void {
@@ -42,59 +38,54 @@ export class CfMentionTextComponent implements OnInit {
     onKeyDown(event: KeyboardEvent): void {
        
         if (this.atting) {
-            if (event.key === " " || event.key === "Escape") {
-                this.endMention();
-                event.preventDefault();
-                return;
+            switch(event.key) {
+                case ' ':
+                case 'Escape':
+                    this.endMention();
+                    event.preventDefault();
+                    break;
+                case 'Enter':
+                case 'Tab':
+                    if (this.atList.length == 1 || (this.atSelectedItem > -1 && this.atSelectedItem <= this.atList.length)) {
+                        this.selectEntry(this.atList.length == 1 ? 0 : this.atSelectedItem);
+                    }
+                    event.preventDefault();
+                    break;
+                // If the user presses cursor up or down, 
+                // move the atSelectedItem
+                case 'ArrowDown':
+                    if (this.atSelectedItem + 1 < this.atList.length) {
+                        this.atSelectedItem++;
+                    }
+                    event.preventDefault();
+                    break;
+                case 'ArrowUp':
+                    if (this.atSelectedItem > 0) {
+                        this.atSelectedItem--;
+                    }
+                    event.preventDefault();
+                    break;
+                case 'Backspace':
+                    if (this.attingArray.length > 0) {
+                        this.attingArray.pop();
+                    }
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowRight':
+                    event.preventDefault();
+                    break;
+                default:
+                    if (!(event.shiftKey || event.altKey || event.ctrlKey)) {
+                        this.attingArray.push(event.key);
+                    }    
+                    // We're atting, so append to the current atting text
+                    // Is this the best way?
+                    this.attingText = this.attingArray.join('');
+                    
+                    this.filterFor(this.attingText);
+                    //event.preventDefault();                    
+                    break;
             }
-
-            // If the user presses enter and there is only one entry in 
-            // the at list, select that
-            if (event.key === 'Enter' || event.key === 'Tab') {
-                if (this.atList.length == 1 || (this.atSelectedItem > -1 && this.atSelectedItem <= this.atList.length)) {
-                    this.selectEntry(this.atList.length == 1 ? 0 : this.atSelectedItem);
-                }
-                event.preventDefault();
-                return;
-            }
-
-            // If the user presses cursor up or down, 
-            // move the atSelectedItem
-            if(event.key === 'ArrowDown') {
-                if (this.atSelectedItem + 1 < this.atList.length) {
-                    this.atSelectedItem++;
-                }
-                event.preventDefault();
-                return;
-            }
-
-            if (event.key === 'ArrowUp') {
-                if (this.atSelectedItem > 0) {
-                    this.atSelectedItem--;
-                }
-                event.preventDefault();
-                return;
-            }
-
-            if(event.key === 'Backspace') {
-                if(this.attingArray.length > 0) {
-                    this.attingArray.pop();
-                }
-                // If length is now zero, should we remove the @ completely?
-            } else {
-                if(event.shiftKey || event.altKey || event.ctrlKey) {
-
-                } else {
-                    this.attingArray.push(event.key);
-                }
-            }
-
-            // We're atting, so append to the current atting text
-            // Is this the best way?
-            this.attingText = this.attingArray.join('');
-            
-            this.filterFor(this.attingText);
-            event.preventDefault();                    
         } else {
             // if(event.key === 'Enter') {
             //     const selection = window.getSelection();
@@ -146,7 +137,6 @@ export class CfMentionTextComponent implements OnInit {
                     // re-check!
                 }
             }
-            //this.checkCurrentNode();            
         }
     }
 
@@ -180,12 +170,25 @@ export class CfMentionTextComponent implements OnInit {
     }
 
     deleteNode(node: Node | ChildNode | null): void {       
-        if(node){
+        if(node){ 
             // console.log(`Got a node`, node);
-            if (node.parentNode){
-                // console.log(`Got a parent node`, node.parentNode);
-                node.parentNode.removeChild(node);
+            const element = node as HTMLElement;
+            if(element.hasAttribute('contentEditable')) {
+                // console.warn(`You've selected the top item!`);
+                if(node.hasChildNodes()) {
+                    for (var n = node.childNodes.length - 1; n >= 0; n--){
+                        // console.log(`Removing: ${n}`, node.childNodes[n]);
+                        node.removeChild(node.childNodes[n]);
+                    }
+                }
+                //node.removeChild(node.firstChild!);
+            } else {
+                if (node.parentNode){
+                    // console.log(`Got a parent node`, node.parentNode);
+                    node.parentNode.removeChild(node);
+                }
             }
+            this.checkCurrentNode();
             this.cdr.detectChanges();
         }
     }
@@ -193,9 +196,17 @@ export class CfMentionTextComponent implements OnInit {
     checkCurrentNode(): void {
         if (window.getSelection()) {
             const n = this.currentNodeType();
-            this.dom = '';
+            //this.dom = '';
             if (n) {
-                this.dom = this.sanitiser.sanitize(SecurityContext.URL,`${n.nodeName}:${n.textContent}`) ?? '';
+                // This is a new mention node, do we have
+                // an existing one?
+                if (this.currentMentionNode) {
+                    const el = this.currentMentionNode as HTMLElement;
+                    el.className = "mention";
+                    this.currentMentionNode = undefined;
+                }
+
+                //this.dom = this.sanitiser.sanitize(SecurityContext.URL,`${n.nodeName}:${n.textContent}`) ?? '';
                 const el = n as HTMLElement;
                 el.className = "mention-selected";
 
@@ -216,9 +227,6 @@ export class CfMentionTextComponent implements OnInit {
         }
     }
 
-    currentMentionNode?: Node;
-    currentMentionNodeIndex?: number;
-
     endMention(): void {
         this.atting = false;
         this.atResults = false;
@@ -227,23 +235,32 @@ export class CfMentionTextComponent implements OnInit {
     }
 
     filterFor(t: string): void {
-        const m = this.temp.filter( m => { return m.fullName.toLowerCase().includes(t.toLowerCase()) });
-        if(m) {
-            this.atResults = m.length > 0;
-            this.$atList = of(m)
-            this.$atList.subscribe({
-                next: (c: CFMention[]) => {
-                    this.atList = c;
-                    if(this.atList.length >= this.atSelectedItem) {
-                        this.atSelectedItem == -1;
+        if(!this.searchData) return;
+        this.atList = [];
+        this.searchData
+            .pipe(
+                filter( (m: CFMention) => {
+                    return m.fullName.toLowerCase().includes(t.toLowerCase());
+                })
+            )
+            .subscribe({
+                next: (r: CFMention) => {
+                    // console.log(`Got ${JSON.stringify(r)}`);
+                    this.atList.push(r);
+                },
+                error: (error: any)=> {},
+                complete: () => { 
+                    // console.log(`complete: ${this.atList.length}`);
+                    this.atResults = this.atList.length > 0;
+                    if (this.atList.length >= this.atSelectedItem) {
+                        this.atSelectedItem = -1;
                     }
                 }
             });
-        }
     }
 
     selectEntry(pos: number): void {
-        console.log(`selectEntry: ${pos}`);
+        //console.log(`selectEntry: ${pos}`);
         //const textElement = this.textarea.nativeElement as HTMLTextAreaElement;
         if(pos<0 || pos>= this.atList.length) {
             console.log(`Out of bounds! ${pos}`);
@@ -251,7 +268,7 @@ export class CfMentionTextComponent implements OnInit {
         const mention = this.atList[pos]
         const mentionName = mention.fullName;
         
-        console.log(`Mention selected is: ${mentionName}`);
+        //console.log(`Mention selected is: ${mentionName}`);
 
         // Okay, we have the item we want, we know
         // its start index and end index, so we 
@@ -267,7 +284,7 @@ export class CfMentionTextComponent implements OnInit {
             if (selection) {
                 const currentNode = selection.focusNode;
                 if (currentNode) {
-                    // const nextNode = currentNode.nextSibling;
+                    selection.removeAllRanges();
 
                     const range = document.createRange();
                     
@@ -275,35 +292,25 @@ export class CfMentionTextComponent implements OnInit {
                     range.setEnd(currentNode, currentPosition);
                     range.deleteContents();
 
-                    const spc = document.createTextNode(' ');
+                    const spc = document.createTextNode('  ');
                     range.insertNode(spc);
 
                     const replacement = document.createElement("span");
                     replacement.className = "mention";
                     replacement.setAttribute('data-mention-id', `${this.mentions.length - 1}`);
+                    replacement.setAttribute('spellcheck', `false`);
                     replacement.textContent = `@${mentionName}`;
                     replacement.spellcheck = false;
 
                     range.insertNode(replacement);
-
+                   
                     range.setStartAfter(spc);
                     range.setEndAfter(spc);
-                    
-                    currentPosition = 1;
-                    if (selection.focusNode) {
-                        var next = selection.focusNode.lastChild;
-                        try{
-                            selection.setPosition(next, currentPosition) ;
-                        }catch (error: any){
-                            console.error(error);
-                            selection.setPosition(selection.focusNode.firstChild,0);
-                        }
-                    }
-
-                    selection.removeAllRanges();
                     selection.addRange(range);
+
                     selection.collapseToEnd();
-                    this.cdr.detectChanges();
+
+                    //this.cdr.detectChanges();
                 }
 
             }
@@ -375,6 +382,10 @@ export class CfMentionTextComponent implements OnInit {
     atCurrentNode?: Node;
     atList: CFMention[] = [];
     $atList?: Observable<CFMention[]>;
+
+    currentMentionNode?: Node;
+    currentMentionNodeIndex?: number;
+
     atResults = false;
     attingText = '';
     attingArray: string[] = [];

@@ -22,7 +22,6 @@
     }
     .at-list {
         position: absolute;
-        width: 50%;
         padding: 0;
         border: 1px solid var(--table-border-color);
         border-radius: 0.2rem;
@@ -40,10 +39,6 @@
             &.selected {
                 background-color: var(--table-row-hover-bg-color);
                 color: var(--table-row-hover-fg-color);
-            }
-            &.wrapper {
-                width: 100%;
-                text-align: left;
             }
         }
     }

@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./cf-button.component.scss']
 })
 export class CfButtonComponent {
-    @Input() type = "Primary";
+    @Input() type = CfButtonType.Primary;
     @Input() enabled = true;
     @Output() click: EventEmitter<Event> = new EventEmitter<Event>();
 
@@ -30,10 +30,10 @@ export class CfButtonComponent {
 }
 
 export enum CfButtonType {
-    Primary,
-    Secondary,
-    Tertiary,
-    Default,
-    Cancel,
-    Danger,
+    Primary = "Primary",
+    Secondary = "Secondary",
+    Tertiary = "Tertiary",
+    Default = "Default",
+    Cancel = "Cancel",
+    Danger = "Danger",
 }

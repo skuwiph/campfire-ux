@@ -14,7 +14,7 @@ export class CfDialogComponent {
     }
 
     closeDialog(): void {
-        console.log(`closeDialog`);
+        //console.log(`closeDialog`);
         this.dialog?.nativeElement.close();
     }
 }
