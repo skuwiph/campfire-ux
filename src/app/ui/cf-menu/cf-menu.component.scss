@@ -4,20 +4,21 @@
     position: relative;
     background: var(--menu-bg-color);
     color: var(--menu-fg-color);
-    margin: 1rem 0;
+    margin: 0 0 1rem 0;
     max-width: 100%;
     .header-content {
         align-items: center;
-        max-width: 1200px;
+        //max-width: 1200px;
         margin: 0 auto;
-        padding: 10px 20px;
+        padding: 0.5rem 1rem 0.75rem;
     }
     .logo {
         text-decoration: none;
         font-size: 25px;
         color: inherit;
-        margin-right: 10px;
+        margin-right: 1rem;
         img {
+            padding-top: 0.25rem;
             width: 7rem;
         }
     }
@@ -27,7 +28,7 @@
         right: 0;
     }
     .hamburger {
-        padding: 23px 20px;
+        padding: 1rem;
         position: absolute;
         cursor: pointer;
         right: 0;
@@ -36,25 +37,25 @@
             width: 20px;
             height: 3px;
             display: block;
-            background: var(--menu-hamburger-color);
+            background: var(--menu-fg-color);
             position: relative;
         }
-        &span::before,
-        &span::after {
-            content: "";
-            position: absolute;
-            display: block;
-            background: inherit;
-            width: inherit;
-            height: inherit;
-        }
-        &span::before {
-            top: 8px;
-        }
+        // &span::before,
+        // &span::after {
+        //     content: "";
+        //     position: absolute;
+        //     display: block;
+        //     background: inherit;
+        //     width: inherit;
+        //     height: inherit;
+        // }
+        // &span::before {
+        //     top: 8px;
+        // }
     
-        &span::after {
-            bottom: 8px;
-        }
+        // &span::after {
+        //     bottom: 8px;
+        // }
     }
 
     input[type="checkbox"]:focus+.hamburger {
@@ -63,7 +64,7 @@
 
     ul {
         list-style: none;
-        margin: 0 0 0.35rem 1rem;
+        margin: 0 0 0.5rem 1rem;
         & li {
             font-size: 1.5rem;
         }
@@ -84,10 +85,10 @@
     }
     .menus {
         position: absolute;
-        top: 3.2rem;
+        top: 3.1rem;
         left: 0;
         right: 0;
-        background: var(--menu-bg-hover-color);
+        background: var(--menu-bg-color);
 
         visibility: hidden;
         transform: translateY(-1em);
@@ -96,7 +97,6 @@
 
     .dropdown {
         padding: 2px 1.5rem;
-
         height: 0;
         overflow: hidden;
         transition: height ease 0.2s;
@@ -117,11 +117,14 @@
 
     .menus li {
         position: relative;
-        left: 100%;
         transition: 0.2s;
         transition-delay: calc(60ms * var(--menu-transition-delay));
     }
 
+    li:hover {
+        background-color: var(--menu-bg-hover-color);
+    }
+    
     input[type="checkbox"]:checked~nav>ul li {
         left: 0;
     }
@@ -157,7 +160,7 @@
             transform: initial;
         }
         .menus li {
-            font-size: 14px;
+            font-size: 1rem;
             left: auto;
         }
         .hamburger,
@@ -170,14 +173,19 @@
         }
         .dropdown {
             position: absolute;
-            top: 48px;
+            top: 3rem;
             right: 0;
-            left: auto;
-            z-index: 99;
-            min-width: 10rem;
             padding: 0;
-            background-color: var(--menu-bg-color);
-            border-radius: 0 0 0.5rem 0.5rem;
+            left: auto;
+            min-width: 10rem;
+                    background-color: var(--menu-bg-color);
+                                &:hover {
+                z-index: 99;
+                border-radius: 0 0 0.5rem 0.5rem;
+                background-color: var(--menu-bg-color);
+                overflow:visible;
+                height: fit-content;
+            }
         }
     }
 }

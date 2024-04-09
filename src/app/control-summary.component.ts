@@ -25,6 +25,7 @@ import { CFMention } from './ui/cf-mention-text/cf-mention-text.component';
   :host::ng-deep .col_status { width: 15rem; }
   .status-table { width: 15rem; margin: 1rem 0 1rem 0.25rem; }
   .status-table tr td { line-height: 1.75rem; margin-bottom: 0.1rem; }
+  :host::ng-deep button i { margin-left: 0.5rem; }
   `],
 })
 export class ControlSummaryComponent implements OnInit {

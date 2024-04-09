@@ -143,6 +143,16 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Cancel" (click)="onClick($event)"&gt;Cancel&lt;/app-cf-button&gt;<br>
             &lt;/div&gt;<br>
         </code>
+        <p>Include icons or additional text using the <code class="inline">ng-content</code> block:</p>
+        <code>
+            &lt;app-cf-button [type]="Button.Danger" [enabled]="true"&gt;<br>
+                Danger (Enabled) &lt;i class="fa-solid fa-circle-exclamation">&lt;/i&gt;<br>
+            &lt;/app-cf-button&gt;<br>
+        </code>
+        <p>If you wish to style any included items, use the <code class="inline">:host::ng-deep</code> pattern:</p>
+        <code>
+            :host::ng-deep button i {{'{'}} margin-left: 0.5rem; {{'}'}}<br>
+        </code>
         <p>Remember to import the enum into the component.ts:</p>
         <code>
             Button = CfButtonType;<br>
@@ -167,6 +177,11 @@
         </div>
         <div class="button-bar cal">
             <app-cf-button [type]="Button.Danger" [enabled]="false">Danger (Disabled)</app-cf-button>
+            <app-cf-button [type]="Button.Danger" [enabled]="true">
+                Danger (Enabled) <i class="fa-solid fa-circle-exclamation"></i>
+            </app-cf-button>
+            <app-cf-button [type]="Button.Cancel">Other <i class="fa-solid fa-volume-off"></i>
+            </app-cf-button>
         </div>
     </div>
 
