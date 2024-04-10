@@ -1,0 +1,18 @@
+<div *ngIf="display">
+    <div class="tour-item" [style.top]="yPos" [style.left]="xPos">
+        <div class="item" [style.left]="xArrowPos" [ngClass]="tail">
+            <div class="tour-heading" *ngIf="heading">{{heading}}</div>
+            <div class="tour-text" [innerHTML]="text"></div>
+            <div class="tour-nav">
+                <div class="skip">
+                    <i class="fa-solid fa-power-off" (click)="cancelTour()"></i>
+                </div>
+                <div class="navigate">
+                    <i *ngIf="hasPrevious" (click)="movePrevious()" class="fa-solid fa-square-caret-left"></i>
+                    <i *ngIf="hasNext" (click)="moveNext()" class="fa-solid fa-square-caret-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="backdrop" (click)="cancelTour()"></div>
+</div>

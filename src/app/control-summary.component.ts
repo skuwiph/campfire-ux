@@ -7,6 +7,8 @@ import { CfTypeaheadComponent } from './ui/cf-typeahead/cf-typeahead.component';
 import { ICfApplicantCardInfo } from './ui/cf-applicant-card/cf-applicant-card.component';
 import { Observable, of } from 'rxjs';
 import { CFMention } from './ui/cf-mention-text/cf-mention-text.component';
+import { UiService } from './ui/ui.service';
+import { CFTourElement } from './ui/cf-whats-new/cf-whats-new.component';
 
 @Component({
   templateUrl: './control-summary.component.html',
@@ -35,6 +37,8 @@ export class ControlSummaryComponent implements OnInit {
 
     @ViewChild('dialogDemo', { static: false }) dialog!: CfDialogComponent;
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;
+
+    constructor(private uiservice: UiService) {}
 
     ngOnInit(): void {
         this.loadTypeaheadSearch();
@@ -1022,6 +1026,75 @@ export class ControlSummaryComponent implements OnInit {
         console.log(`Changed:`, event)
         this.testText = event;
     }
+
+    inTour = false;
+    tourItems: CFTourElement[] = [];
+    restoreX = 0;
+    restoreY = 0;
+    startTour(): void {
+        console.log(`Start tour`);
+
+        const items: CFTourElement[] = [];
+        items.push(new CFTourElement("CL:menu", "This is the menu, click here for more functionality.<br><br>The logo will always return you to the home page.", "Main Menu"));
+        items.push(new CFTourElement("CL:div.spinner img.lg", "This is the loader control, used while network operations are in effect.", "Activity Indicator"));
+        items.push(new CFTourElement("CL:applicant-card", "This is an example of an applicant card.<br><br>These contain at-a-glance information regarding the applicant.", "Applicant Card"));
+        
+        this.tourItems = items;
+        this.restoreX = window.scrollX;
+        this.restoreY = window.scrollY;
+        this.inTour = true;
+    }
+
+    // changeTourItem(direction: number): void {
+    //     console.log(`Move ${direction > 0 ? 'forwards' : 'backwards'} through tour`);
+    //     this.inTour = false;
+    //     this.currentItem += direction;
+    //     this.tourItem = this.getTourItem(this.tourItems[this.currentItem], this.currentItem);
+    //     this.inTour = (this.tourItem != undefined);
+    // }
+
+    // getTourItem(className: string, index: number): CFTourItem | undefined {
+    //     let ti = undefined;
+    //     const b = this.uiservice.getElementPositionByClass(className);
+    //     if (b) {
+    //         console.log(`Bounds: ${JSON.stringify(b)}, window: ${window.scrollX},${window.scrollY}`);
+    //         const x = b[0].x;
+    //         console.log(`Looking at x: ${x}`);
+    //         switch(className) {
+    //             case 'menu':
+    //                 ti = new CFTourItem(
+    //                     "This is the menu, click here for more functionality.<br><br>The logo will always return you to the home page.", 
+    //                     x, b[0].y + window.scrollY, 
+    //                     b[0].width, b[0].height, 
+    //                     'The Main Menu', 0, 3);
+    //                 break;
+    //             case 'applicant-card':
+    //                 ti = new CFTourItem(
+    //                     "This is an example of an applicant card.<br><br>These contain at-a-glance information regarding the applicant.",
+    //                     x, b[0].y + window.scrollY, 
+    //                     b[0].width, b[0].height, 
+    //                     'Applicant Cards', index, 3);
+    //                 break;
+    //             case 'div.spinner img.lg':
+    //                 ti = new CFTourItem(
+    //                     "This is the loader control, used while network operations are in effect.",
+    //                     x, b[0].y + window.scrollY,
+    //                     b[0].width, b[0].height,
+    //                     'Loader/Spinner', index, 3);
+    //                 break;                    
+    //         }
+    //     } else {
+    //         console.log(`Didn't get tour item: ${className}`);
+    //     }
+    //     return ti;
+    // }
+
+    endTour(end: boolean): void {
+        console.log(`End tour!`);
+        this.inTour = false;
+        window.scrollTo({ left: this.restoreX, top: this.restoreY, behavior: 'smooth' })
+    }
+
     standardTable?: CfTableData;
     paginationTable?: CfTableData;
     sortTable?: CfTableData;

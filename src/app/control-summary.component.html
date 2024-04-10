@@ -20,6 +20,7 @@
             <li><a href="#tables-sort"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sortable</a></li>
         </ul>
     <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
+    <li><a href="#whatsnew"><i class="fa-solid fa-arrow-up-right-from-square"></i>What's New</a></li>
     <li><i class="fa-solid fa-arrow-up-right-from-square"></i>Layouts</li>
         <ul>
             <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky Footer</a></li>
@@ -126,7 +127,7 @@
     </div>
 </div>
 <div class="flex-container">
-    <div class="left">
+    <div class="left applicant-card">
         <app-cf-applicant-card [applicant]="displayApplicantCard!"></app-cf-applicant-card>
     </div>
 </div>
@@ -191,6 +192,7 @@
 <h2>Menu<a name="menu"></a></h2>
 <div class="flex-container">
     <div class="left">
+        <br>
         <app-cf-menu></app-cf-menu>
     </div>
 </div>
@@ -317,7 +319,7 @@
     </div>
 </div>
 <div class="flex-container">
-    <div class="left">
+    <div class="left loader">
         <app-cf-loader>
             <p>Large Loader... Please Wait...</p>
         </app-cf-loader>
@@ -681,3 +683,13 @@
 </div>
 <p><a href="#top">UP</a></p>
 
+<h2>What's New<a name="whatsnew"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <div class="comfort">
+            <app-cf-button [type]="Button.Default" (click)="startTour()">Start Tour</app-cf-button>
+            <app-cf-whats-new *ngIf="inTour" [tourItems]="tourItems" (endTour)="endTour($event)"></app-cf-whats-new>
+        </div>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
