@@ -18,6 +18,7 @@ import { CfWhatsNewComponent } from './cf-whats-new/cf-whats-new.component';
 import { CfStatusDisplayComponent } from './cf-status-display/cf-status-display.component';
 import { BoldTextPipe } from './boldspan.pipe';
 import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
+import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
         CfApplicantCardComponent,
         CfButtonComponent,
         CfDialogComponent,
+        CfDropdownComponent,
         CfLoaderComponent,
         CfMenuComponent,
         CfMentionTextComponent,
@@ -49,6 +51,7 @@ import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
         CfApplicantCardComponent,
         CfButtonComponent,
         CfDialogComponent,
+        CfDropdownComponent,
         CfLoaderComponent,
         CfMenuComponent,
         CfMentionTextComponent,

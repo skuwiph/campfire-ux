@@ -1,0 +1,15 @@
+<div class="dropdown">
+    <span>
+        <span *ngIf="options.text">{{options.text}}</span>
+        <i *ngIf="options.imageClass" class="{{options.imageClass}}"></i>
+        <i class="fa-solid fa-angle-down"></i>
+    </span>
+    <div class="dropdown-content" [style.margin-left]="options.leftMargin">
+        <ul>
+            <li *ngFor="let o of options.items" [class.separator]="o.type == DropdownType.Separator" [class.disabled]="o.disabled" (click)="onClick(o)">
+                <span><i *ngIf="o.type == DropdownType.ImageAndText" class="{{o.imageClass}}"></i></span>
+                <span>{{o.text}}</span>
+            </li>
+        </ul>
+    </div>
+</div>

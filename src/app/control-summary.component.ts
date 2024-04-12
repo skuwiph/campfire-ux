@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 import { CFMention } from './ui/cf-mention-text/cf-mention-text.component';
 import { UiService } from './ui/ui.service';
 import { CFTourElement } from './ui/cf-whats-new/cf-whats-new.component';
+import { CFDropdownItem, CFDropdownItemType, CFDropdownOptions } from './ui/cf-dropdown/cf-dropdown.component';
 
 @Component({
   templateUrl: './control-summary.component.html',
@@ -28,6 +29,8 @@ import { CFTourElement } from './ui/cf-whats-new/cf-whats-new.component';
   .status-table { width: 15rem; margin: 1rem 0 1rem 0.25rem; }
   .status-table tr td { line-height: 1.75rem; margin-bottom: 0.1rem; }
   :host::ng-deep button i { margin-left: 0.5rem; }
+  :host::ng-deep .dropdown { padding: 0.5rem; border-radius: 0.2rem; }
+  :host::ng-deep .dropdown .dropdown-content { margin: 0.5rem 0 0 -0.5rem; width: 15rem; }
   `],
 })
 export class ControlSummaryComponent implements OnInit {
@@ -39,6 +42,7 @@ export class ControlSummaryComponent implements OnInit {
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;
 
     constructor(private uiservice: UiService) {}
+    dropdownOptions?: CFDropdownOptions;
 
     ngOnInit(): void {
         this.loadTypeaheadSearch();
@@ -64,6 +68,8 @@ export class ControlSummaryComponent implements OnInit {
             new CFMention( "nsaleem",  "Nabeela Saleem" ),
             new CFMention( "rhowell",  "Richard Howell" ),
         );
+
+        this.prepareDropdown();
     }
 
     prepareStandardTable(): void {
@@ -1025,6 +1031,32 @@ export class ControlSummaryComponent implements OnInit {
     textChanged(event: string): void {
         console.log(`Changed:`, event)
         this.testText = event;
+    }
+
+    // Dropdown / Menu
+    prepareDropdown(): void {
+        this.dropdownOptions = {
+            text: 'Dropdown Menu', showIndicator: true, items: [
+                { type: CFDropdownItemType.TextOnly, text: 'Text item', link: 'first' },
+                { type: CFDropdownItemType.Separator },
+                { type: CFDropdownItemType.ImageAndText, text: 'Image and text item', link: 'second', imageClass: 'fa-regular fa-envelope' },
+                { type: CFDropdownItemType.ImageAndText, text: 'Image and text (Disabled)', link: 'third', imageClass: 'fa-regular fa-padlock', disabled: true },
+            ]
+        }
+    }
+
+    onDropdownSelected(item: CFDropdownItem): void {
+        window.alert(`Item selected: ${item.link}`);
+    }
+
+    // Menu
+    menuItem = '';
+    prepareMenu(): void {
+
+    }
+
+    menuItemSelected(link: string): void {
+        this.menuItem = link;
     }
 
     inTour = false;

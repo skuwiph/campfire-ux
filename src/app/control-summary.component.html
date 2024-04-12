@@ -5,6 +5,7 @@
     <li><a href="#text"><i class="fa-solid fa-arrow-up-right-from-square"></i>Text</a></li>
     <li><a href="#alerts"><i class="fa-solid fa-arrow-up-right-from-square"></i>Alerts</a></li>
     <li><a href="#card"><i class="fa-solid fa-arrow-up-right-from-square"></i>Applicant Card</a></li>
+    <li><a href="#dropdown"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dropdown</a></li>
     <li><a href="#buttons"><i class="fa-solid fa-arrow-up-right-from-square"></i>Buttons</a></li>
     <li><a href="#menu"><i class="fa-solid fa-arrow-up-right-from-square"></i>Menu</a></li>
     <li><a href="#mention"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mention TextArea</a></li>
@@ -133,6 +134,16 @@
 </div>
 <p><a href="#top">UP</a></p>
 
+<h2>Dropdown<a name="dropdown"></a></h2>
+<div class="flex-container">
+    <div class="left applicant-card">
+        <div class="comfort">
+            <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions" (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
+        </div>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
 <h2>Buttons<a name="buttons"></a></h2>
 <div class="flex-container">
     <div class="right">
@@ -193,7 +204,8 @@
 <div class="flex-container">
     <div class="left">
         <br>
-        <app-cf-menu></app-cf-menu>
+        <app-cf-menu (menuSelected)="menuItemSelected($event)"></app-cf-menu>
+        <p>Selected item: <b>{{menuItem}}</b></p>
     </div>
 </div>
 <p><a href="#top">UP</a></p>

@@ -1,30 +1,14 @@
-<div class="menu">
-    <div class="header-content">
-
-        <a href="#" class="logo"><img src="https://testportal.mycampamerica.com/assets/img/CALogoWhite.png"></a>
-
-        <input type="checkbox" id="hamburger">
-        <label for="hamburger" class="hamburger">
-            <span><i class="fa-solid fa-bars"></i></span>
-        </label>
-
-        <nav>
-            <ul class="menus">
-                <li style="--delay: 1;"><a href="#">Home</a></li>
-                <li style="--delay: 2;" tabindex="0">
-                    <button>
-                        <span>Drop down</span>
-                        <span class="arrow"></span>
-                    </button>
-                    <ul class="dropdown">
-                        <li><a href="#">Item One</a></li>
-                        <li><a href="#">Item Two</a></li>
-                        <li><a href="#">Item Three</a></li>
-                        <li><a href="#">Item Four</a></li>
-                    </ul>
-                </li>
-                <li style="--delay: 3;"><a href="#">About</a></li>
-            </ul>
-        </nav>
+<div class="m">
+    <a (click)="itemSelected('home')" class="logo"><img src="https://testportal.mycampamerica.com/assets/img/CALogoWhite.png"></a>
+    <div class="base">
+        <div class="items">
+            <button type="button" (click)="itemSelected('applicants')">Applicants</button>
+            <app-cf-dropdown *ngIf="interviewerOptions" [options]="interviewerOptions" (dropdownSelected)="dropdownSelected($event)"></app-cf-dropdown>
+            <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions" (dropdownSelected)="dropdownSelected($event)"></app-cf-dropdown>
+        </div>
+        <div class="search"></div>
+        <div class="user">
+            <app-cf-dropdown class="user-menu" *ngIf="userOptions" [options]="userOptions" (dropdownSelected)="dropdownSelected($event)"></app-cf-dropdown>
+        </div>
     </div>
-</div>
+</div> 
