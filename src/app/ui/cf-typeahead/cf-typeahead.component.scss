@@ -13,6 +13,7 @@
 
 .typeahead {
     position: relative;
+    container-type: inline-size;
     z-index: 9;
     .typeahead-search {
         display: flex;
@@ -48,8 +49,14 @@
         background-color: var(--search-bar-results-bg-color);
         // color: var(--search-bar-results-fg-color);
         filter: drop-shadow(2px 2px 2px var(--ui-button-focus-shadow-color));
-        width: 100%; 
+        // width: 100%; 
         padding: 0.5rem;
+    }
+}
+
+@container (max-width: 100px) {
+    .typeahead-search {
+        visibility: hidden;
     }
 }
 

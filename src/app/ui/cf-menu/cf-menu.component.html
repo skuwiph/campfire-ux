@@ -1,14 +1,30 @@
-<div class="m">
-    <a (click)="itemSelected('home')" class="logo"><img src="https://testportal.mycampamerica.com/assets/img/CALogoWhite.png"></a>
-    <div class="base">
-        <div class="items">
-            <button type="button" (click)="itemSelected('applicants')">Applicants</button>
-            <app-cf-dropdown *ngIf="interviewerOptions" [options]="interviewerOptions" (dropdownSelected)="dropdownSelected($event)"></app-cf-dropdown>
-            <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions" (dropdownSelected)="dropdownSelected($event)"></app-cf-dropdown>
+<div class="container">
+    <div class="menu">
+        <a (click)="itemSelected('home')" class="logo"><img src="https://testportal.mycampamerica.com/assets/img/CALogoWhite.png"></a>
+        <div class="base">
+            <div class="items">
+                <button type="button" (click)="itemSelected('applicants')">Applicants</button>
+                <app-cf-dropdown *ngIf="interviewerOptions" [options]="interviewerOptions" (dropdownSelected)="dropdownSelected($event)"></app-cf-dropdown>
+                <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions" (dropdownSelected)="dropdownSelected($event)"></app-cf-dropdown>
+            </div>
+            <div class="search">
+                <app-cf-typeahead #typeahead [placeholderTextDefault]="'Default text'" [placeholderTextActive]="'Enter search terms'"
+                    [isSearching]="isTypeaheadSearching" [hasResults]="typeaheadHasResults" (lookup)="doTypeaheadLookup($event)">
+                    <div results>
+                        <div *ngIf="typeaheadHasResults; else noData">
+                            <app-cf-table *ngIf="typeaheadSearchTable" [data]="typeaheadSearchTable" [sortable]="true"
+                                (onSelect)="typeaheadSelected($event)"></app-cf-table>
+                        </div>
+                        <ng-template #noData>No data returned</ng-template>
+                    </div>
+                </app-cf-typeahead>
+            </div>
+            <div class="user">
+                <app-cf-dropdown class="user-menu" *ngIf="userOptions" [options]="userOptions" (dropdownSelected)="dropdownSelected($event)"></app-cf-dropdown>
+            </div>
+            <div class="compact">
+                <p>Options for small screens</p>
+            </div>
         </div>
-        <div class="search"></div>
-        <div class="user">
-            <app-cf-dropdown class="user-menu" *ngIf="userOptions" [options]="userOptions" (dropdownSelected)="dropdownSelected($event)"></app-cf-dropdown>
-        </div>
-    </div>
-</div> 
+    </div> 
+</div>

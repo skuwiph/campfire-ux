@@ -26,11 +26,9 @@ import { CFDropdownItem, CFDropdownItemType, CFDropdownOptions } from './ui/cf-d
   :host::ng-deep .col_first { width: 8rem; }
   :host::ng-deep .col_last { width: 10rem; }
   :host::ng-deep .col_status { width: 15rem; }
+  .loader { max-width: 6rem; margin: 0 auto;}
   .status-table { width: 15rem; margin: 1rem 0 1rem 0.25rem; }
   .status-table tr td { line-height: 1.75rem; margin-bottom: 0.1rem; }
-  :host::ng-deep button i { margin-left: 0.5rem; }
-  :host::ng-deep .dropdown { padding: 0.5rem; border-radius: 0.2rem; }
-  :host::ng-deep .dropdown .dropdown-content { margin: 0.5rem 0 0 -0.5rem; width: 15rem; }
   `],
 })
 export class ControlSummaryComponent implements OnInit {
@@ -1039,8 +1037,8 @@ export class ControlSummaryComponent implements OnInit {
             text: 'Dropdown Menu', showIndicator: true, items: [
                 { type: CFDropdownItemType.TextOnly, text: 'Text item', link: 'first' },
                 { type: CFDropdownItemType.Separator },
-                { type: CFDropdownItemType.ImageAndText, text: 'Image and text item', link: 'second', imageClass: 'fa-regular fa-envelope' },
-                { type: CFDropdownItemType.ImageAndText, text: 'Image and text (Disabled)', link: 'third', imageClass: 'fa-regular fa-padlock', disabled: true },
+                { type: CFDropdownItemType.ImageAndText, text: 'Image and text item', link: 'second', imageClass: 'fa-solid fa-envelope' },
+                { type: CFDropdownItemType.ImageAndText, text: 'Image and text (Disabled)', link: 'third', imageClass: 'fa-solid fa-lock', disabled: true },
             ]
         }
     }

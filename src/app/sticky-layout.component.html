@@ -1,4 +1,5 @@
 <div class="container">
+    <app-cf-menu class="menu"></app-cf-menu>
     <div class="content">
         <h1>Content Title</h1>
         <p>Definitions:
@@ -20,7 +21,12 @@
         {{ '}' }}<br>
         footer {{ '{' }}{{ '}' }}
         </code></p>
-        
+        <p><strong>Remember:</strong> all elements <em>MUST</em> go within the 
+        <code class="inline">container</code> element, otherwise the 
+        elements will not appear as you expect.</p>
+        <p>In this example, we have added a sticky menu to the top of the page &mdash;
+            however, this could be switched off using <code class="inline">@container</code> queries
+            in order to maximise usable real-estate on a small device screen.</p>
         <p>Return to <a href="./">component showcase page</a>.</p>
     </div>
     <footer><p>I'm a footer</p></footer>

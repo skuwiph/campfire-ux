@@ -23,6 +23,7 @@ export class CfStatusDisplayComponent implements OnInit {
             ['ParticipantOutOfProgrammeUNS', 'OOP - Unsuccessful'],
             ['ParticipantPlaced', 'Placed'],
             ['ParticipantReadyToPlace', 'Ready to Place'],
+            ['ParticipantReadyToPlaceCE', 'Ready to Place (CE)'],
             ['ParticipantReadyToPlaceGP', 'Ready to Place (GP)'],
             ['ParticipantReadyToPlaceMM', 'Ready to Place (RSG)'],
             ['PendingAcceptanceAsReturner', 'Returner Awaiting Acceptance'],
@@ -34,9 +35,7 @@ export class CfStatusDisplayComponent implements OnInit {
             ['ReturnToORCA', 'Resend to ORCA'],
             ['TransferredToORCA', 'Transferred to ORCA'],
             ['ParticipantReadyToPlace', 'Ready to Place'],
-            ['ParticipantReadyToPlaceCE', 'Ready to Place (CE)'],
-            ['ParticipantReadyToPlaceGP', 'Ready to Place (GP)'],
-            ['ParticipantReadyToPlaceMM', 'Ready to Place (MM)']]);
+        ]);
 
         this.stateName = this.stateMap.get(this.status) ?? `Unknown (${this.status})`;
         this.stateClass = this.getStateDisplayClass();

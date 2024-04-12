@@ -64,6 +64,7 @@ export class CfWhatsNewComponent implements OnChanges {
             this.display = true;
         } else {
             this.display = false;
+            console.warn(`Couldn't get element from ${c.identifier}`);
         }
     }
 

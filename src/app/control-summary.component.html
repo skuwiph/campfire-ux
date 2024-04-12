@@ -4,28 +4,28 @@
 <ul class="link">
     <li><a href="#text"><i class="fa-solid fa-arrow-up-right-from-square"></i>Text</a></li>
     <li><a href="#alerts"><i class="fa-solid fa-arrow-up-right-from-square"></i>Alerts</a></li>
-    <li><a href="#card"><i class="fa-solid fa-arrow-up-right-from-square"></i>Applicant Card</a></li>
-    <li><a href="#dropdown"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dropdown</a></li>
     <li><a href="#buttons"><i class="fa-solid fa-arrow-up-right-from-square"></i>Buttons</a></li>
+    <li><a href="#card"><i class="fa-solid fa-arrow-up-right-from-square"></i>Card (Applicant)</a></li>
+    <li><a href="#dialog"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dialogs</a></li>
+    <li><a href="#dropdown"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dropdown</a></li>
+    <li><a href="#wait"><i class="fa-solid fa-arrow-up-right-from-square"></i>Loader Display</a></li>
     <li><a href="#menu"><i class="fa-solid fa-arrow-up-right-from-square"></i>Menu</a></li>
     <li><a href="#mention"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mention TextArea</a></li>
-    <li><a href="#dialog"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dialogs</a></li>
-    <li><a href="#wait"><i class="fa-solid fa-arrow-up-right-from-square"></i>Loader Display</a></li>
-    <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
     <li><a href="#profile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Image</a></li>
-    <li><a href="#typeahead"><i class="fa-solid fa-arrow-up-right-from-square"></i>Typeahead</a></li>
+    <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
     <li><a href="#tables"><i class="fa-solid fa-arrow-up-right-from-square"></i>Tables</a></li>
-        <ul>
-            <li><a href="#tables-standard"><i class="fa-solid fa-arrow-up-right-from-square"></i>Standard</a></li>
-            <li><a href="#tables-paginate"><i class="fa-solid fa-arrow-up-right-from-square"></i>Paginated</a></li>
-            <li><a href="#tables-sort"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sortable</a></li>
-        </ul>
-    <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
+    <ul>
+        <li><a href="#tables-standard"><i class="fa-solid fa-arrow-up-right-from-square"></i>Standard</a></li>
+        <li><a href="#tables-paginate"><i class="fa-solid fa-arrow-up-right-from-square"></i>Paginated</a></li>
+        <li><a href="#tables-sort"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sortable</a></li>
+    </ul>
+    <li><a href="#typeahead"><i class="fa-solid fa-arrow-up-right-from-square"></i>Typeahead</a></li>
     <li><a href="#whatsnew"><i class="fa-solid fa-arrow-up-right-from-square"></i>What's New</a></li>
+    <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
     <li><i class="fa-solid fa-arrow-up-right-from-square"></i>Layouts</li>
-        <ul>
-            <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky Footer</a></li>
-        </ul>
+    <ul>
+        <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky Footer</a></li>
+    </ul>
 
 </ul>
 
@@ -107,43 +107,6 @@
 </div>
 <p><a href="#top">UP</a></p>
 
-<h2>Applicant Card<a name="card"></a></h2>
-<div class="flex-container">
-    <div class="right">
-        <h4>Notes</h4>
-        <code>
-            &lt;app-cf-applicant-card [applicant]="displayApplicantCard!"&gt;&lt;/app-cf-applicant-card&gt;
-        </code>
-        <p>In code:</p>
-        <code>
-        this.displayApplicantCard = {{ '{' }}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;applicationId: 1234567,<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;profileUrl: 'https://campamericatest.s3.amazonaws.com/resources/2023/url',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;firstName: 'Meghan',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;lastName: 'Geofferson',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;status: 'ParticipantPlaced'<br>
-        {{ '}' }};<br>
-        </code>
-        <br>
-    </div>
-</div>
-<div class="flex-container">
-    <div class="left applicant-card">
-        <app-cf-applicant-card [applicant]="displayApplicantCard!"></app-cf-applicant-card>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Dropdown<a name="dropdown"></a></h2>
-<div class="flex-container">
-    <div class="left applicant-card">
-        <div class="comfort">
-            <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions" (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
-        </div>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
 <h2>Buttons<a name="buttons"></a></h2>
 <div class="flex-container">
     <div class="right">
@@ -200,49 +163,29 @@
 </div>
 <p><a href="#top">UP</a></p>
 
-<h2>Menu<a name="menu"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <br>
-        <app-cf-menu (menuSelected)="menuItemSelected($event)"></app-cf-menu>
-        <p>Selected item: <b>{{menuItem}}</b></p>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Mention TextArea<a name="mention"></a></h2>
+<h2>Applicant Card<a name="card"></a></h2>
 <div class="flex-container">
     <div class="right">
         <h4>Notes</h4>
         <code>
-            &lt;app-cf-mention-text [searchData]="observableData$" [text]="testText"&gt;<br>
-            &lt;/app-cf-mention-text&gt;<br>
+            &lt;app-cf-applicant-card [applicant]="displayApplicantCard!"&gt;&lt;/app-cf-applicant-card&gt;
         </code>
         <p>In code:</p>
         <code>
-            this.observableData$ = of(<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "alanger", "Allen Langer" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "bbieniek", "Baltazar Bieniek" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "cfletcher", "Charlotte Fletcher" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "dwierzbicki", "Dawid Wierzbicki" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "iseckington", "Ian Seckington" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jcook", "Jason Cook" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jgilbert", "Jason Gilbert" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "kmcsweeney", "Kerry McSweeney" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "mtolfrey", "Michael Tolfrey" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "nsaleem", "Nabeela Saleem" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "rhowell", "Richard Howell" ),<br>
-            );<br>
+        this.displayApplicantCard = {{ '{' }}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;applicationId: 1234567,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;profileUrl: 'https://campamericatest.s3.amazonaws.com/resources/2023/url',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;firstName: 'Meghan',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;lastName: 'Geofferson',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;status: 'ParticipantPlaced'<br>
+        {{ '}' }};<br>
         </code>
         <br>
     </div>
 </div>
 <div class="flex-container">
-    <div class="left">
-        <h4>Enter text</h4>
-            <app-cf-mention-text [searchData]="observableData$" [text]="testText"></app-cf-mention-text>
-            <!--(inputTextChange)="textChanged($event)"-->
-        <app-cf-button [type]="Button.Primary" (click)="setMentionText()">Set Default Text</app-cf-button>
+    <div class="left applicant-card">
+        <app-cf-applicant-card [applicant]="displayApplicantCard!"></app-cf-applicant-card>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
@@ -315,6 +258,17 @@
 </div>
 <p><a href="#top">UP</a></p>
 
+<h2>Dropdown<a name="dropdown"></a></h2>
+<div class="flex-container">
+    <div class="left applicant-card">
+        <div class="comfort">
+            <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions"
+                (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
+        </div>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
 <h2>Loader Display<a name="wait"></a></h2>
 <div class="flex-container">
     <div class="left">
@@ -344,100 +298,49 @@
 </div>
 <p><a href="#top">UP</a></p>
 
-<h2>Status Display<a name="status"></a></h2>
+<h2>Menu<a name="menu"></a></h2>
 <div class="flex-container">
     <div class="left">
+        <br>
+        <app-cf-menu (menuSelected)="menuItemSelected($event)"></app-cf-menu>
+        <p>Selected item: <b>{{menuItem}}</b></p>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Mention TextArea<a name="mention"></a></h2>
+<div class="flex-container">
+    <div class="right">
         <h4>Notes</h4>
-        <p>Html:</p>
         <code>
-            &lt;app-cf-status-display [status]="status"&gt;<br>
-            &lt;/app-cf-status-display&gt;<br>
+            &lt;app-cf-mention-text [searchData]="observableData$" [text]="testText"&gt;<br>
+            &lt;/app-cf-mention-text&gt;<br>
         </code>
-        <p>Status will expand to fill containing element.</p>
+        <p>In code:</p>
+        <code>
+            this.observableData$ = of(<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "alanger", "Allen Langer" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "bbieniek", "Baltazar Bieniek" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "cfletcher", "Charlotte Fletcher" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "dwierzbicki", "Dawid Wierzbicki" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "iseckington", "Ian Seckington" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jcook", "Jason Cook" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jgilbert", "Jason Gilbert" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "kmcsweeney", "Kerry McSweeney" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "mtolfrey", "Michael Tolfrey" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "nsaleem", "Nabeela Saleem" ),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "rhowell", "Richard Howell" ),<br>
+            );<br>
+        </code>
+        <br>
     </div>
 </div>
 <div class="flex-container">
     <div class="left">
-        <table class="status-table">
-            <tr>
-                <td><app-cf-status-display [status]="'AcceptedOnProgramme'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ORCAReject'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantApplied'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantAppliedPFT'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeCNX'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeEXP'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeFAI'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeREJ'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeTER'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeUNS'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantPlaced'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlace'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceGP'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceMM'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'PendingAcceptanceAsReturner'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'PostInterview'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'PreInterview'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'RejectedByInterviewer'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'RejectedByOffice'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'Returner'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ReturnToORCA'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'TransferredToORCA'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlace'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceCE'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceGP'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceMM'"></app-cf-status-display></td>
-            </tr>
-        </table>
+        <h4>Enter text</h4>
+        <app-cf-mention-text [searchData]="observableData$" [text]="testText"></app-cf-mention-text>
+        <!--(inputTextChange)="textChanged($event)"-->
+        <app-cf-button [type]="Button.Primary" (click)="setMentionText()">Set Default Text</app-cf-button>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
@@ -459,71 +362,102 @@
     <div class="left comfort">
         <app-cf-profile [urlOrInitials]="'aj'"></app-cf-profile>
         <br>
-        <app-cf-profile [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'"></app-cf-profile>
+        <app-cf-profile
+            [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'"></app-cf-profile>
         <br>
         <app-cf-profile [width]="100" [height]="100"
-            [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'" [roundImage]="false"></app-cf-profile>
-    </div>       
+            [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'"
+            [roundImage]="false"></app-cf-profile>
+    </div>
 </div>
 <p><a href="#top">UP</a></p>
 
-<h2>Typeahead<a name="typeahead"></a></h2>
+<h2>Status Display<a name="status"></a></h2>
 <div class="flex-container">
     <div class="left">
         <h4>Notes</h4>
         <p>Html:</p>
         <code>
-        &lt;app-cf-typeahead<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextDefault]="'Default text'"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextActive]="'Enter search terms'"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[isSearching]="isTypeaheadSearching"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[hasResults]="typeaheadHasResults"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;(lookup)="doTypeaheadLookup($event)"&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div results&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngIf="typeaheadHasResults; else noData"&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-table [data]="typeaheadSearchTable" [sortable]="true"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(onSelect)="selectedStandardRow($event)"&gt;&lt;/app-cf-table&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template #noData&gt;No data returned&lt;/ng-template&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
-        &lt;/app-cf-typeahead&gt;<br>
+            &lt;app-cf-status-display [status]="status"&gt;<br>
+            &lt;/app-cf-status-display&gt;<br>
         </code>
-        <p>Code:</p>
-        <code>
-        doTypeaheadLookup(value: string): void {{ '{' }}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = false;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = true;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;// do search<br>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = true;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = false;<br>
-        {{ '}' }}<br>
-        </code><br>
+        <p>Status will expand to fill containing element.</p>
     </div>
 </div>
 <div class="flex-container">
     <div class="left">
-        <br>
-        <app-cf-typeahead #typeahead
-            [placeholderTextDefault]="'Default text'" 
-            [placeholderTextActive]="'Enter search terms'"
-            [isSearching]="isTypeaheadSearching"
-            [hasResults]="typeaheadHasResults"
-            (lookup)="doTypeaheadLookup($event)">
-            <div results>
-                <div *ngIf="typeaheadHasResults; else noData">
-                    <app-cf-table *ngIf="typeaheadSearchTable" [data]="typeaheadSearchTable" [sortable]="true"
-                        (onSelect)="typeaheadSelected($event)"></app-cf-table>
-                </div>
-                <ng-template #noData>No data returned</ng-template>
-            </div>  
-        </app-cf-typeahead>
-        <br>
-        <div *ngIf="typeaheadRecordSelected">
-            <app-cf-applicant-card *ngIf="selectedApplicant" [applicant]="selectedApplicant" (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
-        </div>
+        <table class="status-table">
+            <tr>
+                <td><app-cf-status-display [status]="'PreInterview'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'PostInterview'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'AcceptedOnProgramme'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'RejectedByInterviewer'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'RejectedByOffice'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'Returner'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'PendingAcceptanceAsReturner'"></app-cf-status-display></td>
+            </tr>
+
+            <tr>
+                <td><app-cf-status-display [status]="'ORCAReject'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ReturnToORCA'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'TransferredToORCA'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantApplied'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantAppliedPFT'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlace'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceCE'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceGP'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceMM'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantPlaced'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeCNX'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeEXP'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeFAI'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeREJ'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeTER'"></app-cf-status-display></td>
+            </tr>
+            <tr>
+                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeUNS'"></app-cf-status-display></td>
+            </tr>
+        </table>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
@@ -589,6 +523,75 @@
         <h2>Sortable<a name="tables-sort"></a></h2>
         <app-cf-table *ngIf="sortTable" [data]="sortTable" [sortable]="true"
             (onSelect)="selectedStandardRow($event)"></app-cf-table>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+<h2>Typeahead<a name="typeahead"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <h4>Notes</h4>
+        <p>Html:</p>
+        <code>
+        &lt;app-cf-typeahead<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextDefault]="'Default text'"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextActive]="'Enter search terms'"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[isSearching]="isTypeaheadSearching"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[hasResults]="typeaheadHasResults"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;(lookup)="doTypeaheadLookup($event)"&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div results&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngIf="typeaheadHasResults; else noData"&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-table [data]="typeaheadSearchTable" [sortable]="true"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(onSelect)="selectedStandardRow($event)"&gt;&lt;/app-cf-table&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template #noData&gt;No data returned&lt;/ng-template&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+        &lt;/app-cf-typeahead&gt;<br>
+        </code>
+        <p>Code:</p>
+        <code>
+        doTypeaheadLookup(value: string): void {{ '{' }}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = false;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = true;<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;// do search<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = true;<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = false;<br>
+        {{ '}' }}<br>
+        </code><br>
+    </div>
+</div>
+<div class="flex-container">
+    <div class="left">
+        <br>
+        <app-cf-typeahead #typeahead [placeholderTextDefault]="'Default text'"
+            [placeholderTextActive]="'Enter search terms'" [isSearching]="isTypeaheadSearching"
+            [hasResults]="typeaheadHasResults" (lookup)="doTypeaheadLookup($event)">
+            <div results>
+                <div *ngIf="typeaheadHasResults; else noData">
+                    <app-cf-table *ngIf="typeaheadSearchTable" [data]="typeaheadSearchTable" [sortable]="true"
+                        (onSelect)="typeaheadSelected($event)"></app-cf-table>
+                </div>
+                <ng-template #noData>No data returned</ng-template>
+            </div>
+        </app-cf-typeahead>
+        <br>
+        <div *ngIf="typeaheadRecordSelected">
+            <app-cf-applicant-card *ngIf="selectedApplicant" [applicant]="selectedApplicant"
+                (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
+        </div>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>What's New<a name="whatsnew"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <div class="comfort">
+            <app-cf-button [type]="Button.Default" (click)="startTour()">Start Tour</app-cf-button>
+            <app-cf-whats-new *ngIf="inTour" [tourItems]="tourItems" (endTour)="endTour($event)"></app-cf-whats-new>
+        </div>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
@@ -691,17 +694,6 @@
         );
         </code>
         <br>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>What's New<a name="whatsnew"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <div class="comfort">
-            <app-cf-button [type]="Button.Default" (click)="startTour()">Start Tour</app-cf-button>
-            <app-cf-whats-new *ngIf="inTour" [tourItems]="tourItems" (endTour)="endTour($event)"></app-cf-whats-new>
-        </div>
     </div>
 </div>
 <p><a href="#top">UP</a></p>

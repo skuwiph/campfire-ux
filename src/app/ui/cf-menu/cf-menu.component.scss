@@ -1,68 +1,94 @@
 @import "/src/assets/styles/themes";
 
-.m {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1;
-    margin-bottom: 1rem;
-    padding: 0.5rem 0.5rem;
-    background: var(--menu-bg-color);
-    color: var(--menu-fg-color);
-    a {
+.container {
+    container-type: inline-size;
+    .menu {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1;
         padding: 0.5rem 0.5rem;
+        background: var(--menu-bg-color);
         color: var(--menu-fg-color);
-        text-decoration: none;
+        a {
+            color: var(--menu-fg-color);
+            text-decoration: none;
 
-        &.logo {
-            padding: 0;
-            width: 7rem;
-            img {
+            &.logo {
+                padding: 0;
                 width: 7rem;
+                img {
+                    width: 7rem;
+                }
+                &:hover {
+                    background: var(--menu-bg-color);
+                    cursor: pointer;
+                }
             }
-            &:hover {
-                background: var(--menu-bg-color);
-                cursor: pointer;
+        }
+        .base {
+            display: flex;
+            justify-content: space-between;
+            flex: 1 0 auto;
+            .items {
+                button {
+                    outline: none;
+                    padding: 0.5rem 0.5rem;
+                    border: 0;
+                    background: var(--menu-bg-color);
+                    color: var(--menu-fg-color);
+                    border-radius: 0.2rem;
+                    &:hover, &:focus {
+                        cursor: pointer;
+                        background: var(--menu-bg-hover-color);
+                    }
+                }
+            }
+            .search {
+                margin-top: 0.1rem;
+                flex: 1 1 auto;
+            }
+            .user {
+                align-self: center;
+                margin-top: -0rem;
+                a{
+                    border: 0;
+                    &:hover {
+                        background: var(--menu-bg-color);
+                    }
+                }
+                i {
+                    font-size: 1.5rem;
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
             }
         }
     }
-    .base {
-        display: flex;
-        justify-content: space-between;
-        flex: 1 0 auto;
-        .items {
-            button {
-                outline: none;
-                padding: 0.5rem 0.5rem;
-                border: 0;
-                background: var(--menu-bg-color);
-                color: var(--menu-fg-color);
-                border-radius: 0.2rem;
-                &:hover, &:focus {
-                    cursor: pointer;
-                    background: var(--menu-bg-hover-color);
-                }
+}
+@container (width < 550px) {
+    .menu {
+        flex-direction: column;
+        .base {
+            .items {
+                display: none;
+            }
+            .user {
+                display: none;
             }
         }
-        .search {
-            
-        }
-        .user {
-            align-self: center;
-            margin-top: -0rem;
-            a{
-                border: 0;
-                &:hover {
-                    background: var(--menu-bg-color);
-                }
-            }
-            i {
-                font-size: 1.5rem;
-                &:hover {
-                    opacity: 0.8;
-                }
-            }
-        }
-        
+    }
+}
+
+@container (width < 550px) {
+    .compact {
+        display: block;
+    }
+}
+
+@container (width > 550px) {
+    .compact {
+        display: none;
     }
 }

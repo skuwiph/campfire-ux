@@ -4,16 +4,18 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './sticky-layout.component.html',
     // styleUrls: ['./app.component.scss']
     styles: [`
-
     .container { 
+        .menu {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
         display: flex; 
         flex-direction: column;
         min-height: 100vh;
     }
     .content {
         flex: 1 0 auto;
-        margin-top: 1rem;
-        padding: 0 0.5rem;
     }    
     footer {
         border: 1px dotted gray;
