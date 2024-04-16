@@ -81,6 +81,13 @@ export class ControlSummaryComponent implements OnInit {
                 status: 'ParticipantReadyToPlace',
             },
             {
+                applicationId: 4736438,
+                firstName: 'Sally',
+                lastName: 'Danvers',
+                profileUrl: 'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810',
+                status: 'ParticipantReadyToPlaceMM'
+            },
+            {
                 applicationId: 3567890,
                 lastName: 'Silva',
                 firstName: 'João',

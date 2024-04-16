@@ -61,6 +61,7 @@ export class UiModalService {
             this.appRef.detachView(componentRef.hostView);
             componentRef.destroy();
             ref.unsubscribe();
+            evt.unsubscribe();
         });
 
         // Just for calls back from the button array;
