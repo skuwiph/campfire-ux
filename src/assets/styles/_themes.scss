@@ -31,6 +31,7 @@
     --applicant-card-bg-color: #FFF1E3;
     --applicant-card-border-color: #A7AED2;
     --applicant-card-hover-shadow-color: #565656;
+    --applicant-card-base-width: 240px;
 
     --search-bar-bg-color: white; //#87a4ac;
     --search-bar-fg-color: black;
@@ -51,13 +52,15 @@
     --tour-item-fg-color: #121212;
     --tour-item-shadow-color: #565656;
 
-    --dialog-backdrop-color: #000033;
-    --dialog-title-bg-color: #6996a4;
+    --dialog-backdrop-color: #323236;
+    --dialog-backdrop-opacity: 0.25;
+    --dialog-title-bg-color: #84cce4;
     --dialog-title-fg-color: white;
-    --dialog-title-bg-color-confirmation: #275E70;
+    --dialog-title-bg-color-confirmation: #84cce4;
     --dialog-title-bg-color-error: #ea6e6b;
     --dialog-title-bg-color-warning: #ea9a53;
     --dialog-bg-color: #FFF1E3;
+    --dialog-shadow-color: #565656;
 
     --menu-bg-color: #44788A;
     --menu-sub-bg-color: #708a92;

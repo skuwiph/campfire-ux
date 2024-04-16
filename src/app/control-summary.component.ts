@@ -30,6 +30,7 @@ import { UiModalService } from './ui/ui-modal.service';
     flex-wrap: wrap;
     padding: 0.5rem;
   }
+  :host::ng-deep .col_profile { width: 65px; }
   :host::ng-deep .col_artist { width: 10rem; }
   :host::ng-deep .col_album { width: 27rem; }
   :host::ng-deep .col_first { width: 8rem; }
@@ -150,7 +151,7 @@ export class ControlSummaryComponent implements OnInit {
         this.sortTable = new CfTableData(columns.slice(), [...data]);
 
         var pscolumns: CfTableColumn[] = [
-            new CfTableColumn("", CfTableColumnAlignment.Left, CfTableColumnType.UserProfile),
+            new CfTableColumn("", CfTableColumnAlignment.Left, CfTableColumnType.UserProfile, "col_profile"),
             new CfTableColumn("First", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_first"),
             new CfTableColumn("Last", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_last"),
             new CfTableColumn("Email", CfTableColumnAlignment.Left, CfTableColumnType.String),
@@ -172,7 +173,7 @@ export class ControlSummaryComponent implements OnInit {
     }
 
     selectedStandardRow(event: CfTableSelectedRow): void {
-        console.log(`Row was selected with PK: ${event.pk}`);
+        this.modalService.showModalInformation('Selected Row', `Row was selected with PK: ${event.pk}`);
     }
 
     // Buttons
@@ -1085,7 +1086,7 @@ export class ControlSummaryComponent implements OnInit {
     }
 
     onDropdownSelected(item: CFDropdownItem): void {
-        window.alert(`Item selected: ${item.link}`);
+        this.modalService.showModalInformation('Dropdown Item Selected', `Item selected: ${item.link}`);
     }
 
     // Menu
