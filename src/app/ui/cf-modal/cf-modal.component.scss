@@ -10,6 +10,7 @@ dialog,
     margin: 5rem auto 0;
     width: 75%;
     max-width: 700px;
+    min-width: 380px;
     border-radius: 0.5rem;
     padding: 0;
     border: 0;
@@ -36,6 +37,7 @@ dialog,
         &.information {
             background-color: var(--dialog-title-bg-color);
         }
+        
 
         .title {
             padding: 0.75rem 1rem;

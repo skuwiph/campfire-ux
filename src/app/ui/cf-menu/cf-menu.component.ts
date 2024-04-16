@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { CFDropdownItem, CFDropdownItemType, CFDropdownOptions } from '../cf-dropdown/cf-dropdown.component';
 import { TypeaheadResults } from 'src/app/control-summary.component';
-import { CfTableColumn, CfTableColumnAlignment, CfTableColumnType, CfTableData, CfTableRow, CfTableSelectedRow } from '../cf-table/cf-table.component';
+import { CFTableColumn, CfTableColumnAlignment, CfTableColumnType, CFTableData, CFTableRow, CfTableSelectedRow } from '../cf-table/cf-table.component';
 import { CfTypeaheadComponent } from '../cf-typeahead/cf-typeahead.component';
 
 @Component({
@@ -205,13 +205,13 @@ export class CfMenuComponent implements OnInit {
             { applicationId: 912931, firstName: "Photo22", lastName: "Test", email: "photo22@test.com", status: "PreInterview" },
         ];
 
-        var columns: CfTableColumn[] = [
-            new CfTableColumn("First", CfTableColumnAlignment.Left, CfTableColumnType.String),
-            new CfTableColumn("Last", CfTableColumnAlignment.Left, CfTableColumnType.String),
-            new CfTableColumn("Email", CfTableColumnAlignment.Left, CfTableColumnType.String),
-            new CfTableColumn("Status", CfTableColumnAlignment.Left, CfTableColumnType.UserStatus),
+        var columns: CFTableColumn[] = [
+            new CFTableColumn("First", CfTableColumnAlignment.Left, CfTableColumnType.String),
+            new CFTableColumn("Last", CfTableColumnAlignment.Left, CfTableColumnType.String),
+            new CFTableColumn("Email", CfTableColumnAlignment.Left, CfTableColumnType.String),
+            new CFTableColumn("Status", CfTableColumnAlignment.Left, CfTableColumnType.UserStatus),
         ];
-        this.typeaheadSearchTable = new CfTableData(columns, []);
+        this.typeaheadSearchTable = new CFTableData(columns, []);
     }
 
     doTypeaheadLookup(value: string): void {
@@ -231,7 +231,7 @@ export class CfMenuComponent implements OnInit {
 
             if (this.typeaheadSearchResults.length > 0) {
                 const results = this.typeaheadSearchResults.map((v: TypeaheadResults) => {
-                    return new CfTableRow(`${v.applicationId}`, [v.firstName, v.lastName, v.email, v.status]);
+                    return new CFTableRow(`${v.applicationId}`, [v.firstName, v.lastName, v.email, v.status]);
                 });
                 // console.log(`RESULTS: ${JSON.stringify(results)}`);
 
@@ -284,7 +284,7 @@ export class CfMenuComponent implements OnInit {
 
     typeaheadSearchData: TypeaheadResults[] = [];
     typeaheadSearchResults: TypeaheadResults[] = [];
-    typeaheadSearchTable?: CfTableData;
+    typeaheadSearchTable?: CFTableData;
     isTypeaheadSearching = false;
     typeaheadHasResults = false;
     typeaheadRecordSelected = false;

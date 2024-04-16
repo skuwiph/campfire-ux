@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CfTableColumn, CfTableColumnAlignment, CfTableColumnType, CfTableData, CfTablePaginationOptions, CfTableRow, CfTableSelectedRow } from './ui/cf-table/cf-table.component';
+import { CFTableColumn, CfTableColumnAlignment, CfTableColumnType, CFTableData, CFTableFilter, CFTablePaginationOptions, CFTableRow, CfTableSelectedRow } from './ui/cf-table/cf-table.component';
 import { CfDialogComponent } from './ui/cf-dialog/cf-dialog.component';
 import { CfButtonType } from './ui/cf-button/cf-button.component';
 import { CfAlertType } from './ui/cf-alert/cf-alert.component';
@@ -112,12 +112,30 @@ export class ControlSummaryComponent implements OnInit {
         this.prepareDropdown();
     }
 
+    artistFilter?:CFTableFilter;
+    hasFilter = false;
+    filterText = 'Toggle Only "The Beatles"';
+    filterButtonType = CfButtonType.Secondary;
+    toggleFilter(): void {
+        if(this.hasFilter) {
+            this.artistFilter = undefined;
+            this.hasFilter = false;
+            this.filterText = 'Toggle Only "The Beatles"';
+            this.filterButtonType = CfButtonType.Secondary;
+        } else {
+            this.artistFilter = { column:0, value: 'The Beatles'};
+            this.hasFilter = true;
+            this.filterText = 'Clear Toggle';
+            this.filterButtonType = CfButtonType.Danger;
+        }
+    }
+
     prepareStandardTable(): void {
-        var columns: CfTableColumn[] = [
-            new CfTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),
-            new CfTableColumn("Album", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_album"),
-            new CfTableColumn("Year", CfTableColumnAlignment.Center, CfTableColumnType.Number),
-            new CfTableColumn("Position", CfTableColumnAlignment.Right, CfTableColumnType.String)
+        var columns: CFTableColumn[] = [
+            new CFTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),
+            new CFTableColumn("Album", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_album"),
+            new CFTableColumn("Year", CfTableColumnAlignment.Center, CfTableColumnType.Number),
+            new CFTableColumn("Position", CfTableColumnAlignment.Right, CfTableColumnType.String)
         ];
 
         var data = [
@@ -146,16 +164,16 @@ export class ControlSummaryComponent implements OnInit {
             { pk: "1B", cols: ["M83", "M83", "2001", "--"] },
         ];
 
-        this.standardTable = new CfTableData(columns.slice(), [...data]);
+        this.standardTable = new CFTableData(columns.slice(), [...data]);
         //this.paginationTable = new CfTableData(columns.slice(), [...data], new CfTablePaginationOptions(8, data.length));
-        this.sortTable = new CfTableData(columns.slice(), [...data]);
+        this.sortTable = new CFTableData(columns.slice(), [...data]);
 
-        var pscolumns: CfTableColumn[] = [
-            new CfTableColumn("", CfTableColumnAlignment.Left, CfTableColumnType.UserProfile, "col_profile"),
-            new CfTableColumn("First", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_first"),
-            new CfTableColumn("Last", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_last"),
-            new CfTableColumn("Email", CfTableColumnAlignment.Left, CfTableColumnType.String),
-            new CfTableColumn("Status", CfTableColumnAlignment.Left, CfTableColumnType.UserStatus, "col_status"),
+        var pscolumns: CFTableColumn[] = [
+            new CFTableColumn("", CfTableColumnAlignment.Left, CfTableColumnType.UserProfile, "col_profile"),
+            new CFTableColumn("First", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_first"),
+            new CFTableColumn("Last", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_last"),
+            new CFTableColumn("Email", CfTableColumnAlignment.Left, CfTableColumnType.String),
+            new CFTableColumn("Status", CfTableColumnAlignment.Left, CfTableColumnType.UserStatus, "col_status"),
         ];
         var count = 0;
         const results = this.typeaheadSearchData.map((v: TypeaheadResults) => {
@@ -165,11 +183,11 @@ export class ControlSummaryComponent implements OnInit {
                     ? 'https://campamericalive.s3.amazonaws.com/resources/2022/815074/I/815074-75d4cb74-23d9-4974-988f-35d60a3f2c8c' 
                     : 'https://campamericalive.s3.amazonaws.com/resources/2023/893825/I/893825-80249724-8bea-43f0-b84c-745434346baf')
                 : `${v.firstName.substring(1, 0)}${v.lastName.substring(1, 0)}`;
-            return new CfTableRow(`${v.applicationId}`, 
+            return new CFTableRow(`${v.applicationId}`, 
                 [urlOrInitials, v.firstName, v.lastName, v.email, v.status]
             );
         });        
-        this.paginationTable = new CfTableData(pscolumns.slice(), results, new CfTablePaginationOptions(10, results.length));        
+        this.paginationTable = new CFTableData(pscolumns.slice(), results, new CFTablePaginationOptions(10, results.length));        
     }
 
     selectedStandardRow(event: CfTableSelectedRow): void {
@@ -981,13 +999,13 @@ export class ControlSummaryComponent implements OnInit {
             { applicationId: 912931, firstName: "Photo22", lastName: "Test", email: "photo22@test.com", status: "PreInterview" },
         ];
 
-        var columns: CfTableColumn[] = [
-            new CfTableColumn("First", CfTableColumnAlignment.Left, CfTableColumnType.String),
-            new CfTableColumn("Last", CfTableColumnAlignment.Left, CfTableColumnType.String),
-            new CfTableColumn("Email", CfTableColumnAlignment.Left, CfTableColumnType.String),
-            new CfTableColumn("Status", CfTableColumnAlignment.Left, CfTableColumnType.UserStatus),
+        var columns: CFTableColumn[] = [
+            new CFTableColumn("First", CfTableColumnAlignment.Left, CfTableColumnType.String),
+            new CFTableColumn("Last", CfTableColumnAlignment.Left, CfTableColumnType.String),
+            new CFTableColumn("Email", CfTableColumnAlignment.Left, CfTableColumnType.String),
+            new CFTableColumn("Status", CfTableColumnAlignment.Left, CfTableColumnType.UserStatus),
         ];
-        this.typeaheadSearchTable = new CfTableData(columns, []);
+        this.typeaheadSearchTable = new CFTableData(columns, []);
     }
 
     doTypeaheadLookup(value: string): void {
@@ -1007,7 +1025,7 @@ export class ControlSummaryComponent implements OnInit {
 
             if(this.typeaheadSearchResults.length > 0) {
                 const results = this.typeaheadSearchResults.map( (v: TypeaheadResults) => {
-                    return new CfTableRow(`${v.applicationId}`, [v.firstName, v.lastName, v.email, v.status]);
+                    return new CFTableRow(`${v.applicationId}`, [v.firstName, v.lastName, v.email, v.status]);
                 });
                 // console.log(`RESULTS: ${JSON.stringify(results)}`);
 
@@ -1109,7 +1127,9 @@ export class ControlSummaryComponent implements OnInit {
         const items: CFTourElement[] = [];
         items.push(new CFTourElement("CL:menu", "This is the menu, which may look different depending on the device you use to view the page.<br><br>The logo will always return you to the home page.", "Main Menu"));
         items.push(new CFTourElement("CL:div.spinner img.lg", "This is the loader control, used while network operations are in effect.", "Activity Indicator"));
-        items.push(new CFTourElement("CL:applicant-card", "This is an example of an applicant card.<br><br>These contain at-a-glance information regarding the applicant.", "Applicant Card"));
+        items.push(new CFTourElement("CL:div.applicant-card div.image", "This is an example of an applicant card.<br><br>These contain at-a-glance information regarding the applicant.", "Applicant Card"));
+        items.push(new CFTourElement("CL:tour-modal-buttons", "The UiModalService provides a programmatic way of calling a standard modal dialog.<br><br>These can display user-defined buttons and respond with the user's selection as necessary.", "Modal Dialogs"));
+        items.push(new CFTourElement("CL:tour-profile", "The profile images can display either an image or the applicant's initials at a requested size.<br><br>Options exist for rounded or square display.<br><br>This control is also used in its larger configuration for the Applicant Card.", "Profile Image Display"));
         
         this.tourItems = items;
         this.restoreX = window.scrollX;
@@ -1186,13 +1206,13 @@ export class ControlSummaryComponent implements OnInit {
             });
     }
 
-    standardTable?: CfTableData;
-    paginationTable?: CfTableData;
-    sortTable?: CfTableData;
+    standardTable?: CFTableData;
+    paginationTable?: CFTableData;
+    sortTable?: CFTableData;
 
     typeaheadSearchData: TypeaheadResults[] = [];
     typeaheadSearchResults: TypeaheadResults[] = [];
-    typeaheadSearchTable?: CfTableData;
+    typeaheadSearchTable?: CFTableData;
     displayApplicantCard?: ICfApplicantCardInfo;
     displayApplicantCards: ICfApplicantCardInfo[] = [];
     selectedApplicant?: ICfApplicantCardInfo;

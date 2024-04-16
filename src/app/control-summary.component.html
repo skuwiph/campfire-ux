@@ -392,7 +392,7 @@
 <div class="flex-container">
     <div class="left">
         <div class="button-bar cal">
-            <app-cf-button [type]="Button.Primary" (click)="showModalInfo()">Show Info</app-cf-button>
+            <app-cf-button class="tour-modal-buttons" [type]="Button.Primary" (click)="showModalInfo()">Show Info</app-cf-button>
             <app-cf-button [type]="Button.Secondary" (click)="showModalConfirmation()">Show Confirmation</app-cf-button>
             <app-cf-button [type]="Button.Tertiary" (click)="showModalWarning()">Show Warning</app-cf-button>
             <app-cf-button [type]="Button.Danger" (click)="showModalError()">Show Error</app-cf-button>
@@ -419,7 +419,7 @@
     <div class="left comfort">
         <app-cf-profile [urlOrInitials]="'aj'"></app-cf-profile>
         <br>
-        <app-cf-profile
+        <app-cf-profile class="tour-profile"
             [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'"></app-cf-profile>
         <br>
         <app-cf-profile [width]="100" [height]="100"
@@ -552,8 +552,15 @@
         </code>
         <p>Extra parameters:</p>
         <code>[showHeaders]="true|false"</code><br>
-        <code>[sortable]="true|false"</code><br>
-        <br>
+        <code>[sortable]="true|false"</code>
+        <p>Setting filters:</p>
+        <code>[filter]="artistFilter"</code>
+        <p>In calling code:</p>
+        <code>
+            this.artistFilter = {{ '{' }} column:0, value: 'The Beatles' {{ '}' }};<br>
+        </code>
+        <p><strong>NOTE:</strong> filters can be undefined to clear an existing filter.</p>
+        
     </div>
 </div>
 <p><a href="#top">UP</a></p>
@@ -578,7 +585,8 @@
 <div class="flex-container">
     <div class="left">
         <h2>Sortable<a name="tables-sort"></a></h2>
-        <app-cf-table *ngIf="sortTable" [data]="sortTable" [sortable]="true"
+        <app-cf-button [type]="filterButtonType" (click)="toggleFilter()">{{filterText}}</app-cf-button>
+        <app-cf-table *ngIf="sortTable" [filter]="artistFilter" [data]="sortTable" [sortable]="true"
             (onSelect)="selectedStandardRow($event)"></app-cf-table>
     </div>
 </div>
@@ -646,6 +654,10 @@
 <div class="flex-container">
     <div class="left">
         <div class="comfort">
+            <p><strong>NOTE:</strong> we should probably make this a standalone component as well, and have a programmatic 
+                means for calling it, since adding an angular component to the page appears to be
+                completely unnecessary, having done the work for the modal dialogs.</p>
+            <br>
             <app-cf-button [type]="Button.Default" (click)="startTour()">Start Tour</app-cf-button>
             <app-cf-whats-new *ngIf="inTour" [tourItems]="tourItems" (endTour)="endTour($event)"></app-cf-whats-new>
         </div>
