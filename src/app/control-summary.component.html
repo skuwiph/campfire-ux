@@ -11,6 +11,7 @@
     <li><a href="#wait"><i class="fa-solid fa-arrow-up-right-from-square"></i>Loader Display</a></li>
     <li><a href="#menu"><i class="fa-solid fa-arrow-up-right-from-square"></i>Menu</a></li>
     <li><a href="#mention"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mention TextArea</a></li>
+    <li><a href="#modal"><i class="fa-solid fa-arrow-up-right-from-square"></i>Modals</a></li>
     <li><a href="#profile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Image</a></li>
     <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
     <li><a href="#tables"><i class="fa-solid fa-arrow-up-right-from-square"></i>Tables</a></li>
@@ -185,7 +186,7 @@
 </div>
 <div class="flex-container">
     <div class="left applicant-card">
-        <app-cf-applicant-card [applicant]="displayApplicantCard!"></app-cf-applicant-card>
+        <app-cf-applicant-card *ngFor="let a of displayApplicantCards" [applicant]="a" (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
@@ -341,6 +342,62 @@
         <app-cf-mention-text [searchData]="observableData$" [text]="testText"></app-cf-mention-text>
         <!--(inputTextChange)="textChanged($event)"-->
         <app-cf-button [type]="Button.Primary" (click)="setMentionText()">Set Default Text</app-cf-button>
+    </div>
+</div>
+<p><a href="#top">UP</a></p>
+
+<h2>Modals<a name="modal"></a></h2>
+<div class="flex-container">
+    <div class="left">
+        <h4>Notes</h4>
+        <p>Import the UIModalService, and call one of the showModal methods:</p>
+        <code>
+            constructor(<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;private modalService: UiModalService<br>
+            ) {{'{'}} {{'}'}}<br>
+            <br>
+            const b: CFModalButton[] = [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} id: 'Y', text: 'Yes', type: CfButtonType.Default {{'}'}},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} id: 'N', text: 'No', type: CfButtonType.Danger {{'}'}},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} id: 'M', text: 'Maybe', type: CfButtonType.Secondary {{'}'}}<br>
+            ];<br><br>
+            this.modalService<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;.showModalConfirmation(<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Confirmation Required',<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;p&gt;I need to ask you something important!&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;', <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b )<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;.subscribe({{'{'}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next: (r: string) => {{'{'}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
+            {{'}'}});<br><br>
+            this.modalService<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;.showModalInformation(<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Information',<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;p&gt;This is an information message.&lt;/p&gt;'<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;.subscribe({{'{'}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next: (r: string) => {{'{'}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
+            {{'}'}});<br><br>
+        </code>
+        <p>The observable string returned will match either an empty string (if the user 
+            closes the window without pressing a button), or an id value from 
+            the <code class="inline">CFModalButton</code> array. For modals which do not 
+            require a passed button array, the button result will always be 'OK'.</p>
+    </div>
+</div>
+
+<div class="flex-container">
+    <div class="left">
+        <div class="button-bar cal">
+            <app-cf-button [type]="Button.Primary" (click)="showModalInfo()">Show Info</app-cf-button>
+            <app-cf-button [type]="Button.Secondary" (click)="showModalConfirmation()">Show Confirmation</app-cf-button>
+            <app-cf-button [type]="Button.Tertiary" (click)="showModalWarning()">Show Warning</app-cf-button>
+            <app-cf-button [type]="Button.Danger" (click)="showModalError()">Show Error</app-cf-button>
+        </div>
+        <p>Modal response is: {{modalResponseLast}}</p>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
@@ -649,11 +706,16 @@
             &nbsp;&nbsp;&nbsp;&nbsp;--table-row-hover-fg-color: white;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;--table-paginate-info-color: #6996a4;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--tour-item-bg-color: #FFF1E3;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--tour-item-fg-color: #121212;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--tour-item-shadow-color: #565656;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;--dialog-backdrop-color: #000033;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;--dialog-title-bg-color: #6996a4;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;--dialog-title-fg-color: white;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;--menu-bg-color: #44788A;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--menu-sub-bg-color: #708a92;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;--menu-fg-color: #fff;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;--menu-bg-hover-color: #A7AED2;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;--menu-hamburger-color: #fff;<br>

@@ -6,17 +6,20 @@
     border: 1px solid var(--applicant-card-border-color);
     background-color: var(--applicant-card-bg-color);
     border-radius: 0.2rem;
-    margin: 1rem 0;
+    margin: 0;
     padding: 0.5rem;
     display: flex;
     gap: 1rem;
-    max-height: calc(200px + 4rem); // image + status + margin t+b
-    max-width: calc(200px + 1rem + 2px);
+    max-height: calc(var(--applicant-card-base-width) + 4rem); // image + status + margin t+b
+    max-width: calc(var(--applicant-card-base-width) + 1rem + 2px);
     .image {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 200px;
+        // min-width: var(--applicant-card-base-width);
+        // min-height: var(--applicant-card-base-width);
+        height: calc(var(--applicant-card-base-width) + 2rem); // image + status + margin t+b
+        width: calc(var(--applicant-card-base-width) + 1rem + 2px);
     }
     .details {
         position: absolute;
@@ -26,7 +29,7 @@
         flex-direction: column;
         justify-content: space-between;
         .row {
-            width: calc(204px - 0.45rem);
+            width: calc(var(--applicant-card-base-width) - 0.45rem); // +4?
             overflow: hidden;
             display:flex;
             flex-direction: row;
@@ -40,7 +43,7 @@
             }
             .name {
                 display: block;
-                margin-top: 165px;
+                margin-top: 205px;
                 color: white;
                 font-weight: 500;
                 filter: drop-shadow(1px 1px 2px var(--applicant-card-hover-shadow-color));
@@ -53,7 +56,8 @@
 }
 
 :host::ng-deep .statusBox {
+    display: block;
     min-height: 2rem;
     padding-top: 0.4rem;
-    min-width: 200px;
+    width: calc(240px);
 }

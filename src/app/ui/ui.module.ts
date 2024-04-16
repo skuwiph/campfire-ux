@@ -20,7 +20,6 @@ import { BoldTextPipe } from './boldspan.pipe';
 import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
 import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
 
-
 @NgModule({
     declarations: [
         CfAlertComponent,

@@ -37,12 +37,21 @@ export class CfWhatsNewComponent implements OnChanges {
             const width = b[0].width;
             const height = b[0].height;
             
-            window.scrollTo({ left: x, top: y, behavior: 'smooth' });
-
+            // Only scroll if the target is not on screen
+            const wx = window.screenLeft;
+            const wy = window.screenTop + window.scrollY;
+            const ww = window.innerWidth;
+            const wh = window.innerHeight;
+            
             // Need to know the exact height of the 'tail' to include that in our
             // calculations
             var top = y + height;
             var left = x - 15;
+
+            if(y < wy || y > wy + wh) {
+                console.log(`target (${y}) is off-screen: ${wx},${wy}-${ww}x${wh}`);
+                window.scrollTo({ left: x, top: y, behavior: 'smooth' });
+            }
 
             var xArrow = x + 15;
             if (left < 15) {

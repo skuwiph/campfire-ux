@@ -10,6 +10,8 @@ import { CFMention } from './ui/cf-mention-text/cf-mention-text.component';
 import { UiService } from './ui/ui.service';
 import { CFTourElement } from './ui/cf-whats-new/cf-whats-new.component';
 import { CFDropdownItem, CFDropdownItemType, CFDropdownOptions } from './ui/cf-dropdown/cf-dropdown.component';
+import { CFModalButton, CfModalComponent } from './ui/cf-modal/cf-modal.component';
+import { UiModalService } from './ui/ui-modal.service';
 
 @Component({
   templateUrl: './control-summary.component.html',
@@ -21,6 +23,13 @@ import { CFDropdownItem, CFDropdownItemType, CFDropdownOptions } from './ui/cf-d
   .mono { font-family: monospace }
   .comfort { padding: 0.5rem; }
   .active-msg { margin-top: 0.4rem; }
+  .applicant-card{
+    display: flex; 
+    flex-direction: row;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+  }
   :host::ng-deep .col_artist { width: 10rem; }
   :host::ng-deep .col_album { width: 27rem; }
   :host::ng-deep .col_first { width: 8rem; }
@@ -39,7 +48,10 @@ export class ControlSummaryComponent implements OnInit {
     @ViewChild('dialogDemo', { static: false }) dialog!: CfDialogComponent;
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;
 
-    constructor(private uiservice: UiService) {}
+    constructor(
+        private uiservice: UiService,
+        private modalService: UiModalService
+    ) {}
     dropdownOptions?: CFDropdownOptions;
 
     ngOnInit(): void {
@@ -52,6 +64,35 @@ export class ControlSummaryComponent implements OnInit {
             lastName: 'Geofferson',
             status: 'ParticipantPlaced'
         };
+
+        this.displayApplicantCards = [
+            {
+                applicationId: 1234567,
+                profileUrl: 'https://campamericalive.s3.amazonaws.com/resources/2023/893825/I/893825-80249724-8bea-43f0-b84c-745434346baf',
+                firstName: 'Meghan',
+                lastName: 'Geofferson',
+                status: 'ParticipantPlaced',
+            },
+            {
+                applicationId: 2456789,
+                firstName: 'Dawid',
+                lastName: 'Wierzbicki',
+                status: 'ParticipantReadyToPlace',
+            },
+            {
+                applicationId: 3567890,
+                lastName: 'Silva',
+                firstName: 'João',
+                status: 'ParticipantApplied',
+            },
+            {
+                applicationId: 4567899,
+                firstName: 'Necmettin Berkay',
+                lastName: 'Tombak',
+                status: 'ParticipantApplied',
+            },
+        ];
+
 
         this.observableData$ = of(
             new CFMention( "alanger",  "Allen Langer" ),
@@ -136,7 +177,7 @@ export class ControlSummaryComponent implements OnInit {
 
     // Buttons
     primaryClicked(): void {
-        window.alert(`Primary Button Clicked`);
+        this.modalService.showModalInformation('Information', `Primary Button Clicked`);
     }
 
     // Dialog
@@ -1005,7 +1046,7 @@ export class ControlSummaryComponent implements OnInit {
     }
 
     applicantCardSelected(applicationId: number): void {
-        window.alert(`Selected Card id #${applicationId}`);
+        this.modalService.showModalInformation('Card Selected', `Selected Card id #${applicationId}`);
     }
 
     observableData$ = new Observable<CFMention>();
@@ -1065,7 +1106,7 @@ export class ControlSummaryComponent implements OnInit {
         console.log(`Start tour`);
 
         const items: CFTourElement[] = [];
-        items.push(new CFTourElement("CL:menu", "This is the menu, click here for more functionality.<br><br>The logo will always return you to the home page.", "Main Menu"));
+        items.push(new CFTourElement("CL:menu", "This is the menu, which may look different depending on the device you use to view the page.<br><br>The logo will always return you to the home page.", "Main Menu"));
         items.push(new CFTourElement("CL:div.spinner img.lg", "This is the loader control, used while network operations are in effect.", "Activity Indicator"));
         items.push(new CFTourElement("CL:applicant-card", "This is an example of an applicant card.<br><br>These contain at-a-glance information regarding the applicant.", "Applicant Card"));
         
@@ -1073,56 +1114,75 @@ export class ControlSummaryComponent implements OnInit {
         this.restoreX = window.scrollX;
         this.restoreY = window.scrollY;
         this.inTour = true;
-    }
-
-    // changeTourItem(direction: number): void {
-    //     console.log(`Move ${direction > 0 ? 'forwards' : 'backwards'} through tour`);
-    //     this.inTour = false;
-    //     this.currentItem += direction;
-    //     this.tourItem = this.getTourItem(this.tourItems[this.currentItem], this.currentItem);
-    //     this.inTour = (this.tourItem != undefined);
-    // }
-
-    // getTourItem(className: string, index: number): CFTourItem | undefined {
-    //     let ti = undefined;
-    //     const b = this.uiservice.getElementPositionByClass(className);
-    //     if (b) {
-    //         console.log(`Bounds: ${JSON.stringify(b)}, window: ${window.scrollX},${window.scrollY}`);
-    //         const x = b[0].x;
-    //         console.log(`Looking at x: ${x}`);
-    //         switch(className) {
-    //             case 'menu':
-    //                 ti = new CFTourItem(
-    //                     "This is the menu, click here for more functionality.<br><br>The logo will always return you to the home page.", 
-    //                     x, b[0].y + window.scrollY, 
-    //                     b[0].width, b[0].height, 
-    //                     'The Main Menu', 0, 3);
-    //                 break;
-    //             case 'applicant-card':
-    //                 ti = new CFTourItem(
-    //                     "This is an example of an applicant card.<br><br>These contain at-a-glance information regarding the applicant.",
-    //                     x, b[0].y + window.scrollY, 
-    //                     b[0].width, b[0].height, 
-    //                     'Applicant Cards', index, 3);
-    //                 break;
-    //             case 'div.spinner img.lg':
-    //                 ti = new CFTourItem(
-    //                     "This is the loader control, used while network operations are in effect.",
-    //                     x, b[0].y + window.scrollY,
-    //                     b[0].width, b[0].height,
-    //                     'Loader/Spinner', index, 3);
-    //                 break;                    
-    //         }
-    //     } else {
-    //         console.log(`Didn't get tour item: ${className}`);
-    //     }
-    //     return ti;
-    // }
+    }  
 
     endTour(end: boolean): void {
         console.log(`End tour!`);
         this.inTour = false;
         window.scrollTo({ left: this.restoreX, top: this.restoreY, behavior: 'smooth' })
+    }
+
+    // MODALS
+    modalResponseLast: string = 'Click on buttons above';
+    showModalInfo(): void {
+        this.modalResponseLast = 'Waiting for user input';
+        this.modalService
+        .showModalInformation('Here is my title', '<p>This is purely informational</p>')
+        .subscribe( {
+            next: (r: string) => {
+                this.modalResponseLast = `Clicked: '${r}'`;
+            },
+            complete: () => {
+            }
+        });
+    }
+
+    showModalConfirmation(): void {
+        this.modalResponseLast = 'Waiting for user input';
+        const b: CFModalButton[] = [
+            { id: 'Yes', text: 'Yes', type: CfButtonType.Default },
+            { id: 'No', text: 'No', type: CfButtonType.Danger },
+            { id: 'Maybe', text: 'Maybe', type: CfButtonType.Secondary }
+        ];
+        this.modalService
+            .showModalConfirmation('Confirmation Required!', '<p>I need to ask you something important!</p><p>Are you sure?</p>', b )
+            .subscribe({
+                next: (r: string) => {
+                    this.modalResponseLast = `Clicked: '${r}'`;
+                },
+                complete: () => {
+                }
+            });
+    }
+
+    showModalWarning(): void {
+        this.modalResponseLast = 'Waiting for user input';
+        const b: CFModalButton[] = [
+            { id: 'Yes', text: 'Yes', type: CfButtonType.Default },
+            { id: 'No', text: 'No', type: CfButtonType.Danger },
+        ];
+        this.modalService
+            .showModalWarning('A Warning!', '<p>Ask not for whom the bell tolls.</p>', b)
+            .subscribe({
+                next: (r: string) => {
+                    this.modalResponseLast = `Clicked: '${r}'`;
+                },
+                complete: () => {
+                }
+            })
+    }
+
+    showModalError(): void {
+        this.modalResponseLast = 'Waiting for user input';
+        this.modalService
+            .showModalError('Error!', '<p>Something bad happened!</p><p>It really did...</p>')
+            .subscribe({
+                next: (r: string) => {
+                    this.modalResponseLast = `Clicked: '${r}'`;
+                },
+                complete: () => {
+                }
+            });
     }
 
     standardTable?: CfTableData;
@@ -1133,6 +1193,7 @@ export class ControlSummaryComponent implements OnInit {
     typeaheadSearchResults: TypeaheadResults[] = [];
     typeaheadSearchTable?: CfTableData;
     displayApplicantCard?: ICfApplicantCardInfo;
+    displayApplicantCards: ICfApplicantCardInfo[] = [];
     selectedApplicant?: ICfApplicantCardInfo;
 }
 

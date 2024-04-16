@@ -1,0 +1,71 @@
+@import "/src/assets/styles/themes";
+
+dialog,
+#modal {
+    position: fixed;
+    top: 0;
+    left: calc(100vw - (87.5%));
+    margin: 5rem auto 0;
+    width: 75%;
+    border: 1px;
+    border-radius: 0.5rem;
+    padding: 0;
+    background-color: var(--dialog-bg-color);
+    .heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 2rem;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        color: var(--dialog-title-fg-color);
+
+        &.error {
+            background-color: var(--dialog-title-bg-color-error);
+        }
+        &.warning {
+            background-color: var(--dialog-title-bg-color-warning);
+        }
+        &.confirmation {
+            background-color: var(--dialog-title-bg-color-confirmation);
+        }
+        &.information {
+            background-color: var(--dialog-title-bg-color);
+        }
+
+        .title {
+            padding: 0.75rem 1rem;
+        }
+
+        .heading-button {
+            margin-right: 0.75rem;
+            border: 0;
+            background-color: transparent;
+            color: var(--dialog-title-fg-color);
+        }
+    }
+
+    .body {
+        padding: 0 1rem;
+    }
+}
+
+#bd{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: var(--dialog-backdrop-color);
+    opacity: 0.75;
+}
+
+::backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: var(--dialog-backdrop-color);
+    opacity: 0.75;
+}

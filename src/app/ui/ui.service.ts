@@ -1,10 +1,9 @@
-import { ElementRef, Injectable, Renderer2 } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UiService {
-    constructor() { }
 
     public getElementPositionByType(query: string): DOMRectList | undefined {
         const parts = query.split(':');

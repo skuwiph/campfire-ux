@@ -1,0 +1,17 @@
+<!--<dialog #modal> -->
+<div id="bd"></div>
+<div id="modal">
+    <div class="heading" [ngClass]="type" *ngIf="title">
+        <span class="title">{{title}}</span>
+        <button type="button" class="heading-button" (click)="closeDialog()">
+            <i class="fa-regular fa-circle-xmark"></i>
+        </button>
+    </div>
+    <div class="body">
+        <p [innerHTML]="message"></p>
+        <div class="button-bar ral">
+            <app-cf-button *ngFor="let b of buttons" [type]="b.type" (click)="buttonSelected(b.id)">{{b.text}}</app-cf-button>
+        </div>  
+    </div>
+</div>
+<!--</dialog>-->
