@@ -14,7 +14,6 @@ import { CfMenuComponent } from './cf-menu/cf-menu.component';
 import { CfProfileComponent } from './cf-profile/cf-profile.component';
 import { CfTableComponent } from './cf-table/cf-table.component';
 import { CfTypeaheadComponent } from './cf-typeahead/cf-typeahead.component';
-import { CfWhatsNewComponent } from './cf-whats-new/cf-whats-new.component';
 import { CfStatusDisplayComponent } from './cf-status-display/cf-status-display.component';
 import { BoldTextPipe } from './boldspan.pipe';
 import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
@@ -34,7 +33,6 @@ import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
         CfStatusDisplayComponent,
         CfTableComponent,
         CfTypeaheadComponent,
-        CfWhatsNewComponent,
         BoldTextPipe,
         CloudimageCropPipe,
         CloudimagePipe,
@@ -58,7 +56,6 @@ import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
         CfStatusDisplayComponent,
         CfTableComponent,
         CfTypeaheadComponent, 
-        CfWhatsNewComponent,
     ],
     providers: []
 })

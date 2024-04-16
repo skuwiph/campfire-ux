@@ -129,7 +129,7 @@ export class ControlSummaryComponent implements OnInit {
             this.filterButtonType = CfButtonType.Danger;
         }
     }
-
+    
     prepareStandardTable(): void {
         var columns: CFTableColumn[] = [
             new CFTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),
@@ -1118,7 +1118,6 @@ export class ControlSummaryComponent implements OnInit {
     }
 
     inTour = false;
-    tourItems: CFTourElement[] = [];
     restoreX = 0;
     restoreY = 0;
     startTour(): void {
@@ -1131,13 +1130,23 @@ export class ControlSummaryComponent implements OnInit {
         items.push(new CFTourElement("CL:tour-modal-buttons", "The UiModalService provides a programmatic way of calling a standard modal dialog.<br><br>These can display user-defined buttons and respond with the user's selection as necessary.", "Modal Dialogs"));
         items.push(new CFTourElement("CL:tour-profile", "The profile images can display either an image or the applicant's initials at a requested size.<br><br>Options exist for rounded or square display.<br><br>This control is also used in its larger configuration for the Applicant Card.", "Profile Image Display"));
         
-        this.tourItems = items;
         this.restoreX = window.scrollX;
         this.restoreY = window.scrollY;
         this.inTour = true;
+
+        this.uiservice
+            .startTour(items)
+            .subscribe({ 
+                next: (currentItem: CFTourElement) => {
+                    console.log(`Showing item: ${currentItem.heading ?? 'No heading'}`);
+                },
+                complete: () => {
+                    this.endTour();
+                }
+            });
     }  
 
-    endTour(end: boolean): void {
+    endTour(): void {
         console.log(`End tour!`);
         this.inTour = false;
         window.scrollTo({ left: this.restoreX, top: this.restoreY, behavior: 'smooth' })

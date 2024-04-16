@@ -653,13 +653,59 @@
 <h2>What's New<a name="whatsnew"></a></h2>
 <div class="flex-container">
     <div class="left">
+        <h4>Notes</h4>
+        <p>Code:</p>
+        <code>
+        inTour = false;<br>
+        restoreX = 0;<br>
+        restoreY = 0;<br>
+        <br>
+        startTour(): void {{'{'}}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Start tour`);<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;const items: CFTourElement[] = [];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:menu", "Text line 1.&lt;br&gt;Text line 2", "Main Menu"));<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:div.spinner img.lg", "More text.", "Activity Indicator"));<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:div.applicant-card div.image", "Even more text", "Applicant Card"));<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:tour-modal-buttons", "Yet more", "Modal Dialogs"));<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:tour-profile", "Way more.", "Profile Image Display"));<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.restoreX = window.scrollX;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.restoreY = window.scrollY;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.inTour = true;<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.uiservice<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.startTour(items)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.subscribe({{'{'}}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next: (currentItem: CFTourElement) => {{'{'}}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Changed tour item<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;complete: () => {{'{'}}<br>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(`End tour!`);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.inTour = false;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.scrollTo({{'{'}} left: this.restoreX, top: this.restoreY, behavior: 'smooth' {{'}'}})<br>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}});<br>
+        {{'}'}}<br>
+        </code>
+        <p><strong>NOTE:</strong> The <code class="inline">CFTourElement</code> first constructor parameter
+        is used to determine which getElement query is run against the DOM:</p>
+        <ul>
+            <li><strong>CL:</strong> - class name or class hierarchy</li>
+            <li><strong>ID:</strong> - an element Id</li>
+        </ul>
+        <p>Once the tour observable is complete, you can restore the original scroll 
+         position as shown above, or perform whatever you logic you wish.</p>
+    </div>
+    </div>
+<div class="flex-container">
+    <div class="left">
         <div class="comfort">
-            <p><strong>NOTE:</strong> we should probably make this a standalone component as well, and have a programmatic 
-                means for calling it, since adding an angular component to the page appears to be
-                completely unnecessary, having done the work for the modal dialogs.</p>
             <br>
             <app-cf-button [type]="Button.Default" (click)="startTour()">Start Tour</app-cf-button>
-            <app-cf-whats-new *ngIf="inTour" [tourItems]="tourItems" (endTour)="endTour($event)"></app-cf-whats-new>
+            
         </div>
     </div>
 </div>

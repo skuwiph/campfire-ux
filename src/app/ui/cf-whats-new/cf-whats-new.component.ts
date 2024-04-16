@@ -1,38 +1,42 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { UiService } from '../ui.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-cf-whats-new',
+    standalone: true,
+    imports: [CommonModule],
     templateUrl: 'cf-whats-new.component.html',
     styleUrls: ['./cf-whats-new.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CfWhatsNewComponent implements OnChanges {
+export class CfWhatsNewComponent {
     constructor(private uiService: UiService) {}
 
     @Input() tourItems: CFTourElement[] = [];
-    @Output() endTour: EventEmitter<boolean> = new EventEmitter();
+    @Output() onEndTour: EventEmitter<boolean> = new EventEmitter();
+    @Output() onTourItemChanged: EventEmitter<CFTourElement> = new EventEmitter();
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes["tourItems"]) {
-            console.log(`Changed tour items`);
-            this.current = 0;
-            this.calculatePositions();
-        }
+    startTour(): void {
+        this.display = true;
+        this.current = 0;
+        this.calculatePositions();
     }
 
     cancelTour(): void {
-        console.log(`End tour?`);
         this.display = false;
-        this.endTour.emit(true);
+        this.onEndTour.emit(true);
     }
 
     calculatePositions(): void {
         const c = this.tourItems[this.current];
+
+        this.onTourItemChanged.emit(c);
+        
         const b = this.uiService.getElementPositionByType(c.identifier);
         if (b) {
-            console.log(`Bounds: ${JSON.stringify(b)}, window: ${window.scrollX},${window.scrollY}`);
+            // console.log(`Bounds: ${JSON.stringify(b)}, window: ${window.scrollX},${window.scrollY}`);
             const x = b[0].x;
-            console.log(`Looking at x: ${x}`);
+            // console.log(`Looking at x: ${x}`);
             const y = b[0].y + window.scrollY;
             const width = b[0].width;
             const height = b[0].height;
@@ -49,7 +53,7 @@ export class CfWhatsNewComponent implements OnChanges {
             var left = x - 15;
 
             if(y < wy || y > wy + wh) {
-                console.log(`target (${y}) is off-screen: ${wx},${wy}-${ww}x${wh}`);
+                // console.log(`target (${y}) is off-screen: ${wx},${wy}-${ww}x${wh}`);
                 window.scrollTo({ left: x, top: y, behavior: 'smooth' });
             }
 
@@ -66,13 +70,14 @@ export class CfWhatsNewComponent implements OnChanges {
             this.heading = c.heading;
             this.text = c.text;
 
-            console.log(`${left}x${top}: Item: ${this.current}, count: ${this.tourItems.length}`);
+            // console.log(`${left}x${top}: Item: ${this.current}, count: ${this.tourItems.length}`);
 
             this.hasNext = this.current < this.tourItems.length - 1;
             this.hasPrevious = this.current > 0;
             this.display = true;
+
         } else {
-            this.display = false;
+            this.cancelTour();
             console.warn(`Couldn't get element from ${c.identifier}`);
         }
     }
