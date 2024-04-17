@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./cf-applicant-card.component.scss']
 })
 export class CfApplicantCardComponent implements OnInit {
-    @Input() applicant!: ICfApplicantCardInfo;
+    @Input() applicant!: ICFApplicantCardInfo;
     @Output() cardClick = new EventEmitter<number>();
 
     ngOnInit(): void {
@@ -22,10 +22,11 @@ export class CfApplicantCardComponent implements OnInit {
     urlOrInitials = '??';
 }
 
-export interface ICfApplicantCardInfo {
+export interface ICFApplicantCardInfo {
     applicationId: number;
     profileUrl?: string;
     firstName: string;
     lastName: string;
     status: string;
+    profile?: string;
 }

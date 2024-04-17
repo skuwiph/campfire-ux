@@ -185,7 +185,7 @@
     </div>
 </div>
 <div class="flex-container">
-    <div class="left applicant-card">
+    <div class="left applicant-card" *ngIf="profilesLoaded && displayApplicantCards">
         <app-cf-applicant-card *ngFor="let a of displayApplicantCards" [applicant]="a" (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
     </div>
 </div>
@@ -416,14 +416,14 @@
 </div>
 
 <div class="flex-container">
-    <div class="left comfort">
+    <div class="left comfort" *ngIf="profilesLoaded">
         <app-cf-profile [urlOrInitials]="'aj'"></app-cf-profile>
         <br>
         <app-cf-profile class="tour-profile"
-            [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'"></app-cf-profile>
+            [urlOrInitials]="testUserPortrait"></app-cf-profile>
         <br>
         <app-cf-profile [width]="100" [height]="100"
-            [urlOrInitials]="'https://campamericalive.s3.amazonaws.com/resources/2022/814254/I/814254-cf3efaee-8d83-4044-9d61-ee1f71ea7810'"
+            [urlOrInitials]="testUserPortrait"
             [roundImage]="false"></app-cf-profile>
     </div>
 </div>
@@ -583,7 +583,7 @@
 <p><a href="#top">UP</a></p>
 
 <div class="flex-container">
-    <div class="left">
+    <div class="left" *ngIf="profilesLoaded">
         <h2>Sortable<a name="tables-sort"></a></h2>
         <app-cf-button [type]="filterButtonType" (click)="toggleFilter()">{{filterText}}</app-cf-button>
         <app-cf-table *ngIf="sortTable" [filter]="artistFilter" [data]="sortTable" [sortable]="true"
@@ -628,7 +628,7 @@
     </div>
 </div>
 <div class="flex-container">
-    <div class="left">
+    <div class="left" *ngIf="profilesLoaded">
         <br>
         <app-cf-typeahead #typeahead [placeholderTextDefault]="'Default text'"
             [placeholderTextActive]="'Enter search terms'" [isSearching]="isTypeaheadSearching"
