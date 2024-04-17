@@ -72,7 +72,7 @@
         </code>
         <p>Remember to import the enum into the component.ts:</p>
         <code>
-            Alert = CfAlertType;<br>
+            Alert = CFAlertType;<br>
         </code>
         <br>
     </div>
@@ -131,7 +131,7 @@
         </code>
         <p>Remember to import the enum into the component.ts:</p>
         <code>
-            Button = CfButtonType;<br>
+            Button = CFButtonType;<br>
         </code>
         <br>
     </div>
@@ -203,13 +203,11 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;div footer&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="button-bar ral"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="'Default'" (click)="dialogDefault()"&gt;Save&lt;/app-cf-button&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="'Cancel'" (click)="dialogCancel()"&gt;Cancel&lt;/app-cf-button&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Default" (click)="dialogDefault()"&gt;Save&lt;/app-cf-button&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Cancel" (click)="dialogCancel()"&gt;Cancel&lt;/app-cf-button&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
         &lt;/app-cf-dialog&gt;<br>
-        <br>
-        &lt;app-cf-button [type]="'Default'" (click)="showDialog($event)"&gt;<br>
         </code>
         <p>Code:</p>
         <code>
@@ -221,12 +219,12 @@
             {{ '}' }}<br>
             <br>
             dialogDefault(): void {{ '{' }}<br>
-            // Do something<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;// Do something<br>
             &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.closeDialog();<br>
             {{ '}' }}<br>
             <br>
             dialogCancel(): void {{ '{' }}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Cancelled Dialog`);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;// Cancelled Dialog;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.closeDialog();<br>
             {{ '}' }}<br>
         </code>
@@ -280,21 +278,31 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Text&lt;/p&gt;<br>
             &lt;/app-cf-loader&gt;<br>
             <br>
-            &lt;app-cf-loader [size]="'sm'"&gt;&lt;/app-cf-loader&gt;<br>
+            &lt;app-cf-loader [size]="LoaderSize.Small" [style]="LoaderStyle.Clock"&gt;&lt;/app-cf-loader&gt;<br>
         </code>
         <p>Pass text as inner content, or nothing</p>
+        <p>Remember to import the enums into the component.ts:</p>
+        <code>
+            LoaderSize = CFLoaderSize;<br>
+            LoaderStyle = CFLoaderStyle;<br>
+        </code>
+        <br>
     </div>
 </div>
 <div class="flex-container">
-    <div class="left loader">
-        <app-cf-loader>
-            <p>Large Loader... Please Wait...</p>
-        </app-cf-loader>
-        <app-cf-loader></app-cf-loader>
-        <app-cf-loader [size]="'sm'">
-            <p class="smaller">Small</p>
-        </app-cf-loader>
-        <app-cf-loader [size]="'sm'"></app-cf-loader>
+    <div class="left">
+        <div class="comfort loader">
+            <p class="cal">LoaderSize.Large</p>
+            <app-cf-loader><p>Stopwatch</p></app-cf-loader>
+            <app-cf-loader [style]="LoaderStyle.Clock"><p>Clock</p></app-cf-loader>
+            <app-cf-loader [style]="LoaderStyle.Circles"><p>Circles</p></app-cf-loader>
+        </div>
+        <div class="comfort loader">
+            <p class="cal">LoaderSize.Small</p>
+            <app-cf-loader [size]="LoaderSize.Small"></app-cf-loader>
+            <app-cf-loader [style]="LoaderStyle.Clock" [size]="LoaderSize.Small"></app-cf-loader>
+            <app-cf-loader [style]="LoaderStyle.Circles" [size]="LoaderSize.Small"></app-cf-loader>
+        </div>
     </div>
 </div>
 <p><a href="#top">UP</a></p>
@@ -386,11 +394,6 @@
             closes the window without pressing a button), or an id value from 
             the <code class="inline">CFModalButton</code> array. For modals which do not 
             require a passed button array, the button result will always be 'OK'.</p>
-    </div>
-</div>
-
-<div class="flex-container">
-    <div class="left">
         <div class="button-bar cal">
             <app-cf-button class="tour-modal-buttons" [type]="Button.Primary" (click)="showModalInfo()">Show Info</app-cf-button>
             <app-cf-button [type]="Button.Secondary" (click)="showModalConfirmation()">Show Confirmation</app-cf-button>
@@ -530,11 +533,11 @@
         </code>
         <p>Code:</p>
         <code>
-            var columns: CfTableColumn[] = [<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Album", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_album"),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Year", CfTableColumnAlignment.Center, CfTableColumnType.Number),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CfTableColumn("Position", CfTableColumnAlignment.Right, CfTableColumnType.String),<br>
+            var columns: CFTableColumn[] = [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Artist", CFTableColumnAlignment.Left, CFTableColumnType.String, "col_artist"),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Album", CFTableColumnAlignment.Left, CFTableColumnType.String, "col_album"),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Year", CFTableColumnAlignment.Center, CFTableColumnType.Number),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Position", CFTableColumnAlignment.Right, CFTableColumnType.String),<br>
             ];<br>
             <br>
             var data = [<br>
@@ -542,11 +545,11 @@
             &nbsp;&nbsp;&nbsp;&nbsp;...<br>
             ];<br>
             <br>
-            this.standardTable = new CfTableData(columns, data, new CfTablePaginationOptions(10, data.length));
+            this.standardTable = new CFTableData(columns, data, new CfTablePaginationOptions(10, data.length));
         </code>
         <p>Event:</p>
         <code>
-            selectedStandardRow(event: CfTableSelectedRow): void {{ '{' }}<br>
+            selectedStandardRow(event: CFTableSelectedRow): void {{ '{' }}<br>
             &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Row was selected with PK: ${{ '{' }}event.pk{{ '}' }}`);<br>
             {{ '}' }}<br>
         </code>
@@ -661,18 +664,15 @@
         restoreY = 0;<br>
         <br>
         startTour(): void {{'{'}}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Start tour`);<br>
-        <br>
         &nbsp;&nbsp;&nbsp;&nbsp;const items: CFTourElement[] = [];<br>
         &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:menu", "Text line 1.&lt;br&gt;Text line 2", "Main Menu"));<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:div.spinner img.lg", "More text.", "Activity Indicator"));<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:div.spinner div.lg", "More text.", "Activity Indicator"));<br>
         &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:div.applicant-card div.image", "Even more text", "Applicant Card"));<br>
         &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:tour-modal-buttons", "Yet more", "Modal Dialogs"));<br>
         &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:tour-profile", "Way more.", "Profile Image Display"));<br>
         <br>
         &nbsp;&nbsp;&nbsp;&nbsp;this.restoreX = window.scrollX;<br>
         &nbsp;&nbsp;&nbsp;&nbsp;this.restoreY = window.scrollY;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.inTour = true;<br>
         <br>
         &nbsp;&nbsp;&nbsp;&nbsp;this.uiservice<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.startTour(items)<br>
@@ -682,8 +682,6 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;complete: () => {{'{'}}<br>
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(`End tour!`);<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.inTour = false;<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.scrollTo({{'{'}} left: this.restoreX, top: this.restoreY, behavior: 'smooth' {{'}'}})<br>
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}}<br>
@@ -698,15 +696,7 @@
         </ul>
         <p>Once the tour observable is complete, you can restore the original scroll 
          position as shown above, or perform whatever you logic you wish.</p>
-    </div>
-    </div>
-<div class="flex-container">
-    <div class="left">
-        <div class="comfort">
-            <br>
-            <app-cf-button [type]="Button.Default" (click)="startTour()">Start Tour</app-cf-button>
-            
-        </div>
+         <app-cf-button [type]="Button.Default" (click)="startTour()">Start Tour</app-cf-button>
     </div>
 </div>
 <p><a href="#top">UP</a></p>

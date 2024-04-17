@@ -34,7 +34,6 @@ export class CfStatusDisplayComponent implements OnInit {
             ['Returner', 'Returner Completing Form'],
             ['ReturnToORCA', 'Resend to ORCA'],
             ['TransferredToORCA', 'Transferred to ORCA'],
-            ['ParticipantReadyToPlace', 'Ready to Place'],
         ]);
 
         this.stateName = this.stateMap.get(this.status) ?? `Unknown (${this.status})`;

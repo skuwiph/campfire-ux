@@ -1,6 +1,6 @@
 import { ApplicationRef, EmbeddedViewRef, Injectable, createComponent } from '@angular/core';
 import { CFModalButton, CFModalType, CfModalComponent } from './cf-modal/cf-modal.component';
-import { CfButtonType } from './cf-button/cf-button.component';
+import { CFButtonType } from './cf-button/cf-button.component';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class UiModalService {
             CFModalType.Information, 
             title, 
             message, 
-            [{ type: CfButtonType.Default, id: 'OK', text: 'OK' }],
+            [{ type: CFButtonType.Default, id: 'OK', text: 'OK' }],
         );
     }
 
@@ -41,7 +41,7 @@ export class UiModalService {
             CFModalType.Error,
             title,
             message,
-            [{ type: CfButtonType.Default, id: 'OK', text: 'OK' }],
+            [{ type: CFButtonType.Default, id: 'OK', text: 'OK' }],
         );
     }
 

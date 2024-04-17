@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
-import { CfButtonType } from '../cf-button/cf-button.component';
+import { CFButtonType } from '../cf-button/cf-button.component';
 import { CommonModule } from '@angular/common';
 import { UiModule } from '../ui.module';
 
@@ -42,7 +42,7 @@ export enum CFModalType {
 }
 
 export interface CFModalButton {
-    type: CfButtonType;
+    type: CFButtonType;
     text: string;
     id: string;
 }

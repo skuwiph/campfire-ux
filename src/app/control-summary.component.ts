@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CFTableColumn, CfTableColumnAlignment, CfTableColumnType, CFTableData, CFTableFilter, CFTablePaginationOptions, CFTableRow, CfTableSelectedRow } from './ui/cf-table/cf-table.component';
 import { CfDialogComponent } from './ui/cf-dialog/cf-dialog.component';
-import { CfButtonType } from './ui/cf-button/cf-button.component';
-import { CfAlertType } from './ui/cf-alert/cf-alert.component';
+import { CFButtonType } from './ui/cf-button/cf-button.component';
+import { CFAlertType } from './ui/cf-alert/cf-alert.component';
 import { CfTypeaheadComponent } from './ui/cf-typeahead/cf-typeahead.component';
 import { ICFApplicantCardInfo } from './ui/cf-applicant-card/cf-applicant-card.component';
 import { Observable, of } from 'rxjs';
@@ -14,6 +14,7 @@ import { CFModalButton, CfModalComponent } from './ui/cf-modal/cf-modal.componen
 import { UiModalService } from './ui/ui-modal.service';
 
 import { HttpClient } from '@angular/common/http';
+import { CFLoaderSize, CFLoaderStyle } from './ui/cf-loader/cf-loader.component';
 
 @Component({
   templateUrl: './control-summary.component.html',
@@ -22,7 +23,7 @@ import { HttpClient } from '@angular/common/http';
   ul.link { list-style-type: none; margin-left: 2rem;}
   ul.link li { display:flex; flex-direction:row; justify-content: flex-start;}
   ul.link li i { width: 1.75rem; }
-  .mono { font-family: monospace }
+  .mono { font-family: "Reddit Mono", monospace; }
   .comfort { padding: 0.5rem; }
   .active-msg { margin-top: 0.4rem; }
   .applicant-card{
@@ -32,21 +33,24 @@ import { HttpClient } from '@angular/common/http';
     flex-wrap: wrap;
     padding: 0.5rem;
   }
+  .cal { margin:0 auto; justify-content: center; }
   :host::ng-deep .col_profile { width: 65px; }
   :host::ng-deep .col_artist { width: 10rem; }
   :host::ng-deep .col_album { width: 27rem; }
   :host::ng-deep .col_first { width: 8rem; }
   :host::ng-deep .col_last { width: 10rem; }
   :host::ng-deep .col_status { width: 15rem; }
-  .loader { max-width: 6rem; margin: 0 auto;}
+  .loader { display: flex; flex-direction: column; max-width: 10rem; margin: 0 auto;}
   .status-table { width: 15rem; margin: 1rem 0 1rem 0.25rem; }
   .status-table tr td { line-height: 1.75rem; margin-bottom: 0.1rem; }
   `],
 })
 export class ControlSummaryComponent implements OnInit {
     title = 'component-showcase';
-    Button = CfButtonType;
-    Alert = CfAlertType;
+    Button = CFButtonType;
+    Alert = CFAlertType;
+    LoaderSize = CFLoaderSize;
+    LoaderStyle = CFLoaderStyle;
 
     @ViewChild('dialogDemo', { static: false }) dialog!: CfDialogComponent;
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;
@@ -129,7 +133,7 @@ export class ControlSummaryComponent implements OnInit {
             });
     }
     images: string[] = [];
-    userStates: string[] = ['PreInterview', 'PostInterview', 'Returner', 'ParticipantApplied', 'ParticipantReadyToPlace', 'ParticipantReadyToPlaceMM', 'ParticipantPlaced', 'ParticipantOutOfProgrammeCNX'];
+    userStates: string[] = ['PreInterview', 'PostInterview', 'Returner', 'PendingAcceptanceAsReturner', 'ParticipantApplied', 'ParticipantReadyToPlace', 'ParticipantReadyToPlaceMM', 'ParticipantReadyToPlaceGP', 'ParticipantPlaced', 'ParticipantOutOfProgrammeCNX', 'TransferredToORCA', 'AcceptedOnProgramme'];
     testUserPortrait = '';
     getRandomUrlFromList(): string {
         return this.images[Math.floor(Math.random() * this.images.length)];
@@ -138,18 +142,18 @@ export class ControlSummaryComponent implements OnInit {
     artistFilter?:CFTableFilter;
     hasFilter = false;
     filterText = 'Toggle Only "The Beatles"';
-    filterButtonType = CfButtonType.Secondary;
+    filterButtonType = CFButtonType.Secondary;
     toggleFilter(): void {
         if(this.hasFilter) {
             this.artistFilter = undefined;
             this.hasFilter = false;
             this.filterText = 'Toggle Only "The Beatles"';
-            this.filterButtonType = CfButtonType.Secondary;
+            this.filterButtonType = CFButtonType.Secondary;
         } else {
             this.artistFilter = { column:0, value: 'The Beatles'};
             this.hasFilter = true;
             this.filterText = 'Clear Toggle';
-            this.filterButtonType = CfButtonType.Danger;
+            this.filterButtonType = CFButtonType.Danger;
         }
     }
     
@@ -363,7 +367,7 @@ export class ControlSummaryComponent implements OnInit {
 
         const items: CFTourElement[] = [];
         items.push(new CFTourElement("CL:menu", "This is the menu, which may look different depending on the device you use to view the page.<br><br>The logo will always return you to the home page.", "Main Menu"));
-        items.push(new CFTourElement("CL:div.spinner img.lg", "This is the loader control, used while network operations are in effect.", "Activity Indicator"));
+        items.push(new CFTourElement("CL:div.loader", "This is the loader control, used while network operations are in effect.", "Activity Indicator"));
         items.push(new CFTourElement("CL:div.applicant-card div.image", "This is an example of an applicant card.<br><br>These contain at-a-glance information regarding the applicant.", "Applicant Card"));
         items.push(new CFTourElement("CL:tour-modal-buttons", "The UiModalService provides a programmatic way of calling a standard modal dialog.<br><br>These can display user-defined buttons and respond with the user's selection as necessary.", "Modal Dialogs"));
         items.push(new CFTourElement("CL:tour-profile", "The profile images can display either an image or the applicant's initials at a requested size.<br><br>Options exist for rounded or square display.<br><br>This control is also used in its larger configuration for the Applicant Card.", "Profile Image Display"));
@@ -408,9 +412,9 @@ export class ControlSummaryComponent implements OnInit {
     showModalConfirmation(): void {
         this.modalResponseLast = 'Waiting for user input';
         const b: CFModalButton[] = [
-            { id: 'Yes', text: 'Yes', type: CfButtonType.Default },
-            { id: 'No', text: 'No', type: CfButtonType.Danger },
-            { id: 'Maybe', text: 'Maybe', type: CfButtonType.Secondary }
+            { id: 'Yes', text: 'Yes', type: CFButtonType.Default },
+            { id: 'No', text: 'No', type: CFButtonType.Danger },
+            { id: 'Maybe', text: 'Maybe', type: CFButtonType.Secondary }
         ];
         this.modalService
             .showModalConfirmation('Confirmation Required!', '<p>I need to ask you something important!</p><p>Are you sure?</p>', b )
@@ -426,8 +430,8 @@ export class ControlSummaryComponent implements OnInit {
     showModalWarning(): void {
         this.modalResponseLast = 'Waiting for user input';
         const b: CFModalButton[] = [
-            { id: 'Yes', text: 'Yes', type: CfButtonType.Default },
-            { id: 'No', text: 'No', type: CfButtonType.Danger },
+            { id: 'Yes', text: 'Yes', type: CFButtonType.Default },
+            { id: 'No', text: 'No', type: CFButtonType.Danger },
         ];
         this.modalService
             .showModalWarning('A Warning!', '<p>Ask not for whom the bell tolls.</p>', b)

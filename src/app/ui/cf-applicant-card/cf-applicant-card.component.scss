@@ -18,6 +18,8 @@
         align-items: center;
         height: calc(var(--applicant-card-base-width) + 2rem); // image + status + margin t+b
         width: calc(var(--applicant-card-base-width) + 1rem + 2px);
+        filter: blur(0.2);
+        filter: brightness(0.9);
     }
     .details {
         position: absolute;
@@ -41,21 +43,30 @@
             }
             .name {
                 display: block;
-                margin-top: 205px;
+                margin-top: calc(var(--applicant-card-base-width) - 35px);
                 color: white;
-                font-weight: 500;
-                filter: drop-shadow(0px 0px 5px var(--applicant-card-hover-shadow-color));
+                font-weight: 700;
+                padding: 0 1px;
+                text-shadow: -1px -1px 3px  var(--applicant-card-hover-shadow-color);
+                filter: brightness(1.5);
+                filter: contrast(150%);
             }
         }
     }
     &:hover {
         filter: drop-shadow(1px 1px 2px var(--applicant-card-hover-shadow-color));
+        filter: brightness(125%);
     }
 }
 
 :host::ng-deep .statusBox {
+    font-weight: 600;
     display: block;
+    opacity: 0.8;
     min-height: 2rem;
+    overflow: hidden;
+    font-size: 0.9rem;
+    max-height: 2rem;
     padding-top: 0.4rem;
     width: calc(240px);
 }

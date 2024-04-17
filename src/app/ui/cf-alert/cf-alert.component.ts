@@ -6,11 +6,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./cf-alert.component.scss']
 })
 export class CfAlertComponent {
-    @Input() type = CfAlertType.Information;
+    @Input() type = CFAlertType.Information;
     @Input() heading = '';
 }
 
-export enum CfAlertType {
+export enum CFAlertType {
     Information = 'info',
     Warning = 'warning',
     Error = 'error',

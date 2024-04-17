@@ -31,15 +31,17 @@ export class CfWhatsNewComponent {
         const c = this.tourItems[this.current];
 
         this.onTourItemChanged.emit(c);
-        
+
         const b = this.uiService.getElementPositionByType(c.identifier);
         if (b) {
-            // console.log(`Bounds: ${JSON.stringify(b)}, window: ${window.scrollX},${window.scrollY}`);
+            //console.log(`Bounds: ${JSON.stringify(b)}, window: ${window.scrollX},${window.scrollY}`);
             const x = b[0].x;
-            // console.log(`Looking at x: ${x}`);
             const y = b[0].y + window.scrollY;
             const width = b[0].width;
             const height = b[0].height;
+            const x1 = x + width;
+            const y1 = y + height;
+            console.log(`Looking at x: ${x}, ${y} -> ${width} x ${height}. Item is ${x1}px wide`);
             
             // Only scroll if the target is not on screen
             const wx = window.screenLeft;
@@ -49,20 +51,25 @@ export class CfWhatsNewComponent {
             
             // Need to know the exact height of the 'tail' to include that in our
             // calculations
-            var top = y + height;
-            var left = x - 15;
+            var top = y1;
+            var left = x + (width / 2) - 200;
+
+            console.log(`Want to center on ${left}`);
 
             if(y < wy || y > wy + wh) {
                 // console.log(`target (${y}) is off-screen: ${wx},${wy}-${ww}x${wh}`);
                 window.scrollTo({ left: x, top: y, behavior: 'smooth' });
             }
 
-            var xArrow = x + 15;
+            var xArrow = left;
             if (left < 15) {
                 left = 15;
+                this.tail = "up-left";
             } else if (left + 400 > window.innerWidth) {
                 left = window.innerWidth - 400;
             }
+
+            console.log(`Left is at : ${left}px, width of bubble is 400px`);
 
             this.xPos = `${left}px`;
             this.xArrowPos = `${xArrow}px`;

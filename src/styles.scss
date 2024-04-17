@@ -3,7 +3,7 @@
 @import "assets/styles/buttons";
 
 * {
-    font-family: "Roboto", "Rubik", sans-serif;
+    font-family: "Nunito", "Roboto", "Rubik", sans-serif;
     font-optical-sizing: auto;
     font-size: 14pt;
     box-sizing: border-box;
@@ -79,7 +79,7 @@ ul, ol {
 }
 
 code {
-    font-family: monospace;
+    font-family: "Reddit Mono", monospace;
     font-size: 0.8rem;
     overflow-x: scroll;
     margin-top: 0;
