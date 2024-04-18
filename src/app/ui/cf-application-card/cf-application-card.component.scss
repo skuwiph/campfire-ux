@@ -3,8 +3,21 @@
 .card {
     display: flex;
     flex-direction: row;
+    background-color: var(--panel-background-color-primary);
+    border-radius: 0.2rem;
+    gap: 0.5rem;
     .status {
         display: flex;
         flex-basis: 0 0 auto;
+        background-color: #32C663;
+        min-width: 1rem;
+        
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        span {
+            display: inline-block;
+        }
     }
 }
