@@ -1,0 +1,10 @@
+@import "/src/assets/styles/themes";
+
+.card {
+    display: flex;
+    flex-direction: row;
+    .status {
+        display: flex;
+        flex-basis: 0 0 auto;
+    }
+}

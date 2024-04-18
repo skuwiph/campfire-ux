@@ -19,11 +19,13 @@ import { BoldTextPipe } from './boldspan.pipe';
 import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
 import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
 import { CfProgressComponent } from './cf-progress/cf-progress.component';
+import { CfApplicationCardComponent } from './cf-application-card/cf-application-card.component';
 
 @NgModule({
     declarations: [
         CfAlertComponent,
         CfApplicantCardComponent,
+        CfApplicationCardComponent,
         CfButtonComponent,
         CfDialogComponent,
         CfDropdownComponent,
@@ -48,6 +50,7 @@ import { CfProgressComponent } from './cf-progress/cf-progress.component';
     exports: [
         CfAlertComponent,
         CfApplicantCardComponent,
+        CfApplicationCardComponent,
         CfButtonComponent,
         CfDialogComponent,
         CfDropdownComponent,
