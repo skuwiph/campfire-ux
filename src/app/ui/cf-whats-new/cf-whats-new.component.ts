@@ -19,121 +19,112 @@ export class CfWhatsNewComponent {
     startTour(): void {
         this.display = true;
         this.current = 0;
+
+        this.calculatePositions();
+    }
+
+    movePrevious(): void {
+        this.current -= 1;
+        this.calculatePositions();
+    }
+
+    moveNext(): void {
+        this.current += 1;
         this.calculatePositions();
     }
 
     cancelTour(): void {
         this.display = false;
+
+        if (this.lastElement) {
+            this.lastElement.classList.remove('tour-target');
+        }
+
         this.onEndTour.emit(true);
     }
 
     calculatePositions(): void {
         const c = this.tourItems[this.current];
 
-        this.onTourItemChanged.emit(c);
+        if (this.lastElement) {
+            this.lastElement.classList.remove('tour-target');
+        }
 
-        const b = this.uiService.getElementPositionByType(c.identifier);
-        if (b) {
-            //console.log(`Bounds: ${JSON.stringify(b)}, window: ${window.scrollX},${window.scrollY}`);
-            const x = b[0].x;
-            const y = b[0].y + window.scrollY;
-            const width = b[0].width;
-            const height = b[0].height;
-            const x1 = x + width;
-            const y1 = y + height;
-            console.log(`Looking at x: ${x}, ${y} -> ${width} x ${height}. Item is ${x1}px wide`);
+        const targetElement = this.uiService.getElementPositionByType(c.identifier);
+        if (targetElement) {
+            // Defines the target rect (element to point at)
+            // and the total area required by the target rect and the tour 
+            // window
+            const b = targetElement.bounds;
             
-            // Only scroll if the target is not on screen
-            const wx = window.screenLeft;
-            const wy = window.screenTop + window.scrollY;
-            const ww = window.innerWidth;
-            const wh = window.innerHeight;
+            const tr1 = this.getElementPositionScreen({ x: b[0].x, y: b[0].y, width: b[0].width, height: b[0].height});
+            const tr2 = this.getElementPositionScreen({ x: tr1.x, y: tr1.y, width: Math.max(tr1.w, 280), height: Math.max(tr1.h, 400)});
+            const scr = this.getElementPositionScreen({ x: window.visualViewport?.pageLeft ?? 0, y: window.visualViewport?.pageTop ?? 0, width: window.visualViewport?.width ?? 0, height: window.visualViewport?.height ?? 0});
+            const fit = { x: Math.min(tr1.x, tr2.x), y: Math.min(tr1.y, tr2.y), w: Math.max(tr1.w, tr2.w), h: Math.max(tr1.h, tr2.h)};
             
-            // Need to know the exact height of the 'tail' to include that in our
-            // calculations
-            var top = y1;
-            var left = x + (width / 2) - 200;
-
-            console.log(`Want to center on ${left}`);
-
-            if(y < wy || y > wy + wh) {
-                // console.log(`target (${y}) is off-screen: ${wx},${wy}-${ww}x${wh}`);
-                window.scrollTo({ left: x, top: y, behavior: 'smooth' });
+            // console.log(`Screen is ${JSON.stringify(scr, null,2)}`);
+            // console.log(`Target is ${JSON.stringify(tr1, null, 2)}`);
+            // console.log(`Expect to fit a rectangle of ${JSON.stringify(fit,null,2)}`);
+            
+            const target = { x: fit.x, y: fit.y };
+            
+            if( fit.y + fit.h < scr.y ) {
+                // console.log(`Target is above current screen position`);
+                target.y -= (target.y > 30 ? 30 : 0);
+                
+                window.scrollTo({ left: target.x, top: target.y, behavior: 'smooth' })
+            } else if(fit.y > scr.y + scr.h) {
+                // console.log(`Target is below current screen position`);
+                window.scrollTo({ left: target.x, top: target.y, behavior: 'smooth' })
             }
-
+            
+            const pointer = { x: (tr1.x + (tr1.w/2)) - 200, y: tr1.y + (tr1.h) };
+            // console.log(`Want to point towards: ${JSON.stringify(pointer,null,2)}`);
+            
+            var top = pointer.y;
+            var left = pointer.x;
+            
             var xArrow = left;
-            if (left < 15) {
-                left = 15;
+            this.tail = "up";
+            if (left < 35) {
+                left = (tr1.x + tr1.w)/2 - 15;
                 this.tail = "up-left";
-            } else if (left + 400 > window.innerWidth) {
-                left = window.innerWidth - 400;
+                if(left < 35) left = 35;
+            } else if (left + 400 > scr.w) {
+                left = scr.w - 400;
             }
-
-            console.log(`Left is at : ${left}px, width of bubble is 400px`);
-
+            // console.log(`Want to center on ${left}`);
+            // console.log(`Left is at : ${left}px, width of bubble is 400px`);
+            
             this.xPos = `${left}px`;
             this.xArrowPos = `${xArrow}px`;
             this.yPos = `${top}px`;
             this.heading = c.heading;
             this.text = c.text;
-
-            // console.log(`${left}x${top}: Item: ${this.current}, count: ${this.tourItems.length}`);
-
+            
             this.hasNext = this.current < this.tourItems.length - 1;
             this.hasPrevious = this.current > 0;
             this.display = true;
+            
+            targetElement.element.classList.add('tour-target');
+            this.lastElement = targetElement.element;
 
+            this.onTourItemChanged.emit(c);
         } else {
             this.cancelTour();
             console.warn(`Couldn't get element from ${c.identifier}`);
         }
     }
 
-    // calculatePosition(): void {
-    //     this.display = true;
-    //     console.log(`Position: ${this.tourItem.targetX},${this.tourItem.targetY}`);
-    //     // Scroll to first
-    //     window.scrollTo({ left: this.tourItem.targetX, top: this.tourItem.targetY, behavior: 'smooth' })
+    getElementPositionScreen(r: { x: number, y: number, width: number, height: number }): { x: number, y: number, w: number, h: number } {
+        var sx = r.x + window.scrollX;
+        var sy = r.y + window.scrollY;
+        var sw = r.width;
+        var sh = r.height;
 
-    //     // Calculate whether the top is at the bottom of the viewport
-    //     // Are we pointing up, down, left, or right
-    //     console.log(`Viewport: ${window.innerWidth}x${window.innerHeight}`);
-    //     const width = window.innerWidth;
-    //     // const height = window.innerHeight;
-
-    //     // Need to know the exact height of the 'tail' to include that in our
-    //     // calculations
-    //     var top = this.tourItem.targetY + this.tourItem.height;
-    //     var left = this.tourItem.targetX - 15;
-    //     var xArrow = this.tourItem.targetX + 15;
-    //     if( left < 15) {
-    //         left = 15;
-    //     } else if(left + 400 > width) {
-    //         left = width - 400;
-    //     }
-             
-    //     this.xPos = `${left}px`;
-    //     this.xArrowPos = `${xArrow}px`;
-    //     this.yPos = `${top}px`;
-    //     this.text = this.tourItem.text;
-
-    //     console.log(`${left}x${top}: Item: ${this.tourItem.countInTour}, count: ${this.tourItem.totalTourItems}`);
-
-    //     this.hasNext = this.tourItem.countInTour < this.tourItem.totalTourItems - 1;
-    //     this.hasPrevious = this.tourItem.countInTour > 0;
-    // }
-    
-    movePrevious(): void {
-        //this.onChangeItem.emit(-1);
-        this.current -= 1;
-        this.calculatePositions();
+        return { x: sx, y: sy, w: sw, h: sh };
     }
-    
-    moveNext(): void {
-        //this.onChangeItem.emit(1);
-        this.current += 1;
-        this.calculatePositions();
-    }
+
 
     display = false;
     current = 0;
@@ -147,6 +138,9 @@ export class CfWhatsNewComponent {
     tail = 'up';
     hasNext = false;
     hasPrevious = false;
+
+    lastElement: HTMLElement | undefined;
+    lastElementZIndex = '0';
 }
 
 export class CFTourElement {

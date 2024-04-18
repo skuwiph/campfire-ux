@@ -2,6 +2,12 @@
 @import "assets/styles/themes";
 @import "assets/styles/buttons";
 
+.tour-target {
+    position:relative;
+    z-index: 998;
+    box-shadow: 0px 0px 8px 8px var(--panel-background-color-primary);
+}
+
 * {
     font-family: "Nunito", "Roboto", "Rubik", sans-serif;
     font-optical-sizing: auto;
@@ -25,7 +31,8 @@ h2 {
 }
 
 h3,
-h4 {
+h4,
+h5 {
     margin: 0.75rem 0;
     font-weight: 500;
     color: var(--heading-sub-color);
@@ -35,6 +42,7 @@ h1 {font-size: 2rem;}
 h2 {font-size: 1.75rem;}
 h3 {font-size: 1.5rem;}
 h4 {font-size: 1.2rem;}
+h5 {font-size: 1rem;}
 
 p {
     margin: 0.75rem 0;
@@ -81,7 +89,6 @@ ul, ol {
 code {
     font-family: "Reddit Mono", monospace;
     font-size: 0.8rem;
-    overflow-x: scroll;
     margin-top: 0;
     padding: 0.5rem 1rem;
     display: block;

@@ -26,7 +26,7 @@ import { CFLoaderSize, CFLoaderStyle } from './ui/cf-loader/cf-loader.component'
   .mono { font-family: "Reddit Mono", monospace; }
   .comfort { padding: 0.5rem; }
   .active-msg { margin-top: 0.4rem; }
-  .applicant-card{
+  .ac-flex, .tour-profile {
     display: flex; 
     flex-direction: row;
     gap: 0.5rem;
@@ -34,6 +34,7 @@ import { CFLoaderSize, CFLoaderStyle } from './ui/cf-loader/cf-loader.component'
     padding: 0.5rem;
   }
   .cal { margin:0 auto; justify-content: center; }
+  .show-background { background-color: lightgray; margin: 0 0 1rem; }
   :host::ng-deep .col_profile { width: 65px; }
   :host::ng-deep .col_artist { width: 10rem; }
   :host::ng-deep .col_album { width: 27rem; }
@@ -63,32 +64,53 @@ export class ControlSummaryComponent implements OnInit {
     dropdownOptions?: CFDropdownOptions;
 
     ngOnInit(): void {
-        this.getRandomImages();
-        this.displayApplicantCard = {
-            applicationId: 1234567,
-            firstName: 'Meghan',
-            lastName: 'Geofferson',
-            status: 'ParticipantPlaced'
-        };
 
         this.observableData$ = of(
-            new CFMention( "alanger",  "Allen Langer" ),
-            new CFMention( "bbieniek",  "Baltazar Bieniek" ),
-            new CFMention( "cfletcher", "Charlotte Fletcher" ),
-            new CFMention( "dwierzbicki", "Dawid Wierzbicki" ),
-            new CFMention( "iseckington", "Ian Seckington" ),
-            new CFMention( "jcook",  "Jason Cook" ),
-            new CFMention( "jgilbert", "Jason Gilbert" ),
-            new CFMention( "kmcsweeney", "Kerry McSweeney" ),
-            new CFMention( "mtolfrey",  "Michael Tolfrey" ),
-            new CFMention( "nsaleem",  "Nabeela Saleem" ),
-            new CFMention( "rhowell",  "Richard Howell" ),
+            new CFMention("alanger", "Allen Langer"),
+            new CFMention("bbieniek", "Baltazar Bieniek"),
+            new CFMention("cfletcher", "Charlotte Fletcher"),
+            new CFMention("dwierzbicki", "Dawid Wierzbicki"),
+            new CFMention("iseckington", "Ian Seckington"),
+            new CFMention("jcook", "Jason Cook"),
+            new CFMention("jgilbert", "Jason Gilbert"),
+            new CFMention("kmcsweeney", "Kerry McSweeney"),
+            new CFMention("mtolfrey", "Michael Tolfrey"),
+            new CFMention("nsaleem", "Nabeela Saleem"),
+            new CFMention("rhowell", "Richard Howell"),
         );
 
         this.prepareDropdown();
+
+        setTimeout( () => {
+            this.getRandomImages();
+
+            setInterval(()=>{
+                const v = this.progressValue += Math.floor(Math.random() * 50);
+                if(v <= 100) {
+                    this.setProgressValue(v);
+                } else {
+                    this.setProgressValue(0);
+                }
+            }, 30000);
+        }, 1000);
     }
+
+    // PROGRESS
+
+    progressMax = 100;
+    progressValue = 50;
+    setProgressValue(value: number): void {
+        if(value>this.progressValue || value === 0) {
+            this.progressValue = value;
+        }
+    }
+    
     profilesLoaded = false;
     users: RandomUser[] = [];
+    images: string[] = [];
+    userStates: string[] = ['PreInterview', 'PostInterview', 'Returner', 'PendingAcceptanceAsReturner', 'ParticipantApplied', 'ParticipantReadyToPlace', 'ParticipantReadyToPlaceMM', 'ParticipantReadyToPlaceGP', 'ParticipantPlaced', 'ParticipantOutOfProgrammeCNX', 'TransferredToORCA', 'AcceptedOnProgramme'];
+    testUserPortrait = '';
+
     getRandomImages(): void {
         this.displayApplicantCards = [];
         this.typeaheadSearchData = [];
@@ -96,7 +118,7 @@ export class ControlSummaryComponent implements OnInit {
             .get<RandomUserResults>('https://randomuser.me/api/?results=100')   
             .subscribe({
                 next: (d: RandomUserResults) => {
-                    console.log(`Got: ${d.results.length} random users`);
+                    // console.log(`Got: ${d.results.length} random users`);
                     var count = 0;
                     d.results.forEach( ru => {
                         this.images.push(ru.picture.large);
@@ -106,7 +128,7 @@ export class ControlSummaryComponent implements OnInit {
                                     firstName: ru.name.first,
                                     lastName: ru.name.last,
                                     status: this.userStates[Math.floor(Math.random() * this.userStates.length)],
-                                    profileUrl: ru.picture.large,
+                                    profileUrl: count != 2 ? ru.picture.large : undefined,
                                 }
                             );
                         }
@@ -132,9 +154,7 @@ export class ControlSummaryComponent implements OnInit {
                 }
             });
     }
-    images: string[] = [];
-    userStates: string[] = ['PreInterview', 'PostInterview', 'Returner', 'PendingAcceptanceAsReturner', 'ParticipantApplied', 'ParticipantReadyToPlace', 'ParticipantReadyToPlaceMM', 'ParticipantReadyToPlaceGP', 'ParticipantPlaced', 'ParticipantOutOfProgrammeCNX', 'TransferredToORCA', 'AcceptedOnProgramme'];
-    testUserPortrait = '';
+
     getRandomUrlFromList(): string {
         return this.images[Math.floor(Math.random() * this.images.length)];
     }
@@ -289,7 +309,7 @@ export class ControlSummaryComponent implements OnInit {
         const pk = parseInt(event.pk);
         const applicant = this.typeaheadSearchData.find(a => a.applicationId == pk);
         if (applicant) {
-            console.log(`applicant: ${JSON.stringify(applicant)}`);
+            //console.log(`applicant: ${JSON.stringify(applicant)}`);
             this.selectedApplicant = undefined;
 
             setTimeout(()=>{
@@ -363,14 +383,15 @@ export class ControlSummaryComponent implements OnInit {
     restoreX = 0;
     restoreY = 0;
     startTour(): void {
-        console.log(`Start tour`);
+        //console.log(`Start tour`);
 
         const items: CFTourElement[] = [];
-        items.push(new CFTourElement("CL:menu", "This is the menu, which may look different depending on the device you use to view the page.<br><br>The logo will always return you to the home page.", "Main Menu"));
-        items.push(new CFTourElement("CL:div.loader", "This is the loader control, used while network operations are in effect.", "Activity Indicator"));
+        items.push(new CFTourElement("CL:div.container", "This is the menu, which may look different depending on the device you use to view the page.<br><br>The logo will always return you to the home page.", "Main Menu"));
+        items.push(new CFTourElement("CL:div.spinner", "This is the loader control, used while network operations are in effect.", "Activity Indicator"));
         items.push(new CFTourElement("CL:div.applicant-card div.image", "This is an example of an applicant card.<br><br>These contain at-a-glance information regarding the applicant.", "Applicant Card"));
         items.push(new CFTourElement("CL:tour-modal-buttons", "The UiModalService provides a programmatic way of calling a standard modal dialog.<br><br>These can display user-defined buttons and respond with the user's selection as necessary.", "Modal Dialogs"));
-        items.push(new CFTourElement("CL:tour-profile", "The profile images can display either an image or the applicant's initials at a requested size.<br><br>Options exist for rounded or square display.<br><br>This control is also used in its larger configuration for the Applicant Card.", "Profile Image Display"));
+        items.push(new CFTourElement("CL:div.tour-profile span.image", "The profile images can display either an image or the applicant's initials at a requested size.<br><br>Options exist for rounded or square display.<br><br>This control is also used in its larger configuration for the Applicant Card.", "Profile Image Display"));
+        items.push(new CFTourElement("CL:progress.progress-bar", "A simple progress bar for displaying long-running activities", "Progress Indicator"));
         
         this.restoreX = window.scrollX;
         this.restoreY = window.scrollY;
@@ -380,7 +401,7 @@ export class ControlSummaryComponent implements OnInit {
             .startTour(items)
             .subscribe({ 
                 next: (currentItem: CFTourElement) => {
-                    console.log(`Showing item: ${currentItem.heading ?? 'No heading'}`);
+                    //console.log(`Showing item: ${currentItem.heading ?? 'No heading'}`);
                 },
                 complete: () => {
                     this.endTour();
@@ -389,7 +410,7 @@ export class ControlSummaryComponent implements OnInit {
     }  
 
     endTour(): void {
-        console.log(`End tour!`);
+        //console.log(`End tour!`);
         this.inTour = false;
         window.scrollTo({ left: this.restoreX, top: this.restoreY, behavior: 'smooth' })
     }
@@ -464,7 +485,6 @@ export class ControlSummaryComponent implements OnInit {
     typeaheadSearchData: TypeaheadResults[] = [];
     typeaheadSearchResults: TypeaheadResults[] = [];
     typeaheadSearchTable?: CFTableData;
-    displayApplicantCard?: ICFApplicantCardInfo;
     displayApplicantCards: ICFApplicantCardInfo[] = [];
     selectedApplicant?: ICFApplicantCardInfo;
 }

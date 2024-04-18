@@ -1,0 +1,29 @@
+@import "/src/assets/styles/themes";
+
+progress[value] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+
+    color: var(--progress-bar-color);
+    background: var(--progress-bar-bg-color);
+    border-radius: 0.5rem;
+    width: 100%;
+    margin: 0.1rem 0;
+}
+
+progress[value]::-moz-progress-bar {
+    background: var(--progress-bar-color);
+    border-radius: 0.5rem;
+}
+
+progress[value]::-webkit-progress-bar {
+    border-radius: 0.5rem;
+    background: var(--progress-bar-bg-color);
+}
+
+progress[value]::-webkit-progress-value {
+    border-radius: 0.5rem;
+    background: var(--progress-bar-color);
+}

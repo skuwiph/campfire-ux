@@ -26,7 +26,6 @@ export class CfProfileComponent implements OnInit, OnChanges {
         }
         if (changes["height"]) {
             this.heightPx = `${this.height}px`;
-            this.padTopPx = `${this.height/2.5}px`;
         }
     }
 
@@ -34,6 +33,5 @@ export class CfProfileComponent implements OnInit, OnChanges {
     initials?: string = '';
     widthPx = "60px";
     heightPx = "60px";
-    padTopPx = "0.15rem";
     fontSizePx = "30px";
 }

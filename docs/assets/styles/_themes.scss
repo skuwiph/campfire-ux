@@ -33,6 +33,11 @@
     --applicant-card-hover-shadow-color: #111111;
     --applicant-card-base-width: 240px;
 
+    --progress-bar-bg-color: #a2a2a2;
+    --progress-bar-color: linear-gradient(#fff8, #fff0),
+        repeating-linear-gradient(135deg, #0003 0 10px, #0000 0 20px),
+        #31c6f7;
+
     --search-bar-bg-color: white; //#87a4ac;
     --search-bar-fg-color: black;
     --search-bar-width: 400px;
@@ -44,7 +49,7 @@
     --table-heading-default-bg-color: #6996a4;
     --table-heading-default-fg-color: white;
 
-    --table-row-hover-bg-color: #6996a4;;
+    --table-row-hover-bg-color: #6996a4;
     --table-row-hover-fg-color: white;
     --table-paginate-info-color: #6996a4;
 

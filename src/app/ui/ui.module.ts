@@ -18,6 +18,7 @@ import { CfStatusDisplayComponent } from './cf-status-display/cf-status-display.
 import { BoldTextPipe } from './boldspan.pipe';
 import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
 import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
+import { CfProgressComponent } from './cf-progress/cf-progress.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
         CfMenuComponent,
         CfMentionTextComponent,
         CfProfileComponent,
+        CfProgressComponent,
         CfStatusDisplayComponent,
         CfTableComponent,
         CfTypeaheadComponent,
@@ -53,6 +55,7 @@ import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
         CfMenuComponent,
         CfMentionTextComponent,
         CfProfileComponent,
+        CfProgressComponent,
         CfStatusDisplayComponent,
         CfTableComponent,
         CfTypeaheadComponent, 

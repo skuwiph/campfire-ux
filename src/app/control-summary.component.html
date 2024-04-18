@@ -1,809 +1,762 @@
 <a name="top"></a>
 <h1>Component Showcase</h1>
-<h2>Contents</h2>
-<ul class="link">
-    <li><a href="#text"><i class="fa-solid fa-arrow-up-right-from-square"></i>Text</a></li>
-    <li><a href="#alerts"><i class="fa-solid fa-arrow-up-right-from-square"></i>Alerts</a></li>
-    <li><a href="#buttons"><i class="fa-solid fa-arrow-up-right-from-square"></i>Buttons</a></li>
-    <li><a href="#card"><i class="fa-solid fa-arrow-up-right-from-square"></i>Card (Applicant)</a></li>
-    <li><a href="#dialog"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dialogs</a></li>
-    <li><a href="#dropdown"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dropdown</a></li>
-    <li><a href="#wait"><i class="fa-solid fa-arrow-up-right-from-square"></i>Loader Display</a></li>
-    <li><a href="#menu"><i class="fa-solid fa-arrow-up-right-from-square"></i>Menu</a></li>
-    <li><a href="#mention"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mention TextArea</a></li>
-    <li><a href="#modal"><i class="fa-solid fa-arrow-up-right-from-square"></i>Modals</a></li>
-    <li><a href="#profile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Image</a></li>
-    <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
-    <li><a href="#tables"><i class="fa-solid fa-arrow-up-right-from-square"></i>Tables</a></li>
-    <ul>
-        <li><a href="#tables-standard"><i class="fa-solid fa-arrow-up-right-from-square"></i>Standard</a></li>
-        <li><a href="#tables-paginate"><i class="fa-solid fa-arrow-up-right-from-square"></i>Paginated</a></li>
-        <li><a href="#tables-sort"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sortable</a></li>
-    </ul>
-    <li><a href="#typeahead"><i class="fa-solid fa-arrow-up-right-from-square"></i>Typeahead</a></li>
-    <li><a href="#whatsnew"><i class="fa-solid fa-arrow-up-right-from-square"></i>What's New</a></li>
-    <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
-    <li><i class="fa-solid fa-arrow-up-right-from-square"></i>Layouts</li>
-    <ul>
-        <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky Footer</a></li>
-    </ul>
-
-</ul>
-
-<h2>Text<a name="text"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <h1>Title</h1>
-        <h2>Main Heading</h2>
-        <h3>Subheading</h3>
-        <h4>Lowest Heading</h4>
-        <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod sit fugiat aliqua nostrud sunt
-            consectetur cillum et labore magna occaecat esse. Aliqua voluptate id exercitation commodo proident proident nulla
-            quis cupidatat duis ullamco commodo. Nisi labore dolor ex veniam labore irure elit irure do cupidatat incididunt
-            dolor esse. Ea officia cillum sunt ut duis reprehenderit voluptate amet.</p>
-        <p>Italicised - <i>Occaecat minim eu id quis pariatur elit ea consectetur duis reprehenderit</i>.</p>
-        <p>Bold - <b>Occaecat minim eu id quis pariatur elit ea consectetur duis reprehenderit</b>.</p>
-        <p>Unordered List:</p>
+<div *ngIf="profilesLoaded; else loading_please">
+    <h2>Contents</h2>
+    <ul class="link">
+        <li><a href="#text"><i class="fa-solid fa-arrow-up-right-from-square"></i>Text</a></li>
+        <li><a href="#alerts"><i class="fa-solid fa-arrow-up-right-from-square"></i>Alerts</a></li>
+        <li><a href="#card"><i class="fa-solid fa-arrow-up-right-from-square"></i>Applicant Card</a></li>
+        <li><a href="#buttons"><i class="fa-solid fa-arrow-up-right-from-square"></i>Buttons</a></li>
+        <li><a href="#dialog"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dialogs</a></li>
+        <li><a href="#dropdown"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dropdown</a></li>
+        <li><a href="#wait"><i class="fa-solid fa-arrow-up-right-from-square"></i>Loader Display</a></li>
+        <li><a href="#menu"><i class="fa-solid fa-arrow-up-right-from-square"></i>Menu</a></li>
+        <li><a href="#mention"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mention Text</a></li>
+        <li><a href="#modal"><i class="fa-solid fa-arrow-up-right-from-square"></i>Modals</a></li>
+        <li><a href="#profile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Image</a></li>
+        <li><a href="#progress"><i class="fa-solid fa-arrow-up-right-from-square"></i>Progress Indicator</a></li>
+        <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
+        <li><a href="#tables"><i class="fa-solid fa-arrow-up-right-from-square"></i>Tables</a></li>
         <ul>
-            <li>Unordered List Item #1</li>
-            <li>Unordered List Item #2</li>
-            <li>Unordered List Item #3</li>
-            <li>Unordered List Item #4</li>
+            <li><a href="#tables-standard"><i class="fa-solid fa-arrow-up-right-from-square"></i>Standard</a></li>
+            <li><a href="#tables-paginate"><i class="fa-solid fa-arrow-up-right-from-square"></i>Paginated</a></li>
+            <li><a href="#tables-sort"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sortable</a></li>
         </ul>
-        <p>Ordered List:</p>
-        <ol>
-            <li>Ordered List Item #1</li>
-            <li>Ordered List Item #2</li>
-            <li>Ordered List Item #3</li>
-            <li>Ordered List Item #4</li>
-        </ol>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
+        <li><a href="#typeahead"><i class="fa-solid fa-arrow-up-right-from-square"></i>Typeahead</a></li>
+        <li><a href="#whatsnew"><i class="fa-solid fa-arrow-up-right-from-square"></i>What's New</a></li>
+        <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
+        <li><i class="fa-solid fa-arrow-up-right-from-square"></i>Layouts</li>
+        <ul>
+            <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky Footer</a></li>
+        </ul>
 
-<h2>Alerts<a name="alerts"></a></h2>
-<div class="flex-container">
-    <div class="right">
-        <h4>Notes</h4>
-        <code>
-            &lt;app-cf-alert [type]="Alert.Information" [heading]="'Text'"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Nisi anim in cupidatat magna occaecat esse.&lt;/p&gt;<br>
-            &lt;/app-cf-alert&gt;
-        </code>
-        <p>Remember to import the enum into the component.ts:</p>
-        <code>
-            Alert = CFAlertType;<br>
-        </code>
-        <br>
-    </div>
-</div>
+    </ul>
 
-<div class="flex-container">
-    <div class="left">
-        <h4>Information</h4>
-        <app-cf-alert [type]="Alert.Information">
-            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
-        </app-cf-alert>
-        <h4>Warning</h4>
-        <app-cf-alert [type]="Alert.Warning">
-            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
-        </app-cf-alert>
-        <h4>Error</h4>
-        <app-cf-alert [type]="Alert.Error">
-            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
-        </app-cf-alert>
-        <h4>With Heading</h4>
-        <app-cf-alert [type]="Alert.Information" [heading]="'Information:'">
-            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
-        </app-cf-alert>
-        <h4>Warning</h4>
-        <app-cf-alert [type]="Alert.Warning" [heading]="'Warning!'">
-            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
-        </app-cf-alert>
-        <h4>Error</h4>
-        <app-cf-alert [type]="Alert.Error" [heading]="'Error!'">
-            <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
-        </app-cf-alert>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Buttons<a name="buttons"></a></h2>
-<div class="flex-container">
-    <div class="right">
-        <h4>Notes</h4>
-        <p>Embed buttons in a containing div with 'cal' for center-, or 'ral' for right-alignment</p>
-        <code>
-            &lt;div class="button-bar ral"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Default" (click)="onClick($event)"&gt;OK&lt;/app-cf-button&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Cancel" (click)="onClick($event)"&gt;Cancel&lt;/app-cf-button&gt;<br>
-            &lt;/div&gt;<br>
-        </code>
-        <p>Include icons or additional text using the <code class="inline">ng-content</code> block:</p>
-        <code>
-            &lt;app-cf-button [type]="Button.Danger" [enabled]="true"&gt;<br>
-                Danger (Enabled) &lt;i class="fa-solid fa-circle-exclamation">&lt;/i&gt;<br>
-            &lt;/app-cf-button&gt;<br>
-        </code>
-        <p>If you wish to style any included items, use the <code class="inline">:host::ng-deep</code> pattern:</p>
-        <code>
-            :host::ng-deep button i {{'{'}} margin-left: 0.5rem; {{'}'}}<br>
-        </code>
-        <p>Remember to import the enum into the component.ts:</p>
-        <code>
-            Button = CFButtonType;<br>
-        </code>
-        <br>
-    </div>
-</div>
-<div class="flex-container">
-    <div class="left">
-        <div class="button-bar">
-            <app-cf-button [type]="Button.Primary" (click)="primaryClicked()">Primary</app-cf-button>
-            <app-cf-button [type]="Button.Secondary">Secondary</app-cf-button>
-            <app-cf-button [type]="Button.Tertiary">Tertiary</app-cf-button>
-        </div>
-        <div class="button-bar ral">
-            <app-cf-button [type]="Button.Primary">Primary</app-cf-button>
-            <app-cf-button [type]="Button.Secondary">Secondary</app-cf-button>
-        </div>
-        <div class="button-bar">
-            <app-cf-button [type]="Button.Default">Default</app-cf-button>
-            <app-cf-button [type]="Button.Cancel">Cancel</app-cf-button>
-        </div>
-        <div class="button-bar cal">
-            <app-cf-button [type]="Button.Danger" [enabled]="false">Danger (Disabled)</app-cf-button>
-            <app-cf-button [type]="Button.Danger" [enabled]="true">
-                Danger (Enabled) <i class="fa-solid fa-circle-exclamation"></i>
-            </app-cf-button>
-            <app-cf-button [type]="Button.Cancel">Other <i class="fa-solid fa-volume-off"></i>
-            </app-cf-button>
+    <h2>Text<a name="text"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h1>Title</h1>
+            <h2>Main Heading</h2>
+            <h3>Subheading</h3>
+            <h4>Lowest Heading</h4>
+            <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod sit fugiat aliqua nostrud sunt
+                consectetur cillum et labore magna occaecat esse. Aliqua voluptate id exercitation commodo proident proident nulla
+                quis cupidatat duis ullamco commodo. Nisi labore dolor ex veniam labore irure elit irure do cupidatat incididunt
+                dolor esse. Ea officia cillum sunt ut duis reprehenderit voluptate amet.</p>
+            <p>Italicised - <i>Occaecat minim eu id quis pariatur elit ea consectetur duis reprehenderit</i>.</p>
+            <p>Bold - <b>Occaecat minim eu id quis pariatur elit ea consectetur duis reprehenderit</b>.</p>
+            <p>Text with <a href="/">a link</a>.</p>
+            <p>Unordered List:</p>
+            <ul>
+                <li>Unordered List Item #1</li>
+                <li>Unordered List Item #2</li>
+                <li>Unordered List Item #3</li>
+                <li>Unordered List Item #4</li>
+            </ul>
+            <p>Ordered List:</p>
+            <ol>
+                <li>Ordered List Item #1</li>
+                <li>Ordered List Item #2</li>
+                <li>Ordered List Item #3</li>
+                <li>Ordered List Item #4</li>
+            </ol>
         </div>
     </div>
+    <p><a href="#top">UP</a></p>
 
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Applicant Card<a name="card"></a></h2>
-<div class="flex-container">
-    <div class="right">
-        <h4>Notes</h4>
-        <code>
-            &lt;app-cf-applicant-card [applicant]="displayApplicantCard!"&gt;&lt;/app-cf-applicant-card&gt;
-        </code>
-        <p>In code:</p>
-        <code>
-        this.displayApplicantCard = {{ '{' }}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;applicationId: 1234567,<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;profileUrl: 'https://campamericatest.s3.amazonaws.com/resources/2023/url',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;firstName: 'Meghan',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;lastName: 'Geofferson',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;status: 'ParticipantPlaced'<br>
-        {{ '}' }};<br>
-        </code>
-        <br>
+    <h2>Alerts<a name="alerts"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <code>
+                &lt;app-cf-alert [type]="Alert.Information" [heading]="'Text'"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Nisi anim in cupidatat magna occaecat esse.&lt;/p&gt;<br>
+                &lt;/app-cf-alert&gt;
+            </code>
+            <p>Remember to import the enum into the component.ts:</p>
+            <code>
+                Alert = CFAlertType;<br>
+            </code>
+            <h4>Examples</h4>
+            <h5>Information</h5>
+            <app-cf-alert [type]="Alert.Information">
+                <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+            </app-cf-alert>
+            <h5>Warning</h5>
+            <app-cf-alert [type]="Alert.Warning">
+                <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+            </app-cf-alert>
+            <h5>Error</h5>
+            <app-cf-alert [type]="Alert.Error">
+                <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+            </app-cf-alert>
+            <h5>With Heading</h5>
+            <app-cf-alert [type]="Alert.Information" [heading]="'Information:'">
+                <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+            </app-cf-alert>
+            <h5>Warning</h5>
+            <app-cf-alert [type]="Alert.Warning" [heading]="'Warning!'">
+                <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+            </app-cf-alert>
+            <h5>Error</h5>
+            <app-cf-alert [type]="Alert.Error" [heading]="'Error!'">
+                <p>Nisi anim in cupidatat magna occaecat esse. Ullamco sint enim proident irure qui sint magna in enim esse.</p>
+            </app-cf-alert>
+        </div>
     </div>
-</div>
-<div class="flex-container">
-    <div class="left applicant-card" *ngIf="profilesLoaded && displayApplicantCards">
-        <app-cf-applicant-card *ngFor="let a of displayApplicantCards" [applicant]="a" (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
+    <p><a href="#top">UP</a></p>
 
-<h2>Dialogs<a name="dialog"></a></h2> 
-<div class="flex-container">
-    <div class="left">
-        <h4>Notes</h4>
-        <p>Html:</p>
-        <code>
-        &lt;app-cf-dialog #dialogDemo title="Modal Dialog Title"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div body&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Content passed in from the parent component.&lt;/p&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div footer&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="button-bar ral"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Default" (click)="dialogDefault()"&gt;Save&lt;/app-cf-button&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Cancel" (click)="dialogCancel()"&gt;Cancel&lt;/app-cf-button&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
-        &lt;/app-cf-dialog&gt;<br>
-        </code>
-        <p>Code:</p>
-        <code>
-            @ViewChild('dialogDemo', void {{ '{' }} static: false void {{ '}' }}) dialog!: CfDialogComponent;<br>
-            <br>
-
-            showDialog(event: Event): void {{ '{' }}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.openDialog();<br>
-            {{ '}' }}<br>
-            <br>
-            dialogDefault(): void {{ '{' }}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;// Do something<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.closeDialog();<br>
-            {{ '}' }}<br>
-            <br>
-            dialogCancel(): void {{ '{' }}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;// Cancelled Dialog;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.closeDialog();<br>
-            {{ '}' }}<br>
-        </code>
-        <br>
-    </div>
-</div>
-<div class="flex-container">
-    <div class="left">
-        <app-cf-dialog #dialogDemo title="Modal Dialog Title">
-            <div body>
-                <p>Content passed in from the parent component.</p>
-                <app-cf-table *ngIf="paginationTable" [showHeaders]="true" [data]="paginationTable"
-                    (onSelect)="selectedStandardRow($event)"></app-cf-table>
+    <h2>Applicant Card<a name="card"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <code>
+                &lt;app-cf-applicant-card [applicant]="displayApplicantCard!"&gt;&lt;/app-cf-applicant-card&gt;
+            </code>
+            <p>In code:</p>
+            <code>
+            this.displayApplicantCard = {{ '{' }}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;applicationId: 1234567,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;profileUrl: 'https://campamericatest.s3.amazonaws.com/resources/2023/url',<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;firstName: 'Meghan',<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;lastName: 'Geofferson',<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;status: 'ParticipantPlaced'<br>
+            {{ '}' }};<br>
+            </code>
+            <h4>Examples</h4>
+            <div class="left ac-flex" *ngIf="profilesLoaded && displayApplicantCards">
+                <app-cf-applicant-card *ngFor="let a of displayApplicantCards" [applicant]="a"
+                    (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
             </div>
+        </div>
+    </div>
 
-            <div footer>
-                <div class="button-bar ral">
-                    <app-cf-button [type]="Button.Default" (click)="dialogDefault()">Save</app-cf-button>
-                    <app-cf-button [type]="Button.Cancel" (click)="dialogCancel()">Cancel</app-cf-button>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Buttons<a name="buttons"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Embed buttons in a containing div with 'cal' for center-, or 'ral' for right-alignment</p>
+            <code>
+                &lt;div class="button-bar ral"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Default" (click)="onClick($event)"&gt;OK&lt;/app-cf-button&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Cancel" (click)="onClick($event)"&gt;Cancel&lt;/app-cf-button&gt;<br>
+                &lt;/div&gt;<br>
+            </code>
+            <p>Include icons or additional text using the <code class="inline">ng-content</code> block:</p>
+            <code>
+                &lt;app-cf-button [type]="Button.Danger" [enabled]="true"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Danger (Enabled) &lt;i class="fa-solid fa-circle-exclamation">&lt;/i&gt;<br>
+                &lt;/app-cf-button&gt;<br>
+            </code>
+            <p>If you wish to style any included items, use the <code class="inline">:host::ng-deep</code> pattern:</p>
+            <code>
+                :host::ng-deep button i {{'{'}} margin-left: 0.5rem; {{'}'}}<br>
+            </code>
+            <p>Remember to import the enum into the component.ts:</p>
+            <code>
+                Button = CFButtonType;<br>
+            </code>
+            <h4>Examples</h4>
+            <div class="button-bar show-background">
+                <app-cf-button [type]="Button.Primary" (click)="primaryClicked()">Primary</app-cf-button>
+                <app-cf-button [type]="Button.Secondary">Secondary</app-cf-button>
+                <app-cf-button [type]="Button.Tertiary">Tertiary</app-cf-button>
+            </div>
+            <div class="button-bar ral show-background">
+                <app-cf-button [type]="Button.Primary">Primary</app-cf-button>
+                <app-cf-button [type]="Button.Secondary">Secondary</app-cf-button>
+            </div>
+            <div class="button-bar show-background">
+                <app-cf-button [type]="Button.Default">Default</app-cf-button>
+                <app-cf-button [type]="Button.Cancel">Cancel</app-cf-button>
+            </div>
+            <div class="button-bar cal show-background">
+                <app-cf-button [type]="Button.Danger" [enabled]="false">Danger (Disabled)</app-cf-button>
+                <app-cf-button [type]="Button.Danger" [enabled]="true">
+                    Danger (Enabled) <i class="fa-solid fa-circle-exclamation"></i>
+                </app-cf-button>
+                <app-cf-button [type]="Button.Cancel">Other <i class="fa-solid fa-volume-off"></i>
+                </app-cf-button>
+            </div>
+        </div>
+
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Dialogs<a name="dialog"></a></h2> 
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+            &lt;app-cf-dialog #dialogDemo title="Modal Dialog Title"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div body&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Content passed in from the parent component.&lt;/p&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div footer&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="button-bar ral"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Default" (click)="dialogDefault()"&gt;Save&lt;/app-cf-button&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button [type]="Button.Cancel" (click)="dialogCancel()"&gt;Cancel&lt;/app-cf-button&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+            &lt;/app-cf-dialog&gt;<br>
+            </code>
+            <p>Code:</p>
+            <code>
+                @ViewChild('dialogDemo', void {{ '{' }} static: false void {{ '}' }}) dialog!: CfDialogComponent;<br>
+                <br>
+
+                showDialog(event: Event): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.openDialog();<br>
+                {{ '}' }}<br>
+                <br>
+                dialogDefault(): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Do something<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.closeDialog();<br>
+                {{ '}' }}<br>
+                <br>
+                dialogCancel(): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Cancelled Dialog;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;this.dialog.closeDialog();<br>
+                {{ '}' }}<br>
+            </code>
+            <app-cf-dialog #dialogDemo title="Modal Dialog Title">
+                <div body>
+                    <p>Content passed in from the parent component.</p>
+                    <app-cf-table *ngIf="paginationTable" [showHeaders]="true" [data]="paginationTable"
+                        (onSelect)="selectedStandardRow($event)"></app-cf-table>
                 </div>
-            </div>
-        </app-cf-dialog>
 
-        <div class="button-bar">
-            <app-cf-button [type]="Button.Default" (click)="showDialog($event)">Show Modal</app-cf-button>
-            <p class="active-msg" *ngIf="dialogActiveCount > 0">Dialog Save Pressed {{this.dialogActiveCount}} time(s)
-            </p>
+                <div footer>
+                    <div class="button-bar ral">
+                        <app-cf-button [type]="Button.Default" (click)="dialogDefault()">Save</app-cf-button>
+                        <app-cf-button [type]="Button.Cancel" (click)="dialogCancel()">Cancel</app-cf-button>
+                    </div>
+                </div>
+            </app-cf-dialog>
+            <h4>Examples</h4>
+
+            <div class="button-bar">
+                <app-cf-button [type]="Button.Default" (click)="showDialog($event)">Show Modal</app-cf-button>
+                <p class="active-msg" *ngIf="dialogActiveCount > 0">Dialog Save Pressed {{this.dialogActiveCount}} time(s)
+                </p>
+            </div>
         </div>
     </div>
-</div>
-<p><a href="#top">UP</a></p>
+    <p><a href="#top">UP</a></p>
 
-<h2>Dropdown<a name="dropdown"></a></h2>
-<div class="flex-container">
-    <div class="left applicant-card">
-        <div class="comfort">
+    <h2>Dropdown<a name="dropdown"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;app-cf-dropdown [options]="dropdownOptions"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dropdownSelected)="handler($event)"&gt;<br>
+                &lt;/app-cf-dropdown&gt;
+            </code>
+            <p>Code:</p>
+            <code>
+                this.dropdownOptions = {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;text: 'Dropdown Menu', showIndicator: true, items: [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} type: CFDropdownItemType.TextOnly, text: 'Text item', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link: 'first' {{ '}' }},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} type: CFDropdownItemType.Separator {{ '}' }},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} type: CFDropdownItemType.ImageAndText, text: 'Image/text',<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link: 'second', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageClass: 'fa-solid fa-envelope' {{ '}' }},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} type: CFDropdownItemType.ImageAndText, text: 'Image/text',<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link: 'third', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageClass: 'fa-solid fa-lock', disabled: true {{ '}' }},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                {{ '}' }}
+            </code>
+            <h4>Examples</h4>
             <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions"
                 (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
+            <br><br>
         </div>
     </div>
-</div>
-<p><a href="#top">UP</a></p>
+    <p><a href="#top">UP</a></p>
 
-<h2>Loader Display<a name="wait"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <h4>Notes</h4>
-        <p>Html:</p>
-        <code>
-            &lt;app-cf-loader&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Text&lt;/p&gt;<br>
-            &lt;/app-cf-loader&gt;<br>
-            <br>
-            &lt;app-cf-loader [size]="LoaderSize.Small" [style]="LoaderStyle.Clock"&gt;&lt;/app-cf-loader&gt;<br>
-        </code>
-        <p>Pass text as inner content, or nothing</p>
-        <p>Remember to import the enums into the component.ts:</p>
-        <code>
-            LoaderSize = CFLoaderSize;<br>
-            LoaderStyle = CFLoaderStyle;<br>
-        </code>
-        <br>
-    </div>
-</div>
-<div class="flex-container">
-    <div class="left">
-        <div class="comfort loader">
-            <p class="cal">LoaderSize.Large</p>
-            <app-cf-loader><p>Stopwatch</p></app-cf-loader>
-            <app-cf-loader [style]="LoaderStyle.Clock"><p>Clock</p></app-cf-loader>
-            <app-cf-loader [style]="LoaderStyle.Circles"><p>Circles</p></app-cf-loader>
-        </div>
-        <div class="comfort loader">
-            <p class="cal">LoaderSize.Small</p>
-            <app-cf-loader [size]="LoaderSize.Small"></app-cf-loader>
-            <app-cf-loader [style]="LoaderStyle.Clock" [size]="LoaderSize.Small"></app-cf-loader>
-            <app-cf-loader [style]="LoaderStyle.Circles" [size]="LoaderSize.Small"></app-cf-loader>
-        </div>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Menu<a name="menu"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <br>
-        <app-cf-menu (menuSelected)="menuItemSelected($event)"></app-cf-menu>
-        <p>Selected item: <b>{{menuItem}}</b></p>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Mention TextArea<a name="mention"></a></h2>
-<div class="flex-container">
-    <div class="right">
-        <h4>Notes</h4>
-        <code>
-            &lt;app-cf-mention-text [searchData]="observableData$" [text]="testText"&gt;<br>
-            &lt;/app-cf-mention-text&gt;<br>
-        </code>
-        <p>In code:</p>
-        <code>
-            this.observableData$ = of(<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "alanger", "Allen Langer" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "bbieniek", "Baltazar Bieniek" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "cfletcher", "Charlotte Fletcher" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "dwierzbicki", "Dawid Wierzbicki" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "iseckington", "Ian Seckington" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jcook", "Jason Cook" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jgilbert", "Jason Gilbert" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "kmcsweeney", "Kerry McSweeney" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "mtolfrey", "Michael Tolfrey" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "nsaleem", "Nabeela Saleem" ),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "rhowell", "Richard Howell" ),<br>
-            );<br>
-        </code>
-        <br>
-    </div>
-</div>
-<div class="flex-container">
-    <div class="left">
-        <h4>Enter text</h4>
-        <app-cf-mention-text [searchData]="observableData$" [text]="testText"></app-cf-mention-text>
-        <!--(inputTextChange)="textChanged($event)"-->
-        <app-cf-button [type]="Button.Primary" (click)="setMentionText()">Set Default Text</app-cf-button>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Modals<a name="modal"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <h4>Notes</h4>
-        <p>Import the UIModalService, and call one of the showModal methods:</p>
-        <code>
-            constructor(<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;private modalService: UiModalService<br>
-            ) {{'{'}} {{'}'}}<br>
-            <br>
-            const b: CFModalButton[] = [<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} id: 'Y', text: 'Yes', type: CfButtonType.Default {{'}'}},<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} id: 'N', text: 'No', type: CfButtonType.Danger {{'}'}},<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} id: 'M', text: 'Maybe', type: CfButtonType.Secondary {{'}'}}<br>
-            ];<br><br>
-            this.modalService<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;.showModalConfirmation(<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Confirmation Required',<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;p&gt;I need to ask you something important!&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;', <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b )<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;.subscribe({{'{'}}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next: (r: string) => {{'{'}}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
-            {{'}'}});<br><br>
-            this.modalService<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;.showModalInformation(<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Information',<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;p&gt;This is an information message.&lt;/p&gt;'<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;)<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;.subscribe({{'{'}}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next: (r: string) => {{'{'}}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
-            {{'}'}});<br><br>
-        </code>
-        <p>The observable string returned will match either an empty string (if the user 
-            closes the window without pressing a button), or an id value from 
-            the <code class="inline">CFModalButton</code> array. For modals which do not 
-            require a passed button array, the button result will always be 'OK'.</p>
-        <div class="button-bar cal">
-            <app-cf-button class="tour-modal-buttons" [type]="Button.Primary" (click)="showModalInfo()">Show Info</app-cf-button>
-            <app-cf-button [type]="Button.Secondary" (click)="showModalConfirmation()">Show Confirmation</app-cf-button>
-            <app-cf-button [type]="Button.Tertiary" (click)="showModalWarning()">Show Warning</app-cf-button>
-            <app-cf-button [type]="Button.Danger" (click)="showModalError()">Show Error</app-cf-button>
-        </div>
-        <p>Modal response is: {{modalResponseLast}}</p>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Profile Image Display<a name="profile"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <h4>Notes</h4>
-        <p>Html:</p>
-        <code>
-            &lt;app-cf-profile [urlOrInitials]="url"&gt;&lt;/app-cf-profile&gt;<br>
-            &lt;app-cf-profile [urlOrInitials]="url" [roundImage]="false" [width]="100" [height]="100"&gt;&lt;/app-cf-profile&gt;<br>
-        </code>
-        <p>If the <code class="inline">urlOrInitials</code> parameter starts with 'http', assume an image.</p>
-    </div>
-</div>
-
-<div class="flex-container">
-    <div class="left comfort" *ngIf="profilesLoaded">
-        <app-cf-profile [urlOrInitials]="'aj'"></app-cf-profile>
-        <br>
-        <app-cf-profile class="tour-profile"
-            [urlOrInitials]="testUserPortrait"></app-cf-profile>
-        <br>
-        <app-cf-profile [width]="100" [height]="100"
-            [urlOrInitials]="testUserPortrait"
-            [roundImage]="false"></app-cf-profile>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Status Display<a name="status"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <h4>Notes</h4>
-        <p>Html:</p>
-        <code>
-            &lt;app-cf-status-display [status]="status"&gt;<br>
-            &lt;/app-cf-status-display&gt;<br>
-        </code>
-        <p>Status will expand to fill containing element.</p>
-    </div>
-</div>
-<div class="flex-container">
-    <div class="left">
-        <table class="status-table">
-            <tr>
-                <td><app-cf-status-display [status]="'PreInterview'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'PostInterview'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'AcceptedOnProgramme'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'RejectedByInterviewer'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'RejectedByOffice'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'Returner'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'PendingAcceptanceAsReturner'"></app-cf-status-display></td>
-            </tr>
-
-            <tr>
-                <td><app-cf-status-display [status]="'ORCAReject'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ReturnToORCA'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'TransferredToORCA'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantApplied'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantAppliedPFT'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlace'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceCE'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceGP'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantReadyToPlaceMM'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantPlaced'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeCNX'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeEXP'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeFAI'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeREJ'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeTER'"></app-cf-status-display></td>
-            </tr>
-            <tr>
-                <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeUNS'"></app-cf-status-display></td>
-            </tr>
-        </table>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<h2>Tables<a name="tables"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <h4>Notes</h4>
-        <p>Html:</p>
-        <code>
-            &lt;app-cf-table [data]="standardTable"
-                (onSelect)="selectedStandardRow($event)"&gt;&lt;/app-cf-table&gt;
-        </code>
-        <p>Code:</p>
-        <code>
-            var columns: CFTableColumn[] = [<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Artist", CFTableColumnAlignment.Left, CFTableColumnType.String, "col_artist"),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Album", CFTableColumnAlignment.Left, CFTableColumnType.String, "col_album"),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Year", CFTableColumnAlignment.Center, CFTableColumnType.Number),<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Position", CFTableColumnAlignment.Right, CFTableColumnType.String),<br>
-            ];<br>
-            <br>
-            var data = [<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} pk: "01", cols: ["The Beatles", "Please Please Me", "1963", "#1" ]{{ '}' }},<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;...<br>
-            ];<br>
-            <br>
-            this.standardTable = new CFTableData(columns, data, new CfTablePaginationOptions(10, data.length));
-        </code>
-        <p>Event:</p>
-        <code>
-            selectedStandardRow(event: CFTableSelectedRow): void {{ '{' }}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Row was selected with PK: ${{ '{' }}event.pk{{ '}' }}`);<br>
-            {{ '}' }}<br>
-        </code>
-        <p>Extra parameters:</p>
-        <code>[showHeaders]="true|false"</code><br>
-        <code>[sortable]="true|false"</code>
-        <p>Setting filters:</p>
-        <code>[filter]="artistFilter"</code>
-        <p>In calling code:</p>
-        <code>
-            this.artistFilter = {{ '{' }} column:0, value: 'The Beatles' {{ '}' }};<br>
-        </code>
-        <p><strong>NOTE:</strong> filters can be undefined to clear an existing filter.</p>
-        
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-<div class="flex-container">
-    <div class="left">
-        <h2>Standard<a name="tables-standard"></a></h2>
-        <app-cf-table *ngIf="standardTable" [data]="standardTable"
-            (onSelect)="selectedStandardRow($event)"></app-cf-table>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<div class="flex-container">
-    <div class="left">
-        <h2>Standard Pagination, No Sort<a name="tables-paginate"></a></h2>
-        <app-cf-table *ngIf="paginationTable" [showHeaders]="true" [data]="paginationTable"
-            (onSelect)="selectedStandardRow($event)"></app-cf-table>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-
-<div class="flex-container">
-    <div class="left" *ngIf="profilesLoaded">
-        <h2>Sortable<a name="tables-sort"></a></h2>
-        <app-cf-button [type]="filterButtonType" (click)="toggleFilter()">{{filterText}}</app-cf-button>
-        <app-cf-table *ngIf="sortTable" [filter]="artistFilter" [data]="sortTable" [sortable]="true"
-            (onSelect)="selectedStandardRow($event)"></app-cf-table>
-    </div>
-</div>
-<p><a href="#top">UP</a></p>
-<h2>Typeahead<a name="typeahead"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <h4>Notes</h4>
-        <p>Html:</p>
-        <code>
-        &lt;app-cf-typeahead<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextDefault]="'Default text'"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextActive]="'Enter search terms'"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[isSearching]="isTypeaheadSearching"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;[hasResults]="typeaheadHasResults"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;(lookup)="doTypeaheadLookup($event)"&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div results&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngIf="typeaheadHasResults; else noData"&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-table [data]="typeaheadSearchTable" [sortable]="true"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(onSelect)="selectedStandardRow($event)"&gt;&lt;/app-cf-table&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template #noData&gt;No data returned&lt;/ng-template&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
-        &lt;/app-cf-typeahead&gt;<br>
-        </code>
-        <p>Code:</p>
-        <code>
-        doTypeaheadLookup(value: string): void {{ '{' }}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = false;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = true;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;// do search<br>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = true;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = false;<br>
-        {{ '}' }}<br>
-        </code><br>
-    </div>
-</div>
-<div class="flex-container">
-    <div class="left" *ngIf="profilesLoaded">
-        <br>
-        <app-cf-typeahead #typeahead [placeholderTextDefault]="'Default text'"
-            [placeholderTextActive]="'Enter search terms'" [isSearching]="isTypeaheadSearching"
-            [hasResults]="typeaheadHasResults" (lookup)="doTypeaheadLookup($event)">
-            <div results>
-                <div *ngIf="typeaheadHasResults; else noData">
-                    <app-cf-table *ngIf="typeaheadSearchTable" [data]="typeaheadSearchTable" [sortable]="true"
-                        (onSelect)="typeaheadSelected($event)"></app-cf-table>
-                </div>
-                <ng-template #noData>No data returned</ng-template>
+    <h2>Loader Display<a name="wait"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;app-cf-loader&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Text&lt;/p&gt;<br>
+                &lt;/app-cf-loader&gt;<br>
+                <br>
+                &lt;app-cf-loader [size]="LoaderSize.Small" [style]="LoaderStyle.Clock"&gt;&lt;/app-cf-loader&gt;<br>
+            </code>
+            <p>Pass text as inner content, or nothing</p>
+            <p>Remember to import the enums into the component.ts:</p>
+            <code>
+                LoaderSize = CFLoaderSize;<br>
+                LoaderStyle = CFLoaderStyle;<br>
+            </code>
+            <h4>Examples</h4>
+            <div class="comfort loader">
+                <p class="cal">LoaderSize.Large</p>
+                <app-cf-loader><p>Stopwatch</p></app-cf-loader>
+                <app-cf-loader [style]="LoaderStyle.Clock"><p>Clock</p></app-cf-loader>
+                <app-cf-loader [style]="LoaderStyle.Circles"><p>Circles</p></app-cf-loader>
             </div>
-        </app-cf-typeahead>
-        <br>
-        <div *ngIf="typeaheadRecordSelected">
-            <app-cf-applicant-card *ngIf="selectedApplicant" [applicant]="selectedApplicant"
-                (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
+            <div class="comfort loader">
+                <p class="cal">LoaderSize.Small</p>
+                <app-cf-loader [size]="LoaderSize.Small"></app-cf-loader>
+                <app-cf-loader [style]="LoaderStyle.Clock" [size]="LoaderSize.Small"></app-cf-loader>
+                <app-cf-loader [style]="LoaderStyle.Circles" [size]="LoaderSize.Small"></app-cf-loader>
+            </div>
         </div>
     </div>
-</div>
-<p><a href="#top">UP</a></p>
+    <p><a href="#top">UP</a></p>
 
-<h2>What's New<a name="whatsnew"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <h4>Notes</h4>
-        <p>Code:</p>
-        <code>
-        inTour = false;<br>
-        restoreX = 0;<br>
-        restoreY = 0;<br>
-        <br>
-        startTour(): void {{'{'}}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;const items: CFTourElement[] = [];<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:menu", "Text line 1.&lt;br&gt;Text line 2", "Main Menu"));<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:div.spinner div.lg", "More text.", "Activity Indicator"));<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:div.applicant-card div.image", "Even more text", "Applicant Card"));<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:tour-modal-buttons", "Yet more", "Modal Dialogs"));<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:tour-profile", "Way more.", "Profile Image Display"));<br>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.restoreX = window.scrollX;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.restoreY = window.scrollY;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.uiservice<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.startTour(items)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.subscribe({{'{'}}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next: (currentItem: CFTourElement) => {{'{'}}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Changed tour item<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;complete: () => {{'{'}}<br>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.scrollTo({{'{'}} left: this.restoreX, top: this.restoreY, behavior: 'smooth' {{'}'}})<br>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}});<br>
-        {{'}'}}<br>
-        </code>
-        <p><strong>NOTE:</strong> The <code class="inline">CFTourElement</code> first constructor parameter
-        is used to determine which getElement query is run against the DOM:</p>
-        <ul>
-            <li><strong>CL:</strong> - class name or class hierarchy</li>
-            <li><strong>ID:</strong> - an element Id</li>
-        </ul>
-        <p>Once the tour observable is complete, you can restore the original scroll 
-         position as shown above, or perform whatever you logic you wish.</p>
-         <app-cf-button [type]="Button.Default" (click)="startTour()">Start Tour</app-cf-button>
+    <h2>Menu<a name="menu"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <br>
+            <app-cf-menu (menuSelected)="menuItemSelected($event)"></app-cf-menu>
+            <p>Selected item: <b>{{menuItem}}</b></p>
+        </div>
     </div>
-</div>
-<p><a href="#top">UP</a></p>
+    <p><a href="#top">UP</a></p>
 
-<h2>CSS Theme Declarations<a name="theme"></a></h2>
-<div class="flex-container">
-    <div class="left">
-        <code>
-            [data-theme="light"] {{ '{' }}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--page-background-color: #FFF7E3;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--page-foreground-color: #121212;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--heading-main-color: #275E70;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--heading-sub-color: #275E70;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--panel-background-color-primary: #FFF1E3;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--panel-border-color: #A7AED2;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-small-color: black;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-small-hover-color: #A7AED2;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-disabled-color: #A7AED2;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-button-focus-shadow-color: #565656;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-primary-action-bg-color: #44788A;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-primary-action-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-secondary-action-bg-color: #6996a4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-secondary-action-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-tertiary-action-bg-color: #eac853;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-tertiary-action-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-default-action-bg-color: #ea9a53;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-default-action-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-danger-action-bg-color: #ea6e6b;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-danger-action-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-cancel-action-bg-color: #565656;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--ui-cancel-action-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--main-nav-bg-color: #537d88;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--applicant-card-bg-color: #FFF1E3;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--applicant-card-border-color: #A7AED2;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--applicant-card-hover-shadow-color: #565656;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-bg-color: white; //#87a4ac;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-fg-color: black;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-width: 400px;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-results-bg-color: white; //#87a4ac;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-results-fg-color: black;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--search-bar-results-border-color: #44788A;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--table-border-color: #6996a4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--table-heading-default-bg-color: #6996a4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--table-heading-default-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--table-row-hover-bg-color: #6996a4;;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--table-row-hover-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--table-paginate-info-color: #6996a4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--tour-item-bg-color: #FFF1E3;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--tour-item-fg-color: #121212;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--tour-item-shadow-color: #565656;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--dialog-backdrop-color: #000033;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--dialog-title-bg-color: #6996a4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--dialog-title-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--menu-bg-color: #44788A;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--menu-sub-bg-color: #708a92;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--menu-fg-color: #fff;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--menu-bg-hover-color: #A7AED2;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--menu-hamburger-color: #fff;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--menu-dropdown-arrow-color: #fff;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--menu-drop-shadow: rgba(0, 0, 0, .45);<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--menu-transition-delay: 0.25s;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--profile-image-bg-color: #537d88;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--profile-image-fg-color: #FFF1E3;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-fg-color: white;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-preint: #00AFAA;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-postint: #007DA4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-pendingaccept: #007DA4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-orcareject: #007DA4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-returner: #007DA4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-returnToOrca: #007DA4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-accepted: #007DA4;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-applied: #E8BB2A;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-rtp: #EA9A53;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-placed: #33AB5A;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-oop: #E85658;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-rejected: #E85658;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--status-transferred: #E8BC2A;<br>
+    <h2>Mention Text<a name="mention"></a></h2>
+    <div class="flex-container">
+        <div class="right">
+            <h4>Notes</h4>
+            <code>
+                &lt;app-cf-mention-text [searchData]="observableData$" [text]="testText"&gt;<br>
+                &lt;/app-cf-mention-text&gt;<br>
+            </code>
+            <p>In code:</p>
+            <code>
+                this.observableData$ = of(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "alanger", "Allen Langer" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "bbieniek", "Baltazar Bieniek" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "cfletcher", "Charlotte Fletcher" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "dwierzbicki", "Dawid Wierzbicki" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "iseckington", "Ian Seckington" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jcook", "Jason Cook" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "jgilbert", "Jason Gilbert" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "kmcsweeney", "Kerry McSweeney" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "mtolfrey", "Michael Tolfrey" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "nsaleem", "Nabeela Saleem" ),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFMention( "rhowell", "Richard Howell" ),<br>
+                );<br>
+            </code>
+            <h4>Enter text</h4>
+            <app-cf-mention-text [searchData]="observableData$" [text]="testText"></app-cf-mention-text>
+            <!--(inputTextChange)="textChanged($event)"-->
+            <app-cf-button [type]="Button.Primary" (click)="setMentionText()">Set Default Text</app-cf-button>
+            <br><br>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Modals<a name="modal"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Import the <code class="inline">UIModalService</code>, and call one of the showModal methods:</p>
+            <code>
+                const b: CFModalButton[] = [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} id: 'Y', text: 'Yes', type: CfButtonType.Default {{'}'}},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} id: 'N', text: 'No', type: CfButtonType.Danger {{'}'}},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} id: 'M', text: 'Maybe', type: CfButtonType.Secondary {{'}'}}<br>
+                ];<br><br>
+                this.modalService<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;.showModalConfirmation(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Confirmation Required',<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;p&gt;I need to ask you something important!&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b )<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;.subscribe({{'{'}}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next: (r: string) => {{'{'}}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
+                {{'}'}});<br><br>
+                this.modalService<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;.showModalInformation(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Information',<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;p&gt;This is an information message.&lt;/p&gt;'<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;);<br>
+            </code>
+            <p>The observable string returned will match either an empty string (if the user 
+                closes the window without pressing a button), or an id value from 
+                the <code class="inline">CFModalButton</code> array. For modals which do not 
+                require a passed button array, the button result will always be 'OK'.</p>
+            <h4>Examples</h4>
+            <div class="button-bar cal tour-modal-buttons">
+                <app-cf-button [type]="Button.Primary" (click)="showModalInfo()">Show Info</app-cf-button>
+                <app-cf-button [type]="Button.Secondary" (click)="showModalConfirmation()">Show Confirmation</app-cf-button>
+                <app-cf-button [type]="Button.Tertiary" (click)="showModalWarning()">Show Warning</app-cf-button>
+                <app-cf-button [type]="Button.Danger" (click)="showModalError()">Show Error</app-cf-button>
+            </div>
+            <p>Modal response is: {{modalResponseLast}}</p>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Profile Image Display<a name="profile"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;app-cf-profile [urlOrInitials]="url"&gt;&lt;/app-cf-profile&gt;<br>
+                &lt;app-cf-profile [urlOrInitials]="url" [roundImage]="false" [width]="100" [height]="100"&gt;&lt;/app-cf-profile&gt;<br>
+            </code>
+            <p>If the <code class="inline">urlOrInitials</code> parameter starts with 'http', assume an image.</p>
+            <h4>Examples</h4>
+            <div class="comfort tour-profile" *ngIf="profilesLoaded">
+                <app-cf-profile [urlOrInitials]="'aj'"></app-cf-profile>
+                <app-cf-profile
+                    [urlOrInitials]="testUserPortrait"></app-cf-profile>
+                <app-cf-profile [width]="100" [height]="100"
+                    [urlOrInitials]="testUserPortrait"
+                    [roundImage]="false"></app-cf-profile>
+                <app-cf-profile [width]="100" [height]="100" 
+                    [urlOrInitials]="'PS'" [roundImage]="true"></app-cf-profile>
+            </div>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Progress Indicator<a name="progress"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;app-cf-progress [max]="progressMax" [value]="progressValue"&gt;&lt;/app-cf-progress&gt;<br>
+            </code>
+            <h4 class="tour-progress-bar">Examples</h4>
+            <app-cf-progress [max]="progressMax" [value]="progressValue"></app-cf-progress>
+            <p>Maximum is {{progressMax}}, current value is {{progressValue}}</p>
+            <div class="button-bar cal">
+                <app-cf-button [type]="Button.Default" (click)="setProgressValue(0)">Set to 0%</app-cf-button>
+                <app-cf-button [type]="Button.Default" (click)="setProgressValue(25)">Set to 25%</app-cf-button>
+                <app-cf-button [type]="Button.Default" (click)="setProgressValue(50)">Set to 50%</app-cf-button>
+                <app-cf-button [type]="Button.Default" (click)="setProgressValue(75)">Set to 75%</app-cf-button>
+                <app-cf-button [type]="Button.Default" (click)="setProgressValue(100)">Set to 100%</app-cf-button>
+            </div>
+            <br>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Status Display<a name="status"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;app-cf-status-display [status]="status"&gt;&lt;/app-cf-status-display&gt;<br>
+            </code>
+            <p>Status will expand to fill containing element.</p>
+            <table class="status-table">
+                <tr>
+                    <td><app-cf-status-display [status]="'PreInterview'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'PostInterview'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'AcceptedOnProgramme'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'RejectedByInterviewer'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'RejectedByOffice'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'Returner'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'PendingAcceptanceAsReturner'"></app-cf-status-display></td>
+                </tr>
+
+                <tr>
+                    <td><app-cf-status-display [status]="'ORCAReject'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ReturnToORCA'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'TransferredToORCA'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantApplied'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantAppliedPFT'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantReadyToPlace'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantReadyToPlaceCE'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantReadyToPlaceGP'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantReadyToPlaceMM'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantPlaced'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeCNX'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeEXP'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeFAI'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeREJ'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeTER'"></app-cf-status-display></td>
+                </tr>
+                <tr>
+                    <td><app-cf-status-display [status]="'ParticipantOutOfProgrammeUNS'"></app-cf-status-display></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Tables<a name="tables"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;app-cf-table [data]="standardTable"
+                    (onSelect)="selectedStandardRow($event)"&gt;&lt;/app-cf-table&gt;
+            </code>
+            <p>Code:</p>
+            <code>
+                var columns: CFTableColumn[] = [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Artist", CFTableColumnAlignment.Left, CFTableColumnType.String, "col_artist"),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Album", CFTableColumnAlignment.Left, CFTableColumnType.String, "col_album"),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Year", CFTableColumnAlignment.Center, CFTableColumnType.Number),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Position", CFTableColumnAlignment.Right, CFTableColumnType.String),<br>
+                ];<br>
+                <br>
+                var data = [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} pk: "01", cols: ["The Beatles", "Please Please Me", "1963", "#1" ]{{ '}' }},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                ];<br>
+                <br>
+                this.standardTable = new CFTableData(columns, data, new CfTablePaginationOptions(10, data.length));
+            </code>
+            <p>Event:</p>
+            <code>
+                selectedStandardRow(event: CFTableSelectedRow): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Row was selected with PK: ${{ '{' }}event.pk{{ '}' }}`);<br>
+                {{ '}' }}<br>
+            </code>
+            <p>Extra parameters:</p>
+            <code>[showHeaders]="true|false"</code><br>
+            <code>[sortable]="true|false"</code>
+            <p>Setting filters:</p>
+            <code>[filter]="artistFilter"</code>
+            <p>In calling code:</p>
+            <code>
+                this.artistFilter = {{ '{' }} column:0, value: 'The Beatles' {{ '}' }};<br>
+            </code>
+            <p><strong>NOTE:</strong> filters can be undefined to clear an existing filter.</p>
+            
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+    <div class="flex-container">
+        <div class="left">
+            <h2>Standard<a name="tables-standard"></a></h2>
+            <app-cf-table *ngIf="standardTable" [data]="standardTable"
+                (onSelect)="selectedStandardRow($event)"></app-cf-table>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <div class="flex-container">
+        <div class="left">
+            <h2>Standard Pagination, No Sort<a name="tables-paginate"></a></h2>
+            <app-cf-table *ngIf="paginationTable" [showHeaders]="true" [data]="paginationTable"
+                (onSelect)="selectedStandardRow($event)"></app-cf-table>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <div class="flex-container">
+        <div class="left" *ngIf="profilesLoaded">
+            <h2>Sortable<a name="tables-sort"></a></h2>
+            <app-cf-button [type]="filterButtonType" (click)="toggleFilter()">{{filterText}}</app-cf-button>
+            <app-cf-table *ngIf="sortTable" [filter]="artistFilter" [data]="sortTable" [sortable]="true"
+                (onSelect)="selectedStandardRow($event)"></app-cf-table>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+    <h2>Typeahead<a name="typeahead"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+            &lt;app-cf-typeahead<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextDefault]="'Default text'"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;[placeholderTextActive]="'Enter search terms'"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;[isSearching]="isTypeaheadSearching"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;[hasResults]="typeaheadHasResults"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;(lookup)="doTypeaheadLookup($event)"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div results&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngIf="typeaheadHasResults; else noData"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-table [data]="typeaheadSearchTable" [sortable]="true"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(onSelect)="selectedStandardRow($event)"&gt;&lt;/app-cf-table&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-template #noData&gt;No data returned&lt;/ng-template&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+            &lt;/app-cf-typeahead&gt;<br>
+            </code>
+            <p>Code:</p>
+            <code>
+            doTypeaheadLookup(value: string): void {{ '{' }}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = false;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = true;<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;// do search<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.typeaheadHasResults = true;<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = false;<br>
             {{ '}' }}<br>
-        </code>
-        <p>In <code class="inline">index.html</code>:</p>
-        <code>
-            &lt;body data-theme="light"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-root&gt;&lt;/app-root&gt;<br>
-            &lt;body&gt;<br>
-        </code>
-        <p>In theme switching code:</p>
-        <code>
-        document.body.setAttribute(<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;'data-theme',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;this.isLightTheme ? 'light' : 'dark'<br>
-        );
-        </code>
-        <br>
+            </code><br>
+            <div *ngIf="profilesLoaded">
+                <h4>Example</h4>
+                <p>Start look up after three characters entered:</p>
+                <app-cf-typeahead #typeahead [placeholderTextDefault]="'Default text'"
+                [placeholderTextActive]="'Enter search terms'" [isSearching]="isTypeaheadSearching"
+                [hasResults]="typeaheadHasResults" (lookup)="doTypeaheadLookup($event)">
+                    <div results>
+                        <div *ngIf="typeaheadHasResults; else noData">
+                            <app-cf-table *ngIf="typeaheadSearchTable" [data]="typeaheadSearchTable" [sortable]="true"
+                            (onSelect)="typeaheadSelected($event)"></app-cf-table>
+                        </div>
+                        <ng-template #noData>No data returned</ng-template>
+                    </div>
+                </app-cf-typeahead>
+                <div *ngIf="typeaheadRecordSelected">
+                    <app-cf-applicant-card *ngIf="selectedApplicant" [applicant]="selectedApplicant"
+                    (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
+                </div>
+            </div>
+            <br>
+        </div>
     </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>What's New<a name="whatsnew"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Code:</p>
+            <code>
+            inTour = false;<br>
+            restoreX = 0;<br>
+            restoreY = 0;<br>
+            <br>
+            startTour(): void {{'{'}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;const items: CFTourElement[] = [];<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:menu", "Text line 1.&lt;br&gt;Text line 2", "Main Menu"));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:div.spinner div.lg", "More text.", "Activity Indicator"));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:div.applicant-card div.image", "Even more text", "Applicant Card"));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:tour-modal-buttons", "Yet more", "Modal Dialogs"));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;items.push(new CFTourElement("CL:tour-profile", "Way more.", "Profile Image Display"));<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.restoreX = window.scrollX;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.restoreY = window.scrollY;<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.uiservice<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.startTour(items)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.subscribe({{'{'}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next: (currentItem: CFTourElement) => {{'{'}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Changed tour item<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;complete: () => {{'{'}}<br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.scrollTo({{'{'}} left: this.restoreX, top: this.restoreY, behavior: 'smooth' {{'}'}})<br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}});<br>
+            {{'}'}}<br>
+            </code>
+            <p><strong>NOTE:</strong> The <code class="inline">CFTourElement</code> first constructor parameter
+            is used to determine which getElement query is run against the DOM:</p>
+            <ul>
+                <li><strong>CL:</strong> - class name or class hierarchy</li>
+                <li><strong>ID:</strong> - an element Id</li>
+            </ul>
+            <p>Once the tour observable is complete, you can restore the original scroll 
+            position as shown above, or perform whatever you logic you wish.</p>
+            <app-cf-button [type]="Button.Default" (click)="startTour()">Start Tour</app-cf-button>
+            <br><br>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>CSS Theme Declarations<a name="theme"></a></h2>
+    <div class="flex-container">
+        <div class="left comfort">
+            <p>See <code class="inline">./assets/styles/_themes.scss</code>:</p>
+            <code>
+                [data-theme="light"] {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--page-background-color: #FFF7E3;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--page-foreground-color: #121212;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--heading-main-color: #275E70;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--heading-sub-color: #275E70;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[snip]<br>
+                {{ '}' }}<br>
+            </code>
+            <p>In <code class="inline">index.html</code>:</p>
+            <code>
+                &lt;body data-theme="light"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-root&gt;&lt;/app-root&gt;<br>
+                &lt;body&gt;<br>
+            </code>
+            <p>In theme switching code:</p>
+            <code>
+            document.body.setAttribute(<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;'data-theme',<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;this.isLightTheme ? 'light' : 'dark'<br>
+            );
+            </code>
+            <p>Alternatively, if theme support is not required, use the new CSS syntax <code class="inline">light-dark</code> to declare both light and dark colours on the same declaration line.</p>
+            <code>
+                :root {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color-scheme: light dark;<br>
+                {{ '}' }}<br><br>
+                body {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: light-dark(#333b3c, #efefec);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: light-dark(#efedea, #223a2c);<br>
+                {{ '}' }}<br>
+            </code>
+            <p>Link: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark" target="_blank">mdn web docs <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.</p>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
 </div>
-<p><a href="#top">UP</a></p>
+<ng-template #loading_please>
+    <div class="comfort">
+        <app-cf-loader [style]="LoaderStyle.Circles" [size]="LoaderSize.Large"><p>Loading network resources</p></app-cf-loader>
+    </div>
+</ng-template>

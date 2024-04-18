@@ -5,7 +5,11 @@
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     border: none;
-    margin-bottom: 1rem;
+    margin: 0;
+    &:hover:not(.disabled) {
+        filter: brightness(1.1) saturate(1.5);
+        cursor: pointer;
+    }
 }
 
 .btn:focus {
@@ -30,7 +34,8 @@
 }
 
 .button-bar {
-    margin-top: 1rem;
+    margin: 1rem 0;
+    padding: 0;
     display: flex;
     gap: 0.5rem;
     &.ral {

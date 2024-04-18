@@ -49,7 +49,7 @@ export class UiService {
         return s;
     }
 
-    public getElementPositionByType(query: string): DOMRectList | undefined {
+    public getElementPositionByType(query: string): ICFElementAndBounds | undefined {
         const parts = query.split(':');
         if(parts.length == 1) {
             return this.getElementPositionByClass(parts[0]);
@@ -67,29 +67,33 @@ export class UiService {
         return undefined;
     }
 
-    public getElementPositionById(id: string): DOMRectList | undefined {
+    public getElementPositionById(id: string): ICFElementAndBounds | undefined {
         const e = document.getElementById(id);
         if(e) {
-            return e.getClientRects();
+            return { bounds: e.getClientRects(), element: e };
         }
         return undefined;
     }
 
-    public getElementPositionByClass(className: string): DOMRectList | undefined {
+    public getElementPositionByClass(className: string): ICFElementAndBounds | undefined {
         if(className.includes(".")) {
-            //console.log(`Looking for ${className}`);
             const e = document.querySelectorAll(className);
             if (e && e.length > 0) {
-                return e[0].getClientRects();
+                return { bounds: e[0].getClientRects(), element: e[0] as HTMLElement };
             } else {
                 console.warn(`No elements found matching ${className}`);
             }
         } else {
             const e = document.getElementsByClassName(className);
             if (e && e.length > 0) {
-                return e[0].getClientRects();
+                return { bounds: e[0].getClientRects(), element: e[0] as HTMLElement };
             }
         }
         return undefined;
     }
+}
+
+export interface ICFElementAndBounds {
+    bounds: DOMRectList;
+    element: HTMLElement;
 }

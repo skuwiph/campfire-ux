@@ -42,8 +42,8 @@ import { Component, Input } from '@angular/core';
         </div>
         <div *ngSwitchCase="'ci'" class="{{size}} circles">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-            viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-                <circle fill="#275E70" stroke="none" cx="6" cy="50" r="6">
+            viewBox="0 0 92 20" enable-background="new 0 0 0 0" xml:space="preserve">
+                <circle fill="#275E70" stroke="none" cx="6" cy="10" r="6">
                     <animate
                     attributeName="opacity"
                     dur="1s"
@@ -51,7 +51,7 @@ import { Component, Input } from '@angular/core';
                     repeatCount="indefinite"
                     begin="0.1"/>
                 </circle>
-                <circle fill="#275E70" stroke="none" cx="26" cy="50" r="6">
+                <circle fill="#275E70" stroke="none" cx="26" cy="10" r="6">
                     <animate
                     attributeName="opacity"
                     dur="1s"
@@ -59,7 +59,7 @@ import { Component, Input } from '@angular/core';
                     repeatCount="indefinite"
                     begin="0.2"/>
                 </circle>
-                <circle fill="#275E70" stroke="none" cx="46" cy="50" r="6">
+                <circle fill="#275E70" stroke="none" cx="46" cy="10" r="6">
                     <animate
                     attributeName="opacity"
                     dur="1s"
@@ -67,7 +67,7 @@ import { Component, Input } from '@angular/core';
                     repeatCount="indefinite"
                     begin="0.3"/>
                 </circle>
-                <circle fill="#275E70" stroke="none" cx="66" cy="50" r="6">
+                <circle fill="#275E70" stroke="none" cx="66" cy="10" r="6">
                     <animate
                     attributeName="opacity"
                     dur="1s"
@@ -75,7 +75,7 @@ import { Component, Input } from '@angular/core';
                     repeatCount="indefinite"
                     begin="0.4"/>
                 </circle>
-                <circle fill="#275E70" stroke="none" cx="86" cy="50" r="6">
+                <circle fill="#275E70" stroke="none" cx="86" cy="10" r="6">
                     <animate
                     attributeName="opacity"
                     dur="1s"
@@ -98,7 +98,7 @@ import { Component, Input } from '@angular/core';
         img, svg {
             width: 33px;
             text-align: center;
-            margin: 0 auto;
+            margin: 0.1rem auto;
         }
         &.circles {
             width: 55px;
@@ -113,9 +113,7 @@ import { Component, Input } from '@angular/core';
             margin: 0 auto;
         }
         &.circles {
-            max-height: 1rem;
-            margin-top: -1.5rem;
-            margin-bottom: 3rem;
+            //max-height: 1rem;
         }
     }
     `
