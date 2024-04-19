@@ -7,6 +7,7 @@
         <li><a href="#alerts"><i class="fa-solid fa-arrow-up-right-from-square"></i>Alerts</a></li>
         <li><a href="#card"><i class="fa-solid fa-arrow-up-right-from-square"></i>Applicant Card</a></li>
         <li><a href="#appcard"><i class="fa-solid fa-arrow-up-right-from-square"></i>Application Card</a></li>
+        <li><a href="#banner"><i class="fa-solid fa-arrow-up-right-from-square"></i>Banner</a></li>
         <li><a href="#buttons"><i class="fa-solid fa-arrow-up-right-from-square"></i>Buttons</a></li>
         <li><a href="#dialog"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dialogs</a></li>
         <li><a href="#dropdown"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dropdown</a></li>
@@ -245,6 +246,63 @@
     </div>
 
     <p><a href="#top">UP</a></p>
+
+    <h2>Banner<a name="banner"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <code>
+                &lt;app-cf-banner [type]="BannerType.Reminder"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p slot="text"&gt;Reminder: Suggest a new referee for the applicant to nominate.&lt;/p&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container slot="actions"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button<br>
+                [type]="Button.Default"&gt;Action&lt;/app-cf-button&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>
+                &lt;/app-cf-banner&gt;
+            </code>
+            <p>Remember to import the enum into the component.ts:</p>
+            <code>
+                BannerType = CFBannerType;<br>
+            </code>
+            <h4>Examples</h4>
+            <div class="show-background">
+                <app-cf-banner>
+                    <p slot="text">Reminder: Suggest a new referee for the applicant to nominate.</p>
+                    <ng-container slot="actions">
+                        <app-cf-button [type]="Button.Default">Action</app-cf-button>
+                    </ng-container>
+                </app-cf-banner>
+            </div>
+            <div class="show-background">
+                <app-cf-banner [type]="BannerType.Reminder">
+                    <p slot="text">Reminder: Suggest a new referee for the applicant to nominate.</p>
+                    <ng-container slot="actions">
+                        <app-cf-button [type]="Button.Primary">Action</app-cf-button>
+                    </ng-container>
+                </app-cf-banner>
+            </div>
+            <div class="show-background">
+                <app-cf-banner [type]="BannerType.Done">
+                    <p slot="text">Reminder: Suggest a new referee for the applicant to nominate.</p>
+                    <ng-container slot="actions">
+                        <app-cf-button [type]="Button.Cancel">Action</app-cf-button>
+                    </ng-container>
+                </app-cf-banner>
+            </div>
+            <div class="show-background">
+                <app-cf-banner [type]="BannerType.Exclamation">
+                    <p slot="text">Reminder: Suggest a new referee for the applicant to nominate.</p>
+                    <ng-container slot="actions">
+                        <app-cf-button [type]="Button.Tertiary">Action</app-cf-button>
+                    </ng-container>
+                </app-cf-banner>
+            </div>
+
+        </div>
+
+    </div>
+    <p><a href="#top">UP</a></p>
+
 
     <h2>Buttons<a name="buttons"></a></h2>
     <div class="flex-container">

@@ -16,6 +16,7 @@ import { UiModalService } from './ui/ui-modal.service';
 import { HttpClient } from '@angular/common/http';
 import { CFLoaderSize, CFLoaderStyle } from './ui/cf-loader/cf-loader.component';
 import { CFApplicationCardStatus } from './ui/cf-application-card/cf-application-card.component';
+import { CFBannerType } from './ui/cf-banner/cf-banner.component';
 
 @Component({
     templateUrl: './control-summary.component.html',
@@ -72,6 +73,7 @@ export class ControlSummaryComponent implements OnInit {
     LoaderSize = CFLoaderSize;
     LoaderStyle = CFLoaderStyle;
     CardStatus = CFApplicationCardStatus;
+    BannerType = CFBannerType;
 
     @ViewChild('dialogDemo', { static: false }) dialog!: CfDialogComponent;
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;

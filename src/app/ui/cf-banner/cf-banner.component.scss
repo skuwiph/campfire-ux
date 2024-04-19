@@ -1,0 +1,49 @@
+@import "/src/assets/styles/themes";
+
+.banner {
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: stretch;
+    justify-content: space-between;
+    gap: 0.25rem;
+
+    &.info {
+        background-color: var(--banner-info-bg-color);
+        color: #555555;
+    }
+
+    &.todo {
+        background-color: var(--banner-todo-bg-color);
+        color: #555555;
+    }
+
+    &.done {
+        background-color: var(--banner-done-bg-color);
+        color: #555555;
+    }
+
+    &.exclaim {
+        background-color: var(--banner-warn-bg-color);
+        color: #ffffff;
+    }
+
+    .icon {
+        flex: 0 0 2rem;
+        text-align: center;
+
+        i {
+            margin: 0 auto;
+            font-size: 1.5rem;
+        }
+    }
+
+    .text {
+        flex: 1 1 80%;
+    }
+
+    .actions {}
+}

@@ -20,12 +20,14 @@ import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
 import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
 import { CfProgressComponent } from './cf-progress/cf-progress.component';
 import { CfApplicationCardComponent } from './cf-application-card/cf-application-card.component';
+import { CfBannerComponent } from './cf-banner/cf-banner.component';
 
 @NgModule({
     declarations: [
         CfAlertComponent,
         CfApplicantCardComponent,
         CfApplicationCardComponent,
+        CfBannerComponent,
         CfButtonComponent,
         CfDialogComponent,
         CfDropdownComponent,
@@ -51,6 +53,7 @@ import { CfApplicationCardComponent } from './cf-application-card/cf-application
         CfAlertComponent,
         CfApplicantCardComponent,
         CfApplicationCardComponent,
+        CfBannerComponent,
         CfButtonComponent,
         CfDialogComponent,
         CfDropdownComponent,
@@ -61,7 +64,7 @@ import { CfApplicationCardComponent } from './cf-application-card/cf-application
         CfProgressComponent,
         CfStatusDisplayComponent,
         CfTableComponent,
-        CfTypeaheadComponent, 
+        CfTypeaheadComponent,
     ],
     providers: []
 })

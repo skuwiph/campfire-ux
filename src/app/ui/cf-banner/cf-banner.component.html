@@ -1,0 +1,16 @@
+<div class="banner" [ngClass]="type">
+    <div class="icon">
+        <ng-container [ngSwitch]="type">
+            <i *ngSwitchCase="'info'" class="fa-solid fa-circle-info"></i>
+            <i *ngSwitchCase="'exclaim'" class="fa-solid fa-circle-exclamation"></i>
+            <i *ngSwitchCase="'todo'" class="fa-solid fa-clipboard-list"></i>
+            <i *ngSwitchCase="'done'" class="fa-solid fa-clipboard-check"></i>
+        </ng-container>
+    </div>
+    <div class="text">
+        <ng-content select="[slot=text]"></ng-content>
+    </div>
+    <div class="actions">
+        <ng-content select="[slot=actions]"></ng-content>
+    </div>
+</div>
