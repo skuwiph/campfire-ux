@@ -10,13 +10,14 @@ import { CFMention } from './ui/cf-mention-text/cf-mention-text.component';
 import { UiService } from './ui/ui.service';
 import { CFTourElement } from './ui/cf-whats-new/cf-whats-new.component';
 import { CFDropdownItem, CFDropdownItemType, CFDropdownOptions } from './ui/cf-dropdown/cf-dropdown.component';
-import { CFModalButton, CfModalComponent } from './ui/cf-modal/cf-modal.component';
+import { CFModalButton } from './ui/cf-modal/cf-modal.component';
 import { UiModalService } from './ui/ui-modal.service';
 
 import { HttpClient } from '@angular/common/http';
 import { CFLoaderSize, CFLoaderStyle } from './ui/cf-loader/cf-loader.component';
 import { CFApplicationCardStatus } from './ui/cf-application-card/cf-application-card.component';
 import { CFBannerType } from './ui/cf-banner/cf-banner.component';
+import { CfTabComponent } from './ui/cf-tab/cf-tab.component';
 
 @Component({
     templateUrl: './control-summary.component.html',
@@ -77,6 +78,7 @@ export class ControlSummaryComponent implements OnInit {
 
     @ViewChild('dialogDemo', { static: false }) dialog!: CfDialogComponent;
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;
+    @ViewChild('tabComponent', { static: false }) tabBar!: CfTabComponent;
 
     constructor(
         private http: HttpClient,
@@ -264,6 +266,21 @@ export class ControlSummaryComponent implements OnInit {
     // Buttons
     primaryClicked(): void {
         this.modalService.showModalInformation('Information', `Primary Button Clicked`);
+    }
+
+    // Tabs
+    activeTabContent = 'one';
+    onTabSelect(id: string): void {
+        console.log(`Selected tab ${id}`);
+        this.activeTabContent = id;
+    }
+
+    enableTab(id: string): void {
+        this.tabBar.enableTab(id);
+    }
+
+    disableTab(id: string): void {
+        this.tabBar.disableTab(id);
     }
 
     // Dialog

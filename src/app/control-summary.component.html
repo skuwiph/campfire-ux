@@ -18,6 +18,7 @@
         <li><a href="#profile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Image</a></li>
         <li><a href="#progress"><i class="fa-solid fa-arrow-up-right-from-square"></i>Progress Indicator</a></li>
         <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
+        <li><a href="#tab"><i class="fa-solid fa-arrow-up-right-from-square"></i>Tabs</a></li>
         <li><a href="#tables"><i class="fa-solid fa-arrow-up-right-from-square"></i>Tables</a></li>
         <ul>
             <li><a href="#tables-standard"><i class="fa-solid fa-arrow-up-right-from-square"></i>Standard</a></li>
@@ -709,6 +710,72 @@
                 </tr>
             </table>
         </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Tab<a name="tab"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                    &lt;app-cf-tab&gt;&lt;/app-cf-tab&gt;
+            </code>
+            <h4>Examples</h4>
+            <app-cf-tab (tabSelected)="onTabSelect($event)" #tabComponent>
+                <ng-container>
+                    <div class="tab-content">
+                        <ng-container [ngSwitch]="activeTabContent">
+                            <div *ngSwitchCase="'one'">
+                                <h1>First</h1>
+                                <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod
+                                    sit fugiat aliqua
+                                    nostrud sunt
+                                    consectetur cillum et labore magna occaecat esse. Aliqua voluptate id exercitation
+                                    commodo proident
+                                    proident nulla
+                                    quis cupidatat duis ullamco commodo. Nisi labore dolor ex veniam labore irure elit
+                                    irure do cupidatat
+                                    incididunt
+                                    dolor esse. Ea officia cillum sunt ut duis reprehenderit voluptate amet.</p>
+                                <app-cf-button [type]="Button.Primary" (click)="enableTab('three')">Enable Third
+                                    Tab</app-cf-button>
+                            </div>
+                            <div *ngSwitchCase="'two'">
+                                <h1>Second</h1>
+                                <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod
+                                    sit fugiat aliqua
+                                    nostrud sunt
+                                    consectetur cillum et labore magna occaecat esse. Aliqua voluptate id exercitation
+                                    commodo proident
+                                    proident nulla
+                                    quis cupidatat duis ullamco commodo. Nisi labore dolor ex veniam labore irure elit
+                                    irure do cupidatat
+                                    incididunt
+                                    dolor esse. Ea officia cillum sunt ut duis reprehenderit voluptate amet.</p>
+                                <app-cf-button [type]="Button.Danger" (click)="disableTab('three')">Disable Third
+                                    Tab</app-cf-button>
+                            </div>
+                            <div *ngSwitchCase="'three'">
+                                <h1>Third</h1>
+                                <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod
+                                    sit fugiat aliqua
+                                    nostrud sunt
+                                    consectetur cillum et labore magna occaecat esse. Aliqua voluptate id exercitation
+                                    commodo proident
+                                    proident nulla
+                                    quis cupidatat duis ullamco commodo. Nisi labore dolor ex veniam labore irure elit
+                                    irure do cupidatat
+                                    incididunt
+                                    dolor esse. Ea officia cillum sunt ut duis reprehenderit voluptate amet.</p>
+
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </app-cf-tab>
+        </div>
+
     </div>
     <p><a href="#top">UP</a></p>
 

@@ -1,0 +1,35 @@
+@import "/src/assets/styles/themes";
+
+.tab {
+    margin-bottom: 1rem;
+
+    .tab-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 0 0 1rem;
+        list-style: none;
+        padding: 0;
+
+        .tab {
+            min-width: 10rem;
+            flex-grow: 1;
+            font-weight: 600;
+            opacity: 0.9;
+
+            &.active {
+                border-bottom: 2px solid #547F85;
+            }
+
+            &.disabled {
+                color: darkgray;
+            }
+
+            &:hover:not(.disabled, .active) {
+                cursor: pointer;
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -21,6 +21,7 @@ import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
 import { CfProgressComponent } from './cf-progress/cf-progress.component';
 import { CfApplicationCardComponent } from './cf-application-card/cf-application-card.component';
 import { CfBannerComponent } from './cf-banner/cf-banner.component';
+import { CfTabComponent } from './cf-tab/cf-tab.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { CfBannerComponent } from './cf-banner/cf-banner.component';
         CfProfileComponent,
         CfProgressComponent,
         CfStatusDisplayComponent,
+        CfTabComponent,
         CfTableComponent,
         CfTypeaheadComponent,
         BoldTextPipe,
@@ -63,6 +65,7 @@ import { CfBannerComponent } from './cf-banner/cf-banner.component';
         CfProfileComponent,
         CfProgressComponent,
         CfStatusDisplayComponent,
+        CfTabComponent,
         CfTableComponent,
         CfTypeaheadComponent,
     ],
