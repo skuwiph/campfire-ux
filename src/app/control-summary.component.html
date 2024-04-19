@@ -398,8 +398,10 @@
             <app-cf-dialog #dialogDemo title="Modal Dialog Title">
                 <div body>
                     <p>Content passed in from the parent component.</p>
-                    <app-cf-table *ngIf="paginationTable" [showHeaders]="true" [data]="paginationTable"
-                        (onSelect)="selectedStandardRow($event)"></app-cf-table>
+                    <ng-container *ngIf="entityActivities">
+                        <app-cf-entity-activity *ngFor="let ea of entityActivities"
+                            [entry]="ea"></app-cf-entity-activity>
+                    </ng-container>
                 </div>
 
                 <div footer>
