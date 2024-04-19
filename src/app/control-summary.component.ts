@@ -18,6 +18,7 @@ import { CFLoaderSize, CFLoaderStyle } from './ui/cf-loader/cf-loader.component'
 import { CFApplicationCardStatus } from './ui/cf-application-card/cf-application-card.component';
 import { CFBannerType } from './ui/cf-banner/cf-banner.component';
 import { CfTabComponent, ICFTab } from './ui/cf-tab/cf-tab.component';
+import { CFEntityActivity, ICFEntityActivity } from './ui/cf-entity-activity/cf-entity-activity.component';
 
 @Component({
     templateUrl: './control-summary.component.html',
@@ -38,6 +39,7 @@ import { CfTabComponent, ICFTab } from './ui/cf-tab/cf-tab.component';
   }
   .cal { margin:0 auto; justify-content: center; }
   .show-background { background-color: lightgray; margin: 0 0 1rem; }
+  .white-background { background-color: white; margin: 0 0 1rem; padding: 0.5rem 0.5rem; }
   :host::ng-deep .col_profile { width: 65px; }
   :host::ng-deep .col_artist { width: 10rem; }
   :host::ng-deep .col_album { width: 27rem; }
@@ -117,6 +119,21 @@ export class ControlSummaryComponent implements OnInit {
         }, 30000);
     }
 
+    // ENTITY
+
+    entityActivities: ICFEntityActivity[] = [];
+    prepareEntityList(): void {
+        this.entityActivities.push(
+            new CFEntityActivity(undefined, 'Michael', 'Tolfrey', 'yesterday at 14:35', 'This is a test message about the applicant. Ea officia cillum sunt ut duis reprehenderit voluptate amet.\r\nand it\'s very important to know that CRLFs are respected by the display.')
+        );
+
+        this.displayApplicantCards.forEach(ac => {
+            this.entityActivities.push(
+                new CFEntityActivity(ac.profileUrl, ac.firstName, ac.lastName, 'some date at some time', `${ac.firstName} called about some important thing on their application.`)
+            );
+        })
+    }
+
     // PROGRESS
 
     progressMax = 100;
@@ -173,6 +190,7 @@ export class ControlSummaryComponent implements OnInit {
 
                     this.loadTypeaheadSearch();
                     this.prepareStandardTable();
+                    this.prepareEntityList();
 
                     this.profilesLoaded = true;
                 }

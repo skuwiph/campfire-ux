@@ -11,6 +11,7 @@
         <li><a href="#buttons"><i class="fa-solid fa-arrow-up-right-from-square"></i>Buttons</a></li>
         <li><a href="#dialog"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dialogs</a></li>
         <li><a href="#dropdown"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dropdown</a></li>
+        <li><a href="#entity"><i class="fa-solid fa-arrow-up-right-from-square"></i>Entity Activity</a></li>
         <li><a href="#wait"><i class="fa-solid fa-arrow-up-right-from-square"></i>Loader Display</a></li>
         <li><a href="#menu"><i class="fa-solid fa-arrow-up-right-from-square"></i>Menu</a></li>
         <li><a href="#mention"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mention Text</a></li>
@@ -454,6 +455,35 @@
     </div>
     <p><a href="#top">UP</a></p>
 
+    <h2>Entity Activity<a name="entity"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;ng-container&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-entity-activity *ngFor="let ea of entityActivities" [entry]="ea"&gt;&lt;/app-cf-entity-activityb&gt;<br>
+                &lt;/ng-container&gt;<br>
+            </code>
+            <p>Code:</p>
+            <code>
+                this.entityActivities.push(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFEntityActivity(undefined, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Michael', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Tolfrey', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'yesterday at 14:35', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'This is a test message about the applicant\r\nand it\'s very important to know')<br>
+                );<br>
+            </code>
+            <h4>Examples</h4>
+            <div class="white-background">
+                <ng-container *ngIf="entityActivities">
+                    <app-cf-entity-activity *ngFor="let ea of entityActivities" [entry]="ea"></app-cf-entity-activity>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
     <h2>Loader Display<a name="wait"></a></h2>
     <div class="flex-container">
         <div class="left">
@@ -727,16 +757,10 @@
                     <div class="tab-content">
                         <ng-container [ngSwitch]="activeTabContent">
                             <div *ngSwitchCase="'one'">
-                                <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod
-                                    sit fugiat aliqua
-                                    nostrud sunt
-                                    consectetur cillum et labore magna occaecat esse. Aliqua voluptate id exercitation
-                                    commodo proident
-                                    proident nulla
-                                    quis cupidatat duis ullamco commodo. Nisi labore dolor ex veniam labore irure elit
-                                    irure do cupidatat
-                                    incididunt
-                                    dolor esse. Ea officia cillum sunt ut duis reprehenderit voluptate amet.</p>
+                                <ng-container *ngIf="entityActivities">
+                                    <app-cf-entity-activity *ngFor="let ea of entityActivities"
+                                        [entry]="ea"></app-cf-entity-activity>
+                                </ng-container>
                                 <app-cf-button [type]="Button.Primary" (click)="enableTab('three')">Enable Third
                                     Tab</app-cf-button>
                             </div>

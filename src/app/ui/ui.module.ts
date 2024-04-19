@@ -6,22 +6,23 @@ import { ContenteditableValueAccessorModule } from '@tinkoff/angular-contentedit
 
 import { CfAlertComponent } from './cf-alert/cf-alert.component';
 import { CfApplicantCardComponent } from './cf-applicant-card/cf-applicant-card.component';
+import { CfApplicationCardComponent } from './cf-application-card/cf-application-card.component';
+import { CfBannerComponent } from './cf-banner/cf-banner.component';
 import { CfButtonComponent } from './cf-button/cf-button.component';
 import { CfDialogComponent } from './cf-dialog/cf-dialog.component';
+import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
+import { CfEntityActivityComponent } from './cf-entity-activity/cf-entity-activity.component';
 import { CfLoaderComponent } from './cf-loader/cf-loader.component';
 import { CfMentionTextComponent } from './cf-mention-text/cf-mention-text.component';
 import { CfMenuComponent } from './cf-menu/cf-menu.component';
 import { CfProfileComponent } from './cf-profile/cf-profile.component';
+import { CfProgressComponent } from './cf-progress/cf-progress.component';
+import { CfStatusDisplayComponent } from './cf-status-display/cf-status-display.component';
+import { CfTabComponent } from './cf-tab/cf-tab.component';
 import { CfTableComponent } from './cf-table/cf-table.component';
 import { CfTypeaheadComponent } from './cf-typeahead/cf-typeahead.component';
-import { CfStatusDisplayComponent } from './cf-status-display/cf-status-display.component';
 import { BoldTextPipe } from './boldspan.pipe';
 import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
-import { CfDropdownComponent } from './cf-dropdown/cf-dropdown.component';
-import { CfProgressComponent } from './cf-progress/cf-progress.component';
-import { CfApplicationCardComponent } from './cf-application-card/cf-application-card.component';
-import { CfBannerComponent } from './cf-banner/cf-banner.component';
-import { CfTabComponent } from './cf-tab/cf-tab.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import { CfTabComponent } from './cf-tab/cf-tab.component';
         CfButtonComponent,
         CfDialogComponent,
         CfDropdownComponent,
+        CfEntityActivityComponent,
         CfLoaderComponent,
         CfMenuComponent,
         CfMentionTextComponent,
@@ -59,6 +61,7 @@ import { CfTabComponent } from './cf-tab/cf-tab.component';
         CfButtonComponent,
         CfDialogComponent,
         CfDropdownComponent,
+        CfEntityActivityComponent,
         CfLoaderComponent,
         CfMenuComponent,
         CfMentionTextComponent,
