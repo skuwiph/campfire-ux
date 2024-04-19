@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
 import { CFLoaderSize, CFLoaderStyle } from './ui/cf-loader/cf-loader.component';
 import { CFApplicationCardStatus } from './ui/cf-application-card/cf-application-card.component';
 import { CFBannerType } from './ui/cf-banner/cf-banner.component';
-import { CfTabComponent } from './ui/cf-tab/cf-tab.component';
+import { CfTabComponent, ICFTab } from './ui/cf-tab/cf-tab.component';
 
 @Component({
     templateUrl: './control-summary.component.html',
@@ -104,8 +104,8 @@ export class ControlSummaryComponent implements OnInit {
         );
 
         this.prepareDropdown();
-
         this.getRandomImages();
+        this.prepareTabs();
 
         setInterval(() => {
             const v = this.progressValue += Math.floor(Math.random() * 50);
@@ -270,6 +270,15 @@ export class ControlSummaryComponent implements OnInit {
 
     // Tabs
     activeTabContent = 'one';
+    tabs: ICFTab[] = [];
+    prepareTabs(): void {
+        this.tabs = [
+            { id: 'one', title: 'Comments', disabled: false },
+            { id: 'two', title: 'Activity', disabled: false },
+            { id: 'three', title: 'Contact Log', disabled: true },
+        ];
+    }
+
     onTabSelect(id: string): void {
         console.log(`Selected tab ${id}`);
         this.activeTabContent = id;

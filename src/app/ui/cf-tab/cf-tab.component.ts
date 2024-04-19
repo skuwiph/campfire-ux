@@ -1,22 +1,24 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'app-cf-tab',
     templateUrl: './cf-tab.component.html',
     styleUrls: ['./cf-tab.component.scss']
 })
-export class CfTabComponent implements OnInit {
+export class CfTabComponent implements OnInit, OnChanges {
+    @Input() tabs: ICFTab[] = [];
     @Output() tabSelected: EventEmitter<string> = new EventEmitter();
-
-
-    tabs: ICFTab[] = [
-        { id: 'one', title: 'Tab One', disabled: false },
-        { id: 'two', title: 'Tab Two', disabled: false },
-        { id: 'three', title: 'Tab Three', disabled: true },
-    ];
 
     ngOnInit(): void {
 
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes["tabs"]) {
+            if (this.tabs.length > 0) {
+                this.selectTab(this.tabs[0]);
+            }
+        }
     }
 
     selectTab(tab: ICFTab): void {
@@ -40,7 +42,7 @@ export class CfTabComponent implements OnInit {
         else console.warn(`Couldn't find tab by id ${id}`);
     }
 
-    activeTab = 'one';
+    activeTab = '';
 }
 export interface ICFTab {
     title: string;

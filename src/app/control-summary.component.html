@@ -722,12 +722,11 @@
                     &lt;app-cf-tab&gt;&lt;/app-cf-tab&gt;
             </code>
             <h4>Examples</h4>
-            <app-cf-tab (tabSelected)="onTabSelect($event)" #tabComponent>
+            <app-cf-tab [tabs]="tabs" (tabSelected)="onTabSelect($event)" #tabComponent>
                 <ng-container>
                     <div class="tab-content">
                         <ng-container [ngSwitch]="activeTabContent">
                             <div *ngSwitchCase="'one'">
-                                <h1>First</h1>
                                 <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod
                                     sit fugiat aliqua
                                     nostrud sunt
@@ -742,7 +741,6 @@
                                     Tab</app-cf-button>
                             </div>
                             <div *ngSwitchCase="'two'">
-                                <h1>Second</h1>
                                 <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod
                                     sit fugiat aliqua
                                     nostrud sunt
@@ -757,7 +755,6 @@
                                     Tab</app-cf-button>
                             </div>
                             <div *ngSwitchCase="'three'">
-                                <h1>Third</h1>
                                 <p>Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod
                                     sit fugiat aliqua
                                     nostrud sunt
