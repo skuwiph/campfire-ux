@@ -15,11 +15,12 @@ import { UiModalService } from './ui/ui-modal.service';
 
 import { HttpClient } from '@angular/common/http';
 import { CFLoaderSize, CFLoaderStyle } from './ui/cf-loader/cf-loader.component';
+import { CFApplicationCardStatus } from './ui/cf-application-card/cf-application-card.component';
 
 @Component({
-  templateUrl: './control-summary.component.html',
-  // styleUrls: ['./app.component.scss']
-  styles: [`
+    templateUrl: './control-summary.component.html',
+    // styleUrls: ['./app.component.scss']
+    styles: [`
   ul.link { list-style-type: none; margin-left: 2rem;}
   ul.link li { display:flex; flex-direction:row; justify-content: flex-start;}
   ul.link li i { width: 1.75rem; }
@@ -44,6 +45,24 @@ import { CFLoaderSize, CFLoaderStyle } from './ui/cf-loader/cf-loader.component'
   .loader { display: flex; flex-direction: column; max-width: 10rem; margin: 0 auto;}
   .status-table { width: 15rem; margin: 1rem 0 1rem 0.25rem; }
   .status-table tr td { line-height: 1.75rem; margin-bottom: 0.1rem; }
+  .sample-cards {
+    display: flex; flex-direction: row;
+    gap: 0.5rem; flex-wrap: wrap; 
+    align-items: stretch;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  .wide {
+    flex-basis: 100%;
+    width: 100%;    
+    min-width: 20rem;
+  }
+  .half {
+    flex-shrink: 2;
+    flex-basis: calc(50% - 0.25rem);
+    width: 50%;
+    min-width: 20rem;
+  }
   `],
 })
 export class ControlSummaryComponent implements OnInit {
@@ -52,6 +71,7 @@ export class ControlSummaryComponent implements OnInit {
     Alert = CFAlertType;
     LoaderSize = CFLoaderSize;
     LoaderStyle = CFLoaderStyle;
+    CardStatus = CFApplicationCardStatus;
 
     @ViewChild('dialogDemo', { static: false }) dialog!: CfDialogComponent;
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;
@@ -60,7 +80,7 @@ export class ControlSummaryComponent implements OnInit {
         private http: HttpClient,
         private uiservice: UiService,
         private modalService: UiModalService
-    ) {}
+    ) { }
     dropdownOptions?: CFDropdownOptions;
 
     ngOnInit(): void {
@@ -81,18 +101,16 @@ export class ControlSummaryComponent implements OnInit {
 
         this.prepareDropdown();
 
-        setTimeout( () => {
-            this.getRandomImages();
+        this.getRandomImages();
 
-            setInterval(()=>{
-                const v = this.progressValue += Math.floor(Math.random() * 50);
-                if(v <= 100) {
-                    this.setProgressValue(v);
-                } else {
-                    this.setProgressValue(0);
-                }
-            }, 30000);
-        }, 1000);
+        setInterval(() => {
+            const v = this.progressValue += Math.floor(Math.random() * 50);
+            if (v <= 100) {
+                this.setProgressValue(v);
+            } else {
+                this.setProgressValue(0);
+            }
+        }, 30000);
     }
 
     // PROGRESS
@@ -100,11 +118,11 @@ export class ControlSummaryComponent implements OnInit {
     progressMax = 100;
     progressValue = 50;
     setProgressValue(value: number): void {
-        if(value>this.progressValue || value === 0) {
+        if (value > this.progressValue || value === 0) {
             this.progressValue = value;
         }
     }
-    
+
     profilesLoaded = false;
     users: RandomUser[] = [];
     images: string[] = [];
@@ -115,16 +133,17 @@ export class ControlSummaryComponent implements OnInit {
         this.displayApplicantCards = [];
         this.typeaheadSearchData = [];
         this.http
-            .get<RandomUserResults>('https://randomuser.me/api/?results=100')   
+            .get<RandomUserResults>('https://randomuser.me/api/?results=100')
             .subscribe({
                 next: (d: RandomUserResults) => {
                     // console.log(`Got: ${d.results.length} random users`);
                     var count = 0;
-                    d.results.forEach( ru => {
+                    d.results.forEach(ru => {
                         this.images.push(ru.picture.large);
-                        if(count < 6) {
+                        if (count < 6) {
                             this.displayApplicantCards.push(
-                                { applicationId: (count + 10024),
+                                {
+                                    applicationId: (count + 10024),
                                     firstName: ru.name.first,
                                     lastName: ru.name.last,
                                     status: this.userStates[Math.floor(Math.random() * this.userStates.length)],
@@ -134,7 +153,8 @@ export class ControlSummaryComponent implements OnInit {
                         }
                         count++;
                         this.typeaheadSearchData.push(
-                            {applicationId: count + 10024,
+                            {
+                                applicationId: count + 10024,
                                 firstName: ru.name.first,
                                 lastName: ru.name.last,
                                 status: this.userStates[Math.floor(Math.random() * this.userStates.length)],
@@ -159,24 +179,24 @@ export class ControlSummaryComponent implements OnInit {
         return this.images[Math.floor(Math.random() * this.images.length)];
     }
 
-    artistFilter?:CFTableFilter;
+    artistFilter?: CFTableFilter;
     hasFilter = false;
     filterText = 'Toggle Only "The Beatles"';
     filterButtonType = CFButtonType.Secondary;
     toggleFilter(): void {
-        if(this.hasFilter) {
+        if (this.hasFilter) {
             this.artistFilter = undefined;
             this.hasFilter = false;
             this.filterText = 'Toggle Only "The Beatles"';
             this.filterButtonType = CFButtonType.Secondary;
         } else {
-            this.artistFilter = { column:0, value: 'The Beatles'};
+            this.artistFilter = { column: 0, value: 'The Beatles' };
             this.hasFilter = true;
             this.filterText = 'Clear Toggle';
             this.filterButtonType = CFButtonType.Danger;
         }
     }
-    
+
     prepareStandardTable(): void {
         var columns: CFTableColumn[] = [
             new CFTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),
@@ -186,18 +206,18 @@ export class ControlSummaryComponent implements OnInit {
         ];
 
         var data = [
-            { pk: "01", cols: ["The Beatles", "Please Please Me", "1963", "#1" ]},
-            { pk: "02", cols: ["The Beatles", "With The Beatles","1963", "#1"] },
-            { pk: "03", cols: ["The Beatles", "A Hard Day’s Night","1964", "#1"] },
-            { pk: "04", cols: ["The Beatles", "Beatles For Sale","1964", "#1"] },
-            { pk: "05", cols: ["The Beatles", "Help!","1965", "#1"] },
-            { pk: "06", cols: ["The Beatles", "Rubber Soul","1965", "#1"] },
-            { pk: "07", cols: ["The Beatles", "Revolver","1966", "#1"] },
-            { pk: "08", cols: ["The Beatles", "Sgt Pepper’s Lonely Hearts Club Band","1967", "#1"] },
-            { pk: "09", cols: ["The Beatles", "The Beatles(White Album)","1968", "#1"] },
-            { pk: "0A", cols: ["The Beatles", "Yellow Submarine","1969", "#1"] },
-            { pk: "0B", cols: ["The Beatles", "Abbey Road","1969", "#1"] },
-            { pk: "0C", cols: ["The Beatles", "Let It Be","1970", "#1"] },
+            { pk: "01", cols: ["The Beatles", "Please Please Me", "1963", "#1"] },
+            { pk: "02", cols: ["The Beatles", "With The Beatles", "1963", "#1"] },
+            { pk: "03", cols: ["The Beatles", "A Hard Day’s Night", "1964", "#1"] },
+            { pk: "04", cols: ["The Beatles", "Beatles For Sale", "1964", "#1"] },
+            { pk: "05", cols: ["The Beatles", "Help!", "1965", "#1"] },
+            { pk: "06", cols: ["The Beatles", "Rubber Soul", "1965", "#1"] },
+            { pk: "07", cols: ["The Beatles", "Revolver", "1966", "#1"] },
+            { pk: "08", cols: ["The Beatles", "Sgt Pepper’s Lonely Hearts Club Band", "1967", "#1"] },
+            { pk: "09", cols: ["The Beatles", "The Beatles(White Album)", "1968", "#1"] },
+            { pk: "0A", cols: ["The Beatles", "Yellow Submarine", "1969", "#1"] },
+            { pk: "0B", cols: ["The Beatles", "Abbey Road", "1969", "#1"] },
+            { pk: "0C", cols: ["The Beatles", "Let It Be", "1970", "#1"] },
             { pk: "0D", cols: ["Abba", "Ring Ring", "1973", "--"] },
             { pk: "0E", cols: ["Abba", "Waterloo", "1974", "#28"] },
             { pk: "0F", cols: ["Abba", "ABBA", "1975", "#13"] },
@@ -206,7 +226,7 @@ export class ControlSummaryComponent implements OnInit {
             { pk: "12", cols: ["Abba", "Voulez-Vous", "1979", "#1"] },
             { pk: "13", cols: ["Abba", "Super Trouper", "1980", "#1"] },
             { pk: "14", cols: ["Abba", "The Visitors", "1981", "#1"] },
-            { pk: "15", cols: ["Abba", "Voyage", "2021", "#1"] },            
+            { pk: "15", cols: ["Abba", "Voyage", "2021", "#1"] },
             { pk: "1A", cols: ["The Clash", "Sandinista!", "1980", "#19"] },
             { pk: "1B", cols: ["M83", "M83", "2001", "--"] },
         ];
@@ -228,11 +248,11 @@ export class ControlSummaryComponent implements OnInit {
             const urlOrInitials = count < this.images.length
                 ? this.images[count]
                 : `${v.firstName.substring(1, 0)}${v.lastName.substring(1, 0)}`;
-            return new CFTableRow(`${v.applicationId}`, 
+            return new CFTableRow(`${v.applicationId}`,
                 [urlOrInitials, v.firstName, v.lastName, v.email, v.status]
             );
-        });        
-        this.paginationTable = new CFTableData(pscolumns.slice(), results, new CFTablePaginationOptions(10, results.length));        
+        });
+        this.paginationTable = new CFTableData(pscolumns.slice(), results, new CFTablePaginationOptions(10, results.length));
     }
 
     selectedStandardRow(event: CfTableSelectedRow): void {
@@ -249,7 +269,7 @@ export class ControlSummaryComponent implements OnInit {
 
     showDialog(event: Event): void {
         this.dialog.openDialog();
-    } 
+    }
 
     dialogDefault(): void {
         console.log(`dialogDefault: ${this.dialogActiveCount}`);
@@ -282,7 +302,7 @@ export class ControlSummaryComponent implements OnInit {
         this.typeaheadHasResults = false;
         this.isTypeaheadSearching = true;
 
-        setTimeout( () => {
+        setTimeout(() => {
             this.typeaheadSearchResults = this.typeaheadSearchData
                 .filter((d: TypeaheadResults) => {
                     return d.firstName.toLocaleLowerCase().includes(searchTerm)
@@ -290,13 +310,13 @@ export class ControlSummaryComponent implements OnInit {
                         || d.email.toLocaleLowerCase().includes(searchTerm)
                 });
 
-            if(this.typeaheadSearchResults.length > 0) {
-                const results = this.typeaheadSearchResults.map( (v: TypeaheadResults) => {
+            if (this.typeaheadSearchResults.length > 0) {
+                const results = this.typeaheadSearchResults.map((v: TypeaheadResults) => {
                     return new CFTableRow(`${v.applicationId}`, [v.firstName, v.lastName, v.email, v.status]);
                 });
                 // console.log(`RESULTS: ${JSON.stringify(results)}`);
 
-                this.typeaheadSearchTable!.rows = results.slice(0,10);
+                this.typeaheadSearchTable!.rows = results.slice(0, 10);
                 this.typeaheadHasResults = true;
             }
 
@@ -312,7 +332,7 @@ export class ControlSummaryComponent implements OnInit {
             //console.log(`applicant: ${JSON.stringify(applicant)}`);
             this.selectedApplicant = undefined;
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.typeahead.closeResults();
                 this.typeaheadRecordSelected = true;
                 this.selectedApplicant = {
@@ -330,15 +350,19 @@ export class ControlSummaryComponent implements OnInit {
         this.modalService.showModalInformation('Card Selected', `Selected Card id #${applicationId}`);
     }
 
+    summaryCardClicked(): void {
+        this.modalService.showModalInformation('Application Card Selected', `Application Summary card was clicked`);
+    }
+
     observableData$ = new Observable<CFMention>();
     testText = '';
     setMentionText(): void {
         const t = 'Hello, this is some default text, written by <span spellcheck="false" class="mention">@Ian Seckington</span> for the attention of <span spellcheck="false" class="mention">@Michael Tolfrey</span>.<br>';
         const parts = t.split('<');
 
-        parts.forEach( p => {
-            if(p.startsWith('span spellcheck="false" class="mention">@')) {
-                if(p.length > 22) {
+        parts.forEach(p => {
+            if (p.startsWith('span spellcheck="false" class="mention">@')) {
+                if (p.length > 22) {
                     const to = p.substring(22);
                     console.log(`Got fullname: ${to}`);
                 }
@@ -392,14 +416,14 @@ export class ControlSummaryComponent implements OnInit {
         items.push(new CFTourElement("CL:tour-modal-buttons", "The UiModalService provides a programmatic way of calling a standard modal dialog.<br><br>These can display user-defined buttons and respond with the user's selection as necessary.", "Modal Dialogs"));
         items.push(new CFTourElement("CL:div.tour-profile span.image", "The profile images can display either an image or the applicant's initials at a requested size.<br><br>Options exist for rounded or square display.<br><br>This control is also used in its larger configuration for the Applicant Card.", "Profile Image Display"));
         items.push(new CFTourElement("CL:progress.progress-bar", "A simple progress bar for displaying long-running activities", "Progress Indicator"));
-        
+
         this.restoreX = window.scrollX;
         this.restoreY = window.scrollY;
         this.inTour = true;
 
         this.uiservice
             .startTour(items)
-            .subscribe({ 
+            .subscribe({
                 next: (currentItem: CFTourElement) => {
                     //console.log(`Showing item: ${currentItem.heading ?? 'No heading'}`);
                 },
@@ -407,7 +431,7 @@ export class ControlSummaryComponent implements OnInit {
                     this.endTour();
                 }
             });
-    }  
+    }
 
     endTour(): void {
         //console.log(`End tour!`);
@@ -420,14 +444,14 @@ export class ControlSummaryComponent implements OnInit {
     showModalInfo(): void {
         this.modalResponseLast = 'Waiting for user input';
         this.modalService
-        .showModalInformation('Here is my title', '<p>This is purely informational</p>')
-        .subscribe( {
-            next: (r: string) => {
-                this.modalResponseLast = `Clicked: '${r}'`;
-            },
-            complete: () => {
-            }
-        });
+            .showModalInformation('Here is my title', '<p>This is purely informational</p>')
+            .subscribe({
+                next: (r: string) => {
+                    this.modalResponseLast = `Clicked: '${r}'`;
+                },
+                complete: () => {
+                }
+            });
     }
 
     showModalConfirmation(): void {
@@ -438,7 +462,7 @@ export class ControlSummaryComponent implements OnInit {
             { id: 'Maybe', text: 'Maybe', type: CFButtonType.Secondary }
         ];
         this.modalService
-            .showModalConfirmation('Confirmation Required!', '<p>I need to ask you something important!</p><p>Are you sure?</p>', b )
+            .showModalConfirmation('Confirmation Required!', '<p>I need to ask you something important!</p><p>Are you sure?</p>', b)
             .subscribe({
                 next: (r: string) => {
                     this.modalResponseLast = `Clicked: '${r}'`;

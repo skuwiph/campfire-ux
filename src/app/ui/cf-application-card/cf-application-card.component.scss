@@ -6,18 +6,44 @@
     background-color: var(--panel-background-color-primary);
     border-radius: 0.2rem;
     gap: 0.5rem;
+    padding-right: 1rem;
+    flex: 1 0 100%;
+
+    &.clickable:hover {
+        cursor: pointer;
+        filter: drop-shadow(2px 2px 2px var(--ui-button-focus-shadow-color));
+    }
+
     .status {
         display: flex;
         flex-basis: 0 0 auto;
-        background-color: #32C663;
         min-width: 1rem;
-        
+
+        &.good {
+            background-color: var(--card-status-good);
+        }
+
+        &.office {
+            background-color: var(--card-status-office);
+        }
+
+        &.applicant {
+            background-color: var(--card-status-applicant)
+        }
+
+        &.third {
+            background-color: var(--card-status-third-party)
+        }
     }
+
     .content {
         display: flex;
         flex-direction: column;
-        span {
-            display: inline-block;
+        margin: 0 0 1rem;
+
+        h2 {
+            margin: 0.5rem 0;
+            font-weight: 600;
         }
     }
 }

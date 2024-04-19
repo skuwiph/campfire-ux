@@ -27,7 +27,7 @@
     --ui-cancel-action-fg-color: white;
 
     --main-nav-bg-color: #537d88;
-    
+
     --applicant-card-bg-color: #FFF1E3;
     --applicant-card-border-color: #A7AED2;
     --applicant-card-hover-shadow-color: #111111;
@@ -75,7 +75,7 @@
     --menu-hamburger-color: #fff;
     --menu-dropdown-arrow-color: #fff;
     --menu-drop-shadow: rgba(0, 0, 0, .45);
-    --menu-transition-delay: 0.25s;	
+    --menu-transition-delay: 0.25s;
 
     --profile-image-bg-color: #537d88;
     --profile-image-fg-color: #FFF1E3;
@@ -94,4 +94,9 @@
     --status-oop: #E85658;
     --status-rejected: #E85658;
     --status-transferred: #E8BC2A;
+
+    --card-status-good: #32C663;
+    --card-status-office: #A1B1FF;
+    --card-status-applicant: #4896A6;
+    --card-status-third-party: #C63263;
 }

@@ -1,7 +1,7 @@
-<div class="card">
-    <div class="status"></div>
+<div class="card" [class.clickable]="clickable" (click)="cardClicked()">
+    <div class="status" [ngClass]="status"></div>
     <div class="content">
-        <h2>Title</h2>
+        <h2>{{title}}</h2>
         <ng-content cardContent></ng-content>
     </div>
 </div>
