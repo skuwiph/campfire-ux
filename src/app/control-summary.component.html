@@ -18,6 +18,7 @@
         <li><a href="#modal"><i class="fa-solid fa-arrow-up-right-from-square"></i>Modals</a></li>
         <li><a href="#profile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Image</a></li>
         <li><a href="#progress"><i class="fa-solid fa-arrow-up-right-from-square"></i>Progress Indicator</a></li>
+        <li><a href="#stat"><i class="fa-solid fa-arrow-up-right-from-square"></i>Statistic Panel</a></li>
         <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
         <li><a href="#tab"><i class="fa-solid fa-arrow-up-right-from-square"></i>Tabs</a></li>
         <li><a href="#tables"><i class="fa-solid fa-arrow-up-right-from-square"></i>Tables</a></li>
@@ -485,6 +486,7 @@
             </div>
         </div>
     </div>
+    <p><a href="#top">UP</a></p>
 
     <h2>Loader Display<a name="wait"></a></h2>
     <div class="flex-container">
@@ -656,6 +658,30 @@
                 <app-cf-button [type]="Button.Default" (click)="setProgressValue(100)">Set to 100%</app-cf-button>
             </div>
             <br>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Statistic Panel<a name="stat"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;app-cf-stat-panel [label]="''" [value]="'12345' [style]="StatPanelStyle.Warning"&gt;&lt;/app-cf-stat-panel&gt;<br>
+            </code>
+            <p>Remember to import the enums into the component.ts:</p>
+            <code>StatPanelStyle = CFStatPanelStyle;</code>
+            <h4>Examples</h4>
+            <div class="show-background"
+                style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; padding: 0.5rem;">
+                <app-cf-stat-panel [label]="'Estimated Commission'" [value]="'$1,765'"
+                    [style]="StatPanelStyle.Information"></app-cf-stat-panel>
+                <app-cf-stat-panel [label]="'New applications'" [value]="'176'"
+                    [style]="StatPanelStyle.Todo"></app-cf-stat-panel>
+                <app-cf-stat-panel [label]="'Placements'" [value]="'-17'"
+                    [style]="StatPanelStyle.Warning"></app-cf-stat-panel>
+            </div>
         </div>
     </div>
     <p><a href="#top">UP</a></p>

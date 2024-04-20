@@ -19,6 +19,7 @@ import { CFApplicationCardStatus } from './ui/cf-application-card/cf-application
 import { CFBannerType } from './ui/cf-banner/cf-banner.component';
 import { CfTabComponent, ICFTab } from './ui/cf-tab/cf-tab.component';
 import { CFEntityActivity, ICFEntityActivity } from './ui/cf-entity-activity/cf-entity-activity.component';
+import { CFStatPanelStyle } from './ui/cf-stat-panel/cf-stat-panel.component';
 
 @Component({
     templateUrl: './control-summary.component.html',
@@ -77,6 +78,7 @@ export class ControlSummaryComponent implements OnInit {
     LoaderStyle = CFLoaderStyle;
     CardStatus = CFApplicationCardStatus;
     BannerType = CFBannerType;
+    StatPanelStyle = CFStatPanelStyle;
 
     @ViewChild('dialogDemo', { static: false }) dialog!: CfDialogComponent;
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;

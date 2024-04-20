@@ -1,0 +1,33 @@
+@import "/src/assets/styles/themes";
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--panel-background-color-primary);
+    border-radius: 0.2rem;
+    padding: 0.5rem 1rem;
+    min-width: 15rem;
+
+    &.info {
+        background-color: var(--banner-info-bg-color);
+    }
+
+    &.todo {
+        background-color: var(--banner-todo-bg-color);
+    }
+
+    &.warn {
+        background-color: var(--banner-warn-bg-color);
+    }
+
+    label:first-of-type {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    label:last-of-type {
+        font-size: 3rem;
+        text-align: right;
+        ;
+    }
+}

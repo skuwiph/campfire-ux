@@ -17,6 +17,7 @@ import { CfMentionTextComponent } from './cf-mention-text/cf-mention-text.compon
 import { CfMenuComponent } from './cf-menu/cf-menu.component';
 import { CfProfileComponent } from './cf-profile/cf-profile.component';
 import { CfProgressComponent } from './cf-progress/cf-progress.component';
+import { CfStatPanelComponent } from './cf-stat-panel/cf-stat-panel.component';
 import { CfStatusDisplayComponent } from './cf-status-display/cf-status-display.component';
 import { CfTabComponent } from './cf-tab/cf-tab.component';
 import { CfTableComponent } from './cf-table/cf-table.component';
@@ -39,6 +40,7 @@ import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
         CfMentionTextComponent,
         CfProfileComponent,
         CfProgressComponent,
+        CfStatPanelComponent,
         CfStatusDisplayComponent,
         CfTabComponent,
         CfTableComponent,
@@ -68,6 +70,7 @@ import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
         CfProfileComponent,
         CfProgressComponent,
         CfStatusDisplayComponent,
+        CfStatPanelComponent,
         CfTabComponent,
         CfTableComponent,
         CfTypeaheadComponent,
