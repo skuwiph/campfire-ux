@@ -12,6 +12,10 @@
         background-color: var(--banner-info-bg-color);
     }
 
+    &.done {
+        background-color: var(--banner-done-bg-color);
+    }
+
     &.todo {
         background-color: var(--banner-todo-bg-color);
     }

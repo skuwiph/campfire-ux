@@ -14,5 +14,6 @@ export class CfStatPanelComponent {
 export enum CFStatPanelStyle {
     Information = "info",
     Todo = "todo",
+    Done = "done",
     Warning = "warn"
 }
