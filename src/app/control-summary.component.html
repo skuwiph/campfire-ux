@@ -192,12 +192,18 @@
                 individual card, here we use the following CSS:
             </p>
             <code>
-                .sample-cards {{'{'}}<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;display: flex; flex-direction: row;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;gap: 0.5rem; flex-wrap: wrap;<br>
+                .display-col-fill {{'{'}}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;flex-flow: row wrap;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;gap: 0.5rem;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;align-items: stretch;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-between;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;flex-grow: 1;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;align-content: stretch;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// All direct children to grow equally<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&>* {{'{'}}<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flex-grow: 1;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{'}'}}<br>
                 {{'}'}}<br>
                 .wide {{'{'}}<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;flex-basis: 100%;<br>
@@ -216,7 +222,7 @@
             </code>
             <h4>Examples</h4>
             <div class="left show-background" style="padding: 1rem 0.25rem">
-                <div class="sample-cards">
+                <div class="display-col-fill">
                     <app-cf-application-card class="wide" [status]="CardStatus.AllGood" [title]="'Application Summary'"
                         [clickable]="true" (onCardClicked)="summaryCardClicked()">
                         <div #cardContent>
@@ -673,8 +679,7 @@
             <p>Remember to import the enums into the component.ts:</p>
             <code>StatPanelStyle = CFStatPanelStyle;</code>
             <h4>Examples</h4>
-            <div class="show-background"
-                style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; padding: 0.5rem;">
+            <div class="show-background display-col-fill">
                 <app-cf-stat-panel [label]="'Estimated Commission'" [value]="'$1,765'"
                     [style]="StatPanelStyle.Information"></app-cf-stat-panel>
                 <app-cf-stat-panel [label]="'New applications'" [value]="'176'"
