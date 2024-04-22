@@ -27,11 +27,16 @@
     --ui-cancel-action-fg-color: white;
 
     --main-nav-bg-color: #537d88;
-    
+
     --applicant-card-bg-color: #FFF1E3;
     --applicant-card-border-color: #A7AED2;
     --applicant-card-hover-shadow-color: #111111;
     --applicant-card-base-width: 240px;
+
+    --banner-info-bg-color: #DDD1F3;
+    --banner-todo-bg-color: #DDD1F3;
+    --banner-done-bg-color: #A2E4D5;
+    --banner-warn-bg-color: #FA6D75;
 
     --progress-bar-bg-color: #a2a2a2;
     --progress-bar-color: linear-gradient(#fff8, #fff0),
@@ -75,7 +80,7 @@
     --menu-hamburger-color: #fff;
     --menu-dropdown-arrow-color: #fff;
     --menu-drop-shadow: rgba(0, 0, 0, .45);
-    --menu-transition-delay: 0.25s;	
+    --menu-transition-delay: 0.25s;
 
     --profile-image-bg-color: #537d88;
     --profile-image-fg-color: #FFF1E3;
@@ -94,4 +99,9 @@
     --status-oop: #E85658;
     --status-rejected: #E85658;
     --status-transferred: #E8BC2A;
+
+    --card-status-good: #32C663;
+    --card-status-office: #A1B1FF;
+    --card-status-applicant: #4896A6;
+    --card-status-third-party: #C63263;
 }
