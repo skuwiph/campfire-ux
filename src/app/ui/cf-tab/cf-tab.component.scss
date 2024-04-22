@@ -6,6 +6,8 @@
     .tab-bar {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
+        flex-basis: 1 1 1;
         justify-content: space-between;
         gap: 1rem;
         margin: 0;
@@ -14,7 +16,6 @@
 
         .tab {
             min-width: 10rem;
-            flex-grow: 1;
             font-weight: 600;
             opacity: 0.9;
 

@@ -39,7 +39,7 @@ import { CFStatPanelStyle } from './ui/cf-stat-panel/cf-stat-panel.component';
     padding: 0.5rem;
   }
   .cal { margin:0 auto; justify-content: center; }
-  .show-background { background-color: lightgray; margin: 0 0 1rem; }
+  .show-background { background-color: lightgray; margin: 0 0 1rem; container: card / inline-size; }
   .white-background { background-color: white; margin: 0 0 1rem; padding: 0.5rem 0.5rem; }
   :host::ng-deep .col_profile { width: 65px; }
   :host::ng-deep .col_artist { width: 10rem; }
@@ -54,20 +54,11 @@ import { CFStatPanelStyle } from './ui/cf-stat-panel/cf-stat-panel.component';
     display: flex; flex-direction: row;
     gap: 0.5rem; flex-wrap: wrap; 
     align-items: stretch;
+    justify-items: stretch;
     justify-content: space-between;
     flex-grow: 1;
   }
-  .wide {
-    flex-basis: 100%;
-    width: 100%;    
-    min-width: 20rem;
-  }
-  .half {
-    flex-shrink: 2;
-    flex-basis: calc(50% - 0.25rem);
-    width: 50%;
-    min-width: 20rem;
-  }
+ 
   `],
 })
 export class ControlSummaryComponent implements OnInit {

@@ -8,7 +8,7 @@ dialog,
     left: 50%;
     transform: translateX(-50%);
     margin: 5rem auto 0;
-    width: 75%;
+    width: 50%;
     max-width: 700px;
     min-width: 380px;
     border-radius: 0.5rem;
@@ -16,6 +16,7 @@ dialog,
     border: 0;
     background-color: var(--dialog-bg-color);
     filter: drop-shadow(0px 0px 4px var(--dialog-shadow-color));
+
     .heading {
         display: flex;
         flex-direction: row;
@@ -28,16 +29,19 @@ dialog,
         &.error {
             background-color: var(--dialog-title-bg-color-error);
         }
+
         &.warning {
             background-color: var(--dialog-title-bg-color-warning);
         }
+
         &.confirmation {
             background-color: var(--dialog-title-bg-color-confirmation);
         }
+
         &.information {
             background-color: var(--dialog-title-bg-color);
         }
-        
+
 
         .title {
             padding: 0.75rem 1rem;
@@ -56,7 +60,7 @@ dialog,
     }
 }
 
-#bd{
+#bd {
     position: fixed;
     top: 0;
     left: 0;

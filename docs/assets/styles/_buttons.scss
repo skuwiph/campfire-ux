@@ -6,6 +6,7 @@
     border-radius: 0.25rem;
     border: none;
     margin: 0;
+
     &:hover:not(.disabled) {
         filter: brightness(1.1) saturate(1.5);
         cursor: pointer;
@@ -21,11 +22,11 @@
     background-color: transparent;
     border: none;
     color: var(--ui-button-small-color);
-    
+
     i {
         padding: 0.5rem;
     }
-    
+
     :hover {
         cursor: pointer;
         background-color: var(--ui-button-small-hover-color);
@@ -37,16 +38,20 @@
     margin: 1rem 0;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
+
     &.ral {
         justify-content: flex-end;
     }
+
     &.cal {
         justify-content: center;
     }
 }
 
-:disabled, .disabled {
+:disabled,
+.disabled {
     opacity: 0.5;
     color: var(--ui-button-disabled-color);
 }
