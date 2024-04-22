@@ -7,10 +7,12 @@
             <i *ngSwitchCase="'done'" class="fa-solid fa-clipboard-check"></i>
         </ng-container>
     </div>
-    <div class="text">
-        <ng-content select="[slot=text]"></ng-content>
-    </div>
-    <div class="actions">
-        <ng-content select="[slot=actions]"></ng-content>
+    <div class="content">
+        <div class="text">
+            <ng-content select="[slot=text]"></ng-content>
+        </div>
+        <div class="actions">
+            <ng-content select="[slot=actions]"></ng-content>
+        </div>
     </div>
 </div>
