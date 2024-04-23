@@ -263,8 +263,8 @@
             <h4>Notes</h4>
             <code>
                 &lt;app-cf-banner [type]="BannerType.Reminder"&gt;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p slot="text"&gt;Reminder: Suggest a new referee for the applicant to nominate.&lt;/p&gt;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container slot="actions"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p text&gt;Reminder: Suggest a new referee for the applicant to nominate.&lt;/p&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container actions&gt;<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button<br>
                 [type]="Button.Default"&gt;Action&lt;/app-cf-button&gt;<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>
@@ -277,32 +277,32 @@
             <h4>Examples</h4>
             <div class="show-background">
                 <app-cf-banner>
-                    <p slot="text">Reminder: Suggest a new referee for the applicant to nominate.</p>
-                    <ng-container slot="actions">
+                    <p text>Reminder: Suggest a new referee for the applicant to nominate.</p>
+                    <ng-container actions>
                         <app-cf-button [type]="Button.Default">Action</app-cf-button>
                     </ng-container>
                 </app-cf-banner>
             </div>
             <div class="show-background">
                 <app-cf-banner [type]="BannerType.Reminder">
-                    <p slot="text">Reminder: Suggest a new referee for the applicant to nominate.</p>
-                    <ng-container slot="actions">
+                    <p text>Reminder: Suggest a new referee for the applicant to nominate.</p>
+                    <ng-container actions>
                         <app-cf-button [type]="Button.Primary">Action</app-cf-button>
                     </ng-container>
                 </app-cf-banner>
             </div>
             <div class="show-background">
                 <app-cf-banner [type]="BannerType.Done">
-                    <p slot="text">Reminder: Suggest a new referee for the applicant to nominate.</p>
-                    <ng-container slot="actions">
+                    <p text>Reminder: Suggest a new referee for the applicant to nominate.</p>
+                    <ng-container actions>
                         <app-cf-button [type]="Button.Cancel">Action</app-cf-button>
                     </ng-container>
                 </app-cf-banner>
             </div>
             <div class="show-background">
                 <app-cf-banner [type]="BannerType.Exclamation">
-                    <p slot="text">Reminder: Suggest a new referee for the applicant to nominate.</p>
-                    <ng-container slot="actions">
+                    <p text>Reminder: Suggest a new referee for the applicant to nominate.</p>
+                    <ng-container actions>
                         <app-cf-button [type]="Button.Tertiary">Action</app-cf-button>
                     </ng-container>
                 </app-cf-banner>
@@ -643,6 +643,8 @@
                     [roundImage]="false"></app-cf-profile>
                 <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'PS'"
                     [roundImage]="true"></app-cf-profile>
+                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'System'" [roundImage]="true"></app-cf-profile>
+                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'Orca'" [roundImage]="true"></app-cf-profile>
             </div>
         </div>
     </div>

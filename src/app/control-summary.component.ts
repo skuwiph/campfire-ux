@@ -117,12 +117,15 @@ export class ControlSummaryComponent implements OnInit {
     entityActivities: ICFEntityActivity[] = [];
     prepareEntityList(): void {
         this.entityActivities.push(
-            new CFEntityActivity(undefined, 'Michael', 'Tolfrey', 'yesterday at 14:35', 'This is a test message about the applicant. Ea officia cillum sunt ut duis reprehenderit voluptate amet.\r\nand it\'s very important to know that CRLFs are respected by the display.')
+            new CFEntityActivity(undefined, 'Michael', 'Tolfrey', 'yesterday at 14:35', 'This is a test message about the applicant. Ea officia cillum sunt ut duis reprehenderit voluptate amet.\r\nand it\'s very important to know that CRLFs are respected by the display.'),
+            new CFEntityActivity(undefined, 'System', '', 'yesterday at 11:00', 'The system did something interesting to the application.'),
+            new CFEntityActivity(undefined, 'Orca', '', 'yesterday at 11:00', 'Application was successfully transmitted to ORCA.'),
         );
 
         this.displayApplicantCards.forEach(ac => {
             this.entityActivities.push(
-                new CFEntityActivity(ac.profileUrl, ac.firstName, ac.lastName, 'some date at some time', `${ac.firstName} called about some important thing on their application.`)
+                new CFEntityActivity(ac.profileUrl, ac.firstName, ac.lastName, 'some date at some time', `${ac.firstName} called about some important thing on their application.`),
+                new CFEntityActivity(undefined, ac.firstName, ac.lastName, 'some date at another time', `${ac.firstName} did something exciting.`)
             );
         })
     }

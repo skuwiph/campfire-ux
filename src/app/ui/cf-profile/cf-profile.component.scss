@@ -14,10 +14,14 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        p {
+        p, i {
+            width: 100%;
             font-weight: 700;
             font-size: 1.2rem;
-            margin: 0 auto;
+            text-align: center;
         }
+        // i { // For font-awesome icons
+        //     margin-top: -0.5rem;
+        // }
     }
 }
