@@ -8,12 +8,29 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class CfDropdownComponent {
     @Input() options!: CFDropdownOptions;
     @Output() dropdownSelected: EventEmitter<CFDropdownItem> = new EventEmitter();
+    @Output() parentSelected = new EventEmitter();
     DropdownType = CFDropdownItemType;
+    displayChild = false;
+
+    onClickParent(): void {
+        if(!this.options.disabled) {
+            this.parentSelected.emit();
+            if(this.options.items) {
+                console.log(`Show child`);
+                this.displayChild = true;
+            }
+        }
+    }
 
     onClick(item: CFDropdownItem): void {
         if(!item.disabled) {
             this.dropdownSelected.emit(item);
+            this.displayChild = false;
         }
+    }
+
+    closeMenu(): void {
+        this.displayChild = false;
     }
 }
 
@@ -22,7 +39,8 @@ export interface CFDropdownOptions {
     imageClass?: string;
     showIndicator: boolean;
     leftMargin?: string;
-    items: CFDropdownItem[];
+    items?: CFDropdownItem[];
+    disabled?: boolean;
 }
 
 export interface CFDropdownItem {

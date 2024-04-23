@@ -32,6 +32,7 @@
         <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
         <li><i class="fa-solid fa-arrow-up-right-from-square"></i>Layouts</li>
         <ul>
+            <li><a href="mobile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mobile Layout</a></li>
             <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky Footer</a></li>
         </ul>
 
@@ -457,8 +458,10 @@
                 {{ '}' }}
             </code>
             <h4>Examples</h4>
-            <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions"
-                (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
+                        <div style="max-width: 10rem;">                           
+                            <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions"
+                            (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
+                        </div>
             <br><br>
         </div>
     </div>

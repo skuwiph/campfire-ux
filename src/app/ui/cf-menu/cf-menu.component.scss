@@ -1,7 +1,8 @@
 @import "/src/assets/styles/themes";
 
 .container {
-    container-type: inline-size;
+    container-type: main inline-size;
+    width: 100%;
     .menu {
         display: flex;
         justify-content: flex-start;
@@ -27,68 +28,82 @@
             }
         }
         .base {
+            width: 100%;
             display: flex;
+            flex-flow: row nowrap;
             justify-content: space-between;
-            flex: 1 0 auto;
-            .items {
-                button {
-                    outline: none;
-                    padding: 0.5rem 0.5rem;
-                    border: 0;
-                    background: var(--menu-bg-color);
-                    color: var(--menu-fg-color);
-                    border-radius: 0.2rem;
-                    &:hover, &:focus {
-                        cursor: pointer;
-                        background: var(--menu-bg-hover-color);
-                    }
-                }
+            gap: 1rem;
+            position: relative;
+            .items-lhs {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 0.5rem;
+                padding-left: 1rem;
             }
-            .search {
-                margin-top: 0.1rem;
+            .items-rhs {
+                position: relative;
+                container: rhs / inline-size;              
+                display:flex;
+                flex-flow: nowrap reverse;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 0.5rem;
                 flex: 1 1 auto;
-            }
-            .user {
-                align-self: center;
-                margin-top: -0rem;
-                a{
-                    border: 0;
-                    &:hover {
-                        background: var(--menu-bg-color);
-                    }
+                .search {
+                    position: relative;
+                    flex-grow: 2;
                 }
-                i {
-                    font-size: 1.5rem;
-                    &:hover {
-                        opacity: 0.8;
-                    }
+                .user {
+                    flex: 1 1 1;
                 }
             }
         }
     }
 }
-@container (width < 550px) {
+.container-compact {
+    display: none;
     .menu {
-        flex-direction: column;
-        .base {
-            .items {
-                display: none;
-            }
-            .user {
-                display: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1;
+        padding: 0.5rem 0.5rem;
+        background: var(--menu-bg-color);
+        color: var(--menu-fg-color);
+        a {
+            color: var(--menu-fg-color);
+            text-decoration: none;
+    
+            &.logo {
+                padding: 0.25rem 0 0;
+                width: 2rem;
+    
+                img {
+                    width: 2rem;
+                }
+    
+                &:hover {
+                    background: var(--menu-bg-color);
+                    cursor: pointer;
+                }
             }
         }
     }
 }
 
-@container (width < 550px) {
-    .compact {
-        display: block;
+@container rhs (max-width: 330px) {
+        .search {
+        display: none;
     }
 }
 
-@container (width > 550px) {
-    .compact {
+@media (max-width: 600px) {
+    .container-compact {
+            display: block;
+        }
+
+    .container {
         display: none;
     }
 }

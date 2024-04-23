@@ -14,7 +14,9 @@ export class CfMenuComponent implements OnInit {
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;
 
     ngOnInit(): void {
-        this.loadTypeaheadSearch();
+        this.loadTypeaheadSearch(); 
+        this.applicantOptions = {
+            text: 'Applicants', showIndicator: false };
         this.interviewerOptions = {
             text: 'Interviewers', showIndicator: true, items: [
                 { type: CFDropdownItemType.ImageAndText, text: 'Interviewers', link: 'interviewer', imageClass: 'fa-solid fa-people-group' },
@@ -32,7 +34,7 @@ export class CfMenuComponent implements OnInit {
         this.userOptions = {
             imageClass: 'fa-solid fa-circle-user',
             showIndicator: false,
-            leftMargin: '-12rem',
+            leftMargin: '-11.35rem',
             items: [
                 { type: CFDropdownItemType.ImageAndText, text: 'Profile', link: 'profile', imageClass: 'fa-solid fa-id-card' },
                 { type: CFDropdownItemType.Separator },
@@ -206,10 +208,8 @@ export class CfMenuComponent implements OnInit {
         ];
 
         var columns: CFTableColumn[] = [
-            new CFTableColumn("First", CfTableColumnAlignment.Left, CfTableColumnType.String),
-            new CFTableColumn("Last", CfTableColumnAlignment.Left, CfTableColumnType.String),
+            new CFTableColumn("Name", CfTableColumnAlignment.Left, CfTableColumnType.String),
             new CFTableColumn("Email", CfTableColumnAlignment.Left, CfTableColumnType.String),
-            new CFTableColumn("Status", CfTableColumnAlignment.Left, CfTableColumnType.UserStatus),
         ];
         this.typeaheadSearchTable = new CFTableData(columns, []);
     }
@@ -231,7 +231,7 @@ export class CfMenuComponent implements OnInit {
 
             if (this.typeaheadSearchResults.length > 0) {
                 const results = this.typeaheadSearchResults.map((v: TypeaheadResults) => {
-                    return new CFTableRow(`${v.applicationId}`, [v.firstName, v.lastName, v.email, v.status]);
+                    return new CFTableRow(`${v.applicationId}`, [`${v.firstName} ${v.lastName}`, v.email]);
                 });
                 // console.log(`RESULTS: ${JSON.stringify(results)}`);
 
@@ -278,6 +278,7 @@ export class CfMenuComponent implements OnInit {
         this.menuSelected.emit(item.link);
     }
 
+    applicantOptions?: CFDropdownOptions;
     interviewerOptions?: CFDropdownOptions;
     dropdownOptions?: CFDropdownOptions;
     userOptions?: CFDropdownOptions;

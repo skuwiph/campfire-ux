@@ -1,15 +1,20 @@
 <div class="dropdown">
-    <span>
+    <a (click)="onClickParent()" tabindex="0">
         <span *ngIf="options.text">{{options.text}}</span>
         <i *ngIf="options.imageClass" class="{{options.imageClass}}"></i>
-        <i class="fa-solid fa-angle-down"></i>
-    </span>
-    <div class="dropdown-content" [style.margin-left]="options.leftMargin">
+        <i *ngIf="options.items" class="fa-solid fa-angle-down"></i>
+    </a>
+    <div *ngIf="options.items" class="dropdown-content" [class.open]="displayChild" [style.margin-left]="options.leftMargin">
         <ul>
-            <li *ngFor="let o of options.items" [class.separator]="o.type == DropdownType.Separator" [class.disabled]="o.disabled" (click)="onClick(o)">
-                <span><i *ngIf="o.type == DropdownType.ImageAndText" class="{{o.imageClass}}"></i></span>
-                <span>{{o.text}}</span>
+            <li *ngFor="let o of options.items" [class.separator]="o.type == DropdownType.Separator" [class.disabled]="o.disabled">
+                <a (click)="onClick(o)" tabindex="0">
+                    <span>
+                        <i *ngIf="o.type == DropdownType.ImageAndText" class="{{o.imageClass}}"></i>
+                    </span>
+                    <span>{{o.text}}</span>
+                </a>
             </li>
         </ul>
     </div>
 </div>
+<div class="backdrop" [class.open]="displayChild" (click)="closeMenu()"></div>

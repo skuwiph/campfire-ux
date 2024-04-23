@@ -8,12 +8,14 @@ import { UiService } from './ui/ui.service';
 
 import { AppComponent } from './app.component';
 import { ControlSummaryComponent } from './control-summary.component';
+import { MobileDeviceLayoutComponent } from './mobile-device-layout.component';
 import { StickyLayoutComponent } from './sticky-layout.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ControlSummaryComponent,
+        MobileDeviceLayoutComponent,
         StickyLayoutComponent,
     ],
     imports: [
