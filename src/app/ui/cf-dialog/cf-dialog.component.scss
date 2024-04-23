@@ -2,39 +2,63 @@
 
 dialog {
     margin: 5rem auto 0;
-    width: 75%;
+    width: 80vw;
     border: 1px;
     border-radius: 0.5rem;
     padding: 0;
+    max-height: 80vh;
+}
 
-    .heading {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 2rem;
-        background-color: var(--dialog-title-bg-color);
+.heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2rem;
+    background-color: var(--dialog-title-bg-color);
+    color: var(--dialog-title-fg-color);
+
+    .title {
+        padding: 0.75rem 1rem;
+    }
+
+    .heading-button {
+        margin-right: 0.75rem;
+        border: 0;
+        background-color: transparent;
         color: var(--dialog-title-fg-color);
-
-        .title {
-            padding: 0.75rem 1rem;
-        }
-
-        .heading-button {
-            margin-right: 0.75rem;
-            border: 0;
-            background-color: transparent;
-            color: var(--dialog-title-fg-color);
-            font-size: 1.5rem;
-            width: 1.5rem;
-        }
+        font-size: 1.5rem;
+        width: 1.5rem;
     }
+}
 
-    .body {
-        padding: 0 1rem;
-    }
+.body {
+    padding: 0.5rem 1rem;
+    overflow-y: scroll;
+    max-height: calc(75vh - 5rem);
 }
 
 ::backdrop {
     background-color: var(--dialog-backdrop-color);
     opacity: 0.75;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.content {
+    .heading {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+    flex: 1 0 auto;
+}
+
+footer {
+    padding: 0 0.5rem;
+    min-height: 4rem;
+    text-align: center;
 }
