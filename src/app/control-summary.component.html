@@ -32,8 +32,12 @@
         <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
         <li><i class="fa-solid fa-arrow-up-right-from-square"></i>Layouts</li>
         <ul>
-            <li><a href="mobile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mobile Layout</a></li>
-            <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky Footer</a></li>
+            <li><a href="list"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dashboard layout</a></li>
+            <li><a href="list"><i class="fa-solid fa-arrow-up-right-from-square"></i>Login layout</a></li>
+            <li><a href="list"><i class="fa-solid fa-arrow-up-right-from-square"></i>List with extra-details layout</a></li>
+            <li><a href="mobile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mobile layout</a></li>
+            <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky footer</a></li>
+            <li><a href="user"><i class="fa-solid fa-arrow-up-right-from-square"></i>User details layout</a></li>
         </ul>
 
     </ul>
@@ -893,8 +897,9 @@
                 </ng-container>
             </app-cf-tab>
             <br>
-            <app-cf-button [type]="Button.Secondary" (click)="setActiveTab('two')">Set Tab Two Active</app-cf-button>
-            <br>
+            <div class="comfort">
+                <app-cf-button [type]="Button.Secondary" (click)="setActiveTab('two')">Set Tab Two Active</app-cf-button>
+            </div>
         </div>
 
     </div>

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="menu">
         <a (click)="itemSelected('home')" class="logo"><img src="assets/img/CALogoWhite.png"></a>
-        <div class="base">
+        <div class="base" *ngIf="showAll">
             <div class="items-lhs">
                 <app-cf-dropdown *ngIf="applicantOptions" [options]="applicantOptions"
                     (parentSelected)="itemSelected('applicants')"></app-cf-dropdown>

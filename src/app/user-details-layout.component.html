@@ -1,0 +1,105 @@
+<div class="container">
+    <app-cf-menu class="menu" [showAll]="false"></app-cf-menu>
+    <div class="content">
+        <div class="sidebar">
+            <app-cf-applicant-card *ngIf="applicantCard" [applicant]="applicantCard"></app-cf-applicant-card>
+        </div>
+        <div class="center">
+            <div class="actions">
+                <app-cf-banner [type]="BannerType.Done">
+                    <p text>Reminder: Suggest a new referee for the applicant to nominate.</p>
+                    <ng-container actions>
+                        <app-cf-button [type]="Button.Primary">Action</app-cf-button>
+                    </ng-container>
+                </app-cf-banner>
+
+            </div>
+            <div class="panels">
+                <div class="main">
+                    <div class="display-col-fill">
+                        <app-cf-application-card class="wide" [status]="CardStatus.AllGood"
+                            [title]="'Application Summary'" [clickable]="true">
+                            <div #cardContent>
+                                <div>First Timer</div>
+                                <div>Campower</div>
+                                <div>Availability 1-May &ndash; 16-Sep</div>
+                            </div>
+                        </app-cf-application-card>
+
+                        <app-cf-application-card class="wide" [status]="CardStatus.AllGood" [title]="'Interview'"
+                            [clickable]="true">
+                            <div #cardContent>
+                                <div>Recommended</div>
+                                <div>23<sup>rd</sup> October, 13:30</div>
+                                <div>Online</div>
+                            </div>
+                        </app-cf-application-card>
+
+
+                        <app-cf-application-card class="half" [status]="CardStatus.Applicant"
+                            [title]="'Outbound Flight'" [clickable]="false">
+                            <div #cardContent>
+                                <div>LHR <i class="fa-solid fa-plane"></i> JFK</div>
+                            </div>
+                        </app-cf-application-card>
+
+                        <app-cf-application-card class="half" [status]="CardStatus.ThirdParty" [title]="'Return Flight'"
+                            [clickable]="false">
+                            <div #cardContent>
+                                <div>Return flight not selected</div>
+                            </div>
+                        </app-cf-application-card>
+
+                        <app-cf-application-card class="wide" [status]="CardStatus.AllGood" [title]="'Another'"
+                            [clickable]="true">
+                            <div #cardContent>
+                                <div>Something</div>
+                                <div>Something</div>
+                            </div>
+                        </app-cf-application-card>
+
+                        <app-cf-application-card class="half" [status]="CardStatus.Office" [title]="'Another'"
+                            [clickable]="true">
+                            <div #cardContent>
+                            </div>
+                        </app-cf-application-card>
+
+                        <app-cf-application-card class="half" [status]="CardStatus.Applicant" [title]="'Another'"
+                            [clickable]="true">
+                            <div #cardContent>
+                            </div>
+                        </app-cf-application-card>
+
+                    </div>
+                </div>
+                <div class="right">
+                    <app-cf-tab [tabs]="tabs" (tabSelected)="onTabSelect($event)" #tabComponent>
+            <ng-container>
+                <div class="tab-content">
+                    <ng-container [ngSwitch]="activeTabContent">
+                        <div *ngSwitchCase="'com'">
+                            <ng-container *ngIf="entityActivitiesForTab">
+                                <app-cf-entity-activity *ngFor="let ea of entityActivitiesForTab"
+                                    [entry]="ea"></app-cf-entity-activity>
+                            </ng-container>
+                        </div>
+                        <div *ngSwitchCase="'act'">
+                            <p></p>
+                        </div>
+                        <div *ngSwitchCase="'con'">
+                            <p></p>
+            
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-container>
+                    </app-cf-tab>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Return to <a href="./">component showcase page</a>.</p>
+    </footer>
+</div>

@@ -1,0 +1,73 @@
+@import "/src/assets/styles/themes";
+
+.container {
+
+    .menu {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 0.5rem;
+    background-color: white;
+    .content {
+        background-color: white;
+        border-radius: 0.2rem;
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 10px;
+        .sidebar {
+            display: flex;
+            flex-flow: column nowrap;
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: 240px;
+        }
+
+        .center {
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 0.5rem;
+            flex: 1 0 calc(100% - 280px);
+            .actions {
+                border-radius: 0.2rem;   
+                width: 100%;         
+            }
+
+            .panels {
+                display: flex;
+                flex-flow: row wrap;
+                gap: 0.5rem;
+                .main {
+                    border-radius: 0.2rem;
+                    flex: 1 1 55%;
+                }
+
+                .right {
+                    border-radius: 0.2rem;
+                    flex: 1 1 43%;
+                }
+            }
+        }
+    }
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+footer {
+    background-color: lightgrey;
+    border-radius: 0.2rem;
+    padding: 0 0.5rem;
+    min-height: 3rem;
+    text-align: center;
+
+    p {
+        margin-top: 0.75rem;
+    }
+}

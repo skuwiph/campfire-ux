@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { CFDropdownItem, CFDropdownItemType, CFDropdownOptions } from '../cf-dropdown/cf-dropdown.component';
 import { TypeaheadResults } from 'src/app/control-summary.component';
 import { CFTableColumn, CfTableColumnAlignment, CfTableColumnType, CFTableData, CFTableRow, CfTableSelectedRow } from '../cf-table/cf-table.component';
@@ -10,6 +10,7 @@ import { CfTypeaheadComponent } from '../cf-typeahead/cf-typeahead.component';
   styleUrls: ['./cf-menu.component.scss']
 })
 export class CfMenuComponent implements OnInit {
+    @Input() showAll = true;
     @Output() menuSelected: EventEmitter<string> = new EventEmitter();
     @ViewChild('typeahead', { static: false }) typeahead!: CfTypeaheadComponent;
 
