@@ -56,7 +56,7 @@ export class CfProfileComponent implements OnInit, OnChanges {
 
         n = fn + (26 + (2*ln));
 
-        console.log(`Number from ${f} and ${l} is: ${fn} and ${ln} color: ${this.colorOptions[n]}`);
+        // console.log(`Number from ${f} and ${l} is: ${fn} and ${ln} color: ${this.colorOptions[n]}`);
 
         return n % this.colorOptions.length - 1;
     }

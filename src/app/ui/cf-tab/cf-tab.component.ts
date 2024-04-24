@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 })
 export class CfTabComponent implements OnInit, OnChanges {
     @Input() tabs: ICFTab[] = [];
+    @Input() activeTab = '';
     @Output() tabSelected: EventEmitter<string> = new EventEmitter();
 
     ngOnInit(): void {
@@ -31,18 +32,27 @@ export class CfTabComponent implements OnInit, OnChanges {
     }
 
     disableTab(id: string): void {
-        const t = this.tabs.find(t => t.id === id);
+        const t = this.getTabById(id);
         if (t) t.disabled = true;
         else console.warn(`Couldn't find tab by id ${id}`);
     }
 
     enableTab(id: string): void {
-        const t = this.tabs.find(t => t.id === id);
+        const t = this.getTabById(id);
         if (t) t.disabled = false;
         else console.warn(`Couldn't find tab by id ${id}`);
     }
 
-    activeTab = '';
+    selectTabById(id: string): void {
+        const t = this.getTabById(id);
+        if (t) this.selectTab(t);
+        else console.log(`Couldn't find tab with id '${id}'`);
+    }
+
+    private getTabById(id: string): ICFTab | undefined {
+        return this.tabs.find(t => t.id === id);
+    }
+   
 }
 export interface ICFTab {
     title: string;

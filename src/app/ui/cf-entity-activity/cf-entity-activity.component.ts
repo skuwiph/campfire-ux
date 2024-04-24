@@ -30,7 +30,7 @@ export class CFEntityActivity implements ICFEntityActivity {
             this.profileOrInitials = profile;
         } else {
             if(lastName == '' ) {
-                console.log(`Found a missing last name: ${firstName}`);
+                // console.log(`Found a missing last name: ${firstName}`);
                 this.profileOrInitials = firstName;
             } else {
                 this.profileOrInitials = `${firstName.substring(0, 1)}${lastName.substring(0, 1)}`;

@@ -787,7 +787,66 @@
             <h4>Notes</h4>
             <p>Html:</p>
             <code>
-                    &lt;app-cf-tab&gt;&lt;/app-cf-tab&gt;
+                    &lt;app-cf-tab [tabs]="tabs" (tabSelected)="onTabSelect($event)" #tabComponent&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="tab-content"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container [ngSwitch]="activeTabContent"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngSwitchCase="'one'"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ng-container *ngIf="entityActivitiesForTab"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-entity-activity<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ngFor="let ea of entityActivitiesForTab"<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[entry]="ea"&gt;&lt;/app-cf-entity-activity&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[type]="Button.Primary" (click)="enableTab('three')"&gt;Enable Third<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tab&lt;/app-cf-button&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngSwitchCase="'two'"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Esse eiusmod reprehenderit adipisicing proident sunt laboris. Cupidatat id eiusmod.&lt;/p&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;app-cf-button<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[type]="Button.Danger" (click)="disableTab('three')"&gt;Disable Third<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tab&lt;/app-cf-button&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngSwitchCase="'three'"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Esse eiusmod reprehenderit adipisicing proident sunt laboris.&lt;/p&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ng-container&gt;<br>
+
+                    &lt;/app-cf-tab&gt;<br>
+            </code>
+            <h4>Code</h4>
+            <code>
+                &nbsp;&nbsp;&nbsp;&nbsp;activeTabContent = 'one';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;tabs: ICFTab[] = [];<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;prepareTabs(): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.tabs = [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} id: 'one', title: 'Comments',
+                disabled: false {{ '}' }},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} id: 'two', title: 'Activity',
+                disabled: false {{ '}' }},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} id: 'three', title: 'Contact Log',
+                disabled: true {{ '}' }},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;];<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ '}' }}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;onTabSelect(id: string): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.activeTabContent = id;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ '}' }}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;enableTab(id: string): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.tabBar.enableTab(id);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ '}' }}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;disableTab(id: string): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.tabBar.disableTab(id);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ '}' }}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;setActiveTab(id: string): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.tabBar.selectTabById(id);<br>
+                {{ '}' }}<br>
             </code>
             <h4>Examples</h4>
             <app-cf-tab [tabs]="tabs" (tabSelected)="onTabSelect($event)" #tabComponent>
@@ -795,8 +854,8 @@
                     <div class="tab-content">
                         <ng-container [ngSwitch]="activeTabContent">
                             <div *ngSwitchCase="'one'">
-                                <ng-container *ngIf="entityActivities">
-                                    <app-cf-entity-activity *ngFor="let ea of entityActivities"
+                                <ng-container *ngIf="entityActivitiesForTab">
+                                    <app-cf-entity-activity *ngFor="let ea of entityActivitiesForTab"
                                         [entry]="ea"></app-cf-entity-activity>
                                 </ng-container>
                                 <app-cf-button [type]="Button.Primary" (click)="enableTab('three')">Enable Third
@@ -833,6 +892,9 @@
                     </div>
                 </ng-container>
             </app-cf-tab>
+            <br>
+            <app-cf-button [type]="Button.Secondary" (click)="setActiveTab('two')">Set Tab Two Active</app-cf-button>
+            <br>
         </div>
 
     </div>

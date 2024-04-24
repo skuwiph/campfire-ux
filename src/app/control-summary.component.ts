@@ -115,6 +115,7 @@ export class ControlSummaryComponent implements OnInit {
     // ENTITY
 
     entityActivities: ICFEntityActivity[] = [];
+    entityActivitiesForTab: ICFEntityActivity[] = [];
     prepareEntityList(): void {
         this.entityActivities.push(
             new CFEntityActivity(undefined, 'Michael', 'Tolfrey', 'yesterday at 14:35', 'This is a test message about the applicant. Ea officia cillum sunt ut duis reprehenderit voluptate amet.\r\nand it\'s very important to know that CRLFs are respected by the display.'),
@@ -127,7 +128,9 @@ export class ControlSummaryComponent implements OnInit {
                 new CFEntityActivity(ac.profileUrl, ac.firstName, ac.lastName, 'some date at some time', `${ac.firstName} called about some important thing on their application.`),
                 new CFEntityActivity(undefined, ac.firstName, ac.lastName, 'some date at another time', `${ac.firstName} did something exciting.`)
             );
-        })
+        });
+
+        this.entityActivitiesForTab = this.entityActivities.slice(0, 5);
     }
 
     // PROGRESS
@@ -294,7 +297,6 @@ export class ControlSummaryComponent implements OnInit {
     }
 
     onTabSelect(id: string): void {
-        console.log(`Selected tab ${id}`);
         this.activeTabContent = id;
     }
 
@@ -305,6 +307,10 @@ export class ControlSummaryComponent implements OnInit {
     disableTab(id: string): void {
         this.tabBar.disableTab(id);
     }
+
+    setActiveTab(id: string): void {
+        this.tabBar.selectTabById(id);
+   }
 
     // Dialog
     dialogActiveCount = 0;

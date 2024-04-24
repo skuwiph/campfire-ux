@@ -1,11 +1,11 @@
-<div class="tab">
+<div class="tab-component">
     <ul class="tab-bar">
         <li *ngFor="let t of tabs" class="tab" [class.active]="activeTab === t.id" [class.disabled]="t.disabled"
             (click)="selectTab(t)">{{t.title}}
-            <div class="tab-content">
-                <ng-content></ng-content>
-            </div>
-
+            
         </li>
     </ul>
+    <div class="tab-content">
+        <ng-content></ng-content>
+    </div>
 </div>
