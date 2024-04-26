@@ -1,0 +1,36 @@
+@import "/src/assets/styles/two-panel";
+
+
+
+h1 { color: #ffffff; margin-bottom: 0; }
+p { color: #ffffff; margin-top: 0;}
+
+.l-panel {
+    padding: 20vh 1rem 0;
+    flex: 1 1 45%;
+    min-width: 45%;
+    filter: drop-shadow(1px 0 3px #323232);
+    .text {
+        text-align: right;
+        padding-bottom: 3.5rem;
+    }
+    .login-control {
+        min-height: 10rem;
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+}
+
+.r-panel {
+    margin: 1rem 0;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 1 55%;
+    img {
+        margin-top: 1rem;
+        width: 100%;
+    }
+}

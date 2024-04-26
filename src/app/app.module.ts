@@ -12,6 +12,7 @@ import { MobileDeviceLayoutComponent } from './mobile-device-layout.component';
 import { StickyLayoutComponent } from './sticky-layout.component';
 import { UserDetailsLayoutComponent } from './user-details-layout.component';
 import { ListLayoutComponent } from './list-layout.component';
+import { LoginLayoutComponent } from './login-layout.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { ListLayoutComponent } from './list-layout.component';
         StickyLayoutComponent,
         UserDetailsLayoutComponent,
         ListLayoutComponent,
+        LoginLayoutComponent,
     ],
     imports: [
         BrowserModule,

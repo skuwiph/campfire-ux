@@ -1,0 +1,17 @@
+@import "/src/assets/styles/themes";
+
+.container-lr {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100vh;
+    .l-panel {
+        display: flex;
+        flex-flow: column nowrap;
+        flex: 1 1 auto;
+        background-color: #547F85;
+    }
+    .r-panel {
+        flex: 1 1 auto;
+        background-color: #4074BB;
+    }
+}
