@@ -32,7 +32,8 @@
     }
 
     .icon {
-        flex-basis: 0 0 1rem;
+        flex-basis: 0 1 2rem;
+        max-width: 2rem;
         text-align: center;
 
         i {
@@ -44,17 +45,17 @@
     .banner-content {
         display: flex;
         flex-flow: row wrap;
-        flex-basis: 1 0 95%;
+        flex-basis: 1 0 calc(100% - 2rem);
         justify-content: space-between;
         align-items: center;
-        width: 95%;
+        width: calc(100% - 2rem);
 
         .text {
             flex: 1 0 85%;
         }
 
         .actions {
-            align-content: center;
+            align-content: flex-end;
         }
     }
 }
