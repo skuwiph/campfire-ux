@@ -182,10 +182,16 @@ export class ControlSummaryComponent implements OnInit {
                                 profile: ru.picture.large,
                             }
                         )
-                    })
+                    });
                     this.testUserPortrait = this.getRandomUrlFromList();
 
                     this.users = d.results;
+
+                    count = 0;
+                    var months = ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May']
+                    for(count = 0; count < 5; count++) {
+                        console.log(`'${this.users[count].picture.large}', '${this.users[count].name.first} ${this.users[count].name.last}', '${this.users[count + 6].name.first} ${this.users[count + 6].name.last}', '${count + 1}-${months[count]}-2024'`);
+                    }
 
                     this.loadTypeaheadSearch();
                     this.prepareStandardTable();

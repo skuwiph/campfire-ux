@@ -5,8 +5,7 @@
     padding: 0.25rem 0.5rem;
     border-radius: 0.2rem;
     display: flex;
-    flex-direction: row;
-    flex-wrap: no-wrap;
+    flex-flow: row nowrap;
     align-items: center;
     align-content: stretch;
     justify-content: space-between;
@@ -33,8 +32,7 @@
     }
 
     .icon {
-        flex-basis: 0 0 2rem;
-        max-width: 2rem;
+        flex-basis: 0 0 1rem;
         text-align: center;
 
         i {
@@ -43,16 +41,16 @@
         }
     }
 
-    .content {
+    .banner-content {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-flow: row wrap;
         flex-basis: 1 0 95%;
         justify-content: space-between;
+        align-items: center;
         width: 95%;
 
         .text {
-            //flex: 1 0 90%;
+            flex: 1 0 85%;
         }
 
         .actions {

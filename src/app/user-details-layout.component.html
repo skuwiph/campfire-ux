@@ -2,7 +2,7 @@
     <app-cf-menu class="menu" [showAll]="false"></app-cf-menu>
     <div class="content">
         <div class="sidebar">
-            <app-cf-applicant-card *ngIf="applicantCard" [applicant]="applicantCard"></app-cf-applicant-card>
+            <app-cf-applicant-card *ngIf="applicantCard" [applicant]="applicantCard" [static]="true"></app-cf-applicant-card>
         </div>
         <div class="center">
             <div class="actions">
@@ -12,7 +12,9 @@
                         <app-cf-button [type]="Button.Primary">Action</app-cf-button>
                     </ng-container>
                 </app-cf-banner>
-
+                <div class="users">
+                    <app-cf-user-profile-stack [urlOrInitials]="userList" [width]="30" [height]="30"></app-cf-user-profile-stack>
+                </div>
             </div>
             <div class="panels">
                 <div class="main">

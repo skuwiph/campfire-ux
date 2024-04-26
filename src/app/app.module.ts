@@ -11,6 +11,7 @@ import { ControlSummaryComponent } from './control-summary.component';
 import { MobileDeviceLayoutComponent } from './mobile-device-layout.component';
 import { StickyLayoutComponent } from './sticky-layout.component';
 import { UserDetailsLayoutComponent } from './user-details-layout.component';
+import { ListLayoutComponent } from './list-layout.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { UserDetailsLayoutComponent } from './user-details-layout.component';
         MobileDeviceLayoutComponent,
         StickyLayoutComponent,
         UserDetailsLayoutComponent,
+        ListLayoutComponent,
     ],
     imports: [
         BrowserModule,

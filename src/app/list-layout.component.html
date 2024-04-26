@@ -1,0 +1,33 @@
+<div class="container">
+    <app-cf-menu class="menu"></app-cf-menu>
+    <div class="content">
+        <div class="sidebar">
+            <app-cf-sidebar-menu [items]="sidebarMenu"></app-cf-sidebar-menu>
+        </div>
+        <div class="center">
+            <div class="actions">
+                <div class="action-info">
+                    <div class="action-text">
+                        <h2>Reference Approvals</h2>
+                        <p>Work queue description that explains what the purpose of this work area is and the expected behaviour of the user.</p>
+                    </div>
+                    <div clas="action-stat">
+                        <app-cf-user-target *ngIf="showProgress" [label]="'Progress'" [value]="34"></app-cf-user-target>
+                        <app-cf-stat-panel *ngIf="!showProgress" [label]="'Target'" [value]="'42'" [style]="StatPanelStyle.Done"></app-cf-stat-panel>
+                    </div>
+                </div>  
+                <app-cf-banner [type]="BannerType.Done">
+                    <p text>There are no new items in your workqueue.</p>
+                    <ng-container actions>
+                        <app-cf-button [type]="Button.Primary">Refresh</app-cf-button>
+                    </ng-container>
+                </app-cf-banner>               
+            </div>
+            <app-cf-table *ngIf="standardTable" [data]="standardTable" [sortable]="false"></app-cf-table>
+        </div>
+
+    </div>
+    <footer>
+        <p>Return to <a href="./">component showcase page</a>.</p>
+    </footer>
+</div>

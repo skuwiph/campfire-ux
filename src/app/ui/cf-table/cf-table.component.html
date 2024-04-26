@@ -14,7 +14,7 @@
                 [ngClass]="data.columns[i].align">
                 <div [ngSwitch]="data.columns[i].type">
                     <div *ngSwitchCase="'status'"><app-cf-status-display [status]="c"></app-cf-status-display></div>
-                    <div *ngSwitchCase="'profile'"><app-cf-profile [urlOrInitials]="c"></app-cf-profile></div> 
+                    <div *ngSwitchCase="'profile'"><app-cf-profile [urlOrInitials]="c" [width]="50" [height]="50"></app-cf-profile></div> 
                     <div *ngSwitchDefault>{{c}}</div>
                 </div>                
             </td>

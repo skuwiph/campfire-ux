@@ -1,0 +1,18 @@
+<nav *ngIf="items">
+    <ul>
+        <li *ngFor="let m of items">
+            <a *ngIf="m.link; else parent" routerLink="{{m.link}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{m.text}}</a>
+            <ng-template #parent>
+                <span *ngIf="m.isSeparator" class="separator"></span>
+                <span *ngIf="!m.isSeparator" class="nolink">{{m.text}}</span>
+            </ng-template>
+            <ul *ngIf="m.items">
+                <li *ngFor="let cm of m.items">
+                    <a routerLink="{{cm.link}}" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}">{{cm.text}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</nav>

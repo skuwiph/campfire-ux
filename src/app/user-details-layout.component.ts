@@ -19,6 +19,7 @@ export class UserDetailsLayoutComponent implements OnInit {
         this.prepareApplicantCard();    
         this.prepareTabs();
         this.prepareEntityList();
+        this.prepareUserList();
     }
 
     applicantCard?: ICFApplicantCardInfo;
@@ -50,6 +51,17 @@ export class UserDetailsLayoutComponent implements OnInit {
             new CFEntityActivity(undefined, 'System', '', 'yesterday at 11:00', 'The system did something interesting to the application.'),
             new CFEntityActivity(undefined, 'Orca', '', 'yesterday at 11:00', 'Application was successfully transmitted to ORCA.'),
         );
+    }
+
+    userList: string[] = [];
+    prepareUserList(): void {
+        this.userList = [
+            'MT', 
+            'https://randomuser.me/api/portraits/women/94.jpg', 
+            'https://randomuser.me/api/portraits/women/17.jpg', 
+            'CF',
+            'https://randomuser.me/api/portraits/men/7.jpg',
+        ]
     }
 
     onTabSelect(id: string): void {

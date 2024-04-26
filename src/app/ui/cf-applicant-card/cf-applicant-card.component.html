@@ -1,4 +1,4 @@
-<div class="applicant-card" (click)="onClick($event)">
+<div class="applicant-card" (click)="onClick($event)" [class.static]="static">
     <div class="image">
         <app-cf-profile [urlOrInitials]="urlOrInitials" [roundImage]="false" [width]="240" [height]="240"></app-cf-profile>
         <app-cf-status-display [status]="applicant.status"></app-cf-status-display>

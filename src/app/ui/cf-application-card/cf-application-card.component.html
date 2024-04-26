@@ -1,6 +1,6 @@
 <div class="card" [class.clickable]="clickable" (click)="cardClicked()">
     <div class="status" [ngClass]="status"></div>
-    <div class="content">
+    <div class="card-content">
         <h2>{{title}}</h2>
         <ng-content cardContent></ng-content>
     </div>

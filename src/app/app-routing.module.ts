@@ -4,11 +4,13 @@ import { ControlSummaryComponent } from './control-summary.component';
 import { MobileDeviceLayoutComponent } from './mobile-device-layout.component';
 import { StickyLayoutComponent } from './sticky-layout.component';
 import { UserDetailsLayoutComponent } from './user-details-layout.component';
+import { ListLayoutComponent } from './list-layout.component';
 
 const routes: Routes = [
     { path: '', component: ControlSummaryComponent },
-    { path: 'sticky', component: StickyLayoutComponent },
+    { path: 'list', component: ListLayoutComponent },
     { path: 'mobile', component: MobileDeviceLayoutComponent },
+    { path: 'sticky', component: StickyLayoutComponent },
     { path: 'user', component: UserDetailsLayoutComponent },
 ];
 

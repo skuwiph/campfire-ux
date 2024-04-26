@@ -91,6 +91,10 @@ ol {
     border-radius: 0.25rem;
 }
 
+.content {
+    background-color: var(--page-background-color);
+}
+
 .left {
     min-width: 20rem;
     flex-basis: 100%;
@@ -98,6 +102,8 @@ ol {
 }
 
 .right {
+    background-color: var(--panel-background-color-primary);
+    padding: 0.5rem;
     min-width: 8rem;
     flex: 1;
 }
@@ -114,6 +120,22 @@ code {
     &.inline {
         display: inline;
         padding: 0 0.1rem;
+    }
+}
+
+.sidebar{
+    flex-basis: calc(var(--applicant-card-base-width));
+}
+
+.sidebar, 
+footer {
+    background-color: var(--menu-bg-color);
+    color: var(--menu-fg-color);
+    a {
+        color: var(--menu-fg-color);
+        &:hover {
+            color: var(--menu-bg-hover-color);
+        }
     }
 }
 

@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class CfApplicantCardComponent implements OnInit {
     @Input() applicant!: ICFApplicantCardInfo;
+    @Input() static = false;
     @Output() cardClick = new EventEmitter<number>();
 
     ngOnInit(): void {

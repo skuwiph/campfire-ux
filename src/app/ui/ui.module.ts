@@ -22,8 +22,12 @@ import { CfStatusDisplayComponent } from './cf-status-display/cf-status-display.
 import { CfTabComponent } from './cf-tab/cf-tab.component';
 import { CfTableComponent } from './cf-table/cf-table.component';
 import { CfTypeaheadComponent } from './cf-typeahead/cf-typeahead.component';
+import { CfUserProfileStackComponent } from './cf-user-profile-stack/cf-user-profile-stack.component';
 import { BoldTextPipe } from './boldspan.pipe';
 import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
+import { CfUserTargetComponent } from './cf-user-target/cf-user-target.component';
+import { CfSidebarMenuComponent } from './cf-sidebar-menu/cf-sidebar-menu.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -40,11 +44,14 @@ import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
         CfMentionTextComponent,
         CfProfileComponent,
         CfProgressComponent,
+        CfSidebarMenuComponent,
         CfStatPanelComponent,
         CfStatusDisplayComponent,
         CfTabComponent,
         CfTableComponent,
         CfTypeaheadComponent,
+        CfUserProfileStackComponent,
+        CfUserTargetComponent,
         BoldTextPipe,
         CloudimageCropPipe,
         CloudimagePipe,
@@ -52,6 +59,7 @@ import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
     imports: [
         CommonModule,
         FormsModule,
+        RouterModule,
         ReactiveFormsModule,
         ContenteditableValueAccessorModule,
     ],
@@ -69,11 +77,14 @@ import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
         CfMentionTextComponent,
         CfProfileComponent,
         CfProgressComponent,
+        CfSidebarMenuComponent,
         CfStatusDisplayComponent,
         CfStatPanelComponent,
         CfTabComponent,
         CfTableComponent,
         CfTypeaheadComponent,
+        CfUserProfileStackComponent,
+        CfUserTargetComponent,
     ],
     providers: []
 })

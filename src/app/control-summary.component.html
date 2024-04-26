@@ -1011,9 +1011,9 @@
             &nbsp;&nbsp;&nbsp;&nbsp;this.isTypeaheadSearching = false;<br>
             {{ '}' }}<br>
             </code><br>
-            <div *ngIf="profilesLoaded">
-                <h4>Example</h4>
-                <p>Start look up after three characters entered:</p>
+            <h4>Example</h4>
+            <p>Start look up after three characters entered:</p>
+            <div *ngIf="profilesLoaded" class="show-background" style="padding:0.5rem; margin-bottom: 1rem;">
                 <app-cf-typeahead #typeahead [placeholderTextDefault]="'Default text'"
                     [placeholderTextActive]="'Enter search terms'" [isSearching]="isTypeaheadSearching"
                     [hasResults]="typeaheadHasResults" (lookup)="doTypeaheadLookup($event)">
