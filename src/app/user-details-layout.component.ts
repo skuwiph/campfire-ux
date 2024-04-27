@@ -27,10 +27,10 @@ export class UserDetailsLayoutComponent implements OnInit {
         this.applicantCard = 
             {
                 applicationId: 10024,
-                firstName: "Michael",
-                lastName: "Tolfrey",
+                firstName: "Jo",
+                lastName: "Parker",
                 status: "ParticipantPlaced",
-                profileUrl: undefined,
+                profileUrl: "https://randomuser.me/api/portraits/women/24.jpg",
             };
     }
 

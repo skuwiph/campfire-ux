@@ -132,6 +132,7 @@
             <code>
                 &lt;app-cf-applicant-card [applicant]="displayApplicantCard!"&gt;&lt;/app-cf-applicant-card&gt;
             </code>
+            <p>Add <code class="inline">[static]="true"</code> if the card should not respond to mouse hover.</p>
             <p>In code:</p>
             <code>
             this.displayApplicantCard = {{ '{' }}<br>
@@ -145,7 +146,7 @@
             <h4>Examples</h4>
             <div class="left ac-flex" *ngIf="profilesLoaded && displayApplicantCards">
                 <app-cf-applicant-card *ngFor="let a of displayApplicantCards" [applicant]="a"
-                    (cardClick)="applicantCardSelected($event)"></app-cf-applicant-card>
+                    (cardClick)="applicantCardSelected($event)" [static]="false"></app-cf-applicant-card>
             </div>
         </div>
     </div>
