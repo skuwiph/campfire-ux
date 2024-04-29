@@ -29,7 +29,7 @@ import { CFStatPanelStyle } from './ui/cf-stat-panel/cf-stat-panel.component';
   ul.link li { display:flex; flex-direction:row; justify-content: flex-start;}
   ul.link li i { width: 1.75rem; }
   .mono { font-family: "Reddit Mono", monospace; }
-  .comfort { padding: 0.5rem; }
+  .comfort { padding: 0.5rem; display:flex;flex-flow: row wrap; align-items: center; }
   .active-msg { margin-top: 0.4rem; }
   .ac-flex, .tour-profile {
     display: flex; 
@@ -464,7 +464,7 @@ export class ControlSummaryComponent implements OnInit {
         //console.log(`Start tour`);
 
         const items: CFTourElement[] = [];
-        items.push(new CFTourElement("CL:div.container", "This is the menu, which may look different depending on the device you use to view the page.<br><br>The logo will always return you to the home page.", "Main Menu"));
+        items.push(new CFTourElement("ID:themenu", "This is the menu, which may look different depending on the device you use to view the page.<br><br>The logo will always return you to the home page.", "Main Menu"));
         items.push(new CFTourElement("CL:div.spinner", "This is the loader control, used while network operations are in effect.", "Activity Indicator"));
         items.push(new CFTourElement("CL:div.applicant-card div.image", "This is an example of an applicant card.<br><br>These contain at-a-glance information regarding the applicant.", "Applicant Card"));
         items.push(new CFTourElement("CL:tour-modal-buttons", "The UiModalService provides a programmatic way of calling a standard modal dialog.<br><br>These can display user-defined buttons and respond with the user's selection as necessary.", "Modal Dialogs"));

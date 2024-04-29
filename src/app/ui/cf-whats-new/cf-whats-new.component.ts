@@ -57,6 +57,11 @@ export class CfWhatsNewComponent {
             // window
             const b = targetElement.bounds;
             
+            if(b.length === 0) {
+                console.error(`Element '${c.identifier}' did not return an expected value!`, b);
+                return;
+            }
+
             const tr1 = this.getElementPositionScreen({ x: b[0].x, y: b[0].y, width: b[0].width, height: b[0].height});
             const tr2 = this.getElementPositionScreen({ x: tr1.x, y: tr1.y, width: Math.max(tr1.w, 280), height: Math.max(tr1.h, 400)});
             const scr = this.getElementPositionScreen({ x: window.visualViewport?.pageLeft ?? 0, y: window.visualViewport?.pageTop ?? 0, width: window.visualViewport?.width ?? 0, height: window.visualViewport?.height ?? 0});

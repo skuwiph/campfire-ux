@@ -545,7 +545,7 @@
 
     <h2>Menu<a name="menu"></a></h2>
     <div class="flex-container">
-        <div class="left">
+        <div class="left" id="themenu" >
             <br>
             <app-cf-menu (menuSelected)="menuItemSelected($event)"></app-cf-menu>
             <p>Selected item: <b>{{menuItem}}</b></p>
@@ -1087,7 +1087,7 @@
 
     <h2>CSS Theme Declarations<a name="theme"></a></h2>
     <div class="flex-container">
-        <div class="left comfort">
+        <div class="left">
             <p>See <code class="inline">./assets/styles/_themes.scss</code>:</p>
             <code>
                 [data-theme="light"] {{ '{' }}<br>
