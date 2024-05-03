@@ -17,6 +17,7 @@
         <li><a href="#mention"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mention Text</a></li>
         <li><a href="#modal"><i class="fa-solid fa-arrow-up-right-from-square"></i>Modals</a></li>
         <li><a href="#profile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Image</a></li>
+        <li><a href="#profilestack"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Stack</a></li>
         <li><a href="#progress"><i class="fa-solid fa-arrow-up-right-from-square"></i>Progress Indicator</a></li>
         <li><a href="#stat"><i class="fa-solid fa-arrow-up-right-from-square"></i>Statistic Panel</a></li>
         <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
@@ -27,6 +28,7 @@
             <li><a href="#tables-paginate"><i class="fa-solid fa-arrow-up-right-from-square"></i>Paginated</a></li>
             <li><a href="#tables-sort"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sortable</a></li>
         </ul>
+        <li><a href="#textreview"><i class="fa-solid fa-arrow-up-right-from-square"></i>Text Review</a></li>
         <li><a href="#typeahead"><i class="fa-solid fa-arrow-up-right-from-square"></i>Typeahead</a></li>
         <li><a href="#whatsnew"><i class="fa-solid fa-arrow-up-right-from-square"></i>What's New</a></li>
         <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
@@ -34,7 +36,8 @@
         <ul>
             <li><a href="dashboard"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dashboard layout</a></li>
             <li><a href="login"><i class="fa-solid fa-arrow-up-right-from-square"></i>Login layout</a></li>
-            <li><a href="list"><i class="fa-solid fa-arrow-up-right-from-square"></i>List with extra-details layout</a></li>
+            <li><a href="list"><i class="fa-solid fa-arrow-up-right-from-square"></i>List with extra-details layout</a>
+            </li>
             <li><a href="mobile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mobile layout</a></li>
             <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky footer</a></li>
             <li><a href="user"><i class="fa-solid fa-arrow-up-right-from-square"></i>User details layout</a></li>
@@ -463,10 +466,10 @@
                 {{ '}' }}
             </code>
             <h4>Examples</h4>
-                        <div style="max-width: 10rem;">                           
-                            <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions"
-                            (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
-                        </div>
+            <div style="max-width: 10rem;">
+                <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions"
+                    (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
+            </div>
             <br><br>
         </div>
     </div>
@@ -545,7 +548,7 @@
 
     <h2>Menu<a name="menu"></a></h2>
     <div class="flex-container">
-        <div class="left" id="themenu" >
+        <div class="left" id="themenu">
             <br>
             <app-cf-menu (menuSelected)="menuItemSelected($event)"></app-cf-menu>
             <p>Selected item: <b>{{menuItem}}</b></p>
@@ -648,8 +651,43 @@
                     [roundImage]="false"></app-cf-profile>
                 <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'PS'"
                     [roundImage]="true"></app-cf-profile>
-                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'System'" [roundImage]="true"></app-cf-profile>
-                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'Orca'" [roundImage]="true"></app-cf-profile>
+                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'System'"
+                    [roundImage]="true"></app-cf-profile>
+                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'Orca'"
+                    [roundImage]="true"></app-cf-profile>
+            </div>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Profile Stack <a name="profilestack"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &ltapp-cf-user-profile-stack [users]="userStack" [width]="30"
+                [height]="30""&gt;&lt;/app-cf-user-profile-stack&gt;<br>
+            </code>
+            <h4>Code</h4>
+            <code>
+                    userStack: ICFUser[] = [];<br>
+                    <br>
+                    prepareUserList(): void {{'{'}}<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.userStack = [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} firstName: 'Michael', lastName: 'Tolfrey' {{'}'}},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} profileUrl: 'https://randomuser/24.jpg',<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstName: 'Jo', lastName: 'Gardiner' {{'}'}},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+                    {{'}'}}<br>
+            </code>
+            <p>If the <code class="inline">urlOrInitials</code> parameter starts with 'http', assume an image.</p>
+            <h4>Examples</h4>
+            <div class="comfort tour-stack" *ngIf="userStack">
+                <div class="users">
+                    <app-cf-user-profile-stack [users]="userStack" [width]="30"
+                        [height]="30"></app-cf-user-profile-stack>
+                </div>
             </div>
         </div>
     </div>
@@ -899,7 +937,8 @@
             </app-cf-tab>
             <br>
             <div class="comfort">
-                <app-cf-button [type]="Button.Secondary" (click)="setActiveTab('two')">Set Tab Two Active</app-cf-button>
+                <app-cf-button [type]="Button.Secondary" (click)="setActiveTab('two')">Set Tab Two
+                    Active</app-cf-button>
             </div>
         </div>
 
@@ -978,6 +1017,51 @@
         </div>
     </div>
     <p><a href="#top">UP</a></p>
+
+    <h2>Text Review<a name="textreview"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;app-cf-text-review *ngFor="let r of reviewItems" [reviewItem]="r"
+                (statusChanged)="onReviewItemStatusChange($event)"&gt;&lt;/app-cf-text-review&gt;<br>
+            </code>
+            <p>Code:</p>
+            <code>
+                reviewItems: CFTextReviewItem[] = [];<br><br>    
+                setupReviewItem(): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;this.reviewItems = [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CFTextReviewItem('text-item-1', `I wanted to.`,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} firstName: 'Michael', lastName: 'Tolfrey' {{ '}' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CFTextReviewItem('text-item-4', 'Earum at id ut.', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CFTextReviewStatus.User,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} firstName: 'Charlotte', lastName: 'Fletcher' {{ '}' }},<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} profileUrl: 'https://randomuser/24.jpg', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstName: 'Jo', lastName: 'Gardiner' {{ '}' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+                {{ '}' }}<br><br>
+                
+                onReviewItemStatusChange(reviewItem: CFTextReviewItem): void {{ '{' }} <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Changed review item status`);<br>
+                {{ '}' }}<br>
+            </code>
+            <h4>Examples</h4>
+            <div class="">
+                <app-cf-text-review *ngFor="let r of reviewItems" [reviewItem]="r"
+                    (statusChanged)="onReviewItemStatusChange($event)"></app-cf-text-review>
+            </div>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
     <h2>Typeahead<a name="typeahead"></a></h2>
     <div class="flex-container">
         <div class="left">

@@ -1,5 +1,6 @@
 <div class="stack" [style.height]="stackHeight">
-    <span class="item" *ngFor="let u of userStack" [style.left]="u.left" [style.z-index]="u.zindex">
+    <span class="item" *ngFor="let u of userStack" [style.left]="u.left" [style.z-index]="u.zindex"
+        title="{{u.fullName}}">
         <app-cf-profile [urlOrInitials]="u.urlOrInitial" [width]="width" [height]="height"></app-cf-profile>
     </span>
 </div>

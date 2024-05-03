@@ -2,7 +2,8 @@
     <app-cf-menu class="menu" [showAll]="false"></app-cf-menu>
     <div class="content">
         <div class="sidebar">
-            <app-cf-applicant-card *ngIf="applicantCard" [applicant]="applicantCard" [static]="true"></app-cf-applicant-card>
+            <app-cf-applicant-card *ngIf="applicantCard" [applicant]="applicantCard"
+                [static]="true"></app-cf-applicant-card>
         </div>
         <div class="center">
             <div class="actions">
@@ -13,7 +14,7 @@
                     </ng-container>
                 </app-cf-banner>
                 <div class="users">
-                    <app-cf-user-profile-stack [urlOrInitials]="userList" [width]="30" [height]="30"></app-cf-user-profile-stack>
+                    <app-cf-user-profile-stack [users]="users" [width]="30" [height]="30"></app-cf-user-profile-stack>
                 </div>
             </div>
             <div class="panels">
@@ -76,25 +77,25 @@
                 </div>
                 <div class="right">
                     <app-cf-tab [tabs]="tabs" (tabSelected)="onTabSelect($event)" #tabComponent>
-            <ng-container>
-                <div class="tab-content">
-                    <ng-container [ngSwitch]="activeTabContent">
-                        <div *ngSwitchCase="'com'">
-                            <ng-container *ngIf="entityActivitiesForTab">
-                                <app-cf-entity-activity *ngFor="let ea of entityActivitiesForTab"
-                                    [entry]="ea"></app-cf-entity-activity>
-                            </ng-container>
-                        </div>
-                        <div *ngSwitchCase="'act'">
-                            <p></p>
-                        </div>
-                        <div *ngSwitchCase="'con'">
-                            <p></p>
-            
-                        </div>
-                    </ng-container>
-                </div>
-            </ng-container>
+                        <ng-container>
+                            <div class="tab-content">
+                                <ng-container [ngSwitch]="activeTabContent">
+                                    <div *ngSwitchCase="'com'">
+                                        <ng-container *ngIf="entityActivitiesForTab">
+                                            <app-cf-entity-activity *ngFor="let ea of entityActivitiesForTab"
+                                                [entry]="ea"></app-cf-entity-activity>
+                                        </ng-container>
+                                    </div>
+                                    <div *ngSwitchCase="'act'">
+                                        <p></p>
+                                    </div>
+                                    <div *ngSwitchCase="'con'">
+                                        <p></p>
+
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </ng-container>
                     </app-cf-tab>
 
                 </div>

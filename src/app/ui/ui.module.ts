@@ -28,6 +28,7 @@ import { CloudimageCropPipe, CloudimagePipe } from './cloudimage.pipe';
 import { CfUserTargetComponent } from './cf-user-target/cf-user-target.component';
 import { CfSidebarMenuComponent } from './cf-sidebar-menu/cf-sidebar-menu.component';
 import { RouterModule } from '@angular/router';
+import { CfTextReviewComponent } from './cf-text-review/cf-text-review.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import { RouterModule } from '@angular/router';
         CfStatusDisplayComponent,
         CfTabComponent,
         CfTableComponent,
+        CfTextReviewComponent,
         CfTypeaheadComponent,
         CfUserProfileStackComponent,
         CfUserTargetComponent,
@@ -82,6 +84,7 @@ import { RouterModule } from '@angular/router';
         CfStatPanelComponent,
         CfTabComponent,
         CfTableComponent,
+        CfTextReviewComponent,
         CfTypeaheadComponent,
         CfUserProfileStackComponent,
         CfUserTargetComponent,
