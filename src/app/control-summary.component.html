@@ -34,7 +34,8 @@
         <ul>
             <li><a href="dashboard"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dashboard layout</a></li>
             <li><a href="login"><i class="fa-solid fa-arrow-up-right-from-square"></i>Login layout</a></li>
-            <li><a href="list"><i class="fa-solid fa-arrow-up-right-from-square"></i>List with extra-details layout</a></li>
+            <li><a href="list"><i class="fa-solid fa-arrow-up-right-from-square"></i>List with extra-details layout</a>
+            </li>
             <li><a href="mobile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mobile layout</a></li>
             <li><a href="sticky"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sticky footer</a></li>
             <li><a href="user"><i class="fa-solid fa-arrow-up-right-from-square"></i>User details layout</a></li>
@@ -463,10 +464,10 @@
                 {{ '}' }}
             </code>
             <h4>Examples</h4>
-                        <div style="max-width: 10rem;">                           
-                            <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions"
-                            (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
-                        </div>
+            <div style="max-width: 10rem;">
+                <app-cf-dropdown *ngIf="dropdownOptions" [options]="dropdownOptions"
+                    (dropdownSelected)="onDropdownSelected($event)"></app-cf-dropdown>
+            </div>
             <br><br>
         </div>
     </div>
@@ -545,7 +546,7 @@
 
     <h2>Menu<a name="menu"></a></h2>
     <div class="flex-container">
-        <div class="left" id="themenu" >
+        <div class="left" id="themenu">
             <br>
             <app-cf-menu (menuSelected)="menuItemSelected($event)"></app-cf-menu>
             <p>Selected item: <b>{{menuItem}}</b></p>
@@ -648,8 +649,10 @@
                     [roundImage]="false"></app-cf-profile>
                 <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'PS'"
                     [roundImage]="true"></app-cf-profile>
-                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'System'" [roundImage]="true"></app-cf-profile>
-                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'Orca'" [roundImage]="true"></app-cf-profile>
+                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'System'"
+                    [roundImage]="true"></app-cf-profile>
+                <app-cf-profile [width]="100" [height]="100" [urlOrInitials]="'Orca'"
+                    [roundImage]="true"></app-cf-profile>
             </div>
         </div>
     </div>
@@ -899,7 +902,8 @@
             </app-cf-tab>
             <br>
             <div class="comfort">
-                <app-cf-button [type]="Button.Secondary" (click)="setActiveTab('two')">Set Tab Two Active</app-cf-button>
+                <app-cf-button [type]="Button.Secondary" (click)="setActiveTab('two')">Set Tab Two
+                    Active</app-cf-button>
             </div>
         </div>
 
@@ -978,6 +982,16 @@
         </div>
     </div>
     <p><a href="#top">UP</a></p>
+
+    <div class="flex-container">
+        <div class="left">
+            <h2>Buttons<a name="tables-standard"></a></h2>
+            <app-cf-table *ngIf="buttonTable" [data]="buttonTable" (onSelect)="selectedButtonRow($event)"
+                (onButtonClicked)="rowButtonClicked($event)"></app-cf-table>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
     <h2>Typeahead<a name="typeahead"></a></h2>
     <div class="flex-container">
         <div class="left">

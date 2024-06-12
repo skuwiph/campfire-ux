@@ -39,7 +39,7 @@ export class ListLayoutComponent implements OnInit {
         ];
 
         this.sidebarMenu = i.slice();
-        console.log(`Menu: ${JSON.stringify(this.sidebarMenu,null,2)}`);
+        // console.log(`Menu: ${JSON.stringify(this.sidebarMenu,null,2)}`);
     }
 
     standardTable?: CFTableData;
@@ -53,9 +53,9 @@ export class ListLayoutComponent implements OnInit {
 
         var data = [
             { pk: "1", cols: ['https://randomuser.me/api/portraits/men/25.jpg', 'Cipriano Farias', 'Virginia León', '1-Sep-2024'] },
-            { pk: "2", cols: ['https://randomuser.me/api/portraits/women/86.jpg', 'Clarence Turner', 'Iekaterina Stepura', '2-Oct-2024'] },
+            { pk: "2", cols: ['https://randomuser.me/api/portraits/women/86.jpg', 'Clarice Turner', 'Iekaterina Stepura', '2-Oct-2024'] },
             { pk: "3", cols: ['https://randomuser.me/api/portraits/women/24.jpg', 'Sasha Leclerc', 'Maya Hellevik', '3-Nov-2024'] },
-            { pk: "4", cols: ['https://randomuser.me/api/portraits/women/79.jpg', 'Hans-Otto Bartmann', 'Deniz Okumuş', '4-Dec-2024'] },
+            { pk: "4", cols: ['https://randomuser.me/api/portraits/women/79.jpg', 'Sophie Bartmann', 'Deniz Okumuş', '4-Dec-2024'] },
             { pk: "5", cols: ['https://randomuser.me/api/portraits/men/31.jpg', 'Ahmet Adal', 'Oliver Young', '5-Jan-2024'] },
         ];
 

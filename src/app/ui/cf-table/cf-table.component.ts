@@ -1,22 +1,24 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { CFButtonType } from '../cf-button/cf-button.component';
 
 @Component({
-  selector: 'app-cf-table',
-  templateUrl: './cf-table.component.html',
-  styleUrls: ['./cf-table.component.scss'],
+    selector: 'app-cf-table',
+    templateUrl: './cf-table.component.html',
+    styleUrls: ['./cf-table.component.scss'],
 })
 export class CfTableComponent implements OnChanges {
     @Input() data!: CFTableData;
     @Input() filter?: CFTableFilter;
     @Input() sortable = false;
     @Input() showHeaders = true;
-    
-    @Output() onSelect: EventEmitter<CfTableSelectedRow> = new EventEmitter<CfTableSelectedRow>();
 
-    constructor() {}
+    @Output() onSelect: EventEmitter<CfTableSelectedRow> = new EventEmitter<CfTableSelectedRow>();
+    @Output() onButtonClicked: EventEmitter<CFTableColumnButtonClicked> = new EventEmitter<CFTableColumnButtonClicked>();
+
+    constructor() { }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if(changes["data"] || changes["filter"]) {
+        if (changes["data"] || changes["filter"]) {
             this.loadPageData();
         }
     }
@@ -26,11 +28,11 @@ export class CfTableComponent implements OnChanges {
     }
 
     onClick(colIndex: number): void {
-        if(!this.sortable) return;
+        if (!this.sortable) return;
         // console.log(`Try sorting on ${this.data.columns[colIndex].type}`);
 
-        if(this.sortColumn === colIndex) {
-            if(this.sortDirection === 'asc') {
+        if (this.sortColumn === colIndex) {
+            if (this.sortDirection === 'asc') {
                 this.sortDirection = 'des';
             } else {
                 this.sortDirection = 'asc';
@@ -52,18 +54,18 @@ export class CfTableComponent implements OnChanges {
         let filteredData = this.data.rows.slice();
 
         // filtering first, because it should be the easiest
-        if(this.filter) {
-            if(this.filter.column < this.data.columns.length) {
+        if (this.filter) {
+            if (this.filter.column < this.data.columns.length) {
                 const fc = this.filter.column;
                 const fv = this.filter.value;
-                filteredData = this.data.rows.filter( f => {
+                filteredData = this.data.rows.filter(f => {
                     return f.cols[fc] === fv;
                 });
             }
         }
 
         // next, are we sorting?
-        if(this.sortable && this.sortColumn > -1) {
+        if (this.sortable && this.sortColumn > -1) {
             rows = this.sortData(filteredData);
         } else {
             rows = filteredData;
@@ -84,7 +86,7 @@ export class CfTableComponent implements OnChanges {
         } else {
             // Display all; no pagination
             this.displayRows = rows; //this.data.rows;
-        }        
+        }
 
     }
 
@@ -93,7 +95,7 @@ export class CfTableComponent implements OnChanges {
             const type = this.data.columns[this.sortColumn].type;
             const ac = this.sortDirection === 'asc' ? a.cols[this.sortColumn] : b.cols[this.sortColumn];
             const bc = this.sortDirection === 'asc' ? b.cols[this.sortColumn] : a.cols[this.sortColumn];
-            switch(type) {
+            switch (type) {
                 case CfTableColumnType.String:
                 case CfTableColumnType.UserStatus:
                     return ac.localeCompare(bc, 'en');
@@ -109,33 +111,38 @@ export class CfTableComponent implements OnChanges {
 
     selectRow(rowIndex: number): void {
         console.log(`Selected row: ${rowIndex}: ${JSON.stringify(this.displayRows[rowIndex])}`);
-        this.onSelect.emit({ pk: this.displayRows[rowIndex].pk, index: rowIndex});
+        this.onSelect.emit({ pk: this.displayRows[rowIndex].pk, index: rowIndex });
+    }
+
+    buttonClicked(text: string, pk: string): void {
+        console.log(`row button clicked:`, text, pk);
+        this.onButtonClicked.emit(new CFTableColumnButtonClicked(text, pk));
     }
 
     setFirstPage(): void {
-        if(this.data.pages) {
+        if (this.data.pages) {
             this.data.pages!.currentPage = 0;
-            this.loadPageData();        
+            this.loadPageData();
         }
     }
 
     nextPage(): void {
         if (this.data.pages) {
             this.data.pages!.currentPage += 1;
-            if(this.data.pages!.currentPage == this.data.pages!.pageCount) {
+            if (this.data.pages!.currentPage == this.data.pages!.pageCount) {
                 this.data.pages!.currentPage = this.data.pages!.pageCount;
             }
-            this.loadPageData();    
+            this.loadPageData();
         }
     }
-    
-    previousPage() : void {
+
+    previousPage(): void {
         if (this.data.pages) {
             this.data.pages!.currentPage -= 1;
-            if(this.data.pages!.currentPage < 0) {
+            if (this.data.pages!.currentPage < 0) {
                 this.data.pages!.currentPage = 0;
             }
-            this.loadPageData();        
+            this.loadPageData();
         }
     }
 
@@ -150,7 +157,7 @@ export class CfTableComponent implements OnChanges {
 
     updateButtons(pages: CFTablePaginationOptions): void {
         const pageSize = pages.pageSize > 0 ? pages.pageSize : 1; // Safety
-        const maxPages = Math.ceil(this.data.rows.length / pageSize) -1;
+        const maxPages = Math.ceil(this.data.rows.length / pageSize) - 1;
 
         // console.log(`Current: ${pages.currentPage}, maxPages: ${maxPages}`);
 
@@ -192,6 +199,7 @@ export enum CfTableColumnType {
     Date = "*",
     UserProfile = "profile",
     UserStatus = "status",
+    Button = "button"
 }
 
 export interface ICFTableColumnDefinition {
@@ -200,6 +208,8 @@ export interface ICFTableColumnDefinition {
     type: CfTableColumnType;
     class?: string;
     getClass(): any;
+
+    options?: undefined | ICFTableColumnTypeOptions;
 }
 
 export interface ICFTableRow {
@@ -211,6 +221,14 @@ export interface ICFTablePaginationOptions {
     pageSize: number;
     currentPage: number;
     pageCount: number;
+}
+
+export interface ICFTableColumnTypeOptions {
+    button?: ICFTableColumnButtonOptions
+}
+
+export interface ICFTableColumnButtonOptions {
+    type: CFButtonType;
 }
 
 export class CFTableData {
@@ -231,6 +249,8 @@ export class CFTableColumn implements ICFTableColumnDefinition {
     type: CfTableColumnType = CfTableColumnType.Any;
     class?: string;
 
+    options?: undefined | ICFTableColumnTypeOptions;
+
     constructor(title?: string, alignment = CfTableColumnAlignment.Left, type = CfTableColumnType.Any, cssClass?: string) {
         this.title = title ?? '';
         this.align = alignment;
@@ -246,7 +266,7 @@ export class CFTableColumn implements ICFTableColumnDefinition {
 export class CFTableRow implements ICFTableRow {
     pk: string;
     cols: string[] = [];
-    constructor(pk:string, columns: string[]) {
+    constructor(pk: string, columns: string[]) {
         this.pk = pk;
         this.cols = columns;
     }
@@ -257,11 +277,11 @@ export class CFTablePaginationOptions {
     currentPage: number;
     pageCount: number;
 
-    constructor( size: number, rowCount: number ) {
+    constructor(size: number, rowCount: number) {
         this.pageSize = size;
         this.currentPage = 0;
-        if(size > 0) {
-            this.pageCount = Math.ceil( rowCount / size );
+        if (size > 0) {
+            this.pageCount = Math.ceil(rowCount / size);
         } else {
             this.pageCount = 0;
         }
@@ -271,4 +291,13 @@ export class CFTablePaginationOptions {
 export interface CFTableFilter {
     column: number;
     value: string | number | boolean; // convert case as needed
+}
+
+export class CFTableColumnButtonClicked {
+    text: string;
+    pk: string;
+    constructor(text: string, pk: string) {
+        this.text = text;
+        this.pk = pk;
+    }
 }

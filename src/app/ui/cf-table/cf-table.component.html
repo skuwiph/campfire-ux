@@ -1,31 +1,34 @@
 <table>
     <thead *ngIf="showHeaders">
-        <th *ngFor="let c of data.columns; index as ci" 
-        [ngClass]="c.getClass()"
-        [class.sortable]="sortable"
-        [class.uns]="ci !== this.sortColumn"
-        [class.asc]="ci == this.sortColumn && this.sortDirection == 'asc'"
-        [class.des]="ci == this.sortColumn && this.sortDirection == 'des'"
-        (click)="onClick(ci)">{{c.title}}</th>
+        <th *ngFor="let c of data.columns; index as ci" [ngClass]="c.getClass()" [class.sortable]="sortable"
+            [class.uns]="ci !== this.sortColumn" [class.asc]="ci == this.sortColumn && this.sortDirection == 'asc'"
+            [class.des]="ci == this.sortColumn && this.sortDirection == 'des'" (click)="onClick(ci)">{{c.title}}</th>
     </thead>
     <tbody>
         <tr *ngFor="let d of displayRows; index as di" (click)="selectRow(di)">
-            <td *ngFor="let c of d.cols; index as i" 
-                [ngClass]="data.columns[i].align">
+            <td *ngFor="let c of d.cols; index as i" [ngClass]="data.columns[i].align">
                 <div [ngSwitch]="data.columns[i].type">
                     <div *ngSwitchCase="'status'"><app-cf-status-display [status]="c"></app-cf-status-display></div>
-                    <div *ngSwitchCase="'profile'"><app-cf-profile [urlOrInitials]="c" [width]="50" [height]="50"></app-cf-profile></div> 
+                    <div *ngSwitchCase="'profile'"><app-cf-profile [urlOrInitials]="c" [width]="50"
+                            [height]="50"></app-cf-profile></div>
+                    <div *ngSwitchCase="'button'"><app-cf-button *ngIf="data.columns[i].options?.button"
+                            [type]="data.columns[i].options!.button!.type"
+                            (click)="buttonClicked(c, d.pk)">{{c}}</app-cf-button></div>
                     <div *ngSwitchDefault>{{c}}</div>
-                </div>                
+                </div>
             </td>
         </tr>
     </tbody>
 </table>
 <!-- IAS - is this a meaningful separate component? -->
 <div *ngIf="data.pages" class="table-paginate">
-    <button type="button" class="uib" [disabled]="df" (click)="setFirstPage()"><i class="fa-solid fa-angles-left" [class.disabled]="df"></i></button>
-    <button type="button" class="uib" [disabled]="dp" (click)="previousPage()"><i class="fa-solid fa-angle-left" [class.disabled]="dp" ></i></button>
+    <button type="button" class="uib" [disabled]="df" (click)="setFirstPage()"><i class="fa-solid fa-angles-left"
+            [class.disabled]="df"></i></button>
+    <button type="button" class="uib" [disabled]="dp" (click)="previousPage()"><i class="fa-solid fa-angle-left"
+            [class.disabled]="dp"></i></button>
     <div class="page">{{data.pages.currentPage + 1}}/{{data.pages.pageCount}}</div>
-    <button type="button" class="uib" [disabled]="dn" (click)="nextPage()"><i class="fa-solid fa-angle-right" [class.disabled]="dn" ></i></button>
-    <button type="button" class="uib" [disabled]="dl" (click)="setLastPage()"><i class="fa-solid fa-angles-right" [class.disabled]="dl" ></i></button>
+    <button type="button" class="uib" [disabled]="dn" (click)="nextPage()"><i class="fa-solid fa-angle-right"
+            [class.disabled]="dn"></i></button>
+    <button type="button" class="uib" [disabled]="dl" (click)="setLastPage()"><i class="fa-solid fa-angles-right"
+            [class.disabled]="dl"></i></button>
 </div>

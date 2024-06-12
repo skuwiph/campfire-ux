@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CFTableColumn, CfTableColumnAlignment, CfTableColumnType, CFTableData, CFTableFilter, CFTablePaginationOptions, CFTableRow, CfTableSelectedRow } from './ui/cf-table/cf-table.component';
+import { CFTableColumn, CfTableColumnAlignment, CFTableColumnButtonClicked, CfTableColumnType, CFTableData, CFTableFilter, CFTablePaginationOptions, CFTableRow, CfTableSelectedRow } from './ui/cf-table/cf-table.component';
 import { CfDialogComponent } from './ui/cf-dialog/cf-dialog.component';
 import { CFButtonType } from './ui/cf-button/cf-button.component';
 import { CFAlertType } from './ui/cf-alert/cf-alert.component';
@@ -187,11 +187,11 @@ export class ControlSummaryComponent implements OnInit {
 
                     this.users = d.results;
 
-                    count = 0;
-                    var months = ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May']
-                    for(count = 0; count < 5; count++) {
-                        console.log(`'${this.users[count].picture.large}', '${this.users[count].name.first} ${this.users[count].name.last}', '${this.users[count + 6].name.first} ${this.users[count + 6].name.last}', '${count + 1}-${months[count]}-2024'`);
-                    }
+                    // count = 0;
+                    // var months = ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May']
+                    // for(count = 0; count < 5; count++) {
+                    //     console.log(`'${this.users[count].picture.large}', '${this.users[count].name.first} ${this.users[count].name.last}', '${this.users[count + 6].name.first} ${this.users[count + 6].name.last}', '${count + 1}-${months[count]}-2024'`);
+                    // }
 
                     this.loadTypeaheadSearch();
                     this.prepareStandardTable();
@@ -280,10 +280,46 @@ export class ControlSummaryComponent implements OnInit {
             );
         });
         this.paginationTable = new CFTableData(pscolumns.slice(), results, new CFTablePaginationOptions(10, results.length));
+
+        let bc = new CFTableColumn("Owned", CfTableColumnAlignment.Right, CfTableColumnType.Button, "col_button")
+        bc.options = { button: { type: CFButtonType.Danger } };
+
+        var columns2: CFTableColumn[] = [
+            new CFTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),
+            new CFTableColumn("Album", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_album"),
+            new CFTableColumn("Year", CfTableColumnAlignment.Center, CfTableColumnType.Number),
+            bc,
+            new CFTableColumn("Position", CfTableColumnAlignment.Right, CfTableColumnType.String)
+        ];
+
+        var data2 = [
+            { pk: "01", cols: ["The Beatles", "Please Please Me", "1963", "Buy", "#1"] },
+            { pk: "02", cols: ["The Beatles", "With The Beatles", "1963", "Buy", "#1"] },
+            { pk: "03", cols: ["The Beatles", "A Hard Day’s Night", "1964", "Buy", "#1"] },
+            { pk: "04", cols: ["The Beatles", "Beatles For Sale", "1964", "Buy", "#1"] },
+            { pk: "05", cols: ["The Beatles", "Help!", "1965", "Buy", "#1"] },
+            { pk: "06", cols: ["The Beatles", "Rubber Soul", "1965", "Buy", "#1"] },
+            { pk: "07", cols: ["The Beatles", "Revolver", "1966", "Buy", "#1"] },
+            { pk: "08", cols: ["The Beatles", "Sgt Pepper’s Lonely Hearts Club Band", "1967", "Buy", "#1"] },
+            { pk: "09", cols: ["The Beatles", "The Beatles(White Album)", "1968", "Buy", "#1"] },
+            { pk: "0A", cols: ["The Beatles", "Yellow Submarine", "1969", "Buy", "#1"] },
+            { pk: "0B", cols: ["The Beatles", "Abbey Road", "1969", "Buy", "#1"] },
+            { pk: "0C", cols: ["The Beatles", "Let It Be", "1970", "Buy", "#1"] },
+        ];
+
+        this.buttonTable = new CFTableData(columns2.slice(), [...data2]);
     }
 
     selectedStandardRow(event: CfTableSelectedRow): void {
         this.modalService.showModalInformation('Selected Row', `Row was selected with PK: ${event.pk}`);
+    }
+
+    selectedButtonRow(event: CfTableSelectedRow): void {
+        this.modalService.showModalInformation('Selected Row', `Row was selected with PK: ${event.pk}`);
+    }
+
+    rowButtonClicked(event: CFTableColumnButtonClicked): void {
+        this.modalService.showModalInformation('Selected Button', `Button with name '${event.text}' was clicked on row PK: ${event.pk}`);
     }
 
     // Buttons
@@ -316,7 +352,7 @@ export class ControlSummaryComponent implements OnInit {
 
     setActiveTab(id: string): void {
         this.tabBar.selectTabById(id);
-   }
+    }
 
     // Dialog
     dialogActiveCount = 0;
@@ -557,6 +593,7 @@ export class ControlSummaryComponent implements OnInit {
     }
 
     standardTable?: CFTableData;
+    buttonTable?: CFTableData;
     paginationTable?: CFTableData;
     sortTable?: CFTableData;
 

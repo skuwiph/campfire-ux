@@ -11,10 +11,13 @@ import { CFEntityActivity, ICFEntityActivity } from './ui/cf-entity-activity/cf-
     styleUrls: ['./user-details-layout.component.scss'],
 })
 export class UserDetailsLayoutComponent implements OnInit {
+
+    // MARK: Forward Decls
     BannerType = CFBannerType;
     Button = CFButtonType;
     CardStatus = CFApplicationCardStatus;
 
+    // MARK: OnInit
     ngOnInit(): void {
         this.prepareApplicantCard();    
         this.prepareTabs();
@@ -22,6 +25,7 @@ export class UserDetailsLayoutComponent implements OnInit {
         this.prepareUserList();
     }
 
+    // MARK: Applicant Card
     applicantCard?: ICFApplicantCardInfo;
     prepareApplicantCard(): void {
         this.applicantCard = 
@@ -34,6 +38,7 @@ export class UserDetailsLayoutComponent implements OnInit {
             };
     }
 
+    // MARK: Tab
     activeTabContent = 'one';
     tabs: ICFTab[] = [];
     prepareTabs(): void {
@@ -44,6 +49,7 @@ export class UserDetailsLayoutComponent implements OnInit {
         ];
     }
 
+    // MARK: Entity List
     entityActivitiesForTab: ICFEntityActivity[] = [];
     prepareEntityList(): void {
         this.entityActivitiesForTab.push(
@@ -53,6 +59,7 @@ export class UserDetailsLayoutComponent implements OnInit {
         );
     }
 
+    // MARK: User List
     userList: string[] = [];
     prepareUserList(): void {
         this.userList = [
