@@ -251,11 +251,12 @@ export class CFTableColumn implements ICFTableColumnDefinition {
 
     options?: undefined | ICFTableColumnTypeOptions;
 
-    constructor(title?: string, alignment = CfTableColumnAlignment.Left, type = CfTableColumnType.Any, cssClass?: string) {
+    constructor(title?: string, alignment = CfTableColumnAlignment.Left, type = CfTableColumnType.Any, cssClass?: string, options?: ICFTableColumnTypeOptions) {
         this.title = title ?? '';
         this.align = alignment;
         this.type = type;
         this.class = cssClass;
+        this.options = options;
     }
 
     getClass(): any {

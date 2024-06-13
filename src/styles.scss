@@ -1,15 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-@import "assets/styles/themes";
-@import "assets/styles/buttons";
-
-.tour-target {
-    position: relative;
-    z-index: 998;
-    box-shadow: 0px 0px 8px 8px var(--panel-background-color-primary);
-}
+@use './assets/styles/themes';
+@use './assets/styles/buttons';
 
 * {
-    font-family: "Nunito", "Roboto", "Rubik", sans-serif;
+    font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
     font-size: 14pt;
     box-sizing: border-box;
@@ -72,7 +65,6 @@ p {
 ul,
 ol {
     margin-left: 2.5rem;
-    margin-bottom: 1rem;
     line-height: 1.5rem;
 }
 
@@ -123,16 +115,18 @@ code {
     }
 }
 
-.sidebar{
+.sidebar {
     flex-basis: calc(var(--applicant-card-base-width));
 }
 
-.sidebar, 
+.sidebar,
 footer {
     background-color: var(--menu-bg-color);
     color: var(--menu-fg-color);
+
     a {
         color: var(--menu-fg-color);
+
         &:hover {
             color: var(--menu-bg-hover-color);
         }
@@ -164,4 +158,26 @@ footer {
         // width: 50%;
         //min-width: 20rem;
     }
+}
+
+.tour-target {
+    position: relative;
+    z-index: 998;
+    box-shadow: 0px 0px 8px 8px var(--panel-background-color-primary);
+}
+
+.info {
+    background-color: var(--info-color);
+}
+
+.done {
+    background-color: var(--done-color);
+}
+
+.todo {
+    background-color: var(--todo-color);
+}
+
+.warn {
+    background-color: var(--warn-color);
 }

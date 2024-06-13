@@ -5,6 +5,7 @@ import { ICFTab } from './ui/cf-tab/cf-tab.component';
 import { CFBannerType } from './ui/cf-banner/cf-banner.component';
 import { CFButtonType } from './ui/cf-button/cf-button.component';
 import { CFEntityActivity, ICFEntityActivity } from './ui/cf-entity-activity/cf-entity-activity.component';
+import { ICFUser } from './ui/cf-user-profile-stack/cf-user-profile-stack.component';
 
 @Component({
     templateUrl: './user-details-layout.component.html',
@@ -19,7 +20,7 @@ export class UserDetailsLayoutComponent implements OnInit {
 
     // MARK: OnInit
     ngOnInit(): void {
-        this.prepareApplicantCard();    
+        this.prepareApplicantCard();
         this.prepareTabs();
         this.prepareEntityList();
         this.prepareUserList();
@@ -28,14 +29,14 @@ export class UserDetailsLayoutComponent implements OnInit {
     // MARK: Applicant Card
     applicantCard?: ICFApplicantCardInfo;
     prepareApplicantCard(): void {
-        this.applicantCard = 
-            {
-                applicationId: 10024,
-                firstName: "Jo",
-                lastName: "Parker",
-                status: "ParticipantPlaced",
-                profileUrl: "https://randomuser.me/api/portraits/women/24.jpg",
-            };
+        this.applicantCard =
+        {
+            applicationId: 10024,
+            firstName: "Jo",
+            lastName: "Parker",
+            status: "ParticipantPlaced",
+            profileUrl: "https://randomuser.me/api/portraits/women/24.jpg",
+        };
     }
 
     // MARK: Tab
@@ -61,14 +62,23 @@ export class UserDetailsLayoutComponent implements OnInit {
 
     // MARK: User List
     userList: string[] = [];
+    users: ICFUser[] = [];
     prepareUserList(): void {
-        this.userList = [
-            'MT', 
-            'https://randomuser.me/api/portraits/women/94.jpg', 
-            'https://randomuser.me/api/portraits/women/17.jpg', 
-            'CF',
-            'https://randomuser.me/api/portraits/men/7.jpg',
+        this.users = [
+            { firstName: 'Michael', lastName: 'Tolfrey' },
+            { profileUrl: 'https://randomuser.me/api/portraits/women/24.jpg', firstName: 'Jo', lastName: 'Gardiner' },
+            { profileUrl: 'https://randomuser.me/api/portraits/women/17.jpg', firstName: 'Eleanor', lastName: 'Parker' },
+            { firstName: 'Charlotte', lastName: 'Fletcher' },
+            { profileUrl: 'https://randomuser.me/api/portraits/men/7.jpg', firstName: 'John', lastName: 'Grant' },
         ]
+
+        // this.userList = [
+        //     'MT', 
+        //     'https://randomuser.me/api/portraits/women/94.jpg', 
+        //     'https://randomuser.me/api/portraits/women/17.jpg', 
+        //     'CF',
+        //     'https://randomuser.me/api/portraits/men/7.jpg',
+        // ]
     }
 
     onTabSelect(id: string): void {

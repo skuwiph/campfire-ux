@@ -1,25 +1,33 @@
-@import "/src/assets/styles/themes";
+@use "/src/assets/styles/themes";
 
 .image {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    img {
+        aspect-ratio: 1 / 1;
+    }
+
     .round-image {
         border-radius: 50%;
         border: 2px solid white;
     }
+
     .initials {
         color: var(--profile-image-fg-color);
         background-color: var(--profile-image-bg-color);
         display: flex;
         flex-direction: row;
         align-items: center;
-        p, i {
+
+        p,
+        i {
             width: 100%;
             font-weight: 700;
             font-size: 1.2rem;
             text-align: center;
         }
-        
+
     }
 }

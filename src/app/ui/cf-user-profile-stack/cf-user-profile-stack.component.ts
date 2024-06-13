@@ -1,12 +1,12 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'app-cf-user-profile-stack',
-  templateUrl: './cf-user-profile-stack.component.html',
-  styleUrls: ['./cf-user-profile-stack.component.scss']
+    selector: 'app-cf-user-profile-stack',
+    templateUrl: './cf-user-profile-stack.component.html',
+    styleUrls: ['./cf-user-profile-stack.component.scss']
 })
 export class CfUserProfileStackComponent implements OnChanges {
-    @Input() urlOrInitials: string[] = [];
+    @Input() users: ICFUser[] = [];
     @Input() width = 60;
     @Input() height = 60;
 
@@ -14,11 +14,11 @@ export class CfUserProfileStackComponent implements OnChanges {
     userStack: ICFUserStack[] = [];
 
     ngOnChanges(changes: SimpleChanges): void {
-        if(changes["urlOrInitials"]) {
-            // console.log(`Got width and height: ${this.width} x ${this.height}`);
+        if (changes["users"]) {
             this.calculateStackPositions();
+
         }
-        if(changes["height"]) {
+        if (changes["height"]) {
             this.stackHeight = `${this.height * 1.2}px`;
         }
     }
@@ -27,17 +27,25 @@ export class CfUserProfileStackComponent implements OnChanges {
         this.userStack = [];
         var leftPos = 0;
         var zindex = 1;
-        this.urlOrInitials.forEach( i => {
-            this.userStack.push( { urlOrInitial: i, left: `${leftPos}px`, zindex: zindex});
+        this.users.forEach(i => {
+            const initial = `${i.firstName.substring(0, 1)}${i.lastName?.substring(0, 1)}`;
+            const urlOrInitial = i.profileUrl ?? initial;
+            this.userStack.push({ urlOrInitial: urlOrInitial, fullName: `${i.firstName} ${i.lastName}`, left: `${leftPos}px`, zindex: zindex });
             leftPos += this.width * 0.75;
             zindex += 1;
         });
-        console.log(`Got list: ${JSON.stringify(this.userStack, null, 2)}`);
     }
+}
+
+export interface ICFUser {
+    profileUrl?: string;
+    firstName: string;
+    lastName: string;
 }
 
 export interface ICFUserStack {
     urlOrInitial: string;
+    fullName: string;
     left: string;
     zindex: number;
 }

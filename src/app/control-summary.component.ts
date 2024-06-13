@@ -20,6 +20,8 @@ import { CFBannerType } from './ui/cf-banner/cf-banner.component';
 import { CfTabComponent, ICFTab } from './ui/cf-tab/cf-tab.component';
 import { CFEntityActivity, ICFEntityActivity } from './ui/cf-entity-activity/cf-entity-activity.component';
 import { CFStatPanelStyle } from './ui/cf-stat-panel/cf-stat-panel.component';
+import { ICFUser } from './ui/cf-user-profile-stack/cf-user-profile-stack.component';
+import { CFTextReviewItem, CFTextReviewStatus } from './ui/cf-text-review/cf-text-review.component';
 
 @Component({
     templateUrl: './control-summary.component.html',
@@ -101,6 +103,8 @@ export class ControlSummaryComponent implements OnInit {
         this.prepareDropdown();
         this.getRandomImages();
         this.prepareTabs();
+        this.prepareUserList();
+        this.setupReviewItem();
 
         setInterval(() => {
             const v = this.progressValue += Math.floor(Math.random() * 50);
@@ -112,7 +116,7 @@ export class ControlSummaryComponent implements OnInit {
         }, 30000);
     }
 
-    // ENTITY
+    // MARK: Entity
 
     entityActivities: ICFEntityActivity[] = [];
     entityActivitiesForTab: ICFEntityActivity[] = [];
@@ -133,7 +137,19 @@ export class ControlSummaryComponent implements OnInit {
         this.entityActivitiesForTab = this.entityActivities.slice(0, 5);
     }
 
-    // PROGRESS
+    // MARK: Profile Stack
+    userStack: ICFUser[] = [];
+    prepareUserList(): void {
+        this.userStack = [
+            { firstName: 'Michael', lastName: 'Tolfrey' },
+            { profileUrl: 'https://randomuser.me/api/portraits/women/24.jpg', firstName: 'Jo', lastName: 'Gardiner' },
+            { profileUrl: 'https://randomuser.me/api/portraits/women/17.jpg', firstName: 'Eleanor', lastName: 'Parker' },
+            { firstName: 'Charlotte', lastName: 'Fletcher' },
+            { profileUrl: 'https://randomuser.me/api/portraits/men/7.jpg', firstName: 'John', lastName: 'Grant' },
+        ]
+    }
+
+    // MARK: Progress
 
     progressMax = 100;
     progressValue = 50;
@@ -281,14 +297,11 @@ export class ControlSummaryComponent implements OnInit {
         });
         this.paginationTable = new CFTableData(pscolumns.slice(), results, new CFTablePaginationOptions(10, results.length));
 
-        let bc = new CFTableColumn("Owned", CfTableColumnAlignment.Right, CfTableColumnType.Button, "col_button")
-        bc.options = { button: { type: CFButtonType.Danger } };
-
         var columns2: CFTableColumn[] = [
             new CFTableColumn("Artist", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_artist"),
             new CFTableColumn("Album", CfTableColumnAlignment.Left, CfTableColumnType.String, "col_album"),
             new CFTableColumn("Year", CfTableColumnAlignment.Center, CfTableColumnType.Number),
-            bc,
+            new CFTableColumn("Owned", CfTableColumnAlignment.Right, CfTableColumnType.Button, "col_button", { button: { type: CFButtonType.Danger } }),
             new CFTableColumn("Position", CfTableColumnAlignment.Right, CfTableColumnType.String)
         ];
 
@@ -467,7 +480,7 @@ export class ControlSummaryComponent implements OnInit {
         this.testText = event;
     }
 
-    // Dropdown / Menu
+    // MARK: Dropdown / Menu
     prepareDropdown(): void {
         this.dropdownOptions = {
             text: 'Dropdown Menu', showIndicator: true, items: [
@@ -483,7 +496,7 @@ export class ControlSummaryComponent implements OnInit {
         this.modalService.showModalInformation('Dropdown Item Selected', `Item selected: ${item.link}`);
     }
 
-    // Menu
+    // MARK: Menu
     menuItem = '';
     prepareMenu(): void {
 
@@ -529,7 +542,7 @@ export class ControlSummaryComponent implements OnInit {
         window.scrollTo({ left: this.restoreX, top: this.restoreY, behavior: 'smooth' })
     }
 
-    // MODALS
+    // MARK: Modals
     modalResponseLast: string = 'Click on buttons above';
     showModalInfo(): void {
         this.modalResponseLast = 'Waiting for user input';
@@ -591,6 +604,23 @@ export class ControlSummaryComponent implements OnInit {
                 }
             });
     }
+
+    // MARK: Text Rewiew
+    reviewItems: CFTextReviewItem[] = [];
+
+    setupReviewItem(): void {
+        this.reviewItems = [
+            new CFTextReviewItem('text-item-1', `I wanted to write some text in here that indicated something interesting.\nBut there's no sense in writing the same thing over and over again.`, undefined, [{ firstName: 'Michael', lastName: 'Tolfrey' }]),
+            new CFTextReviewItem('text-item-2', 'Neque id qui veniam. Necessitatibus ullam placeat distinctio aspernatur facere dicta. Laborum quidem qui autem alias alias hic iste ut.'),
+            new CFTextReviewItem('text-item-3', 'Id aut sunt eum. Nihil quia nihil nihil praesentium porro. Magni qui ducimus maiores maiores deleniti.\n\nId sequi et corporis adipisci voluptas dolor.Quisquam ipsa aliquam eos reiciendis aut.In nihil velit a labore sit iusto labore repellat.Quia non asperiores minus molestiae.'),
+            new CFTextReviewItem('text-item-4', 'Earum at id ut sint quidem repudiandae a molestiae. Dolorem dolor et minima. Fugit sed quo quisquam. Est rerum doloribus quae omnis veniam ducimus aut molestiae. Eos ullam in iusto velit omnis ut eaque. Cum voluptas accusantium illum fugiat soluta necessitatibus laborum commodi.', CFTextReviewStatus.User, [{ firstName: 'Charlotte', lastName: 'Fletcher' }, { profileUrl: 'https://randomuser.me/api/portraits/women/24.jpg', firstName: 'Jo', lastName: 'Gardiner' }]),
+        ];
+    }
+
+    onReviewItemStatusChange(reviewItem: CFTextReviewItem): void {
+        console.log(`Changed review item status ${reviewItem.dataItem} to ${reviewItem.status}`);
+    }
+
 
     standardTable?: CFTableData;
     buttonTable?: CFTableData;

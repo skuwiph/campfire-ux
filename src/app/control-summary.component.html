@@ -17,6 +17,7 @@
         <li><a href="#mention"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mention Text</a></li>
         <li><a href="#modal"><i class="fa-solid fa-arrow-up-right-from-square"></i>Modals</a></li>
         <li><a href="#profile"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Image</a></li>
+        <li><a href="#profilestack"><i class="fa-solid fa-arrow-up-right-from-square"></i>Profile Stack</a></li>
         <li><a href="#progress"><i class="fa-solid fa-arrow-up-right-from-square"></i>Progress Indicator</a></li>
         <li><a href="#stat"><i class="fa-solid fa-arrow-up-right-from-square"></i>Statistic Panel</a></li>
         <li><a href="#status"><i class="fa-solid fa-arrow-up-right-from-square"></i>Status Display</a></li>
@@ -27,6 +28,7 @@
             <li><a href="#tables-paginate"><i class="fa-solid fa-arrow-up-right-from-square"></i>Paginated</a></li>
             <li><a href="#tables-sort"><i class="fa-solid fa-arrow-up-right-from-square"></i>Sortable</a></li>
         </ul>
+        <li><a href="#textreview"><i class="fa-solid fa-arrow-up-right-from-square"></i>Text Review</a></li>
         <li><a href="#typeahead"><i class="fa-solid fa-arrow-up-right-from-square"></i>Typeahead</a></li>
         <li><a href="#whatsnew"><i class="fa-solid fa-arrow-up-right-from-square"></i>What's New</a></li>
         <li><a href="#theme"><i class="fa-solid fa-arrow-up-right-from-square"></i>CSS Theme Declarations</a></li>
@@ -658,6 +660,39 @@
     </div>
     <p><a href="#top">UP</a></p>
 
+    <h2>Profile Stack <a name="profilestack"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &ltapp-cf-user-profile-stack [users]="userStack" [width]="30"
+                [height]="30""&gt;&lt;/app-cf-user-profile-stack&gt;<br>
+            </code>
+            <h4>Code</h4>
+            <code>
+                    userStack: ICFUser[] = [];<br>
+                    <br>
+                    prepareUserList(): void {{'{'}}<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.userStack = [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} firstName: 'Michael', lastName: 'Tolfrey' {{'}'}},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'{'}} profileUrl: 'https://randomuser/24.jpg',<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstName: 'Jo', lastName: 'Gardiner' {{'}'}},<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+                    {{'}'}}<br>
+            </code>
+            <p>If the <code class="inline">urlOrInitials</code> parameter starts with 'http', assume an image.</p>
+            <h4>Examples</h4>
+            <div class="comfort tour-stack" *ngIf="userStack">
+                <div class="users">
+                    <app-cf-user-profile-stack [users]="userStack" [width]="30"
+                        [height]="30"></app-cf-user-profile-stack>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
     <h2>Progress Indicator<a name="progress"></a></h2>
     <div class="flex-container">
         <div class="left">
@@ -925,6 +960,8 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Artist", CFTableColumnAlignment.Left, CFTableColumnType.String, "col_artist"),<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Album", CFTableColumnAlignment.Left, CFTableColumnType.String, "col_album"),<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Year", CFTableColumnAlignment.Center, CFTableColumnType.Number),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Owned", CfTableColumnAlignment.Right, CfTableColumnType.Button, "col_button",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} button: {{ '{' }} type: CFButtonType.Danger {{ '}' }} {{ '}' }}),<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;new CFTableColumn("Position", CFTableColumnAlignment.Right, CFTableColumnType.String),<br>
                 ];<br>
                 <br>
@@ -935,11 +972,17 @@
                 <br>
                 this.standardTable = new CFTableData(columns, data, new CfTablePaginationOptions(10, data.length));
             </code>
-            <p>Event:</p>
+            <p>Events:</p>
             <code>
                 selectedStandardRow(event: CFTableSelectedRow): void {{ '{' }}<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Row was selected with PK: ${{ '{' }}event.pk{{ '}' }}`);<br>
                 {{ '}' }}<br>
+                <br>
+
+                rowButtonClicked(event: CFTableColumnButtonClicked): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;const buttonText = event.text;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;const primaryKey = event.pk;<br>
+                {{ '}' }}
             </code>
             <p>Extra parameters:</p>
             <code>[showHeaders]="true|false"</code><br>
@@ -988,6 +1031,50 @@
             <h2>Buttons<a name="tables-standard"></a></h2>
             <app-cf-table *ngIf="buttonTable" [data]="buttonTable" (onSelect)="selectedButtonRow($event)"
                 (onButtonClicked)="rowButtonClicked($event)"></app-cf-table>
+        </div>
+    </div>
+    <p><a href="#top">UP</a></p>
+
+    <h2>Text Review<a name="textreview"></a></h2>
+    <div class="flex-container">
+        <div class="left">
+            <h4>Notes</h4>
+            <p>Html:</p>
+            <code>
+                &lt;app-cf-text-review *ngFor="let r of reviewItems" [reviewItem]="r"
+                (statusChanged)="onReviewItemStatusChange($event)"&gt;&lt;/app-cf-text-review&gt;<br>
+            </code>
+            <p>Code:</p>
+            <code>
+                reviewItems: CFTextReviewItem[] = [];<br><br>    
+                setupReviewItem(): void {{ '{' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;this.reviewItems = [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CFTextReviewItem('text-item-1', `I wanted to.`,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} firstName: 'Michael', lastName: 'Tolfrey' {{ '}' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new CFTextReviewItem('text-item-4', 'Earum at id ut.', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CFTextReviewStatus.User,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} firstName: 'Charlotte', lastName: 'Fletcher' {{ '}' }},<br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }} profileUrl: 'https://randomuser/24.jpg', <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstName: 'Jo', lastName: 'Gardiner' {{ '}' }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+                {{ '}' }}<br><br>
+                
+                onReviewItemStatusChange(reviewItem: CFTextReviewItem): void {{ '{' }} <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;console.log(`Changed review item status`);<br>
+                {{ '}' }}<br>
+            </code>
+            <h4>Examples</h4>
+            <div class="">
+                <app-cf-text-review *ngFor="let r of reviewItems" [reviewItem]="r"
+                    (statusChanged)="onReviewItemStatusChange($event)"></app-cf-text-review>
+            </div>
         </div>
     </div>
     <p><a href="#top">UP</a></p>
@@ -1144,7 +1231,7 @@
     <p><a href="#top">UP</a></p>
 </div>
 <ng-template #loading_please>
-    <div class="comfort">
+    <div class="button-bar cal">
         <app-cf-loader [style]="LoaderStyle.Circles" [size]="LoaderSize.Large">
             <p>Loading network resources</p>
         </app-cf-loader>

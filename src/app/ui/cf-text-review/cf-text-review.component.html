@@ -1,0 +1,8 @@
+<div class="review-item" [class.readonly]="readOnly" id="ri_{{reviewItem.dataItem}}" (click)="changeStatus($event)">
+    <div class="status" [ngClass]="reviewItem.status"></div>
+    <div class="text">
+        <p [innerHTML]="reviewItem.text"></p>
+        <app-cf-user-profile-stack *ngIf="reviewItem.reviewingUsers.length" [width]="30" [height]="30"
+            [users]="reviewItem.reviewingUsers"></app-cf-user-profile-stack>
+    </div>
+</div>
