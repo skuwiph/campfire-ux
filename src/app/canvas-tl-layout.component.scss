@@ -1,0 +1,63 @@
+@import "/src/assets/styles/themes";
+@import "/src/assets/styles/buttons";
+
+.container {
+
+    .menu {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1 0 auto;
+
+    .tl {
+        border: 1px solid #181818;
+        padding: 0.5rem;
+        position: relative;
+        width: 100%;
+
+        div {
+            position: absolute;
+            padding: 0.25rem;
+        }
+
+        .entry {
+            min-height: 2rem;
+            width: 48%;
+            background-color: #fafdfd;
+
+            &:hover {
+                background-color: #bde2e6;
+                cursor: pointer;
+            }
+
+            &.left {
+                border-right: 4px solid #AAA;
+            }
+
+            &.right {
+                border-left: 4px solid #AAA;
+            }
+        }
+    }
+}
+
+footer {
+    border: 1px dotted gray;
+    background-color: gray;
+    color: white;
+    padding: 0 0.5rem;
+    min-height: 5rem;
+    text-align: center;
+
+    p {
+        margin-top: 1.75rem;
+    }
+}

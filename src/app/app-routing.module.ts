@@ -6,6 +6,7 @@ import { StickyLayoutComponent } from './sticky-layout.component';
 import { UserDetailsLayoutComponent } from './user-details-layout.component';
 import { ListLayoutComponent } from './list-layout.component';
 import { LoginLayoutComponent } from './login-layout.component';
+import { CanvasLayoutComponent } from './canvas-tl-layout.component';
 
 const routes: Routes = [
     { path: '', component: ControlSummaryComponent },
@@ -14,10 +15,11 @@ const routes: Routes = [
     { path: 'mobile', component: MobileDeviceLayoutComponent },
     { path: 'sticky', component: StickyLayoutComponent },
     { path: 'user', component: UserDetailsLayoutComponent },
+    { path: 'canvas', component: CanvasLayoutComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

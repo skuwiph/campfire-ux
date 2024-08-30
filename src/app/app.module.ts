@@ -13,6 +13,7 @@ import { StickyLayoutComponent } from './sticky-layout.component';
 import { UserDetailsLayoutComponent } from './user-details-layout.component';
 import { ListLayoutComponent } from './list-layout.component';
 import { LoginLayoutComponent } from './login-layout.component';
+import { CanvasLayoutComponent } from './canvas-tl-layout.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { LoginLayoutComponent } from './login-layout.component';
         MobileDeviceLayoutComponent,
         StickyLayoutComponent,
         UserDetailsLayoutComponent,
+        CanvasLayoutComponent,
         ListLayoutComponent,
         LoginLayoutComponent,
     ],
