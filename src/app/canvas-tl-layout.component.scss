@@ -45,6 +45,14 @@
             &.right {
                 border-left: 4px solid #AAA;
             }
+            p.title {
+                margin: 0;
+                font-size: larger;
+            }
+            p.description {
+                margin: 0;
+            }
+           
         }
     }
 }

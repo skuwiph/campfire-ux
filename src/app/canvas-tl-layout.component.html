@@ -4,7 +4,7 @@
         <h1>Canvas Timeline</h1>
         <div class="tl" style.height="{{months}}{{TIMELINE_UNIT}}">
             <div *ngFor="let e of entries" class="entry" [class.left]="e.type == 1" [class.right]="e.type == 2"
-                [style]="getStyle(e)">{{e.text}}</div>
+                [style]="getStyle(e)" [innerHtml]="e.text"></div>
         </div>
         <p>Return to <a href="./">component showcase page</a>.</p>
     </div>

@@ -41,21 +41,16 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
             value.forEach(e => {
                 if (!seen.has(e.id)) {
                     seen.add(e.id);
+                    const htmlContent = `<p class='title'>${e.title}</p><p class='description'>${e.description}</p>`
+
                     const insert = (e.type == 1)
-                        ? this.leftEntry(key, 0, e.duration, e.title)
-                        : this.rightEntry(key, 0, e.duration, e.title);
+                        ? this.leftEntry(key, 0, e.duration, htmlContent)
+                        : this.rightEntry(key, 0, e.duration, htmlContent);
 
                     this.entries.push(insert);
                 }
             })
         });
-
-        // this.entries.push(this.leftEntry(0, 0, 19, 'My entry - 19 months'));
-        // this.entries.push(this.leftEntry(19, 0, 16, 'A Second entry - 16 months'));
-        // this.entries.push(this.leftEntry(44, 0, 2, 'A Third entry - 2 months'));
-        // this.entries.push(this.rightEntry(10, 0, 12, 'Another entry - 12 months'));
-        // this.entries.push(this.rightEntry(25, 0, 21, 'Another entry - 21 months'));
-
     }
 
     entriesPerMonth = new Map<number, TimelineEntry[]>();
@@ -162,8 +157,8 @@ export class TimlineHtmlEntry {
     style(padding: number, unit: string): string {
         const sideName = (this.type == 1) ? 'left' : 'right';
         const align = (this.type == 2) ? 'left' : 'right';
-        let calcHeight = this.height - padding;
-        return `text-align:${align};${sideName}:${this.side + padding}${unit};top:${this.top + padding}${unit};height:${calcHeight}${unit};z-index:${this.zIndex}`;
+        let calcHeight = this.height+padding;
+        return `text-align:${align};${sideName}:${this.side + padding}${unit};top:${this.top}${unit};height:${calcHeight}${unit};z-index:${this.zIndex}`;
     }
 
     text = '';
