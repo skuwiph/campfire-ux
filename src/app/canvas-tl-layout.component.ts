@@ -35,12 +35,30 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
         this.zindex = 0;
 
         const seen = new Set<number>();
+        const l = new Map<number, number>();
+        const r = new Map<number, number>();
 
         this.entriesPerMonth.forEach((value: TimelineEntry[], key: number) => {
-            //console.log(key, `${JSON.stringify(value)}`);
+            // console.log(key, `${JSON.stringify(value.length)}`);
+            let leftCount = 0;
+            let rightCount = 0;
             value.forEach(e => {
+                // Is there an overlap?
+                if(e.type == 1) {
+                    let current = l.get(key);
+                    if(current) current++; else current = 1;
+                    l.set(key, current);
+                } else {
+                    let current = r.get(key);
+                    if(current) current++; else current = 1;
+                    r.set(key, current);
+                }
+
                 if (!seen.has(e.id)) {
                     seen.add(e.id);
+                    let count = 0;
+                    if(e.type == 1) count = l.get(key) ?? 0; else count = r.get(key) ?? 0;
+
                     let htmlContent = ``;
                     const time = `${e.startDate.toFormat('LLL yyyy')} - ${e.endDate.toFormat('LLL yyyy')}`
                     
@@ -50,8 +68,8 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
                         htmlContent = `<span class='title'>${e.title}</span><span class='compressed'>${time}</span>`;
                     }
                     const insert = (e.type == 1)
-                        ? this.leftEntry(key, 0, e.duration, htmlContent)
-                        : this.rightEntry(key, 0, e.duration, htmlContent);
+                        ? this.leftEntry(key, 0, e.duration, htmlContent, count)
+                        : this.rightEntry(key, 0, e.duration, htmlContent, count);
 
                     this.entries.push(insert);
                 }
@@ -81,7 +99,7 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
         //const diff = end.diff(start, 'months');
         const i = Interval.fromDateTimes(start, end);
         this.months = +i.length('months') + 1 + this.TIMELINE_PADDING;
-        console.log(`Diff: ${this.months}`);
+        //console.log(`Diff: ${this.months}`);
         this.entriesPerMonth.clear();
 
 
@@ -102,16 +120,17 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
     populateTimeline() {
         // If still 'current', set endDate to this.today
         this.timeline = [];
-        this.timeline.push(new TimelineEntry(1, 1, '2010-01', '2011-06', 'My Entry', 'My description'));
-        this.timeline.push(new TimelineEntry(2, 1, '2011-07', '2012-11', 'A Second Entry', 'Another entry\'s description'));
-        this.timeline.push(new TimelineEntry(3, 1, '2013-10', '2013-12', 'A Third Entry', 'Another entry\'s description'));
+        this.timeline.push(new TimelineEntry(1, 1, '2010-09', '2012-07', 'Oakfield Primary School', 'My description'));
+        this.timeline.push(new TimelineEntry(2, 1, '2012-09', '2014-07', 'Trevelyan Secondary Modern', 'Another entry\'s description'));
+        this.timeline.push(new TimelineEntry(3, 1, '2014-09', '2015-07', 'Windsor Boys\' School', 'Another entry\'s description'));
         this.timeline.push(new TimelineEntry(4, 2, '2010-12', '2012-06', 'A Work Entry', 'Another entry\'s description'));
-        this.timeline.push(new TimelineEntry(5, 2, '2012-08', '2013-06', 'A Work Entry', 'Another entry\'s description'));
+        this.timeline.push(new TimelineEntry(5, 2, '2012-01', '2013-06', 'Another Workplace', 'Another entry\'s description'));
+        this.timeline.push(new TimelineEntry(6, 2, '2012-04', '2013-12', 'Yet Another Workplace', 'Another entry\'s description'));
     }
 
     zindex = 0;
 
-    leftEntry(top: number, side: number, height: number, text: string): TimlineHtmlEntry {
+    leftEntry(top: number, side: number, height: number, text: string, sideCount: number): TimlineHtmlEntry {
         const n = new TimlineHtmlEntry();
 
         n.type = 1;
@@ -120,11 +139,12 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
         n.height = height;
         n.zIndex = this.zindex++;
         n.text = text;
+        n.count = sideCount;
 
         return n;
     }
 
-    rightEntry(top: number, side: number, height: number, text: string): TimlineHtmlEntry {
+    rightEntry(top: number, side: number, height: number, text: string, sideCount: number): TimlineHtmlEntry {
         const n = new TimlineHtmlEntry();
 
         n.type = 2;
@@ -133,6 +153,7 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
         n.height = height;
         n.zIndex = this.zindex++;
         n.text = text;
+        n.count = sideCount;
 
         return n;
     }
@@ -163,12 +184,13 @@ export class TimlineHtmlEntry {
     side: number = -1;
     height: number = 1;
     zIndex: number = 0;
+    count: number = 0;
 
     style(padding: number, unit: string): string {
         const sideName = (this.type == 1) ? 'left' : 'right';
         const align = (this.type == 2) ? 'left' : 'right';
         let calcHeight = this.height+padding;
-        return `text-align:${align};${sideName}:${this.side + padding}${unit};top:${this.top+padding}${unit};height:${calcHeight}${unit};z-index:${this.zIndex}`;
+        return `width:${49 - this.count * 1.5}%;text-align:${align};${sideName}:${this.side + padding}${unit};top:${this.top+padding}${unit};height:${calcHeight}${unit};z-index:${this.zIndex}`;
     }
 
     tickStyle(padding: number, unit: string): string {

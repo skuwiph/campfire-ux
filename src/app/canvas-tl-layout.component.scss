@@ -36,18 +36,20 @@
             position: relative;
             .tick {
                 position: absolute;
+                color: #a3a3a3;
             }
         }
 
         .entry {
             min-height: 2rem;
             width: calc( 50% - 1rem);
-            background:transparent;
-            // background-color: #fafdfd;
+            background-color: #fafdfd;
             border-top: 1px solid #aaa;
             &:hover {
-                background-color: #bde2e6;
+                background-color: white;
                 cursor: pointer;
+                z-index: 99 !important;
+                opacity: 0.9;
             }
 
             &.left {
