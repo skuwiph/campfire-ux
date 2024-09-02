@@ -3,6 +3,9 @@
     <div class="content">
         <h1>Canvas Timeline</h1>
         <div class="tl" style.height="{{months}}{{TIMELINE_UNIT}}">
+            <div class="scale">
+                <i *ngFor="let e of entries" class="tick fa-solid fa-circle" [style]="getTickStyle(e)"></i>
+            </div>
             <div *ngFor="let e of entries" class="entry" [class.left]="e.type == 1" [class.right]="e.type == 2"
                 [style]="getStyle(e)" [innerHtml]="e.text"></div>
         </div>

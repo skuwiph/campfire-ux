@@ -28,11 +28,23 @@
             padding: 0.25rem;
         }
 
+        .scale {
+            height: 100%;
+            top: 0;
+            left: calc( 50% - 0.5rem );
+            width: 1rem;
+            position: relative;
+            .tick {
+                position: absolute;
+            }
+        }
+
         .entry {
             min-height: 2rem;
-            width: 48%;
-            background-color: #fafdfd;
-
+            width: calc( 50% - 1rem);
+            background:transparent;
+            // background-color: #fafdfd;
+            border-top: 1px solid #aaa;
             &:hover {
                 background-color: #bde2e6;
                 cursor: pointer;
@@ -45,17 +57,34 @@
             &.right {
                 border-left: 4px solid #AAA;
             }
-            p.title {
-                margin: 0;
-                font-size: larger;
-            }
-            p.description {
-                margin: 0;
-            }
-           
         }
     }
 }
+
+// Because these are innerHtml
+:host ::ng-deep span.title {
+    display: block;
+    margin: 0;
+    font-size: 1rem;
+}
+
+:host ::ng-deep span.date {
+    display: block;
+    margin: 0;
+    font-size: 0.75rem;
+}
+
+:host ::ng-deep span.compressed {
+    display: block;
+    margin-top: -0.25rem;
+    font-size: 0.75rem;
+}
+
+:host ::ng-deep span.description {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
 
 footer {
     border: 1px dotted gray;

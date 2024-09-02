@@ -41,8 +41,14 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
             value.forEach(e => {
                 if (!seen.has(e.id)) {
                     seen.add(e.id);
-                    const htmlContent = `<p class='title'>${e.title}</p><p class='description'>${e.description}</p>`
-
+                    let htmlContent = ``;
+                    const time = `${e.startDate.toFormat('LLL yyyy')} - ${e.endDate.toFormat('LLL yyyy')}`
+                    
+                    if(e.duration > 5) {
+                        htmlContent = `<span class='title'>${e.title}</span><span class='date'>${time}</span><span class='description'>${e.description}</span>`
+                    } else {
+                        htmlContent = `<span class='title'>${e.title}</span><span class='compressed'>${time}</span>`;
+                    }
                     const insert = (e.type == 1)
                         ? this.leftEntry(key, 0, e.duration, htmlContent)
                         : this.rightEntry(key, 0, e.duration, htmlContent);
@@ -74,7 +80,7 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
 
         //const diff = end.diff(start, 'months');
         const i = Interval.fromDateTimes(start, end);
-        this.months = +i.length('months') + 1;
+        this.months = +i.length('months') + 1 + this.TIMELINE_PADDING;
         console.log(`Diff: ${this.months}`);
         this.entriesPerMonth.clear();
 
@@ -135,6 +141,10 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
         return e.style(this.TIMELINE_PADDING, this.TIMELINE_UNIT);
     }
 
+    getTickStyle(e: TimlineHtmlEntry): string {
+        return e.tickStyle(this.TIMELINE_PADDING, this.TIMELINE_UNIT);
+    }
+
     timeline: TimelineEntry[] = [];
     today = DateTime.now().toFormat('yyyy-MM');
     from: DateTime = DateTime.now();
@@ -158,7 +168,13 @@ export class TimlineHtmlEntry {
         const sideName = (this.type == 1) ? 'left' : 'right';
         const align = (this.type == 2) ? 'left' : 'right';
         let calcHeight = this.height+padding;
-        return `text-align:${align};${sideName}:${this.side + padding}${unit};top:${this.top}${unit};height:${calcHeight}${unit};z-index:${this.zIndex}`;
+        return `text-align:${align};${sideName}:${this.side + padding}${unit};top:${this.top+padding}${unit};height:${calcHeight}${unit};z-index:${this.zIndex}`;
+    }
+
+    tickStyle(padding: number, unit: string): string {
+        const align = (this.type == 2) ? 'left' : 'right';
+        let calcHeight = this.height+padding;
+        return `text-align:center;left:0rem;top:${this.top+padding}${unit};height:${calcHeight}${unit};z-index:${this.zIndex}`;
     }
 
     text = '';
