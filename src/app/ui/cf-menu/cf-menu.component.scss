@@ -3,6 +3,7 @@
 .container {
     container-type: main inline-size;
     width: 100%;
+
     .menu {
         display: flex;
         justify-content: flex-start;
@@ -11,6 +12,7 @@
         padding: 0.5rem 0.5rem;
         background: var(--menu-bg-color);
         color: var(--menu-fg-color);
+
         a {
             color: var(--menu-fg-color);
             text-decoration: none;
@@ -18,15 +20,18 @@
             &.logo {
                 padding: 0;
                 width: 7rem;
+
                 img {
                     width: 7rem;
                 }
+
                 &:hover {
                     background: var(--menu-bg-color);
                     cursor: pointer;
                 }
             }
         }
+
         .base {
             width: 100%;
             display: flex;
@@ -34,6 +39,7 @@
             justify-content: space-between;
             gap: 1rem;
             position: relative;
+
             .items-lhs {
                 display: flex;
                 justify-content: flex-start;
@@ -41,19 +47,22 @@
                 gap: 0.5rem;
                 padding-left: 1rem;
             }
+
             .items-rhs {
                 position: relative;
-                container: rhs / inline-size;              
-                display:flex;
+                container: rhs / inline-size;
+                display: flex;
                 flex-flow: nowrap reverse;
                 justify-content: flex-end;
                 align-items: center;
                 gap: 0.5rem;
                 flex: 1 1 auto;
+
                 .search {
                     position: relative;
                     flex-grow: 2;
                 }
+
                 .user {
                     flex: 1 1 1;
                 }
@@ -61,8 +70,10 @@
         }
     }
 }
+
 .container-compact {
     display: none;
+
     .menu {
         display: flex;
         justify-content: space-between;
@@ -71,18 +82,19 @@
         padding: 0.5rem 0.5rem;
         background: var(--menu-bg-color);
         color: var(--menu-fg-color);
+
         a {
             color: var(--menu-fg-color);
             text-decoration: none;
-    
+
             &.logo {
                 padding: 0.25rem 0 0;
                 width: 2rem;
-    
+
                 img {
                     width: 2rem;
                 }
-    
+
                 &:hover {
                     background: var(--menu-bg-color);
                     cursor: pointer;
@@ -93,15 +105,15 @@
 }
 
 @container rhs (max-width: 330px) {
-        .search {
+    .search {
         display: none;
     }
 }
 
 @media (max-width: 600px) {
     .container-compact {
-            display: block;
-        }
+        display: block;
+    }
 
     .container {
         display: none;

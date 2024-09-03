@@ -1,5 +1,4 @@
 @import "/src/assets/styles/themes";
-@import "/src/assets/styles/buttons";
 
 .container {
 
@@ -17,6 +16,15 @@
 .content {
     flex: 1 0 auto;
 
+    .history {
+        .history-item {
+            margin: 0.5rem 0.25rem 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #181818;
+            border-radius: 0.25rem;
+        }
+    }
+
     .tl {
         border: 1px solid #181818;
         padding: 0.5rem;
@@ -31,9 +39,10 @@
         .scale {
             height: 100%;
             top: 0;
-            left: calc( 50% - 0.5rem );
+            left: calc(50% - 0.5rem);
             width: 1rem;
             position: relative;
+
             .tick {
                 position: absolute;
                 color: #a3a3a3;
@@ -42,13 +51,14 @@
 
         .entry {
             min-height: 2rem;
-            width: calc( 50% - 1rem);
+            width: calc(50% - 1rem);
             background-color: #fafdfd;
             border-top: 1px solid #aaa;
+
             &:hover {
                 background-color: white;
                 cursor: pointer;
-                z-index: 99 !important;
+                z-index: 20 !important;
                 opacity: 0.9;
             }
 
@@ -84,6 +94,29 @@
 
 :host ::ng-deep span.description {
     margin: 0;
+    font-size: 0.8rem;
+}
+
+// GAP
+:host ::ng-deep p.title {
+    display: block;
+    margin: 0;
+    font-size: 1rem;
+
+    i {
+        width: 1.5rem;
+        margin-right: 0.25rem;
+    }
+}
+
+:host ::ng-deep p.date {
+    display: block;
+    margin: 0 0 0 1.75rem;
+    font-size: 0.75rem;
+}
+
+:host ::ng-deep p.description {
+    margin: 0 0 0 1.75rem;
     font-size: 0.8rem;
 }
 

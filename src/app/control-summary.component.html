@@ -395,7 +395,7 @@
             </code>
             <p>Code:</p>
             <code>
-                @ViewChild('dialogDemo', void {{ '{' }} static: false void {{ '}' }}) dialog!: CfDialogComponent;<br>
+                {{ '@' }}ViewChild('dialogDemo', void {{ '{' }} static: false void {{ '}' }}) dialog!: CfDialogComponent;<br>
                 <br>
 
                 showDialog(event: Event): void {{ '{' }}<br>
@@ -863,6 +863,8 @@
             </code>
             <h4>Code</h4>
             <code>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ '@' }}ViewChild('tabComponent', {{ '{' }} static: false {{ '}' }}) tabBar!: CfTabComponent;<br>
+                <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;activeTabContent = 'one';<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;tabs: ICFTab[] = [];<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;prepareTabs(): void {{ '{' }}<br>

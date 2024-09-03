@@ -15,10 +15,13 @@ export class CfTabComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes["tabs"]) {
+        if (changes["tabs"] && this.activeTab === '') {
             if (this.tabs.length > 0) {
                 this.selectTab(this.tabs[0]);
             }
+        }
+        if (changes["activeTab"]) {
+            this.selectTabById(this.activeTab);
         }
     }
 
@@ -52,7 +55,7 @@ export class CfTabComponent implements OnInit, OnChanges {
     private getTabById(id: string): ICFTab | undefined {
         return this.tabs.find(t => t.id === id);
     }
-   
+
 }
 export interface ICFTab {
     title: string;

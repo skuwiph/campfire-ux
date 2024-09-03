@@ -2,13 +2,47 @@
     <app-cf-menu class="menu" (menuSelected)="menuItemSelected($event)"></app-cf-menu>
     <div class="content">
         <h1>Canvas Timeline</h1>
-        <div class="tl" style.height="{{months}}{{TIMELINE_UNIT}}">
-            <div class="scale">
-                <i *ngFor="let e of entries" class="tick fa-solid fa-circle" [style]="getTickStyle(e)"></i>
-            </div>
-            <div *ngFor="let e of entries" class="entry" [class.left]="e.type == 1" [class.right]="e.type == 2"
-                [style]="getStyle(e)" [innerHtml]="e.text"></div>
-        </div>
+
+        <app-cf-tab [tabs]="tabs" [activeTab]="activeTabContent" (tabSelected)="onTabSelect($event)" #tabComponent>
+            <ng-container>
+                <div class="tab-content">
+                    <ng-container [ngSwitch]="activeTabContent">
+                        <div *ngSwitchCase="'tl'">
+                            <ng-container>
+                                <div class="tl" style.height="{{months}}{{TIMELINE_UNIT}}">
+                                    <div class="scale">
+                                        <i *ngFor="let e of entries" class="tick fa-solid fa-circle"
+                                            [style]="getTickStyle(e)"></i>
+                                    </div>
+                                    <div *ngFor="let e of entries" class="entry" [class.left]="e.type == 1"
+                                        [class.right]="e.type == 2" [style]="getStyle(e)" [innerHtml]="e.text"></div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div *ngSwitchCase="'gap'">
+                            <ng-container>
+                                <div class="history">
+                                    <div *ngFor="let e of gapDisplay">
+                                        <ng-container [ngSwitch]="e.type">
+                                            <div *ngSwitchCase="0">
+                                                <div class="history-item" [innerHtml]="e.html"></div>
+                                            </div>
+                                            <div *ngSwitchCase="1">
+                                                <app-cf-alert [type]="Alert.Warning">
+                                                    <span [innerHTML]="e.html"></span>
+                                                </app-cf-alert>
+                                            </div>
+                                        </ng-container>
+
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </app-cf-tab>
+
         <p>Return to <a href="./">component showcase page</a>.</p>
     </div>
     <footer>
