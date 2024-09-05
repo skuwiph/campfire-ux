@@ -35,23 +35,23 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
     performTimelineLogic(): void {
 
         // 1. Find earliest start and latest end dates
-        this.calculateTimelineRange();
+        let tld = this.calculateTimelineRange(this.timeline);
 
         // 2. Calculate entries
-        this.calculateEntries();
+        this.calculateEntries(tld);
 
         // 3. Perhaps calculate some extra information
         // regarding year changes?
+        this.firstPass = tld;
     }
 
-    calculateEntries(): void {
+    calculateEntries(tld: TimelineDetails): void {
         this.zindex = 0;
-
         const seen = new Set<number>();
         const l = new Map<number, number>();
         const r = new Map<number, number>();
 
-        this.entriesPerMonth.forEach((value: TimelineEntry[], key: number) => {
+        tld.entriesPerMonth.forEach((value: TimelineEntry[], key: number) => {
             // console.log(key, `${JSON.stringify(value.length)}`);
             let leftCount = 0;
             let rightCount = 0;
@@ -84,56 +84,16 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
                         ? this.leftEntry(key, 0, e.duration, htmlContent, count)
                         : this.rightEntry(key, 0, e.duration, htmlContent, count);
 
-                    this.entries.push(insert);
+                    tld.entries.push(insert);
                 }
             })
         });
     }
 
-    entriesPerMonth = new Map<number, TimelineEntry[]>();
-
-    calculateTimelineRange(): void {
-        let start = DateTime.fromISO('2999-12-31');
-        let end = DateTime.fromISO('1000-01-01');
-
-        this.timeline.forEach(tl => {
-            if (tl.startDate < start) {
-                start = tl.startDate;
-            }
-            if (tl.endDate > end) {
-                end = tl.endDate;
-            }
-        });
-
-        //console.log(`Earliest to latest: ${start}-${end}`);
-        this.from = start;
-        this.to = end;
-
-        //const diff = end.diff(start, 'months');
-        const i = Interval.fromDateTimes(start, end);
-        this.months = +i.length('months') + 1 + this.TIMELINE_PADDING;
-        //console.log(`Diff: ${this.months}`);
-        this.entriesPerMonth.clear();
-
-
-        for (let i = 0; i < this.months; i++) {
-            const date = start.plus({ 'months': i });
-            let combined = '';
-            //console.log(`Date: ${date.toISODate()}`);
-            const entries = this.timeline.filter(tle => date >= tle.startDate && date <= tle.endDate);
-            if (entries) {
-                const tl: TimelineEntry[] = entries;
-                this.entriesPerMonth.set(i, tl);
-            }
-
-        }
-
-    }
-
     zindex = 0;
 
-    leftEntry(top: number, side: number, height: number, text: string, sideCount: number): TimlineHtmlEntry {
-        const n = new TimlineHtmlEntry();
+    leftEntry(top: number, side: number, height: number, text: string, sideCount: number): TimelineHtmlEntry {
+        const n = new TimelineHtmlEntry();
 
         n.type = 1;
         n.top = top;
@@ -146,8 +106,8 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
         return n;
     }
 
-    rightEntry(top: number, side: number, height: number, text: string, sideCount: number): TimlineHtmlEntry {
-        const n = new TimlineHtmlEntry();
+    rightEntry(top: number, side: number, height: number, text: string, sideCount: number): TimelineHtmlEntry {
+        const n = new TimelineHtmlEntry();
 
         n.type = 2;
         n.top = top;
@@ -160,15 +120,15 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
         return n;
     }
 
-    getStyle(e: TimlineHtmlEntry): string {
+    getStyle(e: TimelineHtmlEntry): string {
         return e.style(this.TIMELINE_PADDING, this.TIMELINE_UNIT);
     }
 
-    getTickStyle(e: TimlineHtmlEntry): string {
+    getTickStyle(e: TimelineHtmlEntry): string {
         return e.tickStyle(this.TIMELINE_PADDING, this.TIMELINE_UNIT);
     }
 
-    entries: TimlineHtmlEntry[] = [];
+    // entries: TimelineHtmlEntry[] = [];
 
     TIMELINE_PADDING = 0.5;
     TIMELINE_UNIT = 'rem';
@@ -179,14 +139,56 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
 
     performGapCheckLogic(): void {
         // 1. Find earliest start and latest end dates
-        this.calculateTimelineRange();
+        const tld = this.calculateTimelineRange(this.timeline);
 
         // 2. Analyse the timeline and find any
         // notable gaps
-        this.findGaps();
+        this.findGaps(tld);
+
+
+        // 2a. Alternative
+        const tld2 = this.calculateTimelineRange(this.timeline2);
+        this.findGaps2(tld2);
+
+        this.secondPass = tld;
+        this.thirdPass = tld2;
     }
 
-    findGaps(): void {
+    calculateTimelineRange(timeline: TimelineEntry[]): TimelineDetails {
+        let tld = new TimelineDetails();
+
+        let start = DateTime.fromISO('2999-12-31');
+        let end = DateTime.fromISO('1000-01-01');
+
+        timeline.forEach(tl => {
+            if (tl.startDate < start) {
+                start = tl.startDate;
+            }
+            if (tl.endDate > end) {
+                end = tl.endDate;
+            }
+        });
+
+        tld.from = start;
+        tld.to = end;
+
+        //const diff = end.diff(start, 'months');
+        const i = Interval.fromDateTimes(start, end);
+        tld.months = +i.length('months') + 1 + this.TIMELINE_PADDING;
+
+        for (let i = 0; i < tld.months; i++) {
+            const date = start.plus({ 'months': i });
+            const entries = timeline.filter(tle => date >= tle.startDate && date <= tle.endDate);
+            if (entries) {
+                const tl: TimelineEntry[] = entries;
+                tld.entriesPerMonth.set(i, tl);
+            }
+
+        }
+        return tld;
+    }
+
+    findGaps(tld: TimelineDetails): void {
         let biggestGap = 0;
         let gapFound = false;
         let startGapIndex = -1;
@@ -194,7 +196,7 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
 
         const seen = new Set<number>();
 
-        this.entriesPerMonth.forEach((value: TimelineEntry[], key: number) => {
+        tld.entriesPerMonth.forEach((value: TimelineEntry[], key: number) => {
             //console.log(key, `${JSON.stringify(value.length)}`);
             if (value.length == 0) {
                 if (!gapFound) {
@@ -207,23 +209,71 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
                 if (gapFound) {
                     gapFound = false;
                     const tlg = new TimelineGap(startGapIndex, endGapIndex, biggestGap);
-                    this.gaps.push(tlg);
+                    tld.gaps.push(tlg);
                     if (biggestGap >= this.GAP_THRESHOLD_MONTHS) {
-                        this.gapDisplay.push(new GapEntry(1, this.getGapWarningHtml(tlg)));
+                        console.log(`Got a gap exceeding threshold`);
+
+                        tld.gapDisplay.push(new GapEntry(1, this.getGapWarningHtml(tlg)));
                     }
+                    biggestGap = 0;
                 }
                 value.forEach(e => {
                     // Is it the first occurence?
                     if (!seen.has(e.id)) {
                         seen.add(e.id);
-                        this.gapDisplay.push(new GapEntry(0, this.getTimelineEntry(e)));
+                        tld.gapDisplay.push(new GapEntry(0, this.getTimelineEntry(e)));
                     }
                 });
 
             }
         });
 
-        this.gaps.forEach(g => {
+        tld.gaps.forEach(g => {
+            console.warn(`We found a gap of ${g.gapLength} between indices ${g.startIndex} and ${g.endIndex}!`);
+        });
+
+    }
+
+    findGaps2(tld: TimelineDetails): void {
+        let biggestGap = 0;
+        let gapFound = false;
+        let startGapIndex = -1;
+        let endGapIndex = -1;
+
+        const seen = new Set<number>();
+
+        tld.entriesPerMonth.forEach((value: TimelineEntry[], key: number) => {
+            // console.log(key, `${JSON.stringify(value.length)}`);
+            if (value.length == 0) {
+                if (!gapFound) {
+                    startGapIndex = key;
+                    gapFound = true;
+                }
+                biggestGap++;
+                endGapIndex = key;
+            } else {
+                if (gapFound) {
+                    gapFound = false;
+                    const tlg = new TimelineGap(startGapIndex, endGapIndex, biggestGap);
+                    tld.gaps.push(tlg);
+                    if (biggestGap >= this.GAP_THRESHOLD_MONTHS) {
+                        console.log(`Got a gap exceeding threshold`);
+                        tld.gapDisplay.push(new GapEntry(1, this.getGapWarningHtml(tlg)));
+                    }
+                    biggestGap = 0;
+                }
+                value.forEach(e => {
+                    // Is it the first occurence?
+                    if (!seen.has(e.id)) {
+                        seen.add(e.id);
+                        tld.gapDisplay.push(new GapEntry(0, this.getTimelineEntry2(e), e.description));
+                    }
+                });
+
+            }
+        });
+
+        tld.gaps.forEach(g => {
             console.warn(`We found a gap of ${g.gapLength} between indices ${g.startIndex} and ${g.endIndex}!`);
         });
     }
@@ -238,25 +288,45 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
         return `<p class='title'>${type}${e.title}</p><p class='date'>${time}</p><p class='description'>${e.description}</p>`;
     }
 
-    getGapWarningHtml(gap: TimelineGap): string {
-        return `There was a gap exceeding the threshold of ${this.GAP_THRESHOLD_MONTHS} months or more between the previous and next entry!`;
+    getTimelineEntry2(e: TimelineEntry): string {
+        const start = e.startDate.toFormat('LLLL yyyy');
+        const end = e.endDate ? e.endDate.toFormat('LLLL yyyy') : 'Present';
+        const time = `${start} - ${end}`;
+
+        const type = e.type == 1 ? `<i class="fa-solid fa-graduation-cap"></i>` : `<i class="fa-regular fa-building"></i>`;
+
+        const note = e.note ? `<span class="note">(${e.note})</span>` : '';
+
+        return `<div class="tle"><p class="est">${e.title}${note}</p><p class="type">${type}</p></div><p class="dt">${time}</p>`;
+
+        //return `<p class='title'>${type}${e.title}</p><p class='date'>${time}</p><p class='description'>${e.description}</p>`;
     }
 
-    gaps: TimelineGap[] = [];
-    gapDisplay: GapEntry[] = [];
+    getGapWarningHtml(gap: TimelineGap): string {
+        return `${gap.gapLength} month gap between entries`;
+    }
 
+    onMouseOver(e: GapEntry): void {
+        this.selectedDescription = e.extra;
+
+        this.selectedId = e.id;
+    }
+
+    selectedId = -1;
+    selectedDescription?: string;
     GAP_THRESHOLD_MONTHS = 4;
 
     // MARK: End of gap checking
 
     // MARK: Tab handling
 
-    activeTabContent = 'gap';
+    activeTabContent = 'gap2';
     tabs: ICFTab[] = [];
     prepareTabs(): void {
         this.tabs = [
             { id: 'tl', title: 'Timeline', disabled: false },
             { id: 'gap', title: 'Gap Analysis', disabled: false },
+            { id: 'gap2', title: 'Gap Analysis #2', disabled: false },
         ];
     }
 
@@ -280,23 +350,42 @@ export class CanvasLayoutComponent implements OnInit, AfterViewInit {
 
     populateTimeline() {
         // If still 'current', set endDate to this.today
-        this.timeline = [];
         this.timeline.push(new TimelineEntry(1, 1, '2010-09', '2012-07', 'Oakfield Primary School', 'My description'));
         this.timeline.push(new TimelineEntry(2, 1, '2012-09', '2014-07', 'Trevelyan Secondary Modern', 'Another entry\'s description'));
         this.timeline.push(new TimelineEntry(3, 1, '2014-09', '2015-07', 'Windsor Boys\' School', 'Another entry\'s description'));
         this.timeline.push(new TimelineEntry(4, 2, '2010-12', '2012-06', 'A Work Entry', 'Another entry\'s description'));
         this.timeline.push(new TimelineEntry(5, 2, '2012-01', '2013-06', 'Another Workplace', 'Another entry\'s description'));
         this.timeline.push(new TimelineEntry(6, 2, '2016-01', '2016-12', 'Yet Another Workplace', 'Another entry\'s description'));
+
+        this.timeline2.push(new TimelineEntry(1, 1, '2020-01', '2021-06', 'High School #1', 'I studied Art, Pyschology, and Law', 'Referee Provided'));
+        this.timeline2.push(new TimelineEntry(2, 2, '2020-06', '2021-04', 'Workplace #1', 'Customer Assistant in Customer Service Department. Mainly till work, however, I also regularly undertook duties on the front of store Customer Service desk, including returns and overseeing/running both "Click and Collect", and "Quickcheck" services. Additional duties such as taking phone calls, making sure the store looked tidy, taking out rubbish and replenishing bags.'));
+        this.timeline2.push(new TimelineEntry(3, 2, '2022-01', '2022-06', 'Workplace #2', 'Another entry\'s description', 'Suggested Referee'));
+        this.timeline2.push(new TimelineEntry(4, 2, '2023-10', '2024-09', 'Workplace #3', 'This one is sixteen months past the previous one, as I went on a round-the-world backpacking trip.'));
     }
 
     timeline: TimelineEntry[] = [];
+    timeline2: TimelineEntry[] = [];
+
+    firstPass: TimelineDetails = new TimelineDetails();
+    secondPass: TimelineDetails = new TimelineDetails();
+    thirdPass: TimelineDetails = new TimelineDetails();
+}
+
+export class TimelineDetails {
     today = DateTime.now().toFormat('yyyy-MM');
     from: DateTime = DateTime.now();
     to: DateTime = DateTime.now();
     months = 0;
+
+    gaps: TimelineGap[] = [];
+
+    entriesPerMonth = new Map<number, TimelineEntry[]>();
+    gapDisplay: GapEntry[] = [];
+
+    entries: TimelineHtmlEntry[] = [];
 }
 
-export class TimlineHtmlEntry {
+export class TimelineHtmlEntry {
     type: number = 1;
     top: number = 0.5;
     side: number = -1;
@@ -328,14 +417,15 @@ export class TimelineEntry {
     description: string;
     id: number;
     duration = 0;
-    constructor(id: number, type: number, startDate: string, endDate: string, title: string, description: string) {
+    note?: string;
+    constructor(id: number, type: number, startDate: string, endDate: string, title: string, description: string, note?: string) {
         this.id = id;
         this.type = type;
         this.startDate = DateTime.fromISO(startDate);
         this.endDate = DateTime.fromISO(endDate);
         this.title = title;
         this.description = description;
-
+        this.note = note;
         this.calculateDuration();
     }
 
@@ -359,10 +449,17 @@ export class TimelineGap {
 }
 
 export class GapEntry {
+    id = 0;
     type = 0;
     html = '';
-    constructor(type: number, html: string) {
+    extra?: string;
+    constructor(type: number, html: string, extra?: string) {
+
+        this.id = GapEntry.nextId++;
         this.type = type;
         this.html = html;
+        this.extra = extra;
     }
+
+    static nextId = 0;
 }

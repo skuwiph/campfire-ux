@@ -9,12 +9,12 @@
                     <ng-container [ngSwitch]="activeTabContent">
                         <div *ngSwitchCase="'tl'">
                             <ng-container>
-                                <div class="tl" style.height="{{months}}{{TIMELINE_UNIT}}">
+                                <div class="tl" style.height="{{firstPass.months}}{{TIMELINE_UNIT}}">
                                     <div class="scale">
-                                        <i *ngFor="let e of entries" class="tick fa-solid fa-circle"
+                                        <i *ngFor="let e of firstPass.entries" class="tick fa-solid fa-circle"
                                             [style]="getTickStyle(e)"></i>
                                     </div>
-                                    <div *ngFor="let e of entries" class="entry" [class.left]="e.type == 1"
+                                    <div *ngFor="let e of firstPass.entries" class="entry" [class.left]="e.type == 1"
                                         [class.right]="e.type == 2" [style]="getStyle(e)" [innerHtml]="e.text"></div>
                                 </div>
                             </ng-container>
@@ -22,7 +22,7 @@
                         <div *ngSwitchCase="'gap'">
                             <ng-container>
                                 <div class="history">
-                                    <div *ngFor="let e of gapDisplay">
+                                    <div *ngFor="let e of secondPass.gapDisplay">
                                         <ng-container [ngSwitch]="e.type">
                                             <div *ngSwitchCase="0">
                                                 <div class="history-item" [innerHtml]="e.html"></div>
@@ -33,7 +33,30 @@
                                                 </app-cf-alert>
                                             </div>
                                         </ng-container>
-
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div *ngSwitchCase="'gap2'">
+                            <ng-container>
+                                <div class="tle-history">
+                                    <div class="left">
+                                        <div *ngFor="let e of thirdPass.gapDisplay">
+                                            <ng-container [ngSwitch]="e.type">
+                                                <div *ngSwitchCase="0" (mouseover)="onMouseOver(e)">
+                                                    <div class="history-item" [class.selected]="e.id === selectedId"
+                                                        [innerHtml]="e.html"></div>
+                                                </div>
+                                                <div *ngSwitchCase="1">
+                                                    <app-cf-alert [type]="Alert.Information">
+                                                        <span [innerHTML]="e.html"></span>
+                                                    </app-cf-alert>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div class="tle-item">
+                                        <p>{{selectedDescription}}</p>
                                     </div>
                                 </div>
                             </ng-container>

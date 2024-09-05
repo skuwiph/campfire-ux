@@ -1,135 +1,219 @@
-@import "/src/assets/styles/themes";
+  [data-theme="light"] {
+      --table-row-hover-bg-color: #6996a4;
+      --table-row-hover-fg-color: white;
+  }
 
-.container {
+  .container {
 
-    .menu {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-    }
+      .menu {
+          position: sticky;
+          top: 0;
+          z-index: 2;
+      }
 
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+  }
 
-.content {
-    flex: 1 0 auto;
+  .content {
+      flex: 1 0 auto;
 
-    .history {
-        .history-item {
-            margin: 0.5rem 0.25rem 1rem;
-            padding: 0.5rem 1rem;
-            border: 1px solid #181818;
-            border-radius: 0.25rem;
-        }
-    }
+      .history {
+          .history-item {
+              margin: 0.5rem 0.25rem 1rem;
+              padding: 0.5rem 1rem;
+              border: 1px solid #181818;
+              border-radius: 0.25rem;
 
-    .tl {
-        border: 1px solid #181818;
-        padding: 0.5rem;
-        position: relative;
-        width: 100%;
+          }
+      }
 
-        div {
-            position: absolute;
-            padding: 0.25rem;
-        }
+      .tle-history {
+          display: flex;
+          flex-flow: row nowrap;
+          gap: 1rem;
+          justify-content: space-between;
 
-        .scale {
-            height: 100%;
-            top: 0;
-            left: calc(50% - 0.5rem);
-            width: 1rem;
-            position: relative;
+          .left {
+              display: flex;
+              flex-flow: column nowrap;
+              max-width: 50%;
+              width: 50%;
+              min-width: 20rem;
 
-            .tick {
-                position: absolute;
-                color: #a3a3a3;
-            }
-        }
+              .history-item {
+                  margin: 0rem 0rem 0.5rem;
+                  padding: 0.5rem 1rem;
+                  border: 1px solid #686868;
+                  border-radius: 0.25rem;
 
-        .entry {
-            min-height: 2rem;
-            width: calc(50% - 1rem);
-            background-color: #fafdfd;
-            border-top: 1px solid #aaa;
+                  &.selected {
+                      border: 1px solid #181818;
+                  }
 
-            &:hover {
-                background-color: white;
-                cursor: pointer;
-                z-index: 20 !important;
-                opacity: 0.9;
-            }
+                  &:hover {
+                      cursor: pointer;
+                      background-color: var(--table-row-hover-bg-color);
+                      color: var(--table-row-hover-fg-color) !important;
+                      border-color: var(--table-row-hover-bg-color);
+                  }
+              }
+          }
+      }
 
-            &.left {
-                border-right: 4px solid #AAA;
-            }
+      .tle-item {
+          width: 50%;
+          max-width: 50%;
+          margin: 0 1rem;
 
-            &.right {
-                border-left: 4px solid #AAA;
-            }
-        }
-    }
-}
+          p {
+              font-size: 0.9rem;
+              line-height: 1.2rem;
+          }
+      }
 
-// Because these are innerHtml
-:host ::ng-deep span.title {
-    display: block;
-    margin: 0;
-    font-size: 1rem;
-}
+      .tl {
+          border: 1px solid #181818;
+          padding: 0.5rem;
+          position: relative;
+          width: 100%;
 
-:host ::ng-deep span.date {
-    display: block;
-    margin: 0;
-    font-size: 0.75rem;
-}
+          div {
+              position: absolute;
+              padding: 0.25rem;
+          }
 
-:host ::ng-deep span.compressed {
-    display: block;
-    margin-top: -0.25rem;
-    font-size: 0.75rem;
-}
+          .scale {
+              height: 100%;
+              top: 0;
+              left: calc(50% - 0.5rem);
+              width: 1rem;
+              position: relative;
 
-:host ::ng-deep span.description {
-    margin: 0;
-    font-size: 0.8rem;
-}
+              .tick {
+                  position: absolute;
+                  color: #a3a3a3;
+              }
+          }
 
-// GAP
-:host ::ng-deep p.title {
-    display: block;
-    margin: 0;
-    font-size: 1rem;
+          .entry {
+              min-height: 2rem;
+              width: calc(50% - 1rem);
+              background-color: #fafdfd;
+              border-top: 1px solid #aaa;
 
-    i {
-        width: 1.5rem;
-        margin-right: 0.25rem;
-    }
-}
+              &:hover {
+                  background-color: white;
+                  cursor: pointer;
+                  z-index: 20 !important;
+                  opacity: 0.9;
+              }
 
-:host ::ng-deep p.date {
-    display: block;
-    margin: 0 0 0 1.75rem;
-    font-size: 0.75rem;
-}
+              &.left {
+                  border-right: 4px solid #AAA;
+              }
 
-:host ::ng-deep p.description {
-    margin: 0 0 0 1.75rem;
-    font-size: 0.8rem;
-}
+              &.right {
+                  border-left: 4px solid #AAA;
+              }
+          }
+      }
+  }
+
+  // Because these are innerHtml
+  :host ::ng-deep .alert {
+      margin: 0 0 0.5rem !important;
+  }
+
+  :host ::ng-deep span.title {
+      display: block;
+      margin: 0;
+      font-size: 1rem;
+  }
+
+  :host ::ng-deep span.date {
+      display: block;
+      margin: 0;
+      font-size: 0.75rem;
+  }
+
+  :host ::ng-deep span.compressed {
+      display: block;
+      margin-top: -0.25rem;
+      font-size: 0.75rem;
+  }
+
+  :host ::ng-deep span.description {
+      margin: 0;
+      font-size: 0.8rem;
+  }
+
+  // GAP
+  :host ::ng-deep .tle {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+
+  }
+
+  :host ::ng-deep p.est,
+  :host ::ng-deep p.type,
+  :host ::ng-deep p.dt {
+      margin: 0;
+      font-size: 1rem;
+  }
+
+  :host ::ng-deep span.note {
+      margin-left: 0.25rem;
+      font-size: 0.8rem;
+      color: #7c7c7c;
+  }
+
+  :host ::ng-deep p.type {
+      margin: 0;
+      padding: 0;
+      width: 1.5rem;
+      text-align: center;
+  }
+
+  :host ::ng-deep p.dt {
+      margin: 0;
+      font-size: 0.8rem;
+  }
+
+  :host ::ng-deep p.title {
+      display: block;
+      margin: 0;
+      font-size: 1rem;
+
+      i {
+          width: 1.5rem;
+          margin-right: 0.25rem;
+      }
+  }
+
+  :host ::ng-deep p.date {
+      display: block;
+      margin: 0 0 0 1.75rem;
+      font-size: 0.75rem;
+  }
+
+  :host ::ng-deep p.description {
+      margin: 0 0 0 1.75rem;
+      font-size: 0.8rem;
+  }
 
 
-footer {
-    border: 1px dotted gray;
-    background-color: gray;
-    color: white;
-    padding: 0 0.5rem;
-    min-height: 5rem;
-    text-align: center;
+  footer {
+      border: 1px dotted gray;
+      background-color: gray;
+      color: white;
+      padding: 0 0.5rem;
+      min-height: 5rem;
+      text-align: center;
 
-    p {
-        margin-top: 1.75rem;
-    }
-}
+      p {
+          margin-top: 1.75rem;
+      }
+  }
